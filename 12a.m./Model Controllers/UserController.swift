@@ -10,7 +10,7 @@ import CloudKit
 import UIKit
 
 class UserController {
-    static let userController = UserController()
+    static let shared = UserController()
     
     // MARK: - Properties
     let cloudKitManager = CloudKitManager()
@@ -18,7 +18,7 @@ class UserController {
     var users = [User]()
     var currentUser: User?
     
-    func fetchCurrentUser(completion: @escaping (User?) -> Void) {
+    func fetchCurrentUser(completion: @escaping ((User?) -> Void) = {_ in }) {
         CKContainer.default().fetchUserRecordID { (recordID, error) in
             if let error = error { print("Error fetching user: \(error.localizedDescription) \(error)")}
             guard let recordID = recordID else { return }
