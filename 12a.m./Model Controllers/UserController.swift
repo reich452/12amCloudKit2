@@ -65,6 +65,7 @@ class UserController {
                 }
                 self.currentUser = currentUser
                 completion(currentUser)
+                // TODO - clean this up 
                 if error == nil {
                     print("Success creating user")
                 } else {
@@ -86,8 +87,10 @@ class UserController {
         self.cloudKitManager.modifyRecords([currentUserRecord], perRecordCompletion: nil) { (_, error) in
             
             if let error = error {
-                print("Error updating \(error) & \(error.localizedDescription)")
+                print("Error updating \(#function) \(error) & \(error.localizedDescription)")
                 completion(false); return
+            } else {
+                print("updated user")
             }
             completion(true)
         }
