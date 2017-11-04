@@ -553,10 +553,10 @@
             </objects>
             <point key="canvasLocation" x="-847.20000000000005" y="1008.8455772113944"/>
         </scene>
-        <!--User View Controller-->
+        <!--Test Log In View Controller-->
         <scene sceneID="W2U-Ue-yAK">
             <objects>
-                <viewController id="NxU-8r-aff" customClass="UserViewController" customModule="UserCloudKitiOS14" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NxU-8r-aff" customClass="TestLogInViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WrS-ym-Hga"/>
                         <viewControllerLayoutGuide type="bottom" id="QRy-zm-mCu"/>
@@ -616,8 +616,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="oyu-jP-fgU"/>
                     <connections>
-                        <outlet property="emailTextField" destination="l01-jG-2Tt" id="FJM-Xd-sti"/>
-                        <outlet property="userNameTextField" destination="jgx-H1-l6n" id="iEG-gr-ZjW"/>
+                        <outlet property="emailTextField" destination="l01-jG-2Tt" id="lpq-HH-6cv"/>
+                        <outlet property="userNameTextField" destination="jgx-H1-l6n" id="rft-U8-hu9"/>
                         <segue destination="XK3-ak-ALQ" kind="show" identifier="toWelcomVC" id="15q-lj-hen">
                             <nil key="action"/>
                         </segue>
@@ -630,7 +630,7 @@
         <!--Welcom View Controller-->
         <scene sceneID="lJO-9I-fjn">
             <objects>
-                <viewController id="XK3-ak-ALQ" customClass="WelcomViewController" customModule="UserCloudKitiOS14" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XK3-ak-ALQ" customClass="WelcomViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SsZ-Td-vLf"/>
                         <viewControllerLayoutGuide type="bottom" id="HF6-d5-GKo"/>
@@ -656,7 +656,7 @@
                         <viewLayoutGuide key="safeArea" id="SYB-AG-cVn"/>
                     </view>
                     <connections>
-                        <outlet property="welcomLabel" destination="PMP-70-LI4" id="DEH-Bb-2Hq"/>
+                        <outlet property="welcomLabel" destination="PMP-70-LI4" id="TIk-jd-wwL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Onn-Y4-Z5V" userLabel="First Responder" sceneMemberID="firstResponder"/>
