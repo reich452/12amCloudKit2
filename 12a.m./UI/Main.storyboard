@@ -590,15 +590,11 @@
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
                                             <action selector="LoginButtonTapped:" destination="NxU-8r-aff" eventType="touchUpInside" id="tAz-1T-Vze"/>
-                                            <action selector="signUpButtonTapped:" destination="NxU-8r-aff" eventType="touchUpInside" id="sPE-xg-555"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xdz-EJ-1CZ">
                                         <rect key="frame" x="0.0" y="37" width="55" height="30"/>
                                         <state key="normal" title="Log in"/>
-                                        <connections>
-                                            <action selector="logInButtonTapped:" destination="NxU-8r-aff" eventType="touchUpInside" id="6Uw-Hr-rXK"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

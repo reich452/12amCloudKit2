@@ -16,7 +16,6 @@ class User {
     fileprivate let appleUserRefKey = "appleUserRef"
     fileprivate let recordTypeKey = "User"
     fileprivate let imageKey = "image"
-    fileprivate let typeKey = "User"
     fileprivate let blockUserRefKey = "blockUserRef"
     fileprivate let accessTokenKey = "acessToken"
     

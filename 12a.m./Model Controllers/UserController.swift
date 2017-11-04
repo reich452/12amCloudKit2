@@ -29,7 +29,10 @@ class UserController {
     
     func fetchCurrentUser(completion: @escaping ((User?) -> Void) = {_ in }) {
         CKContainer.default().fetchUserRecordID { (recordID, error) in
-            if let error = error { print("Error fetching user: \(error.localizedDescription) \(error)")}
+            if let error = error { print("Error fetching userID: \(#function) \(error.localizedDescription) & \(error)")
+                completion(nil)
+                return
+            }
             guard let recordID = recordID else { return }
             let appleUserRef = CKReference(recordID: recordID, action: .none)
             let predicate = NSPredicate(format: "appleUserRef == %@", appleUserRef)
@@ -50,15 +53,14 @@ class UserController {
     }
     
     //C
-    func createUser(with username: String, email: String, completion: @escaping (User?) -> Void) {
+    func createUser(with username: String, email: String, completion: @escaping (_ success: Bool) -> Void) {
         CKContainer.default().fetchUserRecordID { (appleUsersRecordId, error) in
             if let error = error {
-                print("Error fetchingUserRcordID \(#file) \(#function) \(error) & \(error.localizedDescription))")
-                completion(nil)
-                return
+                print("Error fetchingUserRcordID \(#function) \(error) & \(error.localizedDescription))")
+                completion(false); return
             }
             guard let recordID = appleUsersRecordId else { print("Error creating recordID")
-                completion(nil); return
+                completion(false); return
             }
             let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
             let user = User(username: username, email: email, appleUserRef: appleUserRef)
@@ -66,14 +68,14 @@ class UserController {
             self.cloudKitManager.saveRecord(userRecord, completion: { (record, error) in
                 if let error = error {
                     print("Error saing user record \(#file) \(#function) \(error) \(error.localizedDescription)")
-                    completion(nil); return
+                    completion(false); return
                 }
                 guard let record = record,
                     let currentUser = User(cloudKitRecord: record) else {
-                        completion(nil); return
+                        completion(false); return
                 }
                 self.currentUser = currentUser
-                completion(currentUser)
+                completion(true)
                 // TODO - clean this up 
                 if error == nil {
                     print("Success creating user")

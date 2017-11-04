@@ -17,8 +17,11 @@ class TestLogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(segueToWelcomVC), name: UserController.shared.currnetUserWasSentNotification, object: nil)
-
+        print("view did load")
+        setupUI()
     }
+
+    private var currentUser: User?
     
     // MARK: - Actions
     
@@ -26,36 +29,51 @@ class TestLogInViewController: UIViewController {
     @IBAction func LoginButtonTapped(_ sender: UIButton) {
         setUPSingUpButton()
     }
-
+    
     
     // MARK: - Main
     
-   @objc func segueToWelcomVC() {
+    @objc func segueToWelcomVC() {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "toWelcomVC", sender: self)
         }
     }
     
     func setUPSingUpButton() {
-        guard UserController.shared.currentUser == nil,
-        let username = userNameTextField.text, username != "",
+        guard self.currentUser == nil,
+            let username = userNameTextField.text, username != "",
             let email = emailTextField.text, email != "" else { segueToWelcomVC(); return }
         
+        if UserController.shared.currentUser == nil  {
+            UserController.shared.createUser(with: username, email: email, completion: { (success) in
+                if !success {
+                    DispatchQueue.main.async {
+                        self.presentSimpleAlert(title: "No iCloud", message: "Please sign into iCloud") }
+                }
+            })
+        } else {
+            UserController.shared.updateCurrentUser(username: username, email: email, completion: { (success) in
+                if !success {
+                    DispatchQueue.main.async {
+                        self.presentSimpleAlert(title: "Cannot Update", message: "Please try again")
+                        
+                    }
+                    let welcomVC = WelcomViewController()
+                    DispatchQueue.main.async {
+                        
+                        self.present(welcomVC, animated: true, completion: nil)
+                    }
+                }
+            })
+        }
+        
+    }
+    
+    func setupUI() {
         if UserController.shared.currentUser == nil {
             signUpButtonTapped.titleLabel?.text = "sign up"
         } else {
             signUpButtonTapped.titleLabel?.text = "log in"
-        }
-
-        UserController.shared.createUser(with: username, email: email) { (user) in
-            if let user = user {
-                print("\(user.username) was created")
-            } else {
-                DispatchQueue.main.async {
-                    self.presentSimpleAlert(title: "No iCloud account", message: "Please sing into iCloud")
-                }
-                return
-            }
         }
     }
     

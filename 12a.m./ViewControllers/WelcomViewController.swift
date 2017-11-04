@@ -16,6 +16,10 @@ class WelcomViewController: UIViewController {
         setUPWelcomeLabel()
 
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setUPWelcomeLabel()
+    }
     
     func setUPWelcomeLabel() {
         guard let currentUser = UserController.shared.currentUser else { return }
