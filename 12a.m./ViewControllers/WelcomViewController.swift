@@ -13,7 +13,14 @@ class WelcomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUPWelcomeLabel()
 
+    }
+    
+    func setUPWelcomeLabel() {
+        guard let currentUser = UserController.shared.currentUser else { return }
+        welcomLabel.text = "Welcome \(currentUser.username)"
+        
     }
 
 }

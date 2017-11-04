@@ -589,6 +589,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
+                                            <action selector="LoginButtonTapped:" destination="NxU-8r-aff" eventType="touchUpInside" id="tAz-1T-Vze"/>
                                             <action selector="signUpButtonTapped:" destination="NxU-8r-aff" eventType="touchUpInside" id="sPE-xg-555"/>
                                         </connections>
                                     </button>
@@ -617,6 +618,7 @@
                     <navigationItem key="navigationItem" id="oyu-jP-fgU"/>
                     <connections>
                         <outlet property="emailTextField" destination="l01-jG-2Tt" id="lpq-HH-6cv"/>
+                        <outlet property="signUpButtonTapped" destination="bkV-lo-3OJ" id="xVX-K7-Gvb"/>
                         <outlet property="userNameTextField" destination="jgx-H1-l6n" id="rft-U8-hu9"/>
                         <segue destination="XK3-ak-ALQ" kind="show" identifier="toWelcomVC" id="15q-lj-hen">
                             <nil key="action"/>

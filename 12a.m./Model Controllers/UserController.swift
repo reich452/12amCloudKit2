@@ -13,10 +13,19 @@ class UserController {
     static let shared = UserController()
     
     // MARK: - Properties
-    let cloudKitManager = CloudKitManager()
+    let cloudKitManager: CloudKitManager = {
+        return CloudKitManager()
+    }()
     
+    let currnetUserWasSentNotification = Notification.Name("currentUserWasSet")
     var users = [User]()
-    var currentUser: User?
+    var currentUser: User? {
+        didSet {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: self.currnetUserWasSentNotification, object: nil)
+            }
+        }
+    }
     
     func fetchCurrentUser(completion: @escaping ((User?) -> Void) = {_ in }) {
         CKContainer.default().fetchUserRecordID { (recordID, error) in
