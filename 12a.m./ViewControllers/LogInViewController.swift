@@ -83,6 +83,7 @@ extension LogInViewController {
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
         profileImageView.layer.masksToBounds = true
+        profileImageView.layer.borderWidth = 4 
         profileImageView.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).cgColor
         
         loginButton.layer.cornerRadius = 8
