@@ -443,7 +443,7 @@
         <!--Log In View Controller-->
         <scene sceneID="xjy-Xc-X9G">
             <objects>
-                <viewController id="z9b-OA-BcM" customClass="LogInViewController" sceneMemberID="viewController">
+                <viewController id="z9b-OA-BcM" customClass="LogInViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eAo-w5-WWE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
