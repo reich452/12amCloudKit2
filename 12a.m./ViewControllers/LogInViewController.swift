@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ButtonState {
+    case selected
+    case notSelected
+}
+
 class LogInViewController: UIViewController {
 
     // MARK: - IBOutlets
@@ -20,6 +25,9 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
     
+    // MARK: - Properties
+    var buttonState: ButtonState = .notSelected
+    
     // MARK: - Life Cycle 
     
     override func viewDidLoad() {
@@ -31,3 +39,13 @@ class LogInViewController: UIViewController {
         
     }
 }
+
+extension LogInViewController {
+    
+    // MARK: - UI
+    func setAppearance() {
+        
+    }
+}
+
+
