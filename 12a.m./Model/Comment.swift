@@ -59,7 +59,7 @@ extension CKRecord {
         self.init(recordType: comment.textKey, recordID: recordID)
         self.setValue(comment.timestamp, forKey: comment.timestampKey)
         self.setValue(comment.text, forKey: comment.textKey)
-        self.setValue(post.ownerReference, forKey: comment.postReferenceKey) // TODO - check Reference 
+        self.setValue(post.cloudKitReference, forKey: comment.postReferenceKey) // TODO - check Reference 
         self.setValue(comment.ownerReference, forKey: comment.ownerReferenceKey)
     }
 }

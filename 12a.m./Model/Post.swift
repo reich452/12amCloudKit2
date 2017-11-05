@@ -21,20 +21,26 @@ class Post {
     let photoData: Data?
     let timestamp: Date
     let text: String
-//    var comments: [Comment] TODO - 
+    var comments: [Comment]
     var owner: User?
     var ownerReference: CKReference
     var ckRecordID: CKRecordID?
+    
+    var cloudKitReference: CKReference? {
+        guard let cloudKitRecordID = self.ckRecordID else { return nil }
+        return CKReference(recordID: cloudKitRecordID, action: .none)
+    }
     
     var photo: UIImage? {
         guard let photoData = self.photoData else { return nil }
         return UIImage(data: photoData)
     }
     
-    init(photoData: Data?, timestamp: Date = Date(), text: String, owner: User, ownerReference: CKReference) {
+    init(photoData: Data?, timestamp: Date = Date(), text: String, comments: [Comment] = [], owner: User, ownerReference: CKReference) {
         self.photoData = photoData
         self.timestamp = timestamp
         self.text = text
+        self.comments = comments.sorted(by: {$0.timestamp > $1.timestamp })
         self.owner = owner
         self.ownerReference = ownerReference
     }
@@ -51,6 +57,7 @@ class Post {
         self.text = text
         self.ownerReference = ownerReference
         self.ckRecordID = ckRecord.recordID
+        self.comments = []
     }
     
     fileprivate var temporaryPhotoURL: URL {

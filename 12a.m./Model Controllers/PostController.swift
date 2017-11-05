@@ -46,7 +46,25 @@ class PostController {
         }
     }
     
-    
+    func addComment(to post: Post, commentText: String, completion: @escaping () -> Void)  {
+        guard let cloudKitRef = post.cloudKitReference else { return }
+        
+        let comment = Comment(text: commentText, post: post, postReference: cloudKitRef, ownerReference: post.ownerReference)
+        post.comments.append(comment)
+        
+        cloudKitManager.saveRecord(CKRecord(comment)) { (record, error) in
+            if let error = error {
+                print("Error saving new comment in cloudKit: \(#function) \(error) & \(error.localizedDescription)")
+                completion(); return
+            }
+            comment.ckRecordID = record?.recordID
+            completion()
+        }
+        DispatchQueue.main.async {
+            let nc = NotificationCenter.default
+            nc.post(name: PostController.PostCommentsChangedNotification, object: post)
+        }
+    }
     
     
 }
