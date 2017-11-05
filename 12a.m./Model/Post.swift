@@ -11,7 +11,7 @@ import UIKit
 
 class Post {
     
-    fileprivate let typeKey = "Post"
+    static let recordTypeKey = "Post"
     fileprivate let photoDataKey = "photoData"
     fileprivate let timestampKey = "timestamp"
     fileprivate let textKey = "text"
@@ -77,7 +77,7 @@ extension CKRecord {
     
     convenience init(_ post: Post) {
         let recordID = post.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
-        self.init(recordType: post.typeKey, recordID: recordID)
+        self.init(recordType: User.recordTypeKey, recordID: recordID)
         self.setValue(post.text, forKeyPath: post.textKey)
         self.setValue(post.timestamp, forKeyPath: post.timestampKey)
         self[post.photoDataKey] = CKAsset(fileURL: post.temporaryPhotoURL)

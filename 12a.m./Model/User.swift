@@ -11,10 +11,10 @@ import CloudKit
 
 class User {
     
+    static let recordTypeKey = "User"
     fileprivate let usernameKey = "username"
     fileprivate let emailKey = "email"
     fileprivate let appleUserRefKey = "appleUserRef"
-    fileprivate let recordTypeKey = "User"
     fileprivate let imageKey = "image"
     fileprivate let blockUserRefKey = "blockUserRef"
     fileprivate let accessTokenKey = "acessToken"
@@ -48,7 +48,7 @@ extension CKRecord {
     convenience init(user: User) {
         let recordID = user.cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
         
-        self.init(recordType: user.recordTypeKey, recordID: recordID)
+        self.init(recordType: User.recordTypeKey, recordID: recordID)
         self.setValue(user.username, forKey: user.usernameKey)
         self.setValue(user.email, forKey: user.emailKey)
         self.setValue(user.appleUserRef, forKey: user.appleUserRefKey)

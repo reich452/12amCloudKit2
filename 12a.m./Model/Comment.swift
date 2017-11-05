@@ -11,7 +11,7 @@ import CloudKit
 
 class Comment {
     
-    fileprivate let typeKey = "Comment"
+    static let recordTypeKey = "Comment"
     fileprivate let textKey = "text"
     fileprivate let timestampKey = "timestamp"
     fileprivate let postKey = "post"

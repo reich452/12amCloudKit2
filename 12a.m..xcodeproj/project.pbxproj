@@ -12,6 +12,7 @@
 		01367B9F1FAE6A8200F51F89 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367B9E1FAE6A8100F51F89 /* LogInViewController.swift */; };
 		01367BA21FAE6D7A00F51F89 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367BA11FAE6D7A00F51F89 /* Theme.swift */; };
 		01367BA41FAE8AB400F51F89 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367BA31FAE8AB400F51F89 /* PostController.swift */; };
+		01367BA71FAFA71100F51F89 /* Constatns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367BA61FAFA71100F51F89 /* Constatns.swift */; };
 		0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0156CE101FA2B268002791C1 /* AppDelegate.swift */; };
 		0156CE181FA2B268002791C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE171FA2B268002791C1 /* Assets.xcassets */; };
 		0156CE1B1FA2B268002791C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE191FA2B268002791C1 /* LaunchScreen.storyboard */; };
@@ -28,6 +29,7 @@
 		01367B9E1FAE6A8100F51F89 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		01367BA11FAE6D7A00F51F89 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		01367BA31FAE8AB400F51F89 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
+		01367BA61FAFA71100F51F89 /* Constatns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constatns.swift; sourceTree = "<group>"; };
 		0156CE0D1FA2B268002791C1 /* 12a.m..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12a.m..app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0156CE101FA2B268002791C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0156CE171FA2B268002791C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				01367BA01FAE6D6300F51F89 /* Theme */,
+				01367BA61FAFA71100F51F89 /* Constatns.swift */,
 			);
 			path = "Helper Files";
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				01FE0D111FA2BB35001C55EE /* Post.swift in Sources */,
 				01367BA21FAE6D7A00F51F89 /* Theme.swift in Sources */,
 				01FE0D0F1FA2BABC001C55EE /* User.swift in Sources */,
+				01367BA71FAFA71100F51F89 /* Constatns.swift in Sources */,
 				010D07401FA3B63F0013375F /* CloudKitManager.swift in Sources */,
 				010D073D1FA3B1450013375F /* UserController.swift in Sources */,
 				01367BA41FAE8AB400F51F89 /* PostController.swift in Sources */,

@@ -19,7 +19,8 @@ class PostController {
     let cloudKitManager = CloudKitManager()
     
     var posts = [Post]()
-    var isSyncing: Bool = false 
+    var comments = [Comment]()
+    var isSyncing: Bool = false
     
     var sortedPosts: [Post] {
         
@@ -63,6 +64,64 @@ class PostController {
         DispatchQueue.main.async {
             let nc = NotificationCenter.default
             nc.post(name: PostController.PostCommentsChangedNotification, object: post)
+        }
+    }
+    
+    func fetchNewRecors(ofType type: String, completion: @escaping (() -> Void) = {  }) {
+        
+        var predicate: NSPredicate?
+        if type == "User" {
+            predicate = NSPredicate(value: true)
+        } else if type == "Post" {
+           predicate = NSPredicate(value: true)
+        } else if type == "Comment" {
+            predicate = NSPredicate(value: true)
+        }
+        
+        // TODO: - handel block users and Syncing
+        
+        guard let predicate2 = predicate else { return }
+        cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { (records, error) in
+            
+            if let error = error {
+                print("Error fetcing predicte2 \(#function) \(error) \(error.localizedDescription)")
+                completion(); return }
+            guard let records = records else { completion(); return }
+            switch type {
+            case User.recordTypeKey:
+                let users = records.flatMap { User(cloudKitRecord: $0) }
+                UserController.shared.users = users
+                completion()
+            case Post.recordTypeKey:
+                let posts = records.flatMap { Post(ckRecord: $0) }
+                self.posts = posts
+                // Helps make the user have a stronger relationship with post
+                for post in self.posts {
+                    let users = UserController.shared.users
+                    guard let postOwner = users.filter({$0.cloudKitRecordID == post.ownerReference.recordID}).first else { break }
+                    
+                    post.owner = postOwner
+                    
+                }
+                completion()
+            case Comment.recordTypeKey:
+                let comments = records.flatMap { Comment(ckRecord: $0) }
+                for comment in comments {
+                    let postRef = comment.postReference
+                    guard let postIndex = self.posts.index(where: {$0.ckRecordID == postRef.recordID } ) else { completion(); return }
+                    let post = self.posts[postIndex]
+                    post.comments.append(comment)
+                    comment.post = post
+                    guard let ownerIndex = UserController.shared.users.index(where: { $0.cloudKitRecordID == comment.ownerReference.recordID  })
+                        else { break }
+                    let user = UserController.shared.users[ownerIndex]
+                    comment.owner = user
+                }
+                self.comments = comments
+                completion()
+            default:
+                return
+            }
         }
     }
     
