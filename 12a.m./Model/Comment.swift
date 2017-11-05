@@ -11,4 +11,61 @@ import CloudKit
 
 class Comment {
     
+    fileprivate let typeKey = "Comment"
+    fileprivate let textKey = "text"
+    fileprivate let timestampKey = "timestamp"
+    fileprivate let postKey = "post"
+    fileprivate let postReferenceKey = "postReference"
+    fileprivate let ownerReferenceKey = "ownerReference"
+    
+    var text: String
+    var timestamp: String
+    var post: Post?
+    var postReference: CKReference
+    var owner: User?
+    var ownerReference: CKReference
+    var ckRecordID: CKRecordID?
+    
+    init(text: String, timestamp: String = Date().description(with: Locale.current), post: Post?, postReference: CKReference, ownerReference: CKReference) {
+        self.text = text
+        self.timestamp = timestamp
+        self.post = post
+        self.postReference = postReference
+        self.ownerReference = ownerReference
+    }
+    
+     init?(ckRecord: CKRecord) {
+        guard let timestamp = ckRecord.creationDate?.description(with: .current),
+            let text = ckRecord[textKey] as? String,
+            let postReference = ckRecord[postReferenceKey] as? CKReference,
+            let ownerReference = ckRecord[ownerReferenceKey] as? CKReference else { return nil }
+        
+        self.timestamp = timestamp
+        self.text = text
+        self.postReference = postReference
+        self.ownerReference = ownerReference
+        self.post = nil
+        ckRecordID = ckRecord.recordID
+    }
 }
+
+extension CKRecord {
+    
+    convenience init(_ comment: Comment) {
+        guard let post = comment.post else {
+            fatalError("Comment does not have a Post relationship")
+        }
+        let recordID = CKRecordID(recordName: UUID().uuidString)
+        self.init(recordType: comment.textKey, recordID: recordID)
+        self.setValue(comment.timestamp, forKey: comment.timestampKey)
+        self.setValue(comment.text, forKey: comment.textKey)
+        self.setValue(post.ownerReference, forKey: comment.postReferenceKey) // TODO - check Reference 
+        self.setValue(comment.ownerReference, forKey: comment.ownerReferenceKey)
+    }
+}
+
+
+
+
+
+

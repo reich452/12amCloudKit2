@@ -11,6 +11,7 @@
 		010D07401FA3B63F0013375F /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D073F1FA3B63F0013375F /* CloudKitManager.swift */; };
 		01367B9F1FAE6A8200F51F89 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367B9E1FAE6A8100F51F89 /* LogInViewController.swift */; };
 		01367BA21FAE6D7A00F51F89 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367BA11FAE6D7A00F51F89 /* Theme.swift */; };
+		01367BA41FAE8AB400F51F89 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367BA31FAE8AB400F51F89 /* PostController.swift */; };
 		0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0156CE101FA2B268002791C1 /* AppDelegate.swift */; };
 		0156CE181FA2B268002791C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE171FA2B268002791C1 /* Assets.xcassets */; };
 		0156CE1B1FA2B268002791C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE191FA2B268002791C1 /* LaunchScreen.storyboard */; };
@@ -26,6 +27,7 @@
 		010D073F1FA3B63F0013375F /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		01367B9E1FAE6A8100F51F89 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		01367BA11FAE6D7A00F51F89 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		01367BA31FAE8AB400F51F89 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		0156CE0D1FA2B268002791C1 /* 12a.m..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12a.m..app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0156CE101FA2B268002791C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0156CE171FA2B268002791C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		01367BA51FAE8AD400F51F89 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				010D073F1FA3B63F0013375F /* CloudKitManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		0156CE041FA2B268002791C1 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 				018D7A721FA2B68600A6C81F /* UI */,
 				018D7A711FA2B67400A6C81F /* ViewControllers */,
 				018D7A731FA2B69000A6C81F /* Model Controllers */,
+				01367BA51FAE8AD400F51F89 /* Managers */,
 				018D7A741FA2B6A400A6C81F /* Model */,
 				010D073E1FA3B2B70013375F /* Helper Files */,
 				018D7A701FA2B66A00A6C81F /* Resources */,
@@ -137,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				010D073C1FA3B1450013375F /* UserController.swift */,
-				010D073F1FA3B63F0013375F /* CloudKitManager.swift */,
+				01367BA31FAE8AB400F51F89 /* PostController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -237,6 +248,7 @@
 				01FE0D0F1FA2BABC001C55EE /* User.swift in Sources */,
 				010D07401FA3B63F0013375F /* CloudKitManager.swift in Sources */,
 				010D073D1FA3B1450013375F /* UserController.swift in Sources */,
+				01367BA41FAE8AB400F51F89 /* PostController.swift in Sources */,
 				01367B9F1FAE6A8200F51F89 /* LogInViewController.swift in Sources */,
 				0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */,
 				01FE0D131FA2BB4C001C55EE /* Comment.swift in Sources */,
