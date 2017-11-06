@@ -1,5 +1,5 @@
 //
-//  FeedTableViewController.swift
+//  CommentTableViewController.swift
 //  12a.m.
 //
 //  Created by Nick Reichard on 11/6/17.
@@ -8,19 +8,15 @@
 
 import UIKit
 
-class FeedTableViewController: UITableViewController {
-
+class CommentTableViewController: UITableViewController {
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var captionTextLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction func addButtonTapped(_ sender: Any) {
-    }
-    @IBAction func settingsButtonTapped(_ sender: Any) {
     }
     
     // MARK: - Table view data source
@@ -31,7 +27,7 @@ class FeedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath)
         
         return cell
     }
