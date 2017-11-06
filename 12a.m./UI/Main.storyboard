@@ -211,7 +211,7 @@
                                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
-                                                <action selector="blockUserButtonTapped:" destination="8oS-kW-5pc" eventType="touchUpInside" id="038-DR-jzv"/>
+                                                <action selector="blockUserButtonTapped:" destination="8oS-kW-5pc" eventType="touchUpInside" id="kX5-fu-bsU"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR0-k6-dbO">
@@ -219,7 +219,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="commentButton"/>
                                             <connections>
-                                                <action selector="commentButtonTapped:" destination="8oS-kW-5pc" eventType="touchUpInside" id="vGr-TS-YGD"/>
+                                                <action selector="commentButtonTapped:" destination="8oS-kW-5pc" eventType="touchUpInside" id="quh-w6-W1f"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is where the rating clock or first line of text from the caption goes" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KgB-Tt-gA6">
@@ -234,11 +234,14 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="blockUserButton" destination="XGl-Tz-hCN" id="oTo-wo-B7S"/>
+                                    <outlet property="blockUserButtonTapped" destination="XGl-Tz-hCN" id="cDU-Q8-QYA"/>
                                     <outlet property="captionLabel" destination="KgB-Tt-gA6" id="yfa-Ln-hDd"/>
-                                    <outlet property="commentButton" destination="eR0-k6-dbO" id="hvf-7P-Ges"/>
+                                    <outlet property="captionTextLabel" destination="KgB-Tt-gA6" id="Rp4-7h-0jB"/>
+                                    <outlet property="commentButton" destination="eR0-k6-dbO" id="Sgx-ss-Jd1"/>
                                     <outlet property="imageButton" destination="yrj-pz-fe4" id="Ldg-Yo-UJd"/>
-                                    <outlet property="profileImageView" destination="Hfc-qA-2Su" id="d0T-bf-42U"/>
-                                    <outlet property="userNameLabel" destination="CFg-le-CgL" id="FDR-XJ-eHh"/>
+                                    <outlet property="postImageButton" destination="yrj-pz-fe4" id="DBU-8x-CaE"/>
+                                    <outlet property="profileImageView" destination="Hfc-qA-2Su" id="arq-N0-5xf"/>
+                                    <outlet property="userNameLabel" destination="CFg-le-CgL" id="1au-tJ-hpp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -251,12 +254,12 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="9Qd-jL-BCN">
                             <inset key="imageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="-11"/>
                             <connections>
-                                <action selector="settingsButtonPressed:" destination="JyQ-pe-mMA" id="TzE-c6-I8i"/>
+                                <action selector="settingsButtonTapped:" destination="JyQ-pe-mMA" id="NSE-2l-LVT"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ov1-to-tAM">
                             <connections>
-                                <action selector="addButtonTapped:" destination="JyQ-pe-mMA" id="GZj-Pu-Oed"/>
+                                <action selector="addButtonTapped:" destination="JyQ-pe-mMA" id="gya-tZ-WrP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

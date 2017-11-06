@@ -15,6 +15,13 @@ class FeedTableViewController: UITableViewController {
 
     }
     
+    // MARK: - Actions
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+    }
+    @IBAction func settingsButtonTapped(_ sender: Any) {
+    }
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -23,7 +30,7 @@ class FeedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath)
         
         return cell
     }
