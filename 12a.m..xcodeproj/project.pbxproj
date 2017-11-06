@@ -13,6 +13,8 @@
 		01367BA21FAE6D7A00F51F89 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367BA11FAE6D7A00F51F89 /* Theme.swift */; };
 		01367BA41FAE8AB400F51F89 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367BA31FAE8AB400F51F89 /* PostController.swift */; };
 		01367BA71FAFA71100F51F89 /* Constatns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367BA61FAFA71100F51F89 /* Constatns.swift */; };
+		01367BD51FB10F5500F51F89 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367BD41FB10F5500F51F89 /* FeedTableViewController.swift */; };
+		01367BD71FB10FD100F51F89 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367BD61FB10FD100F51F89 /* FeedTableViewCell.swift */; };
 		0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0156CE101FA2B268002791C1 /* AppDelegate.swift */; };
 		0156CE181FA2B268002791C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE171FA2B268002791C1 /* Assets.xcassets */; };
 		0156CE1B1FA2B268002791C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE191FA2B268002791C1 /* LaunchScreen.storyboard */; };
@@ -30,6 +32,8 @@
 		01367BA11FAE6D7A00F51F89 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		01367BA31FAE8AB400F51F89 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		01367BA61FAFA71100F51F89 /* Constatns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constatns.swift; sourceTree = "<group>"; };
+		01367BD41FB10F5500F51F89 /* FeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
+		01367BD61FB10FD100F51F89 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		0156CE0D1FA2B268002791C1 /* 12a.m..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12a.m..app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0156CE101FA2B268002791C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0156CE171FA2B268002791C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +84,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		01367BD81FB10FD800F51F89 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				01367BD61FB10FD100F51F89 /* FeedTableViewCell.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		0156CE041FA2B268002791C1 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +114,7 @@
 			children = (
 				018D7A6C1FA2B63000A6C81F /* 12a.m..entitlements */,
 				018D7A721FA2B68600A6C81F /* UI */,
+				01367BD81FB10FD800F51F89 /* New Group */,
 				018D7A711FA2B67400A6C81F /* ViewControllers */,
 				018D7A731FA2B69000A6C81F /* Model Controllers */,
 				01367BA51FAE8AD400F51F89 /* Managers */,
@@ -134,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				01367B9E1FAE6A8100F51F89 /* LogInViewController.swift */,
+				01367BD41FB10F5500F51F89 /* FeedTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -247,7 +261,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				01FE0D111FA2BB35001C55EE /* Post.swift in Sources */,
+				01367BD71FB10FD100F51F89 /* FeedTableViewCell.swift in Sources */,
 				01367BA21FAE6D7A00F51F89 /* Theme.swift in Sources */,
+				01367BD51FB10F5500F51F89 /* FeedTableViewController.swift in Sources */,
 				01FE0D0F1FA2BABC001C55EE /* User.swift in Sources */,
 				01367BA71FAFA71100F51F89 /* Constatns.swift in Sources */,
 				010D07401FA3B63F0013375F /* CloudKitManager.swift in Sources */,
