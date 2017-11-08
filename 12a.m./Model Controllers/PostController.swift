@@ -70,7 +70,7 @@ class PostController {
         }
     }
     
-    func fetchNewRecors(ofType type: String, completion: @escaping (() -> Void) = {  }) {
+    func fetchNewRecors(ofType type: String, completion: @escaping (() -> Void) = { }) {
         
         var predicate: NSPredicate?
         if type == "User" {

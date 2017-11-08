@@ -21,6 +21,7 @@
 		01367BE01FB1181A00F51F89 /* CameraPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367BDF1FB1181A00F51F89 /* CameraPreviewViewController.swift */; };
 		01367C481FB3839100F51F89 /* TimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367C471FB3839100F51F89 /* TimeTracker.swift */; };
 		01367C4A1FB3869C00F51F89 /* TimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367C491FB3869C00F51F89 /* TimerExtension.swift */; };
+		01367C4C1FB3C27E00F51F89 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367C4B1FB3C27E00F51F89 /* CloudKitSyncable.swift */; };
 		0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0156CE101FA2B268002791C1 /* AppDelegate.swift */; };
 		0156CE181FA2B268002791C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE171FA2B268002791C1 /* Assets.xcassets */; };
 		0156CE1B1FA2B268002791C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE191FA2B268002791C1 /* LaunchScreen.storyboard */; };
@@ -46,6 +47,7 @@
 		01367BDF1FB1181A00F51F89 /* CameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewViewController.swift; sourceTree = "<group>"; };
 		01367C471FB3839100F51F89 /* TimeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTracker.swift; sourceTree = "<group>"; };
 		01367C491FB3869C00F51F89 /* TimerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerExtension.swift; sourceTree = "<group>"; };
+		01367C4B1FB3C27E00F51F89 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
 		0156CE0D1FA2B268002791C1 /* 12a.m..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12a.m..app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0156CE101FA2B268002791C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0156CE171FA2B268002791C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,6 +125,14 @@
 			path = "Time Tacker";
 			sourceTree = "<group>";
 		};
+		01367C4D1FB3C29800F51F89 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				01367C4B1FB3C27E00F51F89 /* CloudKitSyncable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		0156CE041FA2B268002791C1 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 				018D7A711FA2B67400A6C81F /* ViewControllers */,
 				018D7A731FA2B69000A6C81F /* Model Controllers */,
 				01367BA51FAE8AD400F51F89 /* Managers */,
+				01367C4D1FB3C29800F51F89 /* Protocols */,
 				018D7A741FA2B6A400A6C81F /* Model */,
 				010D073E1FA3B2B70013375F /* Helper Files */,
 				018D7A701FA2B66A00A6C81F /* Resources */,
@@ -299,6 +310,7 @@
 				01367BE01FB1181A00F51F89 /* CameraPreviewViewController.swift in Sources */,
 				01367BA21FAE6D7A00F51F89 /* Theme.swift in Sources */,
 				01367BD51FB10F5500F51F89 /* FeedTableViewController.swift in Sources */,
+				01367C4C1FB3C27E00F51F89 /* CloudKitSyncable.swift in Sources */,
 				01367C4A1FB3869C00F51F89 /* TimerExtension.swift in Sources */,
 				01367BDA1FB1142E00F51F89 /* CommentTableViewController.swift in Sources */,
 				01FE0D0F1FA2BABC001C55EE /* User.swift in Sources */,
