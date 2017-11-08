@@ -58,12 +58,12 @@
                   moduleName = "12a.m."
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nick/Desktop/12a.m./12a.m./Model%20Controllers/UserController.swift"
-                  timestampString = "531457718.751816"
+                  timestampString = "531785497.780506"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "98"
                   endingLineNumber = "98"
-                  offsetFromSymbolStart = "355">
+                  offsetFromSymbolStart = "268">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -73,12 +73,12 @@
                   moduleName = "12a.m."
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nick/Desktop/12a.m./12a.m./Model%20Controllers/UserController.swift"
-                  timestampString = "531457718.75519"
+                  timestampString = "531785497.781903"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "100"
                   endingLineNumber = "100"
-                  offsetFromSymbolStart = "76">
+                  offsetFromSymbolStart = "68">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -112,6 +112,22 @@
             startingLineNumber = "102"
             endingLineNumber = "102"
             landmarkName = "updateCurrentUser(username:email:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "12a.m./ViewControllers/CameraViewController.swift"
+            timestampString = "531856539.103541"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

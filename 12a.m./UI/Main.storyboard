@@ -62,9 +62,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="bDQ-8G-KGJ" kind="show" id="lT4-26-uWh">
-                            <nil key="action"/>
-                        </segue>
+                        <segue destination="bDQ-8G-KGJ" kind="relationship" relationship="rootViewController" id="ves-dS-a2T"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIM-8d-e39" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -82,7 +80,24 @@
                     <view key="view" contentMode="scaleToFill" id="V0L-sC-aqR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qhb-Iq-UeA">
+                                <rect key="frame" x="150" y="501" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Qhb-Iq-UeA" secondAttribute="height" multiplier="7:7" id="RUn-U4-g4J"/>
+                                </constraints>
+                                <state key="normal" image="iconplussButton"/>
+                                <connections>
+                                    <action selector="takePicture:" destination="bDQ-8G-KGJ" eventType="touchUpInside" id="TJI-GU-zzY"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qhb-Iq-UeA" firstAttribute="centerX" secondItem="V0L-sC-aqR" secondAttribute="centerX" id="3XZ-zW-dIh"/>
+                            <constraint firstItem="Qhb-Iq-UeA" firstAttribute="width" secondItem="V0L-sC-aqR" secondAttribute="width" multiplier="1/5" id="Yd8-eD-9Vr"/>
+                            <constraint firstItem="Tvg-6v-Q0g" firstAttribute="bottom" secondItem="Qhb-Iq-UeA" secondAttribute="bottom" constant="42" id="svp-KK-GeU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Tvg-6v-Q0g"/>
                     </view>
                     <navigationItem key="navigationItem" id="fbB-gB-85L">
@@ -93,10 +108,10 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="cJ1-V0-XBA">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="h9Z-7e-ZlM">
+                            <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="h9Z-7e-ZlM">
                                 <rect key="frame" x="105" y="0.0" width="254" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="camera180"/>
+                                <state key="normal" image="iconcamera180"/>
                                 <connections>
                                     <action selector="cameraToggleButton:" destination="bDQ-8G-KGJ" eventType="touchUpInside" id="nwG-53-Yys"/>
                                 </connections>
@@ -106,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ztG-r5-y6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1865" y="986"/>
+            <point key="canvasLocation" x="-1866.4000000000001" y="985.45727136431788"/>
         </scene>
         <!--Camera Preview View Controller-->
         <scene sceneID="LgL-qh-ty5">
@@ -158,9 +173,8 @@
                         <viewLayoutGuide key="safeArea" id="Q7B-w2-SCf"/>
                     </view>
                     <connections>
-                        <outlet property="captionTextField" destination="4cn-Nh-Bk3" id="X7C-YE-6kd"/>
-                        <outlet property="imageCaptionTextField" destination="4cn-Nh-Bk3" id="Ej0-cj-rwU"/>
-                        <outlet property="imageView" destination="79z-w3-3TN" id="mvl-jk-pWJ"/>
+                        <outlet property="captionTextField" destination="4cn-Nh-Bk3" id="Gqq-dK-jST"/>
+                        <outlet property="imageView" destination="79z-w3-3TN" id="ccA-4O-ugo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7uh-0f-Nmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -543,8 +557,9 @@
     </scenes>
     <resources>
         <image name="avatar" width="768" height="604"/>
-        <image name="camera180" width="16" height="16"/>
         <image name="commentButton" width="16" height="16"/>
         <image name="header" width="16" height="16"/>
+        <image name="iconcamera180" width="100" height="100"/>
+        <image name="iconplussButton" width="84" height="84"/>
     </resources>
 </document>
