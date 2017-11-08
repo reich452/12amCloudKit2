@@ -19,6 +19,10 @@ class CommentTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    // MARK: - Properties
+    
+    var post: Post? 
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -12,6 +12,9 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var commentTextLabel: UILabel!
     
+    var post: Post? 
+    
     @IBAction func commentButtonTapped(_ sender: Any) {
     }
+    
 }

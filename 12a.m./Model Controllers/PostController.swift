@@ -27,6 +27,9 @@ class PostController {
         return self.posts.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending })
     }
     
+    
+    
+    
     func createPost(image: UIImage, text: String, completion: @escaping((Post?) -> Void)) {
         guard let data = UIImageJPEGRepresentation(image, 1),
             let currentUser = UserController.shared.currentUser, let currentUserRecordID = currentUser.cloudKitRecordID else { return }
