@@ -290,16 +290,16 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EZB-m7-DnD">
-                                    <rect key="frame" x="66" y="8" width="0.0" height="201"/>
+                                    <rect key="frame" x="66" y="8" width="231" height="201"/>
                                 </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="comment text here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6F1-6v-4Fn">
-                                    <rect key="frame" x="8" y="276" width="0.0" height="36"/>
+                                    <rect key="frame" x="8" y="276" width="126" height="36"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4I-PF-eOJ">
-                                    <rect key="frame" x="66" y="275" width="0.0" height="32"/>
+                                    <rect key="frame" x="140" y="275" width="227" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="Jpf-yF-T7C"/>
                                     </constraints>
@@ -309,16 +309,16 @@
                                     </state>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Jzw-we-vZS">
-                                    <rect key="frame" x="8" y="227.5" width="0.0" height="40.5"/>
+                                    <rect key="frame" x="8" y="227.5" width="359" height="40.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4E-ZD-gaI">
-                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="20.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="20.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxr-88-HtY">
-                                            <rect key="frame" x="0.0" y="23.5" width="0.0" height="17"/>
+                                            <rect key="frame" x="0.0" y="23.5" width="359" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -454,11 +454,22 @@
                                             <constraint firstAttribute="height" constant="145" id="tlo-xh-RQs"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGp-99-0dj">
+                                        <rect key="frame" x="103" y="154" width="169" height="145"/>
+                                        <state key="normal" image="addPhoto"/>
+                                        <connections>
+                                            <action selector="imagePickerButtonTapped:" destination="z9b-OA-BcM" eventType="touchUpInside" id="b6C-wu-bat"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="TGp-99-0dj" firstAttribute="leading" secondItem="guk-mQ-fOq" secondAttribute="leading" constant="103" id="CUP-bz-Qu2"/>
                                     <constraint firstItem="ruc-7L-R3o" firstAttribute="top" secondItem="guk-mQ-fOq" secondAttribute="top" constant="163" id="KLx-yi-FMS"/>
                                     <constraint firstItem="ruc-7L-R3o" firstAttribute="centerX" secondItem="guk-mQ-fOq" secondAttribute="centerX" id="aNy-Ao-d6P"/>
+                                    <constraint firstItem="TGp-99-0dj" firstAttribute="top" secondItem="guk-mQ-fOq" secondAttribute="top" constant="154" id="ats-Yc-7la"/>
+                                    <constraint firstAttribute="trailing" secondItem="TGp-99-0dj" secondAttribute="trailing" constant="103" id="bal-4D-28I"/>
+                                    <constraint firstAttribute="bottom" secondItem="TGp-99-0dj" secondAttribute="bottom" constant="-76" id="hAo-MQ-Jgf"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVr-tg-90p">
@@ -542,7 +553,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3M-Ne-DEX" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-846" y="1052"/>
+            <point key="canvasLocation" x="-847.20000000000005" y="1051.1244377811095"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ETO-LV-ytU">
@@ -564,6 +575,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addPhoto" width="131" height="131"/>
         <image name="avatar" width="768" height="604"/>
         <image name="commentButton" width="16" height="16"/>
         <image name="forwardArrow" width="44" height="44"/>

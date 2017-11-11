@@ -25,8 +25,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
     
+    
     // MARK: - Properties
     private var buttonState: ButtonState = .notSelected
+    private var imagePickerWasDismissed = false
+    private let imagePicker = UIImagePickerController()
     
     // MARK: - Life Cycle 
     
@@ -40,6 +43,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInButtonClicked()
         saveNewUser()
     }
+    @IBAction func imagePickerButtonTapped(_ sender: UIButton) {
+        addedProfileImage()
+    }
     
     // MARK: - Delegate
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -47,7 +53,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     func saveNewUser() {
-        guard let userName = userNameTextField.text, let email = emailTextField.text else { return }
+        guard let userName = userNameTextField.text, userName != "", let email = emailTextField.text, email != "" else { return }
         if UserController.shared.currentUser == nil {
             
             UserController.shared.createUser(with: userName, email: email) { (success) in
@@ -68,6 +74,46 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+}
+
+extension LogInViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func addedProfileImage() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera)  {
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = .camera
+            imagePicker.cameraCaptureMode = .photo
+            imagePicker.modalPresentationStyle = .popover
+            imagePicker.delegate = self
+            self.present(imagePicker, animated:  true, completion: nil)
+            
+        } else {
+            noCameraOnDevice()
+        }
+    }
+    
+    func noCameraOnDevice() {
+        let alertVC = UIAlertController(title: "No Camera", message: "Sorry, this device has no camera", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertVC.addAction(okAction)
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        if chosenImage != nil {
+            profileImageView.contentMode = .scaleAspectFill
+            profileImageView.image = chosenImage
+        }
+        self.imagePickerWasDismissed = true
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.imagePickerWasDismissed = true
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension LogInViewController {

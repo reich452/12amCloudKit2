@@ -20,6 +20,9 @@ class FeedTableViewController: UITableViewController {
         performInitialAppLogic()
         //        self.refreshControl?.addTarget(self, action: #selector(FeedTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
         
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(reloadData), name: PostController.PostCommentsChangedNotification, object: nil)
+        
         PostController.shared.requestFullSync {
             DispatchQueue.main.async {
                 self.reloadData()
@@ -42,7 +45,6 @@ class FeedTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
     

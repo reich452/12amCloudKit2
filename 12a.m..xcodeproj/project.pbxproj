@@ -76,6 +76,7 @@
 		010D073E1FA3B2B70013375F /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
+				014472271FB69BC100510AB3 /* Image Picker */,
 				01367C451FB3835C00F51F89 /* Constants */,
 				01367BA01FAE6D6300F51F89 /* Theme */,
 				01367BA61FAFA71100F51F89 /* Constatns.swift */,
@@ -131,6 +132,13 @@
 				01367C4B1FB3C27E00F51F89 /* CloudKitSyncable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		014472271FB69BC100510AB3 /* Image Picker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Image Picker";
 			sourceTree = "<group>";
 		};
 		0156CE041FA2B268002791C1 = {
