@@ -26,6 +26,10 @@ class Post {
     var ownerReference: CKReference
     var ckRecordID: CKRecordID?
     
+    var recordType: String {
+        return Post.recordTypeKey
+    }
+    
     var cloudKitReference: CKReference? {
         guard let cloudKitRecordID = self.ckRecordID else { return nil }
         return CKReference(recordID: cloudKitRecordID, action: .none)
@@ -65,7 +69,7 @@ class Post {
         let temporaryDirecoryURL = URL(fileURLWithPath: temporaryDirectory)
         let fileURL = temporaryDirecoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("jpg")
         
-        try? photoData?.write(to: fileURL, options: .atomic)
+        try? photoData?.write(to: fileURL, options: [.atomic])
         if photoData == nil {
             print("Error with post photo data ")
         }
@@ -77,12 +81,13 @@ extension CKRecord {
     
     convenience init(_ post: Post) {
         let recordID = post.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
-        self.init(recordType: User.recordTypeKey, recordID: recordID)
-        self.setValue(post.text, forKeyPath: post.textKey)
-        self.setValue(post.timestamp, forKeyPath: post.timestampKey)
+        self.init(recordType: post.recordType, recordID: recordID)
+        self[post.textKey] = post.text as CKRecordValue
+        self[post.timestampKey] = post.timestamp as NSDate
         self[post.photoDataKey] = CKAsset(fileURL: post.temporaryPhotoURL)
         guard let owner = post.owner,
-            let ownerRecordID = owner.cloudKitRecordID else { return }
+            let ownerRecordID = owner.cloudKitRecordID
+            else { return }
         self[post.ownerReferenceKey] = CKReference(recordID: ownerRecordID, action: .deleteSelf)
     }
 }

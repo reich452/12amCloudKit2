@@ -18,35 +18,76 @@ class PostController {
     static let shared = PostController()
     let cloudKitManager = CloudKitManager()
     
-    var posts = [Post]()
+    var posts = [Post]() {
+        didSet {
+            DispatchQueue.main.async {
+                let nc = NotificationCenter.default
+                nc.post(name: PostController.PostCommentsChangedNotification, object: self)
+            }
+        }
+    }
     var comments = [Comment]()
     var isSyncing: Bool = false
+    
+    var filteredPosts: [Post] {
+        
+        return self.posts.sorted(by: {$0.timestamp > $1.timestamp } )
+    }
     
     var sortedPosts: [Post] {
         
         return self.posts.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending })
     }
     
+    //MARK: -Synced functions that will help grab records synced in CloudKit. Saves on data and time.
     
+    // Check for specified post and comments
+    private func recordsOf(type: String) -> [CloudKitSyncable] {
+        switch type {
+        case "Post":
+            return posts.flatMap { $0 as? CloudKitSyncable }
+        case "Comment":
+            return comments.flatMap { ($0 as? CloudKitSyncable) }
+        default:
+            return []
+        }
+    }
+    
+    func syncedRecors(ofType type: String) -> [CloudKitSyncable] {
+        return recordsOf(type: type).filter { $0.isSynced }
+    }
+    
+    func unsyncedRecords(ofType type: String) -> [CloudKitSyncable] {
+        return recordsOf(type: type).filter { !$0.isSynced }
+    }
     
     
     func createPost(image: UIImage, text: String, completion: @escaping((Post?) -> Void)) {
+        
+        let username = UserController.shared.currentUser?.username
         guard let data = UIImageJPEGRepresentation(image, 1),
-            let currentUser = UserController.shared.currentUser, let currentUserRecordID = currentUser.cloudKitRecordID else { return }
+            let currentUser = UserController.shared.currentUser,
+            let currentUserRecordID = currentUser.cloudKitRecordID else { print("No current user \(username ?? "nope")"); return }
+        
         
         let ownerReference = CKReference(recordID: currentUserRecordID, action: .none)
         let post = Post(photoData: data, text: text, owner: currentUser, ownerReference: ownerReference)
         
         // Adds post to first tvccell
-        posts.insert(post, at: 0)
+        posts.append(post)
         let record = CKRecord(post)
         
         cloudKitManager.saveRecord(record) { (record, error) in
-            if let error = error {
-                print("Error saving new post to cloudKit: \(#function) \(error) & \(error.localizedDescription)")
-                completion(nil); return
+            guard let _ = record else {
+                if let error = error {
+                    print("Error saving new post to cloudKit: \(#function) \(error) & \(error.localizedDescription)")
+                    completion(nil)
+                    return
+                }
+                completion(post)
+                return
             }
-            completion(post)
+           self.posts = [post]
         }
     }
     
@@ -72,16 +113,19 @@ class PostController {
     
     func fetchNewRecors(ofType type: String, completion: @escaping (() -> Void) = { }) {
         
+        var referencesToExClude = [CKReference]()
+        
         var predicate: NSPredicate?
         if type == "User" {
             predicate = NSPredicate(value: true)
         } else if type == "Post" {
-           predicate = NSPredicate(value: true)
+            predicate = NSPredicate(value: true)
         } else if type == "Comment" {
             predicate = NSPredicate(value: true)
         }
         
-        // TODO: - handel block users and Syncing
+        referencesToExClude = self.syncedRecors(ofType: type).flatMap { $0.cloudKitReference }
+        
         
         guard let predicate2 = predicate else { return }
         cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { (records, error) in
@@ -123,10 +167,42 @@ class PostController {
                 self.comments = comments
                 completion()
             default:
+                print("Cannot fetch records")
                 return
             }
         }
     }
     
+    func fetchAllPosts(completion: @escaping (() -> Void)) {
+        self.fetchNewRecors(ofType: Post.recordTypeKey) {
+            completion()
+        }
+    }
+    
+    func performFullSync(completion: @escaping (() -> Void) = { }) {
+        isSyncing = true
+        
+        self.fetchNewRecors(ofType: User.recordTypeKey) {
+            self.fetchNewRecors(ofType: Post.recordTypeKey) {
+                self.fetchNewRecors(ofType: Comment.recordTypeKey) {
+                    self.isSyncing = false
+                    completion()
+                }
+            }
+        }
+    }
+    
+    func requestFullSync(_ completion: (() -> Void)? = nil) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        self.performFullSync {
+            DispatchQueue.main.async(execute: {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                completion?()
+            })
+        }
+    }
+    
     
 }
+

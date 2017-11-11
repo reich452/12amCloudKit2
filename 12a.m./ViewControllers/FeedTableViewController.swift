@@ -19,10 +19,12 @@ class FeedTableViewController: UITableViewController {
         setUpTimer()
         performInitialAppLogic()
         //        self.refreshControl?.addTarget(self, action: #selector(FeedTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(reloadData), name: Notification.Name("PostCommentsChangedNotification"), object: nil)
-
         
+        PostController.shared.requestFullSync {
+            DispatchQueue.main.async {
+                self.reloadData()
+            }
+        }
     }
     
     func setUpTimer() {
@@ -47,13 +49,12 @@ class FeedTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func swipToRefresh(_ sender: UIRefreshControl, forEvent event: UIEvent) {
-        //        handleRefresh(sender)
-//        PostController.shared.requestFullSync {
-//            DispatchQueue.main.async {
-//                self.refreshControl?.endRefreshing()
-//                self.tableView.reloadData()
-//            }
-//        }
+        PostController.shared.requestFullSync {
+            DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
+            }
+        }
     }
     
     @IBAction func imageButtonTapped(_ sender: UIImage) {
@@ -63,7 +64,7 @@ class FeedTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "feedToPostDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow, let detailVC = segue.destination as? CommentTableViewController else { return }
-            let post = PostController.shared.sortedPosts[indexPath.row]
+            let post = PostController.shared.filteredPosts[indexPath.row]
            detailVC.post = post
         }
         
@@ -79,13 +80,13 @@ class FeedTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PostController.shared.sortedPosts.count
+        return PostController.shared.filteredPosts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
         
-        let post = PostController.shared.sortedPosts[indexPath.row]
+        let post = PostController.shared.filteredPosts[indexPath.row]
         cell.post = post
         
         return cell
@@ -110,7 +111,8 @@ class FeedTableViewController: UITableViewController {
     
     func performInitialAppLogic() {
         UserController.shared.fetchCurrentUser { user in
-            if let _ = user {
+            if let user = user {
+                print("performed InitialAppLogic for \(user.username)")
                 return
             } else {
                 DispatchQueue.main.async {

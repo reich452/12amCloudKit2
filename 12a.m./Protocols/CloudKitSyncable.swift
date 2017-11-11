@@ -9,13 +9,13 @@
 import Foundation
 import CloudKit
 
-protocol CloudKitSyncabble {
+protocol CloudKitSyncable {
     
     var cloudKitRecordID: CKRecordID? { get set }
     var recordType: String { get }
 }
 
-extension CloudKitSyncabble {
+extension CloudKitSyncable {
     
     var isSynced: Bool {
         return cloudKitRecordID != nil

@@ -13,8 +13,8 @@ enum ButtonState {
     case notSelected
 }
 
-class LogInViewController: UIViewController {
-
+class LogInViewController: UIViewController, UITextFieldDelegate {
+    
     // MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -26,7 +26,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     // MARK: - Properties
-   private var buttonState: ButtonState = .notSelected
+    private var buttonState: ButtonState = .notSelected
     
     // MARK: - Life Cycle 
     
@@ -38,7 +38,36 @@ class LogInViewController: UIViewController {
     // MARK: - Actions
     @IBAction func logInButtonTapped(_ sender: UIButton) {
         logInButtonClicked()
+        saveNewUser()
     }
+    
+    // MARK: - Delegate
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func saveNewUser() {
+        guard let userName = userNameTextField.text, let email = emailTextField.text else { return }
+        if UserController.shared.currentUser == nil {
+            
+            UserController.shared.createUser(with: userName, email: email) { (success) in
+                if !success {
+                    print("Not successfull creating new user")
+                } else {
+                    print("Made a new user!")
+                }
+            }
+        } else {
+            UserController.shared.updateCurrentUser(username: userName, email: email, completion: { (success) in
+                if !success {
+                    print("Not successfull updating new user")
+                } else {
+                    print("Made a new user!")
+                }
+            })
+        }
+    }
+    
 }
 
 extension LogInViewController {

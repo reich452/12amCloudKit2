@@ -29,7 +29,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVs-fM-TCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2905" y="237"/>
+            <point key="canvasLocation" x="-3973" y="236"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1XN-wh-JkE">
@@ -169,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7uh-0f-Nmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2567.1999999999998" y="1738.3808095952024"/>
+            <point key="canvasLocation" x="-2496" y="1740"/>
         </scene>
         <!--Time to Midnight: <time>-->
         <scene sceneID="2Tv-6Y-n5U">
@@ -180,7 +180,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="502" id="8oS-kW-5pc" customClass="FeedTableViewCell" customModule="_2a_m_" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="postCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="502" id="8oS-kW-5pc" customClass="FeedTableViewCell" customModule="_2a_m_" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="502"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8oS-kW-5pc" id="IFl-Ha-gHz">
@@ -290,16 +290,16 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EZB-m7-DnD">
-                                    <rect key="frame" x="66" y="8" width="231" height="201"/>
+                                    <rect key="frame" x="66" y="8" width="0.0" height="201"/>
                                 </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="comment text here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6F1-6v-4Fn">
-                                    <rect key="frame" x="8" y="276" width="126" height="36"/>
+                                    <rect key="frame" x="8" y="276" width="0.0" height="36"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E4I-PF-eOJ">
-                                    <rect key="frame" x="140" y="275" width="227" height="32"/>
+                                    <rect key="frame" x="66" y="275" width="0.0" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="Jpf-yF-T7C"/>
                                     </constraints>
@@ -309,16 +309,16 @@
                                     </state>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Jzw-we-vZS">
-                                    <rect key="frame" x="8" y="227.5" width="359" height="40.5"/>
+                                    <rect key="frame" x="8" y="227.5" width="0.0" height="40.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4E-ZD-gaI">
-                                            <rect key="frame" x="0.0" y="0.0" width="359" height="20.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="20.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxr-88-HtY">
-                                            <rect key="frame" x="0.0" y="23.5" width="359" height="17"/>
+                                            <rect key="frame" x="0.0" y="23.5" width="0.0" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -465,7 +465,6 @@
                                 <rect key="frame" x="140" y="532" width="94" height="30"/>
                                 <state key="normal" title="Log In"/>
                                 <connections>
-                                    <action selector="followButtonTapped:" destination="z9b-OA-BcM" eventType="touchUpInside" id="JhE-C9-b6f"/>
                                     <action selector="logInButtonTapped:" destination="z9b-OA-BcM" eventType="touchUpInside" id="Jgu-qt-q6Y"/>
                                 </connections>
                             </button>
@@ -543,7 +542,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3M-Ne-DEX" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-508" y="1008.8455772113944"/>
+            <point key="canvasLocation" x="-846" y="1052"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ETO-LV-ytU">

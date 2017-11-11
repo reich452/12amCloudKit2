@@ -27,6 +27,10 @@ class UserController {
         }
     }
     
+    init() {
+        fetchCurrentUser()
+    }
+    
     func fetchCurrentUser(completion: @escaping ((User?) -> Void) = {_ in }) {
         CKContainer.default().fetchUserRecordID { (recordID, error) in
             if let error = error { print("Error fetching userID: \(#function) \(error.localizedDescription) & \(error)")
@@ -47,6 +51,8 @@ class UserController {
                 let users = records.flatMap { User(cloudKitRecord: $0)}
                 let user = users.first
                 print("Fetched loged in user \(user?.username ?? "" )")
+                // Don't forget to set current user 
+                self.currentUser = user
                 completion(user)
             })
         }

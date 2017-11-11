@@ -9,142 +9,62 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "12a.m./Model Controllers/UserController.swift"
-            timestampString = "531526570.648686"
+            filePath = "12a.m./Model/User.swift"
+            timestampString = "532034685.005051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "updateCurrentUser(username:email:completion:)"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "init(user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12a.m./Model Controllers/UserController.swift"
-            timestampString = "531526570.648769"
+            timestampString = "532057739.044727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "updateCurrentUser(username:email:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "12a.m./Model Controllers/UserController.swift"
-            timestampString = "531526570.648829"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "updateCurrentUser(username:email:completion:)"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "fetchCurrentUser(completion:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "_2a_m_.UserController.updateCurrentUser(username: Swift.String, email: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;_2a_m_.User&gt;) -&gt; () in default argument 1 of _2a_m_.UserController.fetchCurrentUser(completion: (Swift.Optional&lt;_2a_m_.User&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "12a.m."
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nick/Desktop/12a.m./12a.m./Model%20Controllers/UserController.swift"
-                  timestampString = "531873725.537016"
+                  timestampString = "532048007.701921"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "268">
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__ObjC.CKRecord&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in _2a_m_.UserController.updateCurrentUser(username: Swift.String, email: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  symbolName = "_2a_m_.UserController.fetchCurrentUser(completion: (Swift.Optional&lt;_2a_m_.User&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "12a.m."
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nick/Desktop/12a.m./12a.m./Model%20Controllers/UserController.swift"
-                  timestampString = "531873725.538406"
+                  timestampString = "532048007.703996"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "68">
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "12a.m./Model Controllers/UserController.swift"
-            timestampString = "531526570.648882"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "updateCurrentUser(username:email:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "12a.m./Model Controllers/UserController.swift"
-            timestampString = "531526570.648933"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "updateCurrentUser(username:email:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "12a.m./Model Controllers/PostController.swift"
-            timestampString = "531873725.411687"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "createPost(image:text:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "12a.m./Model Controllers/PostController.swift"
-            timestampString = "531873725.411728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "createPost(image:text:completion:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
