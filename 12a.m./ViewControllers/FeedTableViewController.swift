@@ -117,9 +117,7 @@ class FeedTableViewController: UITableViewController {
                 print("performed InitialAppLogic for \(user.username)")
                 return
             } else {
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: self.presentSignUpSegue, sender: self)
-                }
+                print("Cannot fetch current user")
             }
         }
     }

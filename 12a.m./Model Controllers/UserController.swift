@@ -59,17 +59,17 @@ class UserController {
     }
     
     //C
-    func createUser(with username: String, email: String, completion: @escaping (_ success: Bool) -> Void) {
+    func createUser(with username: String, email: String, profileImage: UIImage, completion: @escaping (_ success: Bool) -> Void) {
         CKContainer.default().fetchUserRecordID { (appleUsersRecordId, error) in
             if let error = error {
                 print("Error fetchingUserRcordID \(#function) \(error) & \(error.localizedDescription))")
                 completion(false); return
             }
-            guard let recordID = appleUsersRecordId else { print("Error creating recordID")
+            guard let recordID = appleUsersRecordId, let data = UIImageJPEGRepresentation(profileImage, 0.8) else { print("Error creating recordID")
                 completion(false); return
             }
             let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
-            let user = User(username: username, email: email, appleUserRef: appleUserRef)
+            let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data)
             let userRecord = CKRecord(user: user)
             self.cloudKitManager.saveRecord(userRecord, completion: { (record, error) in
                 if let error = error {

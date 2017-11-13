@@ -15,32 +15,52 @@ class User {
     fileprivate let usernameKey = "username"
     fileprivate let emailKey = "email"
     fileprivate let appleUserRefKey = "appleUserRef"
-    fileprivate let imageKey = "image"
+    fileprivate let imageKey = "photoData"
     fileprivate let blockUserRefKey = "blockUserRef"
     fileprivate let accessTokenKey = "acessToken"
     
     var username: String
     var email: String
-    var profileImage: UIImage?
+    var profileImageData: Data?
     var cloudKitRecordID: CKRecordID?
     let appleUserRef: CKReference
     
-    init(username: String, email: String, appleUserRef: CKReference) {
+    var photo: UIImage? {
+        guard let photoData = profileImageData else { return nil }
+        return UIImage(data: photoData)
+    }
+    
+    init(username: String, email: String, appleUserRef: CKReference, profileImageData: Data?) {
         self.username = username
         self.email = email
         self.appleUserRef = appleUserRef
+        self.profileImageData = profileImageData
     }
     
     init?(cloudKitRecord: CKRecord) {
         guard let username = cloudKitRecord[usernameKey] as? String,
             let email = cloudKitRecord[emailKey] as? String,
-            let appleUserRef = cloudKitRecord[appleUserRefKey] as? CKReference else { return nil }
+            let appleUserRef = cloudKitRecord[appleUserRefKey] as? CKReference,
+            let photoAsset = cloudKitRecord[imageKey] as? CKAsset,
+            let profileImageData = try? Data(contentsOf: photoAsset.fileURL) else { return nil }
         
         self.username = username
         self.email = email
         self.appleUserRef = appleUserRef
+        self.profileImageData = profileImageData
         self.cloudKitRecordID = cloudKitRecord.recordID
     
+    }
+    
+    fileprivate var temporaryPhotoURL: URL {
+        
+        let temporaryDirectory = NSTemporaryDirectory()
+        let temporaryDirectoryURL = URL(fileURLWithPath: temporaryDirectory)
+        let fileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("jpg")
+        
+        try? profileImageData?.write(to: fileURL, options: .atomic)
+        
+        return fileURL
     }
 }
 
@@ -52,6 +72,7 @@ extension CKRecord {
         self.setValue(user.username, forKey: user.usernameKey)
         self.setValue(user.email, forKey: user.emailKey)
         self.setValue(user.appleUserRef, forKey: user.appleUserRefKey)
+        self[user.imageKey] = CKAsset(fileURL: user.temporaryPhotoURL)
     }
 }
 

@@ -53,20 +53,22 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     func saveNewUser() {
-        guard let userName = userNameTextField.text, userName != "", let email = emailTextField.text, email != "" else { return }
+        guard let userName = userNameTextField.text, userName != "", let email = emailTextField.text, email != "", let profileImage = profileImageView.image else { return }
         if UserController.shared.currentUser == nil {
             
-            UserController.shared.createUser(with: userName, email: email) { (success) in
+            UserController.shared.createUser(with: userName, email: email, profileImage: profileImage, completion: { (success) in
                 if !success {
-                    print("Not successfull creating new user")
-                } else {
-                    print("Made a new user!")
+                    if !success {
+                        print("Not successfull creating new user")
+                    } else {
+                        print("Made a new user!")
+                    }
                 }
-            }
+            })
         } else {
             UserController.shared.updateCurrentUser(username: userName, email: email, completion: { (success) in
                 if !success {
-                    print("Not successfull updating new user")
+                    print("Not successfull updating existing user")
                 } else {
                     print("Made a new user!")
                 }
@@ -169,5 +171,4 @@ extension LogInViewController {
         // TODO: - controll button state if new or existing user
     }
 }
-
 
