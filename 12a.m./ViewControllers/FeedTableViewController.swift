@@ -22,7 +22,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         //        self.refreshControl?.addTarget(self, action: #selector(FeedTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
         
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(reloadData), name: PostController.PostCommentsChangedNotification, object: nil)
+        nc.addObserver(self, selector: #selector(reloadData), name: PostController.PostChangeNotified, object: nil)
         
         PostController.shared.requestFullSync {
             DispatchQueue.main.async {
@@ -32,6 +32,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.reloadData()
     }
     
     func setUpTimer() {

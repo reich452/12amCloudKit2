@@ -28,6 +28,8 @@ class CommentTableViewCell: UITableViewCell {
         self.userNameLabel.text = userName
         self.commentTextLabel.text = comment.text
         self.profileImageView.image = profileImage
-    
+        self.profileImageView.layer.cornerRadius =  profileImageView.layer.frame.height / 2
+        self.profileImageView.contentMode = .scaleAspectFill
+        self.profileImageView.clipsToBounds = true
     }
 }

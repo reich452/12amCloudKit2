@@ -18,16 +18,21 @@ class PostController {
     static let shared = PostController()
     let cloudKitManager = CloudKitManager()
     
+    // MARK: - Properties
+    
     var posts = [Post]() {
         didSet {
             DispatchQueue.main.async {
                 let nc = NotificationCenter.default
-                nc.post(name: PostController.PostCommentsChangedNotification, object: self)
+                nc.post(name: PostController.PostChangeNotified, object: self)
             }
         }
     }
     var comments = [Comment]()
     var isSyncing: Bool = false
+    
+    // MARK: - Delegates
+    weak var delegate: CommentUpdatedToDelegate?
     
     var filteredPosts: [Post] {
         
@@ -61,6 +66,7 @@ class PostController {
         return recordsOf(type: type).filter { !$0.isSynced }
     }
     
+    // MARK: - Main
     
     func createPost(image: UIImage, text: String, completion: @escaping((Post?) -> Void)) {
         
@@ -87,7 +93,7 @@ class PostController {
                 completion(post)
                 return
             }
-           self.posts = [post]
+            self.posts = [post]
         }
     }
     
@@ -102,12 +108,8 @@ class PostController {
                 print("Error saving new comment in cloudKit: \(#function) \(error) & \(error.localizedDescription)")
                 completion(); return
             }
-            comment.ckRecordID = record?.recordID
+            self.comments = [comment]
             completion()
-        }
-        DispatchQueue.main.async {
-            let nc = NotificationCenter.default
-            nc.post(name: PostController.PostCommentsChangedNotification, object: post)
         }
     }
     
@@ -202,7 +204,8 @@ class PostController {
             })
         }
     }
-    
-    
 }
+
+
+
 

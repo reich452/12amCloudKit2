@@ -55,8 +55,8 @@ extension CKRecord {
         guard let post = comment.post else {
             fatalError("Comment does not have a Post relationship")
         }
-        let recordID = CKRecordID(recordName: UUID().uuidString)
-        self.init(recordType: comment.textKey, recordID: recordID)
+        let recordID = comment.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
+        self.init(recordType: Comment.recordTypeKey, recordID: recordID)
         self.setValue(comment.timestamp, forKey: comment.timestampKey)
         self.setValue(comment.text, forKey: comment.textKey)
         self.setValue(post.cloudKitReference, forKey: comment.postReferenceKey) // TODO - check Reference 

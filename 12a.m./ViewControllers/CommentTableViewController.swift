@@ -8,7 +8,8 @@
 
 import UIKit
 
-class CommentTableViewController: UITableViewController, UITextFieldDelegate {
+class CommentTableViewController: UITableViewController, UITextFieldDelegate, CommentUpdatedToDelegate {
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var postButton: UIButton!
@@ -17,20 +18,21 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     
     // MARK: - Properties
-    var post: Post? {
-        didSet {
-            if isViewLoaded { updateViews() } 
-        }
-    }
+    var post: Post?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboard()
         commentTextField.delegate = self
+        PostController.shared.delegate = self 
         updateViews()
-        self.tableView.estimatedRowHeight = 150
-        print("View did load")
         
+        self.tableView.estimatedRowHeight = 200
+        PostController.shared.requestFullSync {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,17 +41,22 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     func updateViews() {
-        
         guard let post = post,
             let date = post.timestamp.formatter,
             let photo = post.photo else { return }
-    
+        
         self.imageView.image = photo
         self.commentLabel.text = "\(post.text)"
         self.dateLabel.text = date.string(from: post.timestamp)
-        
     }
     
+    // MARK: - Delegate
+    func commentsWereAddedTo() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
     // MARK: - Actions
     
     @IBAction func postButtonTapped(_ sender: UIButton) {
@@ -83,8 +90,9 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
         
-        let comment = self.post?.comments[indexPath.row]
+        guard let comment = self.post?.comments[indexPath.row] else { return UITableViewCell() }
         cell.comment = comment
+        
         return cell
     }
 }
