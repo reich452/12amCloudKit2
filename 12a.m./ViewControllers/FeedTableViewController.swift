@@ -8,8 +8,9 @@
 
 import UIKit
 
-class FeedTableViewController: UITableViewController {
 
+class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate {
+    
     fileprivate let presentSignUpSegue =  "presentSignUp"
     fileprivate let showEditProfileSegue = "editProfile"
     
@@ -29,6 +30,9 @@ class FeedTableViewController: UITableViewController {
             }
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     
     func setUpTimer() {
         Timer.every(1.second) {
@@ -40,13 +44,14 @@ class FeedTableViewController: UITableViewController {
     
     @objc func reloadData() {
         tableView.reloadData()
+    }
+    
+    // MARK: - Delegate
+    func didTapCommentButton(_ sender: FeedTableViewCell) {
+        
+        self.performSegue(withIdentifier: "feedToPostDetail", sender: sender)
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     
     // MARK: - Actions
     
@@ -59,25 +64,12 @@ class FeedTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func imageButtonTapped(_ sender: UIImage) {
-        // TODO: Fix the segue
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+        //   PostController.shared.requestFullSync()
+        //        PostController.sharedController.performFullSync()
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "feedToPostDetail" {
-            guard let indexPath = tableView.indexPathForSelectedRow, let detailVC = segue.destination as? CommentTableViewController else { return }
-            let post = PostController.shared.filteredPosts[indexPath.row]
-           detailVC.post = post
-        }
-        
-    }
-    
-        func handleRefresh(_ refreshControl: UIRefreshControl) {
-         //   PostController.shared.requestFullSync()
-     //        PostController.sharedController.performFullSync()
-            self.tableView.reloadData()
-            refreshControl.endRefreshing()
-        }
     
     // MARK: - Table view data source
     
@@ -89,10 +81,24 @@ class FeedTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? FeedTableViewCell else { return UITableViewCell() }
         
         let post = PostController.shared.filteredPosts[indexPath.row]
-        cell.post = post
         
+        cell.post = post
+        cell.delegate = self
+    
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "feedToPostDetail" {
+            guard let detailTVC = segue.destination as? CommentTableViewController else { return }
+            if let selectedCell = sender as? FeedTableViewCell {
+                guard let indexPath = tableView.indexPath(for: selectedCell) else { return }
+                let post = PostController.shared.filteredPosts[(indexPath.row)]
+                detailTVC.post = post
+            }
+        }
+    }
+    
     
     // MARK: - Navigation
     

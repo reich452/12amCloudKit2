@@ -32,6 +32,7 @@ class UserController {
     }
     
     func fetchCurrentUser(completion: @escaping ((User?) -> Void) = {_ in }) {
+        
         CKContainer.default().fetchUserRecordID { (recordID, error) in
             if let error = error { print("Error fetching userID: \(#function) \(error.localizedDescription) & \(error)")
                 completion(nil)

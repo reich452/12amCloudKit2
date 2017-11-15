@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol FeedTableViewCellDelegate: class {
+    func didTapCommentButton(_ sender: FeedTableViewCell)
+}
+
+
 class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -16,13 +21,16 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var blockUserButton: UIButton!
     @IBOutlet weak var captionTextLabel: UILabel!
     
+    // MARK: - Propoerties
+    weak var delegate: FeedTableViewCellDelegate?
+    weak var data: FeedTableViewCell?
+   
     var post: Post? {
         didSet {
             updateViews()
         }
     }
     
-    /// At 9:28 the image stopped coming back 
     private func updateViews() {
         guard let post = post,
             let owner = post.owner,
@@ -45,7 +53,10 @@ class FeedTableViewCell: UITableViewCell {
     
     
     // MARK: - Actions
-    @IBAction func commentButtonTapped(_ sender: UIButton) {
+    @IBAction func commentButtonTapped(_ sender: Any) {
+        if let delegate = self.delegate {
+            delegate.didTapCommentButton(self)
+        }
     }
     @IBAction func blockUserButtonTapped(_ sender: Any) {
     }

@@ -22,6 +22,7 @@
 		01367C481FB3839100F51F89 /* TimeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367C471FB3839100F51F89 /* TimeTracker.swift */; };
 		01367C4A1FB3869C00F51F89 /* TimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367C491FB3869C00F51F89 /* TimerExtension.swift */; };
 		01367C4C1FB3C27E00F51F89 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367C4B1FB3C27E00F51F89 /* CloudKitSyncable.swift */; };
+		0144722D1FBA5C4400510AB3 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0144722C1FBA5C4400510AB3 /* DateFormatter.swift */; };
 		0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0156CE101FA2B268002791C1 /* AppDelegate.swift */; };
 		0156CE181FA2B268002791C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE171FA2B268002791C1 /* Assets.xcassets */; };
 		0156CE1B1FA2B268002791C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE191FA2B268002791C1 /* LaunchScreen.storyboard */; };
@@ -48,6 +49,7 @@
 		01367C471FB3839100F51F89 /* TimeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTracker.swift; sourceTree = "<group>"; };
 		01367C491FB3869C00F51F89 /* TimerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerExtension.swift; sourceTree = "<group>"; };
 		01367C4B1FB3C27E00F51F89 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
+		0144722C1FBA5C4400510AB3 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		0156CE0D1FA2B268002791C1 /* 12a.m..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12a.m..app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0156CE101FA2B268002791C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0156CE171FA2B268002791C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,7 +78,7 @@
 		010D073E1FA3B2B70013375F /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
-				014472271FB69BC100510AB3 /* Image Picker */,
+				014472271FB69BC100510AB3 /* Date Helper */,
 				01367C451FB3835C00F51F89 /* Constants */,
 				01367BA01FAE6D6300F51F89 /* Theme */,
 				01367BA61FAFA71100F51F89 /* Constatns.swift */,
@@ -134,11 +136,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		014472271FB69BC100510AB3 /* Image Picker */ = {
+		014472271FB69BC100510AB3 /* Date Helper */ = {
 			isa = PBXGroup;
 			children = (
+				0144722C1FBA5C4400510AB3 /* DateFormatter.swift */,
 			);
-			path = "Image Picker";
+			path = "Date Helper";
 			sourceTree = "<group>";
 		};
 		0156CE041FA2B268002791C1 = {
@@ -317,6 +320,7 @@
 				01367BD71FB10FD100F51F89 /* FeedTableViewCell.swift in Sources */,
 				01367BE01FB1181A00F51F89 /* CameraPreviewViewController.swift in Sources */,
 				01367BA21FAE6D7A00F51F89 /* Theme.swift in Sources */,
+				0144722D1FBA5C4400510AB3 /* DateFormatter.swift in Sources */,
 				01367BD51FB10F5500F51F89 /* FeedTableViewController.swift in Sources */,
 				01367C4C1FB3C27E00F51F89 /* CloudKitSyncable.swift in Sources */,
 				01367C4A1FB3869C00F51F89 /* TimerExtension.swift in Sources */,
