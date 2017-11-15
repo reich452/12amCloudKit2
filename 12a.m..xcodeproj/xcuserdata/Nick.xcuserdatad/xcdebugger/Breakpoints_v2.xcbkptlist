@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12a.m./Model Controllers/UserController.swift"
-            timestampString = "532396661.904099"
+            timestampString = "532474232.768789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -54,32 +54,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "12a.m./Model Controllers/PostController.swift"
-            timestampString = "532455207.035207"
+            filePath = "12a.m./New Group/CommentTableViewCell.swift"
+            timestampString = "532474232.768847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "addComment(to:commentText:completion:)"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "updateViews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "12a.m./Model Controllers/PostController.swift"
-            timestampString = "532455207.035582"
+            filePath = "12a.m./New Group/CommentTableViewCell.swift"
+            timestampString = "532474232.768892"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "addComment(to:commentText:completion:)"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "updateViews()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "12a.m./New Group/CommentTableViewCell.swift"
+            timestampString = "532474232.768931"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "updateViews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -19,25 +19,27 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     
     // MARK: - Properties
     var post: Post?
+    weak var prefetchDataSourece: UITableViewDataSourcePrefetching?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboard()
         commentTextField.delegate = self
-        PostController.shared.delegate = self 
         updateViews()
         
         self.tableView.estimatedRowHeight = 200
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        PostController.shared.delegate = self
+        self.tableView.reloadData()
         PostController.shared.requestFullSync {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tableView.reloadData()
     }
     
     func updateViews() {
@@ -56,7 +58,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
             self.tableView.reloadData()
         }
     }
-
+    
     // MARK: - Actions
     
     @IBAction func postButtonTapped(_ sender: UIButton) {
@@ -66,11 +68,11 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         
         PostController.shared.addComment(to: post, commentText: commentText) {
             DispatchQueue.main.async {
-                self.tableView.reloadData()
                 print("\(post.owner?.username ?? "") added \(commentText) to detail VC")
             }
         }
         commentTextField.text = ""
+        self.view.endEditing(true )
     }
     
     // MARK: - TextField Delegate
@@ -83,14 +85,15 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let comments = post?.comments.sorted(by: {$0.timestamp > $1.timestamp } )
         
-        return post?.comments.dropFirst().count ?? 0
+        return comments?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
-        
-        guard let comment = self.post?.comments[indexPath.row] else { return UITableViewCell() }
+       
+        guard let comment = self.post?.comments.sorted(by: {$0.timestamp > $1.timestamp })[indexPath.row] else { return UITableViewCell() }
         cell.comment = comment
         
         return cell

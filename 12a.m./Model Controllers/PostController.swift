@@ -29,6 +29,7 @@ class PostController {
         }
     }
     var comments = [Comment]()
+ 
     var isSyncing: Bool = false
     
     // MARK: - Delegates
@@ -108,7 +109,7 @@ class PostController {
                 print("Error saving new comment in cloudKit: \(#function) \(error) & \(error.localizedDescription)")
                 completion(); return
             }
-            self.comments = [comment]
+            self.delegate?.commentsWereAddedTo()
             completion()
         }
     }
