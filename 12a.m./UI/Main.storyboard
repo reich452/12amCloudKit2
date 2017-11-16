@@ -512,7 +512,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="guk-mQ-fOq">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="223"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="ruc-7L-R3o">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ruc-7L-R3o">
                                         <rect key="frame" x="115" y="163" width="145" height="145"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ruc-7L-R3o" secondAttribute="height" multiplier="1:1" id="HNQ-Ui-sBZ"/>
@@ -642,7 +642,6 @@
     </scenes>
     <resources>
         <image name="addPhoto" width="131" height="131"/>
-        <image name="avatar" width="768" height="604"/>
         <image name="commentButton" width="39" height="38"/>
         <image name="forwardArrow" width="44" height="44"/>
         <image name="header" width="16" height="16"/>

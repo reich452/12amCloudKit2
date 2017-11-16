@@ -27,6 +27,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     
     // MARK: - Properties
+    private var currentUser: User? {
+        return UserController.shared.currentUser
+    }
     private var buttonState: ButtonState = .notSelected
     private var imagePickerWasDismissed = false
     private let imagePicker = UIImagePickerController()
@@ -35,7 +38,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     
         setAppearance()
+        
+        updateViews()
+        UserController.shared.fetchCurrentUser()
     }
     
     // MARK: - Actions
@@ -170,5 +177,13 @@ extension LogInViewController {
         loginButton.setTitle("LogIn", for: .normal)
         // TODO: - controll button state if new or existing user
     }
+    
+  
+    func updateViews() {
+        guard let currentUser = self.currentUser else { return }
+        profileImageView.image = currentUser.photo
+    }
+  
+    
 }
 
