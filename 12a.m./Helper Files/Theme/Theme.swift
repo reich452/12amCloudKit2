@@ -21,4 +21,9 @@ extension UIColor {
     static var highlightGreen: UIColor {
         return UIColor(red: 84.0 / 255.0, green: 252.0 / 255.0, blue: 72.0 / 255.0 , alpha: 1.0)
     }
+    
+    static var navBarTint: UIColor {
+        return UIColor(red: 25.0/255.0, green: 31.0/255.0, blue: 41.0/255.0, alpha: 0.0001)
+    }
+    
 }

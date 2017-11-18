@@ -16,14 +16,15 @@ enum ButtonState {
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var userNameUiView: UIView!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailUIView: UIView!
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var headerUIView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var profileBackgroundImageView: UIImageView!
     
     
     // MARK: - Properties
@@ -33,16 +34,18 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     private var buttonState: ButtonState = .notSelected
     private var imagePickerWasDismissed = false
     private let imagePicker = UIImagePickerController()
+  
     
     // MARK: - Life Cycle 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        setAppearance()
+        //        self.userNameTextField.delegate = self
+        //        self.emailTextField.delegate = self
         
-        updateViews()
-        UserController.shared.fetchCurrentUser()
+        setAppearance()
+        //        updateViews()
+        
     }
     
     // MARK: - Actions
@@ -55,6 +58,13 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Delegate
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+        userNameTextField.text = ""
+        emailTextField.text = ""
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -82,7 +92,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             })
         }
     }
-    
 }
 
 extension LogInViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -157,12 +166,20 @@ extension LogInViewController {
     // MARK: - UI
     func setAppearance() {
         self.view.backgroundColor = UIColor.backgroundAPpGrey
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
         
-        headerImageView.image = UIImage(named: "whiteBackground")
-        headerImageView.contentMode = .scaleAspectFill
-        headerImageView.layer.masksToBounds = true
-        headerUIView.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
+        //        headerImageView.image = UIImage(named: "whiteBackground")
+        //        headerImageView.contentMode = .scaleAspectFill
+        //        headerImageView.layer.masksToBounds = true
+        //        headerUIView.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
         
+        profileBackgroundImageView.image = #imageLiteral(resourceName: "backgroundProfileImage")
+        profileBackgroundImageView.contentMode = .scaleAspectFill
+        profileBackgroundImageView.layer.cornerRadius = profileBackgroundImageView.layer.frame.height / 2
+        profileBackgroundImageView.layer.masksToBounds = true
         profileImageView.image = UIImage(named: "avatar")
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
@@ -170,20 +187,35 @@ extension LogInViewController {
         profileImageView.layer.borderWidth = 4
         profileImageView.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).cgColor
         
-        loginButton.layer.cornerRadius = 8
-        loginButton.layer.masksToBounds = true
-        loginButton.layer.borderColor = UIColor.primaryAppBlue.cgColor
-        loginButton.setTitleColor(.primaryAppBlue, for: .normal)
-        loginButton.setTitle("LogIn", for: .normal)
+        self.userNameTextField.backgroundColor = UIColor.clear
+        self.emailTextField.backgroundColor = UIColor.clear
+        
+        self.tabBarController?.tabBarController?.tabBar.shadowImage = UIImage()
+        self.tabBarController?.tabBarController?.tabBar.barStyle = .blackTranslucent
+        self.tabBarController?.tabBarController?.tabBar.barTintColor = UIColor.clear
+        self.tabBarController?.tabBarController?.tabBar.isTranslucent = true
+        self.tabBarController?.tabBarController?.tabBar.backgroundColor = UIColor.clear
+        self.tabBarController?.tabBarController?.view.backgroundColor = UIColor.clear
+        self.tabBarController?.tabBarController?.view.isHidden = true
+        
+        //        loginButton.layer.cornerRadius = 8
+        //        loginButton.layer.masksToBounds = true
+        //        loginButton.layer.borderColor = UIColor.primaryAppBlue.cgColor
+        //        loginButton.setTitleColor(.primaryAppBlue, for: .normal)
+        //        loginButton.setTitle("LogIn", for: .normal)
         // TODO: - controll button state if new or existing user
     }
     
-  
+    
     func updateViews() {
         guard let currentUser = self.currentUser else { return }
         profileImageView.image = currentUser.photo
+        userNameTextField.text = "  \(currentUser.username)"
+        emailTextField.text = currentUser.email
+        userNameTextField.backgroundColor = .backgroundAPpGrey
+        userNameTextField.placeholder = " Username..."
+        emailTextField.backgroundColor = .backgroundAPpGrey
+        
     }
-  
-    
 }
 

@@ -161,4 +161,124 @@ class CloudKitManager {
         
         publicDatabase.add(operation)
     } // Find the younglings for these IDs, and kill their records
+    
+    // MARK: - CloudKit Permissions
+    
+    func checkCloudKitAvailability() {
+        
+        CKContainer.default().accountStatus() {
+            (accountStatus:CKAccountStatus, error:Error?) -> Void in
+            
+            switch accountStatus {
+            case .available:
+                print("CloudKit available. Initializing full sync.")
+                return
+            default:
+                self.handleCloudKitUnavailable(accountStatus, error: error)
+            }
+        }
+    }
+    
+    func handleCloudKitUnavailable(_ accountStatus: CKAccountStatus, error:Error?) {
+        
+        var errorText = "Synchronization is disabled\n"
+        if let error = error {
+            print("handleCloudKitUnavailable ERROR: \(error)")
+            print("An error occured: \(error.localizedDescription)")
+            errorText += error.localizedDescription
+        }
+        
+        switch accountStatus {
+        case .restricted:
+            errorText += "iCloud is not available due to restrictions"
+        case .noAccount:
+            errorText += "There is no CloudKit account setup.\nYou can setup iCloud in the Settings app."
+        default:
+            break
+        }
+        
+        displayCloudKitNotAvailableError(errorText)
+    }
+    
+    func displayCloudKitNotAvailableError(_ errorText: String) {
+        
+        DispatchQueue.main.async(execute: {
+            
+            let alertController = UIAlertController(title: "iCloud Synchronization Error", message: errorText, preferredStyle: .alert)
+            
+            let dismissAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil);
+            
+            alertController.addAction(dismissAction)
+            
+            if let appDelegate = UIApplication.shared.delegate,
+                let appWindow = appDelegate.window!,
+                let rootViewController = appWindow.rootViewController {
+                rootViewController.present(alertController, animated: true, completion: nil)
+            }
+        })
+    }
+    
+    
+    // MARK: - CloudKit Discoverability
+    
+    func requestDiscoverabilityPermission() {
+        
+        CKContainer.default().status(forApplicationPermission: .userDiscoverability) { (permissionStatus, error) in
+            
+            if permissionStatus == .initialState {
+                CKContainer.default().requestApplicationPermission(.userDiscoverability, completionHandler: { (permissionStatus, error) in
+                    
+                    self.handleCloudKitPermissionStatus(permissionStatus, error: error)
+                })
+            } else {
+                
+                self.handleCloudKitPermissionStatus(permissionStatus, error: error)
+            }
+        }
+    }
+    
+    func handleCloudKitPermissionStatus(_ permissionStatus: CKApplicationPermissionStatus, error:Error?) {
+        
+        if permissionStatus == .granted {
+            print("User Discoverability permission granted. User may proceed with full access.")
+        } else {
+            var errorText = "Synchronization is disabled\n"
+            if let error = error {
+                print("handleCloudKitUnavailable ERROR: \(error)")
+                print("An error occured: \(error.localizedDescription)")
+                errorText += error.localizedDescription
+            }
+            
+            switch permissionStatus {
+            case .denied:
+                errorText += "You have denied User Discoverability permissions. You may be unable to use certain features that require User Discoverability."
+            case .couldNotComplete:
+                errorText += "Unable to verify User Discoverability permissions. You may have a connectivity issue. Please try again."
+            default:
+                break
+            }
+            
+            displayCloudKitPermissionsNotGrantedError(errorText)
+        }
+    }
+    
+    func displayCloudKitPermissionsNotGrantedError(_ errorText: String) {
+        
+        DispatchQueue.main.async(execute: {
+            
+            let alertController = UIAlertController(title: "CloudKit Permissions Error", message: errorText, preferredStyle: .alert)
+            
+            let dismissAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil);
+            
+            alertController.addAction(dismissAction)
+            
+            if let appDelegate = UIApplication.shared.delegate,
+                let appWindow = appDelegate.window!,
+                let rootViewController = appWindow.rootViewController {
+                rootViewController.present(alertController, animated: true, completion: nil)
+            }
+        })
+    }
 }
+
+
