@@ -34,21 +34,21 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     private var buttonState: ButtonState = .notSelected
     private var imagePickerWasDismissed = false
     private let imagePicker = UIImagePickerController()
-  
+    
     
     // MARK: - Life Cycle 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        self.userNameTextField.delegate = self
-        //        self.emailTextField.delegate = self
-        
+        self.userNameTextField.delegate = self
+        self.emailTextField.delegate = self
         setAppearance()
-        //        updateViews()
+        updateViews()
         
     }
     
     // MARK: - Actions
+    
     @IBAction func logInButtonTapped(_ sender: UIButton) {
         logInButtonClicked()
         saveNewUser()
@@ -60,9 +60,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Delegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.userNameTextField.text = ""
+        self.emailTextField.text = ""
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        userNameTextField.text = ""
-        emailTextField.text = ""
+        return true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -71,6 +74,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     func saveNewUser() {
         guard let userName = userNameTextField.text, userName != "", let email = emailTextField.text, email != "", let profileImage = profileImageView.image else { return }
+        checkUsernameAvailablility()
         if UserController.shared.currentUser == nil {
             
             UserController.shared.createUser(with: userName, email: email, profileImage: profileImage, completion: { (success) in
@@ -95,9 +99,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     func checkUsernameAvailablility() {
         guard let username = userNameTextField.text, username != "" else { return }
-        UserController.shared.checkForExistingUserWith(username: username) { (success) in
-            if !success {
-                
+        
+        UserController.shared.checkForExistingUserWith(username: username) { (isTaken) in
+            if !isTaken {
+                self.showAlertMessage(titleStr: "Username already choosen", messageStr: "Please Choose a different username")
             }
         }
     }
@@ -153,8 +158,7 @@ extension LogInViewController {
             
             loginButton.layer.cornerRadius = 8
             loginButton.layer.masksToBounds = true
-            loginButton.layer.borderColor = UIColor.primaryAppBlue.cgColor
-            loginButton.layer.backgroundColor = UIColor.primaryAppBlue.cgColor
+            loginButton.layer.borderColor = UIColor.white.cgColor
             loginButton.layer.borderWidth = 2
             loginButton.setTitleColor(UIColor.white, for: .normal)
             loginButton.setTitle("Sign Up", for: .normal)
@@ -164,11 +168,10 @@ extension LogInViewController {
             
             loginButton.layer.cornerRadius = 8
             loginButton.layer.masksToBounds = true
-            loginButton.layer.borderColor = UIColor.primaryAppBlue.cgColor
             loginButton.layer.backgroundColor = nil
             loginButton.layer.borderWidth = 2
             loginButton.setTitleColor(UIColor.primaryAppBlue, for: .normal)
-            loginButton.setTitle("Log In", for: .normal)
+            loginButton.setTitle("Login", for: .normal)
         }
     }
     
@@ -185,16 +188,14 @@ extension LogInViewController {
         //        headerImageView.layer.masksToBounds = true
         //        headerUIView.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
         
-        profileBackgroundImageView.image = #imageLiteral(resourceName: "backgroundProfileImage")
-        profileBackgroundImageView.contentMode = .scaleAspectFill
-        profileBackgroundImageView.layer.cornerRadius = profileBackgroundImageView.layer.frame.height / 2
-        profileBackgroundImageView.layer.masksToBounds = true
-        profileImageView.image = UIImage(named: "avatar")
-        profileImageView.contentMode = .scaleAspectFill
-        profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
-        profileImageView.layer.masksToBounds = true
-        profileImageView.layer.borderWidth = 4
-        profileImageView.layer.borderColor = UIColor(white: 1.0, alpha: 1.0).cgColor
+        self.profileBackgroundImageView.image = #imageLiteral(resourceName: "backgroundProfileImage")
+        self.profileBackgroundImageView.contentMode = .scaleAspectFill
+        self.profileBackgroundImageView.layer.cornerRadius = profileBackgroundImageView.layer.frame.height / 2
+        self.profileBackgroundImageView.layer.masksToBounds = true
+        self.profileImageView.image = UIImage(named: "avatar")
+        self.profileImageView.contentMode = .scaleAspectFill
+        self.profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
+        self.profileImageView.layer.masksToBounds = true
         
         self.userNameTextField.backgroundColor = UIColor.clear
         self.emailTextField.backgroundColor = UIColor.clear
@@ -207,24 +208,22 @@ extension LogInViewController {
         self.tabBarController?.tabBarController?.view.backgroundColor = UIColor.clear
         self.tabBarController?.tabBarController?.view.isHidden = true
         
-        //        loginButton.layer.cornerRadius = 8
-        //        loginButton.layer.masksToBounds = true
-        //        loginButton.layer.borderColor = UIColor.primaryAppBlue.cgColor
-        //        loginButton.setTitleColor(.primaryAppBlue, for: .normal)
-        //        loginButton.setTitle("LogIn", for: .normal)
+        self.loginButton.layer.cornerRadius = 8
+        self.loginButton.layer.masksToBounds = true
+        self.loginButton.layer.borderColor = UIColor.white.cgColor
+        self.loginButton.setTitleColor(.white, for: .normal)
+        self.loginButton.setTitle("Login", for: .normal)
         // TODO: - controll button state if new or existing user
     }
     
     
     func updateViews() {
         guard let currentUser = self.currentUser else { return }
-        profileImageView.image = currentUser.photo
-        userNameTextField.text = "  \(currentUser.username)"
-        emailTextField.text = currentUser.email
-        userNameTextField.backgroundColor = .backgroundAPpGrey
-        userNameTextField.placeholder = " Username..."
-        emailTextField.backgroundColor = .backgroundAPpGrey
-        
+        self.profileImageView.image = currentUser.photo
+        self.loginButton.layer.cornerRadius = loginButton.layer.frame.height / 2
+        self.loginButton.layer.borderColor = UIColor.white.cgColor
+        self.loginButton.layer.borderWidth = 2
+        self.loginButton.layer.masksToBounds = true
     }
 }
 
