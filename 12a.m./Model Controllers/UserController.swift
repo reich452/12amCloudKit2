@@ -29,6 +29,7 @@ class UserController {
     
     init() {
         fetchCurrentUser()
+        checkUsersCloudKitAvailablility()
     }
     
     func fetchCurrentUser(completion: @escaping ((User?) -> Void) = {_ in }) {
@@ -57,6 +58,10 @@ class UserController {
                 completion(user)
             })
         }
+    }
+    
+    func checkUsersCloudKitAvailablility() {
+        cloudKitManager.checkCloudKitAvailability()
     }
     
     
