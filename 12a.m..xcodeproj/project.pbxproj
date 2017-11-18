@@ -108,13 +108,13 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		01367BD81FB10FD800F51F89 /* New Group */ = {
+		01367BD81FB10FD800F51F89 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				01367BD61FB10FD100F51F89 /* FeedTableViewCell.swift */,
 				01367BDB1FB114A000F51F89 /* CommentTableViewCell.swift */,
 			);
-			path = "New Group";
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		01367C451FB3835C00F51F89 /* Constants */ = {
@@ -150,6 +150,24 @@
 			path = "Date Helper";
 			sourceTree = "<group>";
 		};
+		0146C49B1FC0BD1800DEA332 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				018D7A721FA2B68600A6C81F /* UI */,
+				01367BD81FB10FD800F51F89 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0146C49C1FC0BD3D00DEA332 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				018D7A711FA2B67400A6C81F /* ViewControllers */,
+				018D7A731FA2B69000A6C81F /* Model Controllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		0156CE041FA2B268002791C1 = {
 			isa = PBXGroup;
 			children = (
@@ -171,10 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				018D7A6C1FA2B63000A6C81F /* 12a.m..entitlements */,
-				018D7A721FA2B68600A6C81F /* UI */,
-				01367BD81FB10FD800F51F89 /* New Group */,
-				018D7A711FA2B67400A6C81F /* ViewControllers */,
-				018D7A731FA2B69000A6C81F /* Model Controllers */,
+				0146C49B1FC0BD1800DEA332 /* Views */,
+				0146C49C1FC0BD3D00DEA332 /* Controllers */,
 				01367BA51FAE8AD400F51F89 /* Managers */,
 				01367C4D1FB3C29800F51F89 /* Protocols */,
 				018D7A741FA2B6A400A6C81F /* Model */,

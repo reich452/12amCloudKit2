@@ -92,6 +92,15 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             })
         }
     }
+    
+    func checkUsernameAvailablility() {
+        guard let username = userNameTextField.text, username != "" else { return }
+        UserController.shared.checkForExistingUserWith(username: username) { (success) in
+            if !success {
+                
+            }
+        }
+    }
 }
 
 extension LogInViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
