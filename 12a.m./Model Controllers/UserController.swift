@@ -60,12 +60,24 @@ class UserController {
         }
     }
     
+    //C
     func checkUsersCloudKitAvailablility() {
         cloudKitManager.checkCloudKitAvailability()
     }
     
+    func checkForExistingUserWith(username: String, completion: @escaping (Bool) -> Void) {
+        let predicate = NSPredicate(format: "username ==%@", username)
+        
+        let query = CKQuery(recordType: username, predicate: predicate)
+        self.cloudKitManager.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+            if records?.count == 0 {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
     
-    //C
     func createUser(with username: String, email: String, profileImage: UIImage, completion: @escaping (_ success: Bool) -> Void) {
         CKContainer.default().fetchUserRecordID { (appleUsersRecordId, error) in
             if let error = error {
