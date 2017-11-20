@@ -37,6 +37,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         updateViews()
         setUpAppearance()
+        updateDiscription()
     }
     
     // MARK: - Delegates
@@ -60,7 +61,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Update
-    func updateViews() {
+   private func updateViews() {
         guard let user = self.currentUser,
             let userPhoto = self.currentUser?.photo else { return }
         self.usernameLabel.text = user.username
@@ -68,7 +69,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         self.usernameTextField.text = "  \(user.username)"
         self.emailTextField.text = "  \(user.email)"
     }
-    func setUpAppearance() {
+   private func setUpAppearance() {
         self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.height / 2
         self.profileImageView.contentMode = .scaleAspectFill
         self.profileImageView.layer.borderColor = UIColor.white.cgColor
@@ -77,6 +78,14 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         self.usernameTextField.textColor = UIColor.white
         self.emailTextField.textColor = UIColor.white
     
+    }
+    
+   private func updateDiscription() {
+        let posts = PostController.shared.posts
+        let filterCount = posts.map {$0.ownerReference}
+        if filterCount.count != 0 {
+            discriptionLabel.text = "Posted \(filterCount.count) times at 12am - 1am"
+        }
     }
 }
 
