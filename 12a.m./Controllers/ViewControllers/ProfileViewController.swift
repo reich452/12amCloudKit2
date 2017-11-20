@@ -81,10 +81,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     }
     
    private func updateDiscription() {
-        let posts = PostController.shared.posts
-        let filterCount = posts.map {$0.ownerReference}
-        if filterCount.count != 0 {
-            discriptionLabel.text = "Posted \(filterCount.count) times at 12am - 1am"
+    let posts = PostController.shared.posts.map {$0.ownerReference}
+        if posts.count != 0 {
+            discriptionLabel.text = "Posted \(posts.count) times at 12am - 1am"
         }
     }
 }
