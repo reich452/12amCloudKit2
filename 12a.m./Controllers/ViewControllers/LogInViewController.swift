@@ -34,6 +34,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     private var buttonState: ButtonState = .notSelected
     private var imagePickerWasDismissed = false
     private let imagePicker = UIImagePickerController()
+    private var isTaken: Bool = true
     
     
     // MARK: - Life Cycle 
@@ -44,7 +45,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.emailTextField.delegate = self
         setAppearance()
         updateViews()
-        
     }
     
     // MARK: - Actions
@@ -60,9 +60,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Delegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.userNameTextField.text = ""
-        self.emailTextField.text = ""
+        self.userNameTextField.placeholder = ""
+        self.emailTextField.placeholder = ""
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -74,7 +75,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     func saveNewUser() {
         guard let userName = userNameTextField.text, userName != "", let email = emailTextField.text, email != "", let profileImage = profileImageView.image else { return }
-        checkUsernameAvailablility()
+        
         if UserController.shared.currentUser == nil {
             
             UserController.shared.createUser(with: userName, email: email, profileImage: profileImage, completion: { (success) in
@@ -86,6 +87,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             })
+        } else if isTaken {
+            checkUsernameAvailablility()
         } else {
             UserController.shared.updateCurrentUser(username: userName, email: email, completion: { (success) in
                 if !success {
@@ -96,6 +99,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             })
         }
     }
+    
     
     func checkUsernameAvailablility() {
         guard let username = userNameTextField.text, username != "" else { return }

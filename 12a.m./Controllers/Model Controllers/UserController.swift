@@ -65,7 +65,8 @@ class UserController {
         cloudKitManager.checkCloudKitAvailability()
     }
     
-    func checkForExistingUserWith(username: String, completion: @escaping (Bool) -> Void) {
+    func checkForExistingUserWith(username: String?, completion: @escaping (Bool) -> Void) {
+        guard let username = username else { return }
         let predicate = NSPredicate(format: "username ==%@", username)
         
         let query = CKQuery(recordType: username, predicate: predicate)
