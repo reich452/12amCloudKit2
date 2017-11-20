@@ -31,6 +31,7 @@
 		0156CE241FA2B52C002791C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE231FA2B52C002791C1 /* Main.storyboard */; };
 		018D7A6F1FA2B63200A6C81F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018D7A6E1FA2B63200A6C81F /* CloudKit.framework */; };
 		01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */; };
+		01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */; };
 		01FE0D0F1FA2BABC001C55EE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE0D0E1FA2BABC001C55EE /* User.swift */; };
 		01FE0D111FA2BB35001C55EE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE0D101FA2BB35001C55EE /* Post.swift */; };
 		01FE0D131FA2BB4C001C55EE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE0D121FA2BB4C001C55EE /* Comment.swift */; };
@@ -64,6 +65,7 @@
 		018D7A6C1FA2B63000A6C81F /* 12a.m..entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 12a.m..entitlements; sourceTree = "<group>"; };
 		018D7A6E1FA2B63200A6C81F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextField.swift; sourceTree = "<group>"; };
+		01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		01FE0D0E1FA2BABC001C55EE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		01FE0D101FA2BB35001C55EE /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		01FE0D121FA2BB4C001C55EE /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				01367B9E1FAE6A8100F51F89 /* LogInViewController.swift */,
+				01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */,
 				01367BD41FB10F5500F51F89 /* FeedTableViewController.swift */,
 				01367BD91FB1142E00F51F89 /* CommentTableViewController.swift */,
 				01367BDD1FB1180E00F51F89 /* CameraViewController.swift */,
@@ -355,6 +358,7 @@
 				01367BE01FB1181A00F51F89 /* CameraPreviewViewController.swift in Sources */,
 				01367BA21FAE6D7A00F51F89 /* Theme.swift in Sources */,
 				0144722D1FBA5C4400510AB3 /* DateFormatter.swift in Sources */,
+				01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */,
 				01367BD51FB10F5500F51F89 /* FeedTableViewController.swift in Sources */,
 				01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */,
 				01367C4C1FB3C27E00F51F89 /* CloudKitSyncable.swift in Sources */,
