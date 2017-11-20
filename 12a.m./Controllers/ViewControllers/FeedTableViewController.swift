@@ -14,6 +14,10 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     fileprivate let presentSignUpSegue =  "presentSignUp"
     fileprivate let showEditProfileSegue = "editProfile"
     
+    @IBOutlet weak var openLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var amLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +42,8 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     func setUpTimer() {
         Timer.every(1.second) {
             DispatchQueue.main.async {
-                self.title = Date().timeTillString
+                self.timeLabel.text = Date().timeTillString
+                self.timeLabel.textColor = UIColor.digitalGreen
             }
         }
     }

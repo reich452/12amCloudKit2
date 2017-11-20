@@ -12,8 +12,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="ArialHB.ttc">
+            <string>ArialHebrew-Light</string>
+        </array>
         <array key="Helvetica.ttc">
             <string>Helvetica-Bold</string>
+        </array>
+        <array key="POCKC___.TTF">
+            <string>PocketCalculator</string>
         </array>
     </customFonts>
     <scenes>
@@ -177,7 +183,7 @@
             </objects>
             <point key="canvasLocation" x="-2496" y="1740"/>
         </scene>
-        <!--Time to Midnight: <time>-->
+        <!--Feed Table View Controller-->
         <scene sceneID="2Tv-6Y-n5U">
             <objects>
                 <tableViewController id="JyQ-pe-mMA" customClass="FeedTableViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
@@ -185,9 +191,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="5J8-bF-eyD">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ma7-g3-LiR">
+                                    <rect key="frame" x="21" y="19" width="333" height="40"/>
+                                    <fontDescription key="fontDescription" name="PocketCalculator" family="Pocket Calculator" pointSize="40"/>
+                                    <color key="textColor" red="0.39211481809616089" green="0.84444326162338257" blue="0.74901276826858521" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AX-Qh-Kgd">
+                                    <rect key="frame" x="29" y="0.0" width="111" height="46"/>
+                                    <fontDescription key="fontDescription" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="18"/>
+                                    <color key="textColor" red="0.20494952797889709" green="0.24979117512702942" blue="0.55689156055450439" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="6AX-Qh-Kgd" firstAttribute="height" secondItem="5J8-bF-eyD" secondAttribute="height" constant="-32" id="9Q8-eP-j4y"/>
+                                <constraint firstItem="6AX-Qh-Kgd" firstAttribute="top" secondItem="5J8-bF-eyD" secondAttribute="top" id="Eo3-hf-lY6"/>
+                                <constraint firstItem="6AX-Qh-Kgd" firstAttribute="width" secondItem="5J8-bF-eyD" secondAttribute="width" constant="-264" id="Lhp-gg-Cfx"/>
+                                <constraint firstItem="Ma7-g3-LiR" firstAttribute="top" secondItem="5J8-bF-eyD" secondAttribute="top" constant="19" id="PuE-A9-R4s"/>
+                                <constraint firstItem="Ma7-g3-LiR" firstAttribute="centerX" secondItem="5J8-bF-eyD" secondAttribute="centerX" id="bFG-GV-TwD"/>
+                                <constraint firstItem="6AX-Qh-Kgd" firstAttribute="leading" secondItem="5J8-bF-eyD" secondAttribute="leading" constant="29" id="dfE-UQ-IoB"/>
+                                <constraint firstItem="Ma7-g3-LiR" firstAttribute="centerY" secondItem="5J8-bF-eyD" secondAttribute="centerY" id="eLY-76-RQC"/>
+                                <constraint firstItem="Ma7-g3-LiR" firstAttribute="width" secondItem="5J8-bF-eyD" secondAttribute="width" multiplier="8/9" id="o6g-a7-gDv"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="postCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="502" id="8oS-kW-5pc" customClass="FeedTableViewCell" customModule="_2a_m_" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="106" width="375" height="502"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8oS-kW-5pc" id="IFl-Ha-gHz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="501.5"/>
@@ -271,7 +306,7 @@
                             <outlet property="delegate" destination="JyQ-pe-mMA" id="qGA-Lu-4q9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Time to Midnight: &lt;time&gt;" id="ega-Oe-eI3">
+                    <navigationItem key="navigationItem" id="ega-Oe-eI3">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="9Qd-jL-BCN">
                             <inset key="imageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="-11"/>
                         </barButtonItem>
@@ -290,12 +325,14 @@
                         </connections>
                     </refreshControl>
                     <connections>
+                        <outlet property="openLabel" destination="6AX-Qh-Kgd" id="iOo-sR-zEq"/>
+                        <outlet property="timeLabel" destination="Ma7-g3-LiR" id="BFO-IJ-I5O"/>
                         <segue destination="y0p-tH-2M1" kind="show" identifier="feedToPostDetail" id="m7A-EI-lMK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOb-FG-dTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3972" y="1009"/>
+            <point key="canvasLocation" x="-3972" y="1008.8455772113944"/>
         </scene>
         <!--Comment Table View Controller-->
         <scene sceneID="HNj-HC-40R">

@@ -32,6 +32,7 @@
 		018D7A6F1FA2B63200A6C81F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018D7A6E1FA2B63200A6C81F /* CloudKit.framework */; };
 		01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */; };
 		01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */; };
+		01BFDECD1FC39A8200D94B87 /* POCKC___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */; };
 		01FE0D0F1FA2BABC001C55EE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE0D0E1FA2BABC001C55EE /* User.swift */; };
 		01FE0D111FA2BB35001C55EE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE0D101FA2BB35001C55EE /* Post.swift */; };
 		01FE0D131FA2BB4C001C55EE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE0D121FA2BB4C001C55EE /* Comment.swift */; };
@@ -66,6 +67,7 @@
 		018D7A6E1FA2B63200A6C81F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextField.swift; sourceTree = "<group>"; };
 		01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POCKC___.TTF"; sourceTree = "<group>"; };
 		01FE0D0E1FA2BABC001C55EE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		01FE0D101FA2BB35001C55EE /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		01FE0D121FA2BB4C001C55EE /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 		018D7A701FA2B66A00A6C81F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				01BFDECA1FC39A8000D94B87 /* Pocket_Calculator */,
 				0156CE101FA2B268002791C1 /* AppDelegate.swift */,
 				0156CE171FA2B268002791C1 /* Assets.xcassets */,
 				0156CE1C1FA2B268002791C1 /* Info.plist */,
@@ -270,6 +273,14 @@
 				01FE0D121FA2BB4C001C55EE /* Comment.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		01BFDECA1FC39A8000D94B87 /* Pocket_Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */,
+			);
+			path = Pocket_Calculator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0156CE241FA2B52C002791C1 /* Main.storyboard in Resources */,
+				01BFDECD1FC39A8200D94B87 /* POCKC___.TTF in Resources */,
 				0156CE1B1FA2B268002791C1 /* LaunchScreen.storyboard in Resources */,
 				0156CE181FA2B268002791C1 /* Assets.xcassets in Resources */,
 			);

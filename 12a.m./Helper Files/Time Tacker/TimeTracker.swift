@@ -76,8 +76,8 @@ extension Date {
         let minutesAsSeconds = minutesTill * 60
         let secondsTill = seconds(to: date) - (hoursAsMinutes * 60 + minutesAsSeconds)
         
-        let midnightString = isInMidnightHour ? "1AM" : "Midnight"
-        var displayString = "Time to \(midnightString): "
+        let midnightString = isInMidnightHour ? "" : "" // 1am : midnight
+        var displayString = "\(midnightString)"
         if hoursTill > 0 {
             displayString += "\(hoursTill)h"
         }
