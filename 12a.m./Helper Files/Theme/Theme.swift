@@ -29,5 +29,16 @@ extension UIColor {
     static var digitalGreen: UIColor {
         return UIColor(red: 3.0/255.0, green: 220.0/255.0, blue: 191.0/255.0, alpha: 1.0)
     }
+    static var cellBackgroundBlue: UIColor {
+        return UIColor(red: 15.0/255.0, green: 29.0/255.0, blue: 32.0/255.0, alpha: 1.0)
+    }
+    
+    static var cellBackgroundBlue2: UIColor {
+        return UIColor(red: 32.0/255.0, green: 42.0/255.0, blue: 50.0/255.0, alpha: 1.0)
+    }
+    
+    static var refreshControllGreen: UIColor {
+        return UIColor(red: 0.0/255.0, green: 219.0/255.0, blue: 149.0/255.0, alpha: 1.0)
+    }
     
 }

@@ -24,6 +24,7 @@ class CommentTableViewCell: UITableViewCell {
             let userName = comment.owner?.username,
             let profileData = comment.owner?.profileImageData,
             let profileImage = UIImage(data: profileData) else { return }
+    
         
         self.userNameLabel.text = userName
         self.commentTextLabel.text = comment.text
@@ -31,5 +32,7 @@ class CommentTableViewCell: UITableViewCell {
         self.profileImageView.layer.cornerRadius =  profileImageView.layer.frame.height / 2
         self.profileImageView.contentMode = .scaleAspectFill
         self.profileImageView.clipsToBounds = true
+   
+        
     }
 }

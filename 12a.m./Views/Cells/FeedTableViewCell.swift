@@ -41,16 +41,15 @@ class FeedTableViewCell: UITableViewCell {
         } else {
             profileImageView.image = owner.photo
         }
-        profileImageView.contentMode = .scaleAspectFill
-        profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
-        profileImageView.layer.masksToBounds = true
-        postImageButton.imageView?.contentMode = .scaleAspectFill
-        postImageButton.setImage(post.photo, for: .normal)
-        userNameLabel.text = username
-        captionTextLabel.text = post.text
-        
+        self.profileImageView.contentMode = .scaleAspectFill
+        self.profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
+        self.profileImageView.layer.masksToBounds = true
+        self.postImageButton.imageView?.contentMode = .scaleAspectFill
+        self.postImageButton.setImage(post.photo, for: .normal)
+        self.userNameLabel.text = username
+        self.captionTextLabel.text = post.text
     }
-    
+
     
     // MARK: - Actions
     @IBAction func commentButtonTapped(_ sender: Any) {

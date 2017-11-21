@@ -23,8 +23,8 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         
         setUpTimer()
         performInitialAppLogic()
-        //        self.refreshControl?.addTarget(self, action: #selector(FeedTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
-        
+        setUpAppearance()
+
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(reloadData), name: PostController.PostChangeNotified, object: nil)
         
@@ -36,10 +36,11 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         self.reloadData()
     }
     
-    func setUpTimer() {
+   private func setUpTimer() {
         Timer.every(1.second) {
             DispatchQueue.main.async {
                 self.timeLabel.text = Date().timeTillString
@@ -73,6 +74,8 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     func handleRefresh(_ refreshControl: UIRefreshControl) {
         //   PostController.shared.requestFullSync()
         //        PostController.sharedController.performFullSync()
+        refreshControl.tintColor = UIColor.refreshControllGreen
+        refreshControl.backgroundColor = UIColor.refreshControllGreen
         self.tableView.reloadData()
         refreshControl.endRefreshing()
     }
@@ -87,13 +90,15 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? FeedTableViewCell else { return UITableViewCell() }
         
         let post = PostController.shared.filteredPosts[indexPath.row]
-        
         cell.post = post
         cell.delegate = self
     
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.contentView.backgroundColor = UIColor(white: 1, alpha: 0.5)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "feedToPostDetail" {
             guard let detailTVC = segue.destination as? CommentTableViewController else { return }
@@ -123,7 +128,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     
     // to here to test photo posting at whatever time
     
-    func performInitialAppLogic() {
+   private func performInitialAppLogic() {
         UserController.shared.fetchCurrentUser { user in
             if let user = user {
                 print("performed InitialAppLogic for \(user.username)")
@@ -165,3 +170,24 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         }
     }
 }
+
+extension FeedTableViewController {
+    
+    func setUpAppearance() {
+        
+        let backgorundImage =  #imageLiteral(resourceName: "darkGold")
+        
+        let imageView = UIImageView(image: backgorundImage)
+        imageView.contentMode = .scaleAspectFill
+        self.tableView.backgroundView = imageView
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = imageView.bounds
+        imageView.addSubview(blurView)
+        imageView.clipsToBounds = true
+    }
+}
+
+
+
+
