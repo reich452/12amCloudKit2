@@ -85,11 +85,12 @@ class UserController {
                 print("Error fetchingUserRcordID \(#function) \(error) & \(error.localizedDescription))")
                 completion(false); return
             }
-            guard let recordID = appleUsersRecordId, let data = UIImageJPEGRepresentation(profileImage, 0.8) else { print("Error creating recordID")
+            guard let recordID = appleUsersRecordId, let data = UIImageJPEGRepresentation(profileImage, 0.8),
+                let blockUserRefs = self.currentUser?.blockUserRefs else { print("Error creating recordID")
                 completion(false); return
             }
             let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
-            let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data)
+            let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data, blockUserRefs: blockUserRefs)
             let userRecord = CKRecord(user: user)
             self.cloudKitManager.saveRecord(userRecord, completion: { (record, error) in
                 if let error = error {
@@ -134,5 +135,21 @@ class UserController {
     }
     
     //D
+    
+    func blockUser(userToBlock: CKReference, completion: @escaping () -> Void) {
+        self.currentUser?.blockUserRefs?.append(userToBlock)
+        guard let currentUser = currentUser else { return }
+        let record = CKRecord(user: currentUser)
+        
+        self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil) { (records, error) in
+            if let error = error {
+                print("Error modifying records \(#function) \(error) \(error.localizedDescription)")
+                return
+            } else {
+                print("User \(currentUser.username) blocked \(userToBlock)")
+                completion()
+            }
+        }
+    }
 }
 

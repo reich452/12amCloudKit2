@@ -24,8 +24,7 @@ class FeedTableViewCell: UITableViewCell {
     
     // MARK: - Propoerties
     weak var delegate: FeedTableViewCellDelegate?
-    weak var data: FeedTableViewCell?
-   
+    
     var post: Post? {
         didSet {
             updateViews()
@@ -51,7 +50,7 @@ class FeedTableViewCell: UITableViewCell {
         self.captionTextLabel.text = post.text
         self.timestampLabel.text = "\(post.timestamp.timePosted?.string(from: post.timestamp) ??? "12:00 A.M.")"
     }
-
+    
     
     // MARK: - Actions
     @IBAction func commentButtonTapped(_ sender: Any) {
@@ -60,6 +59,38 @@ class FeedTableViewCell: UITableViewCell {
         }
     }
     @IBAction func blockUserButtonTapped(_ sender: Any) {
+        self.blockUserActionSheet()
     }
     
 }
+
+extension FeedTableViewCell {
+    
+    // MARK: - Block Users
+    
+    func blockUser() {
+        guard let post = post else { return }
+        let ownerReference = post.ownerReference
+        UserController.shared.blockUser(userToBlock: ownerReference) {
+        
+        }
+    }
+    
+    func blockUserActionSheet() {
+        let blockUserAlertController = UIAlertController(title: "Block User", message: "Would you like to block this user? \nYou will no longer be able to \nsee their posts or comments", preferredStyle: .actionSheet)
+        let blockUserAction = UIAlertAction(title: "Block", style: .default) { (_) in
+            self.blockUser()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        blockUserAlertController.addAction(blockUserAction)
+        blockUserAlertController.addAction(cancelAction)
+        UIApplication.shared.keyWindow?.rootViewController?.present(blockUserAlertController, animated: true, completion: nil)
+        
+    }
+}
+
+
+
+
+
+

@@ -23,6 +23,8 @@ class User {
     var email: String
     var profileImageData: Data?
     var cloudKitRecordID: CKRecordID?
+    var blockUserRefs: [CKReference]? = []
+    var blockUsersArray: [User] = []
     let appleUserRef: CKReference
     
     var photo: UIImage? {
@@ -30,11 +32,12 @@ class User {
         return UIImage(data: photoData)
     }
     
-    init(username: String, email: String, appleUserRef: CKReference, profileImageData: Data?) {
+    init(username: String, email: String, appleUserRef: CKReference, profileImageData: Data?, blockUserRefs: [CKReference]? = []) {
         self.username = username
         self.email = email
         self.appleUserRef = appleUserRef
         self.profileImageData = profileImageData
+        self.blockUserRefs = blockUserRefs
     }
     
     init?(cloudKitRecord: CKRecord) {
@@ -43,6 +46,8 @@ class User {
             let appleUserRef = cloudKitRecord[appleUserRefKey] as? CKReference,
             let photoAsset = cloudKitRecord[imageKey] as? CKAsset,
             let profileImageData = try? Data(contentsOf: photoAsset.fileURL) else { return nil }
+        
+        self.blockUserRefs = cloudKitRecord[blockUserRefKey] as? [CKReference] ?? []
         
         self.username = username
         self.email = email
@@ -72,6 +77,7 @@ extension CKRecord {
         self.setValue(user.username, forKey: user.usernameKey)
         self.setValue(user.email, forKey: user.emailKey)
         self.setValue(user.appleUserRef, forKey: user.appleUserRefKey)
+        self.setValue(user.blockUserRefs, forKeyPath: user.blockUserRefKey)
         self[user.imageKey] = CKAsset(fileURL: user.temporaryPhotoURL)
     }
 }
