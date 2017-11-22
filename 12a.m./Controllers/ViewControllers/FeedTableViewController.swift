@@ -45,6 +45,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
             DispatchQueue.main.async {
                 self.timeLabel.text = Date().timeTillString
                 self.timeLabel.textColor = UIColor.digitalGreen
+            
             }
         }
     }
@@ -176,7 +177,6 @@ extension FeedTableViewController {
     func setUpAppearance() {
         
         let backgorundImage =  #imageLiteral(resourceName: "darkGold")
-        
         let imageView = UIImageView(image: backgorundImage)
         imageView.contentMode = .scaleAspectFill
         self.tableView.backgroundView = imageView
@@ -185,6 +185,10 @@ extension FeedTableViewController {
         blurView.frame = imageView.bounds
         imageView.addSubview(blurView)
         imageView.clipsToBounds = true
+    }
+    
+    // TODO: - 
+    func updateOpenText() {
     }
 }
 

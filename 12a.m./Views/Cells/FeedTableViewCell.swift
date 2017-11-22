@@ -20,6 +20,7 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var blockUserButton: UIButton!
     @IBOutlet weak var captionTextLabel: UILabel!
+    @IBOutlet weak var timestampLabel: UILabel!
     
     // MARK: - Propoerties
     weak var delegate: FeedTableViewCellDelegate?
@@ -48,6 +49,7 @@ class FeedTableViewCell: UITableViewCell {
         self.postImageButton.setImage(post.photo, for: .normal)
         self.userNameLabel.text = username
         self.captionTextLabel.text = post.text
+        self.timestampLabel.text = "\(post.timestamp.timePosted?.string(from: post.timestamp) ??? "12:00 A.M.")"
     }
 
     

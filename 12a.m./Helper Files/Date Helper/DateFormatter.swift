@@ -16,4 +16,10 @@ extension Date {
         formatter.doesRelativeDateFormatting = true
         return formatter
     }
+    
+    var timePosted: DateFormatter? {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        return formatter
+    }
 }

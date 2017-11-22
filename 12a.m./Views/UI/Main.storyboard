@@ -243,6 +243,17 @@
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BVF-4y-lLI">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 A.M" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xD0-Yj-4b3">
+                                                        <rect key="frame" x="261.5" y="418" width="93.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="xD0-Yj-4b3" secondAttribute="trailing" constant="20" id="Zho-Bi-bYw"/>
+                                                </constraints>
                                             </view>
                                             <blurEffect style="light"/>
                                         </visualEffectView>
@@ -289,7 +300,7 @@
                                             </subviews>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR0-k6-dbO">
-                                            <rect key="frame" x="13" y="405" width="33" height="33"/>
+                                            <rect key="frame" x="13" y="405" width="38" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="commentButton"/>
                                             <connections>
@@ -314,6 +325,8 @@
                                         <constraint firstItem="AAC-gy-MRr" firstAttribute="leading" secondItem="IFl-Ha-gHz" secondAttribute="leading" id="Xv9-g2-fwu"/>
                                         <constraint firstAttribute="trailing" secondItem="AAC-gy-MRr" secondAttribute="trailing" id="bXj-UW-Xqy"/>
                                         <constraint firstAttribute="bottom" secondItem="AAC-gy-MRr" secondAttribute="bottom" id="bmb-oz-LaK"/>
+                                        <constraint firstItem="xD0-Yj-4b3" firstAttribute="width" secondItem="IFl-Ha-gHz" secondAttribute="width" multiplier="1/4" id="he1-Il-ghh"/>
+                                        <constraint firstItem="xD0-Yj-4b3" firstAttribute="top" secondItem="yrj-pz-fe4" secondAttribute="bottom" constant="24" id="jGP-JQ-yMF"/>
                                         <constraint firstItem="yrj-pz-fe4" firstAttribute="height" secondItem="IFl-Ha-gHz" secondAttribute="height" multiplier="4/6" id="zNC-21-2pp"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -323,6 +336,7 @@
                                     <outlet property="commentButton" destination="eR0-k6-dbO" id="Sgx-ss-Jd1"/>
                                     <outlet property="postImageButton" destination="yrj-pz-fe4" id="DBU-8x-CaE"/>
                                     <outlet property="profileImageView" destination="Hfc-qA-2Su" id="arq-N0-5xf"/>
+                                    <outlet property="timestampLabel" destination="xD0-Yj-4b3" id="kYF-PW-eOf"/>
                                     <outlet property="userNameLabel" destination="CFg-le-CgL" id="1au-tJ-hpp"/>
                                 </connections>
                             </tableViewCell>
@@ -1026,7 +1040,7 @@
     <resources>
         <image name="avatar" width="768" height="604"/>
         <image name="backgroundProfileImage" width="232" height="232"/>
-        <image name="commentButton" width="39" height="38"/>
+        <image name="commentButton" width="85" height="71"/>
         <image name="editProfileBackground" width="1125" height="2436"/>
         <image name="emailIconWhite" width="212" height="170"/>
         <image name="forwardArrow" width="44" height="44"/>
