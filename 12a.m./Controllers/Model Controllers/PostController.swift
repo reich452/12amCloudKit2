@@ -131,7 +131,7 @@ class PostController {
         
         
         guard let predicate2 = predicate else { return }
-        cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { [weak self] (records, error) in
+        cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { [unowned self] (records, error) in
             
             if let error = error {
                 print("Error fetcing predicte2 \(#function) \(error) \(error.localizedDescription)")
@@ -144,9 +144,9 @@ class PostController {
                 completion()
             case Post.recordTypeKey:
                 let posts = records.flatMap { Post(ckRecord: $0) }
-                self?.posts = posts
+                self.posts = posts
                 // Helps make the user have a stronger relationship with post
-                for post in (self?.posts)! {
+                for post in (self.posts) {
                     let users = UserController.shared.users
                     guard let postOwner = users.filter({$0.cloudKitRecordID == post.ownerReference.recordID}).first else { break }
                     
@@ -158,16 +158,16 @@ class PostController {
                 let comments = records.flatMap { Comment(ckRecord: $0) }
                 for comment in comments {
                     let postRef = comment.postReference
-                    guard let postIndex = self?.posts.index(where: {$0.ckRecordID == postRef.recordID } ) else { completion(); return }
-                    let post = self?.posts[postIndex]
-                    post?.comments.append(comment)
+                    guard let postIndex = self.posts.index(where: {$0.ckRecordID == postRef.recordID } ) else { completion(); return }
+                    let post = self.posts[postIndex]
+                    post.comments.append(comment)
                     comment.post = post
                     guard let ownerIndex = UserController.shared.users.index(where: { $0.cloudKitRecordID == comment.ownerReference.recordID  })
                         else { break }
                     let user = UserController.shared.users[ownerIndex]
                     comment.owner = user
                 }
-                self?.comments = comments
+                self.comments = comments
                 completion()
             default:
                 print("Cannot fetch records")
@@ -185,10 +185,10 @@ class PostController {
     func performFullSync(completion: @escaping (() -> Void) = { }) {
         isSyncing = true
         
-        self.fetchNewRecors(ofType: User.recordTypeKey) { [weak self] in
-            self?.fetchNewRecors(ofType: Post.recordTypeKey) {
-                self?.fetchNewRecors(ofType: Comment.recordTypeKey) {
-                    self?.isSyncing = false
+        self.fetchNewRecors(ofType: User.recordTypeKey) { [unowned self] in
+            self.fetchNewRecors(ofType: Post.recordTypeKey) {
+                self.fetchNewRecors(ofType: Comment.recordTypeKey) {
+                    self.isSyncing = false
                     completion()
                 }
             }

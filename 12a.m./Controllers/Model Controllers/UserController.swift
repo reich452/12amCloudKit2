@@ -34,7 +34,7 @@ class UserController {
     
     func fetchCurrentUser(completion: @escaping ((User?) -> Void) = {_ in }) {
         
-        CKContainer.default().fetchUserRecordID { [weak self] (recordID, error) in
+        CKContainer.default().fetchUserRecordID { [unowned self] (recordID, error) in
             if let error = error { print("Error fetching userID: \(#function) \(error.localizedDescription) & \(error)")
                 completion(nil)
                 return
@@ -44,7 +44,7 @@ class UserController {
             let predicate = NSPredicate(format: "appleUserRef == %@", appleUserRef)
             let query = CKQuery(recordType: "User", predicate: predicate)
             
-            self?.cloudKitManager.publicDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
+            self.cloudKitManager.publicDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
                 if let error = error {
                     print("eerror fethcing user record \(error) & \(error.localizedDescription) \(#function)")
                     completion(nil); return
@@ -54,7 +54,7 @@ class UserController {
                 let user = users.first
                 print("Fetched loged in user \(user?.username ?? "" )")
                 // Don't forget to set current user 
-                self?.currentUser = user
+                self.currentUser = user
                 completion(user)
             })
         }

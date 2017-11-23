@@ -27,9 +27,9 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(reloadData), name: PostController.PostChangeNotified, object: nil)
         
-        PostController.shared.requestFullSync { [weak self] in
+        PostController.shared.requestFullSync { [unowned self] in
             DispatchQueue.main.async {
-                self?.reloadData()
+                self.reloadData()
             }
         }
     }
@@ -62,10 +62,10 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     // MARK: - Actions
     
     @IBAction func swipToRefresh(_ sender: UIRefreshControl, forEvent event: UIEvent) {
-        PostController.shared.requestFullSync { [weak self] in
+        PostController.shared.requestFullSync { [unowned self] in
             DispatchQueue.main.async {
-                self?.refreshControl?.endRefreshing()
-                self?.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
             }
         }
     }

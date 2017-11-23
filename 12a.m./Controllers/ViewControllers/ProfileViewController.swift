@@ -103,7 +103,7 @@ extension ProfileViewController {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = manager.location else { return }
-        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error)->Void in
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
             if (error != nil) {
                 print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
                 return
