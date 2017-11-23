@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate {
     
     fileprivate let presentSignUpSegue =  "presentSignUp"
@@ -28,9 +27,9 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(reloadData), name: PostController.PostChangeNotified, object: nil)
         
-        PostController.shared.requestFullSync {
+        PostController.shared.requestFullSync { [weak self] in
             DispatchQueue.main.async {
-                self.reloadData()
+                self?.reloadData()
             }
         }
     }
@@ -42,10 +41,9 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     
    private func setUpTimer() {
         Timer.every(1.second) {
-            DispatchQueue.main.async {
-                self.timeLabel.text = Date().timeTillString
-                self.timeLabel.textColor = UIColor.digitalGreen
-            
+            DispatchQueue.main.async { [weak self] in
+                self?.timeLabel.text = Date().timeTillString
+                self?.timeLabel.textColor = UIColor.digitalGreen
             }
         }
     }
@@ -64,10 +62,10 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     // MARK: - Actions
     
     @IBAction func swipToRefresh(_ sender: UIRefreshControl, forEvent event: UIEvent) {
-        PostController.shared.requestFullSync {
+        PostController.shared.requestFullSync { [weak self] in
             DispatchQueue.main.async {
-                self.refreshControl?.endRefreshing()
-                self.tableView.reloadData()
+                self?.refreshControl?.endRefreshing()
+                self?.tableView.reloadData()
             }
         }
     }

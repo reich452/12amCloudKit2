@@ -35,9 +35,9 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         super.viewWillAppear(animated)
         PostController.shared.delegate = self
         self.tableView.reloadData()
-        PostController.shared.requestFullSync {
+        PostController.shared.requestFullSync { [weak self] in
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -54,8 +54,8 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     
     // MARK: - Delegate
     func commentsWereAddedTo() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
         }
     }
     
