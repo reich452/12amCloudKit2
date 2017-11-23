@@ -68,14 +68,14 @@ class CloudKitManager {
     // MARK: - User Info Discovery
     
     func fetchLoggedInUserRecord(_ completion: ((_ record: CKRecord?, _ error: Error? ) -> Void)?) {
-        CKContainer.default().fetchUserRecordID { (recordID, error) in
+        CKContainer.default().fetchUserRecordID { [weak self] (recordID, error) in
             
             if let error = error, let completion = completion {
                 completion(nil, error)
             }
             
             if let recordID = recordID, let completion = completion {
-                self.fetchRecord(withID: recordID, completion: completion)
+                self?.fetchRecord(withID: recordID, completion: completion)
             }
         }
     }
@@ -91,13 +91,13 @@ class CloudKitManager {
     
     func fetchCurrentUserRecords(_ type: String, completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
         
-        fetchLoggedInUserRecord { (record, error) in
+        fetchLoggedInUserRecord { [weak self] (record, error) in
             
             if let record = record {
                 
                 let predicate = NSPredicate(format: "%K == %@", argumentArray: [CreatorUserRecordIDKey, record.recordID])
                 
-                self.fetchRecordsWithType(type, predicate: predicate, recordFetchedBlock: nil, completion: completion)
+                self?.fetchRecordsWithType(type, predicate: predicate, recordFetchedBlock: nil, completion: completion)
             }
         }
     } // Retrieve the logged in user's record, and then all of the records that belong to that specific user --> Get Finn's record and then get all of the records associated with him (gun record, helmet record, etc.)

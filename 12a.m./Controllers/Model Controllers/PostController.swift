@@ -185,10 +185,10 @@ class PostController {
     func performFullSync(completion: @escaping (() -> Void) = { }) {
         isSyncing = true
         
-        self.fetchNewRecors(ofType: User.recordTypeKey) {
-            self.fetchNewRecors(ofType: Post.recordTypeKey) {
-                self.fetchNewRecors(ofType: Comment.recordTypeKey) {
-                    self.isSyncing = false
+        self.fetchNewRecors(ofType: User.recordTypeKey) { [weak self] in
+            self?.fetchNewRecors(ofType: Post.recordTypeKey) {
+                self?.fetchNewRecors(ofType: Comment.recordTypeKey) {
+                    self?.isSyncing = false
                     completion()
                 }
             }
