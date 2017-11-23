@@ -34,7 +34,7 @@ class UserController {
     
     func fetchCurrentUser(completion: @escaping ((User?) -> Void) = {_ in }) {
         
-        CKContainer.default().fetchUserRecordID { (recordID, error) in
+        CKContainer.default().fetchUserRecordID { [weak self] (recordID, error) in
             if let error = error { print("Error fetching userID: \(#function) \(error.localizedDescription) & \(error)")
                 completion(nil)
                 return
@@ -44,7 +44,7 @@ class UserController {
             let predicate = NSPredicate(format: "appleUserRef == %@", appleUserRef)
             let query = CKQuery(recordType: "User", predicate: predicate)
             
-            self.cloudKitManager.publicDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
+            self?.cloudKitManager.publicDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
                 if let error = error {
                     print("eerror fethcing user record \(error) & \(error.localizedDescription) \(#function)")
                     completion(nil); return
@@ -54,7 +54,7 @@ class UserController {
                 let user = users.first
                 print("Fetched loged in user \(user?.username ?? "" )")
                 // Don't forget to set current user 
-                self.currentUser = user
+                self?.currentUser = user
                 completion(user)
             })
         }
@@ -80,19 +80,19 @@ class UserController {
     }
     
     func createUser(with username: String, email: String, profileImage: UIImage, completion: @escaping (_ success: Bool) -> Void) {
-        CKContainer.default().fetchUserRecordID { (appleUsersRecordId, error) in
+        CKContainer.default().fetchUserRecordID { [weak self] (appleUsersRecordId, error) in
             if let error = error {
                 print("Error fetchingUserRcordID \(#function) \(error) & \(error.localizedDescription))")
                 completion(false); return
             }
             guard let recordID = appleUsersRecordId, let data = UIImageJPEGRepresentation(profileImage, 0.8),
-                let blockUserRefs = self.currentUser?.blockUserRefs else { print("Error creating recordID")
+                let blockUserRefs = self?.currentUser?.blockUserRefs else { print("Error creating recordID")
                 completion(false); return
             }
             let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
             let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data, blockUserRefs: blockUserRefs)
             let userRecord = CKRecord(user: user)
-            self.cloudKitManager.saveRecord(userRecord, completion: { (record, error) in
+            self?.cloudKitManager.saveRecord(userRecord, completion: { (record, error) in
                 if let error = error {
                     print("Error saing user record \(#file) \(#function) \(error) \(error.localizedDescription)")
                     completion(false); return
@@ -101,7 +101,7 @@ class UserController {
                     let currentUser = User(cloudKitRecord: record) else {
                         completion(false); return
                 }
-                self.currentUser = currentUser
+                self?.currentUser = currentUser
                 completion(true)
                 // TODO - clean this up 
                 if error == nil {

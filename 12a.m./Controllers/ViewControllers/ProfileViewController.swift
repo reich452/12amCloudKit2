@@ -75,6 +75,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         self.profileImageView.image = userPhoto
         self.usernameTextField.text = "  \(user.username)"
         self.emailTextField.text = "  \(user.email)"
+        self.currentCityLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .light)
         self.currentCityLabel.text = "\(TimeZone.current)"
         
     }
@@ -86,7 +87,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         self.profileImageView.clipsToBounds = true
         self.usernameTextField.textColor = UIColor.white
         self.emailTextField.textColor = UIColor.white
-        self.currentCityLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .light)
     }
     
     private func updateDiscription() {
