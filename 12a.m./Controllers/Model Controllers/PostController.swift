@@ -84,7 +84,7 @@ class PostController {
         posts.append(post)
         let record = CKRecord(post)
         
-        cloudKitManager.saveRecord(record) { (record, error) in
+        cloudKitManager.saveRecord(record) { [weak self] (record, error) in
             guard let _ = record else {
                 if let error = error {
                     print("Error saving new post to cloudKit: \(#function) \(error) & \(error.localizedDescription)")
@@ -94,7 +94,7 @@ class PostController {
                 completion(post)
                 return
             }
-            self.posts = [post]
+            self?.posts = [post]
         }
     }
     
@@ -131,7 +131,7 @@ class PostController {
         
         
         guard let predicate2 = predicate else { return }
-        cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { (records, error) in
+        cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { [weak self] (records, error) in
             
             if let error = error {
                 print("Error fetcing predicte2 \(#function) \(error) \(error.localizedDescription)")
@@ -144,9 +144,9 @@ class PostController {
                 completion()
             case Post.recordTypeKey:
                 let posts = records.flatMap { Post(ckRecord: $0) }
-                self.posts = posts
+                self?.posts = posts
                 // Helps make the user have a stronger relationship with post
-                for post in self.posts {
+                for post in (self?.posts)! {
                     let users = UserController.shared.users
                     guard let postOwner = users.filter({$0.cloudKitRecordID == post.ownerReference.recordID}).first else { break }
                     
@@ -158,16 +158,16 @@ class PostController {
                 let comments = records.flatMap { Comment(ckRecord: $0) }
                 for comment in comments {
                     let postRef = comment.postReference
-                    guard let postIndex = self.posts.index(where: {$0.ckRecordID == postRef.recordID } ) else { completion(); return }
-                    let post = self.posts[postIndex]
-                    post.comments.append(comment)
+                    guard let postIndex = self?.posts.index(where: {$0.ckRecordID == postRef.recordID } ) else { completion(); return }
+                    let post = self?.posts[postIndex]
+                    post?.comments.append(comment)
                     comment.post = post
                     guard let ownerIndex = UserController.shared.users.index(where: { $0.cloudKitRecordID == comment.ownerReference.recordID  })
                         else { break }
                     let user = UserController.shared.users[ownerIndex]
                     comment.owner = user
                 }
-                self.comments = comments
+                self?.comments = comments
                 completion()
             default:
                 print("Cannot fetch records")
