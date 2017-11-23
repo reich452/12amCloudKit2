@@ -43,9 +43,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App needs Location</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>POCKC___.TTF</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App needs Location</string>
 </dict>
 </plist>

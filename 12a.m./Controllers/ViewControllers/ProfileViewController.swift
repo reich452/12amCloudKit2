@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ProfileViewController: UIViewController, UITextFieldDelegate {
+class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
     // MARK: - IBOutlets 
     @IBOutlet weak var profileImageView: UIImageView!
@@ -30,11 +31,17 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     }
     private var imagePickerWasDismissed = false
     private let imagePicker = UIImagePickerController()
-    
+    private let locationManager = CLLocationManager()
+    private let locator = Locator.self
     // MARK: - Life Cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+
         updateViews()
         setUpAppearance()
         updateDiscription()
@@ -61,15 +68,17 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Update
-   private func updateViews() {
+    private func updateViews() {
         guard let user = self.currentUser,
             let userPhoto = self.currentUser?.photo else { return }
         self.usernameLabel.text = user.username
         self.profileImageView.image = userPhoto
         self.usernameTextField.text = "  \(user.username)"
         self.emailTextField.text = "  \(user.email)"
+        self.currentCityLabel.text = "\(TimeZone.current)"
+        
     }
-   private func setUpAppearance() {
+    private func setUpAppearance() {
         self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.height / 2
         self.profileImageView.contentMode = .scaleAspectFill
         self.profileImageView.layer.borderColor = UIColor.white.cgColor
@@ -77,14 +86,62 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         self.profileImageView.clipsToBounds = true
         self.usernameTextField.textColor = UIColor.white
         self.emailTextField.textColor = UIColor.white
-    
+        self.currentCityLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .light)
     }
     
-   private func updateDiscription() {
-    let posts = PostController.shared.posts.map {$0.ownerReference}
+    private func updateDiscription() {
+        let posts = PostController.shared.posts.map {$0.ownerReference}
         if posts.count != 0 {
             discriptionLabel.text = "Posted \(posts.count) times at 12am - 1am"
         }
+    }
+}
+
+extension ProfileViewController {
+    
+    // MARK: - Location
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = manager.location else { return }
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error)->Void in
+            if (error != nil) {
+                print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
+                return
+            }
+            if (placemarks?.count)! > 0 {
+                
+                print("placemarks",placemarks ?? 0)
+                let pm = placemarks?[0]
+                self.displayLocationInfo(pm)
+            } else {
+                print("Problem with the data received from geocoder")
+            }
+        })
+    }
+    
+    func displayLocationInfo(_ placemark: CLPlacemark?) {
+        if let containsPlacemark = placemark {
+            
+            print("your location is:-",containsPlacemark)
+            //stop updating location to save battery life
+            locationManager.stopUpdatingLocation()
+            let locality = (containsPlacemark.locality != nil) ? containsPlacemark.locality : ""
+            let country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
+            let state = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
+            
+            let unitedStates = "United States"
+            if (country?.contains(unitedStates))! {
+                self.currentCountryLabel.text = "U.S.A"
+            } else {
+                self.currentCountryLabel.text = country
+            }
+            self.currentCityLabel.text = locality
+            self.currentStateLabel.text = state
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error while updating location " + error.localizedDescription)
     }
 }
 
