@@ -22,7 +22,7 @@ class AboutViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func setUpTermsAndConditions() {
+  private func setUpTermsAndConditions() {
         if let htmlFile = Bundle.main.path(forResource: "Terms", ofType: "html") {
             if let htmlData = NSData(contentsOfFile: htmlFile) {
                 let baseURL = URL(fileURLWithPath: Bundle.main.bundlePath)
