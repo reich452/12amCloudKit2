@@ -805,6 +805,7 @@
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="sRM-IX-qpE" id="dgl-az-tky"/>
+                        <outlet property="webView" destination="yQz-hF-inC" id="MUg-Uw-Qdx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ca-uL-2CC" userLabel="First Responder" sceneMemberID="firstResponder"/>
