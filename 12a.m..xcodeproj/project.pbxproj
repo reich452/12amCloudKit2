@@ -34,7 +34,6 @@
 		0156CE241FA2B52C002791C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE231FA2B52C002791C1 /* Main.storyboard */; };
 		0181AA571FCC814500166E21 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0181AA561FCC814500166E21 /* AboutViewController.swift */; };
 		0181AA591FCC8A9400166E21 /* Terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 0181AA581FCC8A9400166E21 /* Terms.html */; };
-		0181AA5F1FCC9D1200166E21 /* privacy_policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 0181AA5E1FCC9D1100166E21 /* privacy_policy.html */; };
 		018D7A6F1FA2B63200A6C81F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018D7A6E1FA2B63200A6C81F /* CloudKit.framework */; };
 		01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */; };
 		01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */; };
@@ -75,7 +74,6 @@
 		0156CE231FA2B52C002791C1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0181AA561FCC814500166E21 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		0181AA581FCC8A9400166E21 /* Terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Terms.html; sourceTree = "<group>"; };
-		0181AA5E1FCC9D1100166E21 /* privacy_policy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy_policy.html; sourceTree = "<group>"; };
 		018D7A6C1FA2B63000A6C81F /* 12a.m..entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 12a.m..entitlements; sourceTree = "<group>"; };
 		018D7A6E1FA2B63200A6C81F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextField.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 				0156CE231FA2B52C002791C1 /* Main.storyboard */,
 				0156CE191FA2B268002791C1 /* LaunchScreen.storyboard */,
 				0181AA581FCC8A9400166E21 /* Terms.html */,
-				0181AA5E1FCC9D1100166E21 /* privacy_policy.html */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -392,7 +389,6 @@
 				0156CE1B1FA2B268002791C1 /* LaunchScreen.storyboard in Resources */,
 				0156CE181FA2B268002791C1 /* Assets.xcassets in Resources */,
 				0181AA591FCC8A9400166E21 /* Terms.html in Resources */,
-				0181AA5F1FCC9D1200166E21 /* privacy_policy.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
