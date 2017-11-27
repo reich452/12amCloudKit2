@@ -57,6 +57,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         addedProfileImage()
     }
     
+    @IBAction func infoButtonTapped(_ sender: UIButton) {
+    }
+    
     // MARK: - Delegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

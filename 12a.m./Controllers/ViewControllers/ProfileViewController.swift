@@ -46,6 +46,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         setUpAppearance()
         updateDiscription()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.locationManager.stopUpdatingLocation()
+    }
     
     // MARK: - Delegates
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -75,7 +79,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         self.profileImageView.image = userPhoto
         self.usernameTextField.text = "  \(user.username)"
         self.emailTextField.text = "  \(user.email)"
-        self.currentCityLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .light)
+        self.currentCityLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .thin)
         self.currentCityLabel.text = "\(TimeZone.current)"
         
     }

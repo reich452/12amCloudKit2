@@ -32,6 +32,7 @@
 		0156CE181FA2B268002791C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE171FA2B268002791C1 /* Assets.xcassets */; };
 		0156CE1B1FA2B268002791C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE191FA2B268002791C1 /* LaunchScreen.storyboard */; };
 		0156CE241FA2B52C002791C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE231FA2B52C002791C1 /* Main.storyboard */; };
+		0181AA571FCC814500166E21 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0181AA561FCC814500166E21 /* AboutViewController.swift */; };
 		018D7A6F1FA2B63200A6C81F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018D7A6E1FA2B63200A6C81F /* CloudKit.framework */; };
 		01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */; };
 		01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */; };
@@ -70,6 +71,7 @@
 		0156CE1A1FA2B268002791C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0156CE1C1FA2B268002791C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0156CE231FA2B52C002791C1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0181AA561FCC814500166E21 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		018D7A6C1FA2B63000A6C81F /* 12a.m..entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 12a.m..entitlements; sourceTree = "<group>"; };
 		018D7A6E1FA2B63200A6C81F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextField.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				01367BD91FB1142E00F51F89 /* CommentTableViewController.swift */,
 				01367BDD1FB1180E00F51F89 /* CameraViewController.swift */,
 				01367BDF1FB1181A00F51F89 /* CameraPreviewViewController.swift */,
+				0181AA561FCC814500166E21 /* AboutViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				01367BDE1FB1180E00F51F89 /* CameraViewController.swift in Sources */,
 				01367BDC1FB114A000F51F89 /* CommentTableViewCell.swift in Sources */,
 				0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */,
+				0181AA571FCC814500166E21 /* AboutViewController.swift in Sources */,
 				01FE0D131FA2BB4C001C55EE /* Comment.swift in Sources */,
 				01BFDED11FC5F81A00D94B87 /* PublicMethods.swift in Sources */,
 			);
