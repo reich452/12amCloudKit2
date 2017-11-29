@@ -12,9 +12,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="ArialHB.ttc">
-            <string>ArialHebrew-Light</string>
-        </array>
         <array key="Helvetica.ttc">
             <string>Helvetica-Bold</string>
         </array>
@@ -200,28 +197,25 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ma7-g3-LiR">
-                                    <rect key="frame" x="21" y="19" width="333" height="40"/>
+                                    <rect key="frame" x="58" y="19" width="333" height="40"/>
                                     <fontDescription key="fontDescription" name="PocketCalculator" family="Pocket Calculator" pointSize="40"/>
                                     <color key="textColor" red="0.39211481809616089" green="0.84444326162338257" blue="0.74901276826858521" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AX-Qh-Kgd">
-                                    <rect key="frame" x="29" y="0.0" width="111" height="46"/>
-                                    <fontDescription key="fontDescription" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="18"/>
-                                    <color key="textColor" red="0.33856379985809326" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="openInSign" translatesAutoresizingMaskIntoConstraints="NO" id="AZI-UX-HkA">
+                                    <rect key="frame" x="23" y="8" width="91" height="51"/>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="6AX-Qh-Kgd" firstAttribute="height" secondItem="5J8-bF-eyD" secondAttribute="height" constant="-32" id="9Q8-eP-j4y"/>
-                                <constraint firstItem="6AX-Qh-Kgd" firstAttribute="top" secondItem="5J8-bF-eyD" secondAttribute="top" id="Eo3-hf-lY6"/>
-                                <constraint firstItem="6AX-Qh-Kgd" firstAttribute="width" secondItem="5J8-bF-eyD" secondAttribute="width" constant="-264" id="Lhp-gg-Cfx"/>
+                                <constraint firstItem="AZI-UX-HkA" firstAttribute="top" secondItem="5J8-bF-eyD" secondAttribute="top" constant="8" id="PTU-9f-sNC"/>
                                 <constraint firstItem="Ma7-g3-LiR" firstAttribute="top" secondItem="5J8-bF-eyD" secondAttribute="top" constant="19" id="PuE-A9-R4s"/>
-                                <constraint firstItem="Ma7-g3-LiR" firstAttribute="centerX" secondItem="5J8-bF-eyD" secondAttribute="centerX" id="bFG-GV-TwD"/>
-                                <constraint firstItem="6AX-Qh-Kgd" firstAttribute="leading" secondItem="5J8-bF-eyD" secondAttribute="leading" constant="29" id="dfE-UQ-IoB"/>
+                                <constraint firstItem="Ma7-g3-LiR" firstAttribute="centerX" secondItem="5J8-bF-eyD" secondAttribute="centerX" constant="37" id="bFG-GV-TwD"/>
                                 <constraint firstItem="Ma7-g3-LiR" firstAttribute="centerY" secondItem="5J8-bF-eyD" secondAttribute="centerY" id="eLY-76-RQC"/>
+                                <constraint firstItem="AZI-UX-HkA" firstAttribute="width" secondItem="5J8-bF-eyD" secondAttribute="width" constant="-284" id="n7L-gm-UiO"/>
                                 <constraint firstItem="Ma7-g3-LiR" firstAttribute="width" secondItem="5J8-bF-eyD" secondAttribute="width" multiplier="8/9" id="o6g-a7-gDv"/>
+                                <constraint firstItem="AZI-UX-HkA" firstAttribute="bottom" secondItem="Ma7-g3-LiR" secondAttribute="bottom" id="ppW-9H-eUA"/>
+                                <constraint firstItem="AZI-UX-HkA" firstAttribute="leading" secondItem="5J8-bF-eyD" secondAttribute="leading" constant="23" id="sRh-uE-miG"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -369,7 +363,7 @@
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="openLabel" destination="6AX-Qh-Kgd" id="iOo-sR-zEq"/>
+                        <outlet property="openImageView" destination="AZI-UX-HkA" id="Qzq-ab-guD"/>
                         <outlet property="timeLabel" destination="Ma7-g3-LiR" id="BFO-IJ-I5O"/>
                         <segue destination="y0p-tH-2M1" kind="show" identifier="feedToPostDetail" id="m7A-EI-lMK"/>
                     </connections>
@@ -1127,6 +1121,7 @@
         <image name="iconplussButton" width="84" height="84"/>
         <image name="infoIcon" width="190" height="190"/>
         <image name="loginScreen" width="1126" height="2436"/>
+        <image name="openInSign" width="115" height="67"/>
         <image name="userIconColor" width="200" height="200"/>
         <image name="userIconWhite" width="200" height="200"/>
     </resources>

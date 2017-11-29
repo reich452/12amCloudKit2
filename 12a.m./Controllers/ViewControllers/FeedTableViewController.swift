@@ -16,6 +16,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     @IBOutlet weak var openLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var amLabel: UILabel!
+    @IBOutlet weak var openImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -183,6 +184,12 @@ extension FeedTableViewController {
         blurView.frame = imageView.bounds
         imageView.addSubview(blurView)
         imageView.clipsToBounds = true
+        
+        if Date().isInMidnightHour {
+            self.openImageView.image = #imageLiteral(resourceName: "openSign")
+        } else  {
+            self.openImageView.image = #imageLiteral(resourceName: "openInSign")
+        }
     }
     
     // TODO: - 
