@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import WebKit
 
 class AboutViewController: UIViewController {
     
     @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var wkWebView: WKWebView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +26,12 @@ class AboutViewController: UIViewController {
     
   private func setUpTermsAndConditions() {
         if let htmlFile = Bundle.main.path(forResource: "Terms", ofType: "html") {
-            if let htmlData = NSData(contentsOfFile: htmlFile) {
-                let baseURL = URL(fileURLWithPath: Bundle.main.bundlePath)
-                webView.load(htmlData as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
-            }
+                autoreleasepool(invoking: { [weak self] () -> Void in
+                    if let htmlData = NSData(contentsOfFile: htmlFile) {
+                    let baseURL = URL(fileURLWithPath: Bundle.main.bundlePath)
+                        self?.wkWebView.load(htmlData as Data, mimeType: "text/html", characterEncodingName: "UTF-8", baseURL: baseURL)
+                }
+            })
         }
     }
 }

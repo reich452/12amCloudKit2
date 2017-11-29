@@ -175,7 +175,7 @@ class PostController {
             }
         }
     }
-    
+        
     func fetchAllPosts(completion: @escaping (() -> Void)) {
         self.fetchNewRecors(ofType: Post.recordTypeKey) {
             completion()

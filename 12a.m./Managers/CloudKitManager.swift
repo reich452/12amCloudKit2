@@ -22,8 +22,58 @@ class CloudKitManager {
         case userType = "User"
     }
     
-    
     // MARK: - Fetch Records
+    
+    
+    // MARK: - User Info Discovery
+    
+    func fetchLoggedInUserRecord(_ completion: ((_ record: CKRecord?, _ error: Error? ) -> Void)?) {
+        CKContainer.default().fetchUserRecordID { [weak self] (recordID, error) in
+            
+            if let error = error, let completion = completion {
+                completion(nil, error)
+            }
+            
+            if let recordID = recordID, let completion = completion {
+                self?.fetchRecord(withID: recordID, completion: completion)
+            }
+        }
+    }
+    
+    func fetchAllRecordsWithType(_ type: String,
+                                 predicate: NSPredicate = NSPredicate(value: true),
+                                 completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
+        var fetchedRecords: [CKRecord] = []
+        
+        let query = CKQuery(recordType: type, predicate: predicate)
+        let queryOperation = CKQueryOperation(query: query)
+        
+        let perRecordBlock = { (fetchedRecord: CKRecord) -> Void in
+            fetchedRecords.append(fetchedRecord) // passes the records
+        }
+        queryOperation.recordFetchedBlock = perRecordBlock
+        
+        var queryCompletionBlock: (CKQueryCursor?, Error?) -> Void = { (_, _) in }
+        
+        queryCompletionBlock = { [weak self] (queryCursor: CKQueryCursor?, error: Error?) -> Void in
+            
+            if let queryCursor = queryCursor {
+                // there are more results, go fetch them
+                
+                let continuedQueryOperation = CKQueryOperation(cursor: queryCursor)
+                continuedQueryOperation.recordFetchedBlock = perRecordBlock
+                continuedQueryOperation.queryCompletionBlock = queryCompletionBlock
+                
+                self?.publicDatabase.add(continuedQueryOperation)
+                
+            } else {
+                completion?(fetchedRecords, error)
+            }
+        }
+        queryOperation.queryCompletionBlock = queryCompletionBlock
+        
+        self.publicDatabase.add(queryOperation)
+    }
     
     // Give us everyting
     // To fetch information from cloudKit we run a Quiery. Can be: Give me all of the objects with this type or it can be very specific using predicates. Quiery Operations - lets us handel multiple objects.
@@ -66,19 +116,6 @@ class CloudKitManager {
     } // Bring back all the records for the specified type
     
     // MARK: - User Info Discovery
-    
-    func fetchLoggedInUserRecord(_ completion: ((_ record: CKRecord?, _ error: Error? ) -> Void)?) {
-        CKContainer.default().fetchUserRecordID { [weak self] (recordID, error) in
-            
-            if let error = error, let completion = completion {
-                completion(nil, error)
-            }
-            
-            if let recordID = recordID, let completion = completion {
-                self?.fetchRecord(withID: recordID, completion: completion)
-            }
-        }
-    }
     
     func fetchRecord(withID recordID: CKRecordID, completion: ((_ record: CKRecord?, _ error: Error?) -> Void)?) {
         

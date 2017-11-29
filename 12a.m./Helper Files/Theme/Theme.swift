@@ -41,4 +41,8 @@ extension UIColor {
         return UIColor(red: 0.0/255.0, green: 219.0/255.0, blue: 149.0/255.0, alpha: 1.0)
     }
     
+    static var digitalBlue: UIColor {
+        return UIColor(red: 101.0/255.0, green: 210.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+    }
+    
 }

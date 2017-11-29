@@ -43,7 +43,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         Timer.every(1.second) {
             DispatchQueue.main.async { [weak self] in
                 self?.timeLabel.text = Date().timeTillString
-                self?.timeLabel.textColor = UIColor.digitalGreen
+                self?.timeLabel.textColor = UIColor.digitalBlue
             }
         }
     }
@@ -174,7 +174,7 @@ extension FeedTableViewController {
     
     func setUpAppearance() {
         
-        let backgorundImage =  #imageLiteral(resourceName: "darkGold")
+        let backgorundImage =  #imageLiteral(resourceName: "12AMClock")
         let imageView = UIImageView(image: backgorundImage)
         imageView.contentMode = .scaleAspectFill
         self.tableView.backgroundView = imageView
