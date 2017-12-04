@@ -126,7 +126,9 @@ class PostController {
         if type == "User" {
             predicate = NSPredicate(value: true)
         } else if type == "Post" {
-            predicate = NSPredicate(value: true)
+            guard let user = UserController.shared.currentUser,
+                let blockUserRefs = user.blockUserRefs, type != "User" else { return }
+            predicate = NSPredicate(format: "NOT(ownerRef IN %@)", blockUserRefs)
         } else if type == "Comment" {
             predicate = NSPredicate(value: true)
         }

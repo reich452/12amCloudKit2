@@ -8,7 +8,7 @@
 
 import UIKit
 import CloudKit
-class CommentTableViewController: UITableViewController, UITextFieldDelegate, CommentUpdatedToDelegate {
+class CommentTableViewController: UITableViewController, UITextFieldDelegate, CommentUpdatedToDelegate, CommentTableViewCellDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentTextField: UITextField!
@@ -45,6 +45,8 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         }
     }
     
+    // MARK: - Main
+    
     func updateViews() {
         guard let post = post,
             let date = post.timestamp.formatter,
@@ -63,11 +65,35 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     }
     
     // MARK: - Delegate
-    func commentsWereAddedTo() {
+    
+    internal func didPressBlockButton(_ sender: CommentTableViewCell) {
+   
+        blockUserActionSheet()
+    }
+    
+    internal func commentsWereAddedTo() {
         let comments = self.post?.comments.count ?? 0
         DispatchQueue.main.async {
             self.tableView.insertRows(at: [IndexPath.init(row: comments - 1, section: 0)], with: .automatic)
             self.tableView.reloadData()
+        }
+    }
+    
+    private func blockUserActionSheet() {
+        let blockUserAlertController = UIAlertController(title: "Block User", message: "Would you like to block this user? \nYou will no longer be able to \nsee their posts or comments", preferredStyle: .actionSheet)
+        let blockUserAction = UIAlertAction(title: "Block", style: .default) { (_) in
+            self.blockUser()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        blockUserAlertController.addAction(blockUserAction)
+        blockUserAlertController.addAction(cancelAction)
+        UIApplication.shared.keyWindow?.rootViewController?.present(blockUserAlertController, animated: true, completion: nil)
+    }
+    
+    private func blockUser() {
+        guard let ownerReference = self.post?.ownerReference else { return }
+        UserController.shared.blockUser(userToBlock: ownerReference) {
+            print("Sucessfully blocked user from the Cell")
         }
     }
     
@@ -107,6 +133,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         
         guard let comment = self.post?.comments.sorted(by: {$0.timestamp > $1.timestamp })[indexPath.row] else { return UITableViewCell() }
         cell.comment = comment
+        cell.delegate = self
         
         return cell
     }

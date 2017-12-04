@@ -89,7 +89,7 @@ class UserController {
                 let data = UIImageJPEGRepresentation(profileImage, 0.8) else { print("Error creating recordID")
                 completion(false); return
             }
-            let blockUserRefs = self?.currentUser?.blockUserRefs
+            guard let blockUserRefs = self?.currentUser?.blockUserRefs else { return }
             let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
             let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data, blockUserRefs: blockUserRefs)
             let userRecord = CKRecord(user: user)
