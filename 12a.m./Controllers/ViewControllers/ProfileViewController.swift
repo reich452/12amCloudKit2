@@ -94,6 +94,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     }
     
     private func updateDiscription() {
+
         let posts = PostController.shared.posts.map {$0.ownerReference}
         if posts.count != 0 {
             discriptionLabel.text = "Posted \(posts.count) times at 12am - 1am"

@@ -28,7 +28,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(reloadData), name: PostController.PostChangeNotified, object: nil)
         
-        PostController.shared.requestFullSync { [unowned self] in
+        PostController.shared.requestFullSync { 
             DispatchQueue.main.async {
                 self.reloadData()
             }

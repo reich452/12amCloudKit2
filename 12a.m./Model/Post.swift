@@ -22,7 +22,7 @@ class Post {
     let timestamp: Date
     let text: String
     var comments: [Comment]
-    weak var owner: User?
+    var owner: User?
     var ownerReference: CKReference
     var ckRecordID: CKRecordID?
     

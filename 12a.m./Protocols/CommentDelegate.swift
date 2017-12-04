@@ -11,3 +11,4 @@ import Foundation
 protocol CommentUpdatedToDelegate: class {
     func commentsWereAddedTo()
 }
+

@@ -29,7 +29,7 @@ class PostController {
         }
     }
     var comments = [Comment]()
- 
+    
     var isSyncing: Bool = false
     
     // MARK: - Delegates
@@ -101,7 +101,11 @@ class PostController {
     func addComment(to post: Post, commentText: String, completion: @escaping () -> Void)  {
         guard let cloudKitRef = post.cloudKitReference else { return }
         
-        let comment = Comment(text: commentText, post: post, postReference: cloudKitRef, ownerReference: post.ownerReference)
+        guard let currentUser = UserController.shared.currentUser,
+        let userRecordID = currentUser.cloudKitRecordID else { return }
+        let ckReference = CKReference(recordID: userRecordID, action: .none)
+        
+        let comment = Comment(text: commentText, post: post, postReference: cloudKitRef, ownerReference: ckReference)
         post.comments.append(comment)
         
         cloudKitManager.saveRecord(CKRecord(comment)) { (record, error) in
@@ -131,7 +135,7 @@ class PostController {
         
         
         guard let predicate2 = predicate else { return }
-        cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { [unowned self] (records, error) in
+        cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { (records, error) in
             
             if let error = error {
                 print("Error fetcing predicte2 \(#function) \(error) \(error.localizedDescription)")
@@ -175,7 +179,7 @@ class PostController {
             }
         }
     }
-        
+
     func fetchAllPosts(completion: @escaping (() -> Void)) {
         self.fetchNewRecors(ofType: Post.recordTypeKey) {
             completion()
@@ -185,7 +189,7 @@ class PostController {
     func performFullSync(completion: @escaping (() -> Void) = { }) {
         isSyncing = true
         
-        self.fetchNewRecors(ofType: User.recordTypeKey) { [unowned self] in
+        self.fetchNewRecors(ofType: User.recordTypeKey) { 
             self.fetchNewRecors(ofType: Post.recordTypeKey) {
                 self.fetchNewRecors(ofType: Comment.recordTypeKey) {
                     self.isSyncing = false

@@ -20,9 +20,9 @@ class Comment {
     
     var text: String
     var timestamp: String
-    weak var post: Post?
+    var post: Post?
     var postReference: CKReference
-    weak var owner: User?
+    var owner: User?
     var ownerReference: CKReference
     var ckRecordID: CKRecordID?
     
@@ -63,9 +63,3 @@ extension CKRecord {
         self.setValue(comment.ownerReference, forKey: comment.ownerReferenceKey)
     }
 }
-
-
-
-
-
-

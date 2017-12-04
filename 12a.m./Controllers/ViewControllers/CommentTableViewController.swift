@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CloudKit
 class CommentTableViewController: UITableViewController, UITextFieldDelegate, CommentUpdatedToDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
@@ -16,9 +16,12 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     // MARK: - Properties
     var post: Post?
+    
     weak var prefetchDataSourece: UITableViewDataSourcePrefetching?
     
     override func viewDidLoad() {
@@ -26,8 +29,8 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         hideKeyboard()
         commentTextField.delegate = self
         updateViews()
-        
-        self.tableView.estimatedRowHeight = 200
+        setUI()
+        self.tableView.estimatedRowHeight = 220
         
     }
     
@@ -35,9 +38,9 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         super.viewWillAppear(animated)
         PostController.shared.delegate = self
         self.tableView.reloadData()
-        PostController.shared.requestFullSync { [weak self] in
+        PostController.shared.requestFullSync {
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }
@@ -45,8 +48,15 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     func updateViews() {
         guard let post = post,
             let date = post.timestamp.formatter,
-            let photo = post.photo else { return }
+            let photo = post.photo, let username = post.owner?.username else { return }
         
+        let profileImage = post.owner?.photo
+        if profileImage == nil {
+            self.profileImageView.image = #imageLiteral(resourceName: "avatar")
+        } else {
+            self.profileImageView.image = post.owner?.photo
+        }
+        self.usernameLabel.text = username
         self.imageView.image = photo
         self.commentLabel.text = "\(post.text)"
         self.dateLabel.text = date.string(from: post.timestamp)
@@ -54,8 +64,10 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     
     // MARK: - Delegate
     func commentsWereAddedTo() {
-        DispatchQueue.main.async { [weak self] in
-            self?.tableView.reloadData()
+        let comments = self.post?.comments.count ?? 0
+        DispatchQueue.main.async {
+            self.tableView.insertRows(at: [IndexPath.init(row: comments - 1, section: 0)], with: .automatic)
+            self.tableView.reloadData()
         }
     }
     
@@ -68,7 +80,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         
         PostController.shared.addComment(to: post, commentText: commentText) {
             DispatchQueue.main.async {
-                print("\(post.owner?.username ?? "") added \(commentText) to detail VC")
+                print("\(UserController.shared.currentUser?.username ??? "") added \(commentText) to detail VC")
             }
         }
         commentTextField.text = ""
@@ -92,11 +104,21 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
-       
+        
         guard let comment = self.post?.comments.sorted(by: {$0.timestamp > $1.timestamp })[indexPath.row] else { return UITableViewCell() }
         cell.comment = comment
         
         return cell
+    }
+    
+}
+
+
+extension CommentTableViewController {
+    
+    func setUI() {
+        self.profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
+        self.profileImageView.clipsToBounds = true 
     }
 }
 
@@ -113,3 +135,5 @@ extension CommentTableViewController {
         view.endEditing(true)
     }
 }
+
+
