@@ -25,6 +25,7 @@ class PostController {
             DispatchQueue.main.async {
                 let nc = NotificationCenter.default
                 nc.post(name: PostController.PostChangeNotified, object: self)
+//                nc.post(name: PostController.PostCommentsChangedNotification, object: self)
             }
         }
     }
@@ -84,7 +85,7 @@ class PostController {
         posts.append(post)
         let record = CKRecord(post)
         
-        cloudKitManager.saveRecord(record) { [weak self] (record, error) in
+        cloudKitManager.saveRecord(record) { (record, error) in
             guard let _ = record else {
                 if let error = error {
                     print("Error saving new post to cloudKit: \(#function) \(error) & \(error.localizedDescription)")
@@ -94,7 +95,7 @@ class PostController {
                 completion(post)
                 return
             }
-            self?.posts = [post]
+            self.posts = [post]
         }
     }
     
@@ -113,8 +114,10 @@ class PostController {
                 print("Error saving new comment in cloudKit: \(#function) \(error) & \(error.localizedDescription)")
                 completion(); return
             }
-            self.delegate?.commentsWereAddedTo()
-            completion()
+            DispatchQueue.main.async {
+                self.delegate?.commentsWereAddedTo()
+                completion()
+            }
         }
     }
     

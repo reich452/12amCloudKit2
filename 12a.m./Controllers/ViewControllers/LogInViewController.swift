@@ -90,14 +90,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             })
-        } else if isTaken {
-            checkUsernameAvailablility()
         } else {
             UserController.shared.updateCurrentUser(username: userName, email: email, completion: { (success) in
                 if !success {
                     print("Not successfull updating existing user")
                 } else {
-                    print("Made a new user!")
+                    print("Updated user!")
                 }
             })
         }
@@ -124,6 +122,7 @@ extension LogInViewController: UIImagePickerControllerDelegate, UINavigationCont
             imagePicker.cameraCaptureMode = .photo
             imagePicker.modalPresentationStyle = .popover
             imagePicker.delegate = self
+   
             self.present(imagePicker, animated:  true, completion: nil)
             
         } else {

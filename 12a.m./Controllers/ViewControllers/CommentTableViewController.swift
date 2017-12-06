@@ -26,8 +26,8 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboard()
         commentTextField.delegate = self
+        hideKeyboard()
         updateViews()
         setUI()
         self.tableView.estimatedRowHeight = 220
@@ -37,7 +37,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         PostController.shared.delegate = self
-        self.tableView.reloadData()
+       
         PostController.shared.requestFullSync {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -47,7 +47,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     
     // MARK: - Main
     
-    func updateViews() {
+    private func updateViews() {
         guard let post = post,
             let date = post.timestamp.formatter,
             let photo = post.photo, let username = post.owner?.username else { return }
@@ -67,16 +67,16 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     // MARK: - Delegate
     
     internal func didPressBlockButton(_ sender: CommentTableViewCell) {
-   
+        
         blockUserActionSheet()
     }
     
     internal func commentsWereAddedTo() {
-        let comments = self.post?.comments.count ?? 0
-        DispatchQueue.main.async {
-            self.tableView.insertRows(at: [IndexPath.init(row: comments - 1, section: 0)], with: .automatic)
-            self.tableView.reloadData()
-        }
+        //        let commentsCount = self.post?.comments.count ?? 0
+        //        DispatchQueue.main.async {
+        //            self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
+        //            print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
+        //        }
     }
     
     private func blockUserActionSheet() {
@@ -105,7 +105,11 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
             let commentText = commentTextField.text, commentText != "" else { return }
         
         PostController.shared.addComment(to: post, commentText: commentText) {
+            
+            let commentsCount = self.post?.comments.count ?? 0
             DispatchQueue.main.async {
+                self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
+                print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
                 print("\(UserController.shared.currentUser?.username ??? "") added \(commentText) to detail VC")
             }
         }
@@ -123,18 +127,19 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let comments = post?.comments.sorted(by: {$0.timestamp > $1.timestamp } )
-        
+        //        let comments = post?.comments.sorted(by: {$0.timestamp > $1.timestamp } )
+        let comments = self.post?.comments
+        print("Aaron's test \(comments?.count ??? "")")
         return comments?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
         
-        guard let comment = self.post?.comments.sorted(by: {$0.timestamp > $1.timestamp })[indexPath.row] else { return UITableViewCell() }
+        //        guard let comment = self.post?.comments.sorted(by: {$0.timestamp > $1.timestamp })[indexPath.row] else { return UITableViewCell() }
+        let comment = self.post?.comments[indexPath.row]
         cell.comment = comment
         cell.delegate = self
-        
         return cell
     }
     
