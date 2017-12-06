@@ -45,4 +45,8 @@ extension UIColor {
         return UIColor(red: 101.0/255.0, green: 210.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     }
     
+    static func rgb(_ red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
+    }
+    
 }

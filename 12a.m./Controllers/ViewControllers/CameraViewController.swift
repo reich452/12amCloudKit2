@@ -23,8 +23,15 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeCaptureSession()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.barTintColor = UIColor.clear
+        self.navigationController?.view.backgroundColor = .clear
+        let topBorder = CALayer()
+        topBorder.frame = CGRect(x: 0, y: 40, width: 1000, height: 0.5)
+        topBorder.backgroundColor = UIColor.rgb(229, green: 231, blue: 235).cgColor
+        self.navigationController?.navigationBar.layer.addSublayer(topBorder)
+        self.navigationController?.navigationBar.clipsToBounds = true
     }
     
     // MARK: - Actions
