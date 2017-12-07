@@ -28,6 +28,7 @@
 		01367C4C1FB3C27E00F51F89 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367C4B1FB3C27E00F51F89 /* CloudKitSyncable.swift */; };
 		0144722D1FBA5C4400510AB3 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0144722C1FBA5C4400510AB3 /* DateFormatter.swift */; };
 		0146C49F1FC0BDC200DEA332 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146C49E1FC0BDC200DEA332 /* AlertExtension.swift */; };
+		015221D01FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015221CF1FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift */; };
 		0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0156CE101FA2B268002791C1 /* AppDelegate.swift */; };
 		0156CE181FA2B268002791C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE171FA2B268002791C1 /* Assets.xcassets */; };
 		0156CE1B1FA2B268002791C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE191FA2B268002791C1 /* LaunchScreen.storyboard */; };
@@ -66,6 +67,7 @@
 		01367C4B1FB3C27E00F51F89 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
 		0144722C1FBA5C4400510AB3 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		0146C49E1FC0BDC200DEA332 /* AlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
+		015221CF1FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailTableViewController.swift; sourceTree = "<group>"; };
 		0156CE0D1FA2B268002791C1 /* 12a.m..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12a.m..app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0156CE101FA2B268002791C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0156CE171FA2B268002791C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			children = (
 				01367B9E1FAE6A8100F51F89 /* LogInViewController.swift */,
 				01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */,
+				015221CF1FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift */,
 				01367BD41FB10F5500F51F89 /* FeedTableViewController.swift */,
 				01367BD91FB1142E00F51F89 /* CommentTableViewController.swift */,
 				01367BDD1FB1180E00F51F89 /* CameraViewController.swift */,
@@ -417,6 +420,7 @@
 				010D07401FA3B63F0013375F /* CloudKitManager.swift in Sources */,
 				010D073D1FA3B1450013375F /* UserController.swift in Sources */,
 				01367BA41FAE8AB400F51F89 /* PostController.swift in Sources */,
+				015221D01FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift in Sources */,
 				01367B9F1FAE6A8200F51F89 /* LogInViewController.swift in Sources */,
 				011A54C11FBBF3FB00564902 /* CommentDelegate.swift in Sources */,
 				01367C481FB3839100F51F89 /* TimeTracker.swift in Sources */,

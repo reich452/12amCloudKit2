@@ -154,12 +154,12 @@
                   moduleName = "12a.m."
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nick/Desktop/Desktop%20-%20MacBook%20Pro/12a.m./12a.m./Controllers/ViewControllers/LogInViewController.swift"
-                  timestampString = "534204213.677957"
+                  timestampString = "534379718.812802"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "94"
                   endingLineNumber = "94"
-                  offsetFromSymbolStart = "3920">
+                  offsetFromSymbolStart = "2988">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -169,12 +169,12 @@
                   moduleName = "12a.m."
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nick/Desktop/Desktop%20-%20MacBook%20Pro/12a.m./12a.m./Controllers/ViewControllers/LogInViewController.swift"
-                  timestampString = "534204213.679624"
+                  timestampString = "534379718.814092"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
                   endingLineNumber = "95"
-                  offsetFromSymbolStart = "22">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -225,118 +225,6 @@
             endingLineNumber = "125"
             landmarkName = "updateCurrentUser(username:email:completion:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "12a.m./Controllers/Model Controllers/PostController.swift"
-            timestampString = "534275217.401075"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "addComment(to:commentText:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__ObjC.CKRecord&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in _2a_m_.PostController.addComment(to: _2a_m_.Post, commentText: Swift.String, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "12a.m."
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Nick/Desktop/Desktop%20-%20MacBook%20Pro/12a.m./12a.m./Controllers/Model%20Controllers/PostController.swift"
-                  timestampString = "534204213.69243"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "1349">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;__ObjC.CKRecord&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in _2a_m_.PostController.addComment(to: _2a_m_.Post, commentText: Swift.String, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "12a.m."
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Nick/Desktop/Desktop%20-%20MacBook%20Pro/12a.m./12a.m./Controllers/Model%20Controllers/PostController.swift"
-                  timestampString = "534204213.694088"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "22">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "12a.m./Controllers/Model Controllers/PostController.swift"
-            timestampString = "534275217.40113"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "addComment(to:commentText:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "12a.m./Controllers/Model Controllers/PostController.swift"
-            timestampString = "534275217.401182"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "addComment(to:commentText:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_2a_m_.PostController.addComment(to: _2a_m_.Post, commentText: Swift.String, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "12a.m."
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Nick/Desktop/Desktop%20-%20MacBook%20Pro/12a.m./12a.m./Controllers/Model%20Controllers/PostController.swift"
-                  timestampString = "534204213.701811"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "867">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__ObjC.CKRecord&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in _2a_m_.PostController.addComment(to: _2a_m_.Post, commentText: Swift.String, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "12a.m."
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Nick/Desktop/Desktop%20-%20MacBook%20Pro/12a.m./12a.m./Controllers/Model%20Controllers/PostController.swift"
-                  timestampString = "534204213.703654"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
-                  offsetFromSymbolStart = "33">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

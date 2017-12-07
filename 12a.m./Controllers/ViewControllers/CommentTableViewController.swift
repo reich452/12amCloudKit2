@@ -143,6 +143,12 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toProfileDetailVC" {
+            guard let destinationVC = segue.destination as? ProfileDetailTableViewController else { return }
+        }
+    }
+    
 }
 
 
