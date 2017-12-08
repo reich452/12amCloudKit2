@@ -49,8 +49,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.locationManager.stopUpdatingLocation()
         updateViews()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.locationManager.stopUpdatingLocation()
     }
     
     // MARK: - Delegates

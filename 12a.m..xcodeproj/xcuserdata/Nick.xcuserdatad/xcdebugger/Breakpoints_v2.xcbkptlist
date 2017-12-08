@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12a.m./Controllers/ViewControllers/LogInViewController.swift"
-            timestampString = "534460745.035612"
+            timestampString = "534461201.765503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -90,7 +90,7 @@
                   moduleName = "12a.m."
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nick/Desktop/Desktop%20-%20MacBook%20Pro/12a.m./12a.m./Controllers/ViewControllers/LogInViewController.swift"
-                  timestampString = "534460745.15689"
+                  timestampString = "534461017.229015"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "94"
@@ -105,7 +105,7 @@
                   moduleName = "12a.m."
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nick/Desktop/Desktop%20-%20MacBook%20Pro/12a.m./12a.m./Controllers/ViewControllers/LogInViewController.swift"
-                  timestampString = "534460745.158613"
+                  timestampString = "534461017.231233"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "95"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12a.m./Controllers/ViewControllers/LogInViewController.swift"
-            timestampString = "534460745.035682"
+            timestampString = "534461201.765573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12a.m./Controllers/ViewControllers/LogInViewController.swift"
-            timestampString = "534460745.035733"
+            timestampString = "534461201.765623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
@@ -154,12 +154,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12a.m./Controllers/ViewControllers/CommentTableViewController.swift"
-            timestampString = "534460745.035783"
+            timestampString = "534461201.765672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
             endingLineNumber = "152"
             landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "12a.m./Controllers/ViewControllers/ProfileViewController.swift"
+            timestampString = "534461201.765724"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
