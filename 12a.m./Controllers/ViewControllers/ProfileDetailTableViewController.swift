@@ -15,13 +15,16 @@ class ProfileDetailTableViewController: UITableViewController {
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     
+    var post: Post?
+    var comment: Post?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setUpView()
     }
     
     func setUpView() {
-        
+    
     }
 
 }

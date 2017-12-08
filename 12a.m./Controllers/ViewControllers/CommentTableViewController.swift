@@ -37,7 +37,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         PostController.shared.delegate = self
-       
+        
         PostController.shared.requestFullSync {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -146,9 +146,13 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toProfileDetailVC" {
             guard let destinationVC = segue.destination as? ProfileDetailTableViewController else { return }
+            if let selectedCell = sender as? CommentTableViewCell {
+                guard let indexPath = tableView.indexPath(for: selectedCell) else { return }
+                let comment = self.post?.comments[indexPath.row]
+               
+            }
         }
     }
-    
 }
 
 

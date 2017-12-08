@@ -41,7 +41,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
-
+        self.currentCityLabel.text = "\(TimeZone.current)"
+        
         updateViews()
         setUpAppearance()
         updateDiscription()
@@ -49,6 +50,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.locationManager.stopUpdatingLocation()
+        updateViews()
     }
     
     // MARK: - Delegates
@@ -68,19 +70,21 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     }
     
     @IBAction func updateButtonTapped(_ sender: Any) {
-        
+        updateUserInfo()
     }
     
     // MARK: - Update
-    private func updateViews() {
+    @objc private func updateViews() {
         guard let user = self.currentUser,
             let userPhoto = self.currentUser?.photo else { return }
-        self.usernameLabel.text = user.username
-        self.profileImageView.image = userPhoto
-        self.usernameTextField.text = "  \(user.username)"
-        self.emailTextField.text = "  \(user.email)"
-        self.currentCityLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .thin)
-        self.currentCityLabel.text = "\(TimeZone.current)"
+        DispatchQueue.main.async {
+            
+            self.usernameLabel.text = user.username
+            self.profileImageView.image = userPhoto
+            self.usernameTextField.text = "  \(user.username)"
+            self.emailTextField.text = "  \(user.email)"
+            self.currentCityLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .thin)
+        }
         
     }
     private func setUpAppearance() {
@@ -93,8 +97,36 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         self.emailTextField.textColor = UIColor.white
     }
     
+    private func updateUserInfo() {
+        guard let userName = usernameTextField.text, userName != "", let email = emailTextField.text, email != "", let profileImage = profileImageView.image else { return }
+        
+        if UserController.shared.currentUser == nil {
+            
+            UserController.shared.createUser(with: userName, email: email, profileImage: profileImage, completion: { (success) in
+                if !success {
+                    if !success {
+                        print("Not successfull creating new user")
+                    } else {
+                        print("Made a new user!")
+                    }
+                }
+            })
+        } else {
+            UserController.shared.updateCurrentUser(username: userName, email: email, completion: { (success) in
+                if !success {
+                    print("Not successfull updating existing user")
+                } else {
+                    print("Updated user!")
+                    self.updateViews()
+                }
+                
+            })
+        }
+    }
+    
+    
     private func updateDiscription() {
-
+        
         let posts = PostController.shared.posts.map {$0.ownerReference}
         if posts.count != 0 {
             discriptionLabel.text = "Posted \(posts.count) times at 12am - 1am"
