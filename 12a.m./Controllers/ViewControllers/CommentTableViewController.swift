@@ -71,12 +71,17 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         blockUserActionSheet()
     }
     
+    internal func didPressUserInfo(_ sender: CommentTableViewCell) {
+        self.performSegue(withIdentifier: "toProfileDetailVC", sender: sender)
+    }
+    
     internal func commentsWereAddedTo() {
-        //        let commentsCount = self.post?.comments.count ?? 0
-        //        DispatchQueue.main.async {
-        //            self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
-        //            print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
-        //        }
+        let commentsCount = self.post?.comments.count ?? 0
+        DispatchQueue.main.async {
+            self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
+            print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
+            print("\(UserController.shared.currentUser?.username ??? "") added comment")
+        }
     }
     
     private func blockUserActionSheet() {
@@ -107,14 +112,14 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         PostController.shared.addComment(to: post, commentText: commentText) {
             
             let commentsCount = self.post?.comments.count ?? 0
-            DispatchQueue.main.async {
-                self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
-                print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
-                print("\(UserController.shared.currentUser?.username ??? "") added \(commentText) to detail VC")
-            }
+//            DispatchQueue.main.async {
+//                self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
+//                print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
+//                print("\(UserController.shared.currentUser?.username ??? "") added \(commentText) to detail VC")
+//            }
         }
         commentTextField.text = ""
-        self.view.endEditing(true )
+        self.view.endEditing(true)
     }
     
     // MARK: - TextField Delegate
@@ -140,6 +145,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         let comment = self.post?.comments[indexPath.row]
         cell.comment = comment
         cell.delegate = self
+        cell.selectedUserDelegate = self 
         return cell
     }
     
@@ -148,8 +154,9 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
             guard let destinationVC = segue.destination as? ProfileDetailTableViewController else { return }
             if let selectedCell = sender as? CommentTableViewCell {
                 guard let indexPath = tableView.indexPath(for: selectedCell) else { return }
-                let comment = self.post?.comments[indexPath.row]
-               
+                guard let comment = self.post?.comments[indexPath.row] else { return }
+                destinationVC.comment = comment
+                
             }
         }
     }
@@ -160,7 +167,8 @@ extension CommentTableViewController {
     
     func setUI() {
         self.profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
-        self.profileImageView.clipsToBounds = true 
+        self.profileImageView.clipsToBounds = true
+    
     }
 }
 

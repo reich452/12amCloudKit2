@@ -14,17 +14,27 @@ class ProfileDetailTableViewController: UITableViewController {
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
-    
-    var post: Post?
-    var comment: Post?
+    @IBOutlet weak var usernameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpView()
+        self.setUpView()
+        self.setUpAppearance()
     }
     
-    func setUpView() {
+    var comment: Comment?
     
+   private func setUpView() {
+        guard let owner = comment?.owner else { return }
+        self.usernameLabel.text = owner.username
+        self.profileImageView.image = owner.photo
+    }
+    
+   private func setUpAppearance() {
+        self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.height / 2 
+        self.profileImageView.clipsToBounds = true
+        self.profileImageView.contentMode = .scaleAspectFill
+        
     }
 
 }

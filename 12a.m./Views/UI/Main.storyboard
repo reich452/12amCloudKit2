@@ -390,7 +390,7 @@
                                     </constraints>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="72O-Si-WXT">
-                                    <rect key="frame" x="6" y="151" width="363" height="71"/>
+                                    <rect key="frame" x="4" y="175" width="363" height="71"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rbV-nn-GZ4">
                                             <rect key="frame" x="0.0" y="0.0" width="106.5" height="71"/>
@@ -487,6 +487,12 @@
                                     </constraints>
                                     <viewLayoutGuide key="safeArea" id="09Q-3P-AAO"/>
                                 </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xm-9y-kTh">
+                                    <rect key="frame" x="75" y="131" width="225" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -497,8 +503,11 @@
                                 <constraint firstItem="LCr-4w-VBl" firstAttribute="leading" secondItem="ngH-cd-Dso" secondAttribute="leading" id="PMO-Xh-ub7"/>
                                 <constraint firstItem="v2d-FQ-yrf" firstAttribute="centerX" secondItem="ngH-cd-Dso" secondAttribute="centerX" id="QvZ-ca-YVw"/>
                                 <constraint firstItem="v2d-FQ-yrf" firstAttribute="width" secondItem="ngH-cd-Dso" secondAttribute="width" multiplier="1/4" id="UHq-kF-rJ0"/>
-                                <constraint firstItem="72O-Si-WXT" firstAttribute="centerX" secondItem="ngH-cd-Dso" secondAttribute="centerX" id="feK-ak-Hzt"/>
-                                <constraint firstItem="72O-Si-WXT" firstAttribute="top" secondItem="v2d-FQ-yrf" secondAttribute="bottom" constant="37" id="ghc-ug-aHE"/>
+                                <constraint firstItem="4Xm-9y-kTh" firstAttribute="centerX" secondItem="ngH-cd-Dso" secondAttribute="centerX" id="e9f-Gt-R01"/>
+                                <constraint firstItem="72O-Si-WXT" firstAttribute="centerX" secondItem="ngH-cd-Dso" secondAttribute="centerX" constant="-2" id="feK-ak-Hzt"/>
+                                <constraint firstItem="72O-Si-WXT" firstAttribute="top" secondItem="v2d-FQ-yrf" secondAttribute="bottom" constant="61" id="ghc-ug-aHE"/>
+                                <constraint firstItem="4Xm-9y-kTh" firstAttribute="width" secondItem="ngH-cd-Dso" secondAttribute="width" multiplier="6/10" id="ldK-hi-D5R"/>
+                                <constraint firstItem="4Xm-9y-kTh" firstAttribute="top" secondItem="v2d-FQ-yrf" secondAttribute="bottom" constant="17" id="tMV-sx-PXt"/>
                                 <constraint firstItem="72O-Si-WXT" firstAttribute="width" secondItem="ngH-cd-Dso" secondAttribute="width" multiplier="30/31" id="wGq-MR-YwQ"/>
                             </constraints>
                         </view>
@@ -554,11 +563,12 @@
                         <outlet property="countryLabel" destination="GyP-vs-mLA" id="6xF-8y-GtQ"/>
                         <outlet property="profileImageView" destination="v2d-FQ-yrf" id="lPR-TU-SwJ"/>
                         <outlet property="stateLabel" destination="XKp-qD-eHA" id="oJp-Zm-L3u"/>
+                        <outlet property="usernameLabel" destination="4Xm-9y-kTh" id="gNl-5V-uhV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGd-Wb-lcs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4737" y="1667"/>
+            <point key="canvasLocation" x="-4682" y="1666"/>
         </scene>
         <!--Comment Table View Controller-->
         <scene sceneID="HNj-HC-40R">
@@ -749,7 +759,7 @@
                                                 <constraint firstAttribute="width" constant="147" id="ath-2X-Zvu"/>
                                             </constraints>
                                             <connections>
-                                                <segue destination="SpA-ml-M2w" kind="show" identifier="toProfileDetailVC" id="f5S-ca-Chl"/>
+                                                <action selector="userInfoButtonTapped:" destination="kYB-sx-klL" eventType="touchUpInside" id="ohC-0r-IWD"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -775,6 +785,7 @@
                                     <outlet property="commentTextLabel" destination="xdc-t7-xp3" id="jrt-rO-zRZ"/>
                                     <outlet property="profileImageView" destination="kBe-kt-h6i" id="JWh-9c-PVt"/>
                                     <outlet property="userNameLabel" destination="fgg-JQ-GRH" id="6Jk-ki-lq2"/>
+                                    <segue destination="SpA-ml-M2w" kind="show" identifier="toProfileDetailVC" id="x8s-iT-r9e"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -801,7 +812,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AEm-Dr-3Ba" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="yUa-PZ-xav"/>
             </objects>
-            <point key="canvasLocation" x="-3972" y="1737.9310344827588"/>
+            <point key="canvasLocation" x="-3972" y="1769"/>
         </scene>
         <!--Profile-->
         <scene sceneID="xqX-Cv-s8O">

@@ -10,6 +10,7 @@ import UIKit
 
 protocol CommentTableViewCellDelegate: class {
     func didPressBlockButton(_ sender: CommentTableViewCell)
+    func didPressUserInfo(_ sender: CommentTableViewCell)
 }
 
 class CommentTableViewCell: UITableViewCell {
@@ -20,6 +21,7 @@ class CommentTableViewCell: UITableViewCell {
     
     // MARK: - Delegate
     weak var delegate: CommentTableViewCellDelegate?
+    weak var selectedUserDelegate: CommentTableViewCellDelegate?
     
     var comment: Comment? {
         didSet {
@@ -34,7 +36,13 @@ class CommentTableViewCell: UITableViewCell {
 
     }
     
-   private func updateViews() {
+    @IBAction func userInfoButtonTapped(_ sender: Any) {
+        if let selectedUserDelegate = self.selectedUserDelegate {
+            selectedUserDelegate.didPressUserInfo(self)
+        }
+        
+    }
+    private func updateViews() {
         guard let comment = comment,
             let userName = comment.owner?.username,
             let profileData = comment.owner?.profileImageData,
