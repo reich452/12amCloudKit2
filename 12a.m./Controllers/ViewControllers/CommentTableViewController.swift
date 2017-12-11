@@ -103,6 +103,9 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     }
     
     // MARK: - Actions
+    @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     
     @IBAction func postButtonTapped(_ sender: UIButton) {
         
@@ -111,7 +114,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         
         PostController.shared.addComment(to: post, commentText: commentText) {
             
-            let commentsCount = self.post?.comments.count ?? 0
+//           let commentsCount = self.post?.comments.count ?? 0
 //            DispatchQueue.main.async {
 //                self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
 //                print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
