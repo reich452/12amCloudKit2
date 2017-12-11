@@ -44,7 +44,7 @@ class UserController {
             let predicate = NSPredicate(format: "appleUserRef == %@", appleUserRef)
             let query = CKQuery(recordType: "User", predicate: predicate)
             
-            self.cloudKitManager.publicDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
+            self.cloudKitManager.publicDatabase.perform(query, inZoneWith: nil, completionHandler: { [unowned self] (records, error) in
                 if let error = error {
                     print("eerror fethcing user record \(error) & \(error.localizedDescription) \(#function)")
                     completion(nil); return
@@ -93,7 +93,7 @@ class UserController {
             let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
             let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data, blockUserRefs: blockUserRefs)
             let userRecord = CKRecord(user: user)
-            self?.cloudKitManager.saveRecord(userRecord, completion: { (record, error) in
+            self?.cloudKitManager.saveRecord(userRecord, completion: { [weak self] (record, error) in
                 if let error = error {
                     print("Error saing user record \(#file) \(#function) \(error) \(error.localizedDescription)")
                     completion(false); return

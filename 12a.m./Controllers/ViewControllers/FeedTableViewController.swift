@@ -110,7 +110,6 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         }
     }
     
-    
     // MARK: - Navigation
     
     @IBAction func settingsButtonPressed(_ sender: Any) {

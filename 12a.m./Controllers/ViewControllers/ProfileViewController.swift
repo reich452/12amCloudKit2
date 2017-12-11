@@ -116,7 +116,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
                 }
             })
         } else {
-            UserController.shared.updateCurrentUser(username: userName, email: email, completion: { (success) in
+            UserController.shared.updateCurrentUser(username: userName, email: email, completion: { [unowned self] (success) in
                 if !success {
                     print("Not successfull updating existing user")
                 } else {

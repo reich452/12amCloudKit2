@@ -35,7 +35,7 @@ class TimeTracker {
     func startTimer() {
         Timer.every(1.second) { [weak self] in
             self?.isMidnight = Date().isInMidnightHour
-            
+
         }
     }
     
