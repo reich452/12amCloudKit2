@@ -45,7 +45,7 @@ class Comment {
         self.postReference = postReference
         self.ownerReference = ownerReference
         self.post = nil
-        ckRecordID = ckRecord.recordID
+        self.ckRecordID = ckRecord.recordID
     }
 }
 

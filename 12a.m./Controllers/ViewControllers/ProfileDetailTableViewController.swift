@@ -43,6 +43,11 @@ class ProfileDetailTableViewController: UITableViewController, CLLocationManager
     var post: Post?
     private let locationManager = CLLocationManager()
     
+    // MARK: - Actions
+    @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - View
     
     private func setUpView() {

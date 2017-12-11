@@ -263,7 +263,7 @@ class CloudKitManager {
         CKContainer.default().status(forApplicationPermission: .userDiscoverability) { (permissionStatus, error) in
             
             if permissionStatus == .initialState {
-                CKContainer.default().requestApplicationPermission(.userDiscoverability, completionHandler: { (permissionStatus, error) in
+                CKContainer.default().requestApplicationPermission(.userDiscoverability, completionHandler: { [unowned self] (permissionStatus, error) in
                     
                     self.handleCloudKitPermissionStatus(permissionStatus, error: error)
                 })

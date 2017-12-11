@@ -11,7 +11,6 @@
 		010D07401FA3B63F0013375F /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D073F1FA3B63F0013375F /* CloudKitManager.swift */; };
 		011A54C11FBBF3FB00564902 /* CommentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A54C01FBBF3FB00564902 /* CommentDelegate.swift */; };
 		012B46321FC641CA00D31809 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012B46311FC641CA00D31809 /* LocationHelper.swift */; };
-		012B46341FC6457E00D31809 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012B46331FC6457E00D31809 /* UserLocation.swift */; };
 		012B46361FC647A200D31809 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012B46351FC647A200D31809 /* Location.swift */; };
 		01367B9F1FAE6A8200F51F89 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367B9E1FAE6A8100F51F89 /* LogInViewController.swift */; };
 		01367BA21FAE6D7A00F51F89 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367BA11FAE6D7A00F51F89 /* Theme.swift */; };
@@ -51,7 +50,6 @@
 		010D073F1FA3B63F0013375F /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		011A54C01FBBF3FB00564902 /* CommentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDelegate.swift; sourceTree = "<group>"; };
 		012B46311FC641CA00D31809 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
-		012B46331FC6457E00D31809 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		012B46351FC647A200D31809 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		01367B9E1FAE6A8100F51F89 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		01367BA11FAE6D7A00F51F89 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				012B46311FC641CA00D31809 /* LocationHelper.swift */,
-				012B46331FC6457E00D31809 /* UserLocation.swift */,
 			);
 			path = "Location Helper";
 			sourceTree = "<group>";
@@ -429,7 +426,6 @@
 				011A54C11FBBF3FB00564902 /* CommentDelegate.swift in Sources */,
 				01367C481FB3839100F51F89 /* TimeTracker.swift in Sources */,
 				012B46321FC641CA00D31809 /* LocationHelper.swift in Sources */,
-				012B46341FC6457E00D31809 /* UserLocation.swift in Sources */,
 				01367BDE1FB1180E00F51F89 /* CameraViewController.swift in Sources */,
 				01367BDC1FB114A000F51F89 /* CommentTableViewCell.swift in Sources */,
 				0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */,

@@ -73,7 +73,7 @@ class PostController {
     func createPost(image: UIImage, text: String, completion: @escaping((Post?) -> Void)) {
         
         let username = UserController.shared.currentUser?.username
-        guard let data = UIImageJPEGRepresentation(image, 1),
+        guard let data = UIImageJPEGRepresentation(image, 0.8),
             let currentUser = UserController.shared.currentUser,
             let currentUserRecordID = currentUser.cloudKitRecordID else { print("No current user \(username ?? "nope")"); return }
         
@@ -85,7 +85,7 @@ class PostController {
         posts.append(post)
         let record = CKRecord(post)
         
-        cloudKitManager.saveRecord(record) { (record, error) in
+        cloudKitManager.saveRecord(record) { [unowned self] (record, error) in
             guard let _ = record else {
                 if let error = error {
                     print("Error saving new post to cloudKit: \(#function) \(error) & \(error.localizedDescription)")
@@ -109,7 +109,7 @@ class PostController {
         let comment = Comment(text: commentText, post: post, postReference: cloudKitRef, ownerReference: ckReference)
         post.comments.append(comment)
         
-        cloudKitManager.saveRecord(CKRecord(comment)) { (record, error) in
+        cloudKitManager.saveRecord(CKRecord(comment)) { [unowned self] (record, error) in
             if let error = error {
                 print("Error saving new comment in cloudKit: \(#function) \(error) & \(error.localizedDescription)")
                 completion(); return
@@ -140,7 +140,7 @@ class PostController {
         
         
         guard let predicate2 = predicate else { return }
-        cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { (records, error) in
+        cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { [unowned self] (records, error) in
             
             if let error = error {
                 print("Error fetcing predicte2 \(#function) \(error) \(error.localizedDescription)")
@@ -196,7 +196,7 @@ class PostController {
     func performFullSync(completion: @escaping (() -> Void) = { }) {
         isSyncing = true
         
-        self.fetchNewRecors(ofType: User.recordTypeKey) { 
+        self.fetchNewRecors(ofType: User.recordTypeKey) { [unowned self] in
             self.fetchNewRecors(ofType: Post.recordTypeKey) {
                 self.fetchNewRecors(ofType: Comment.recordTypeKey) {
                     self.isSyncing = false

@@ -572,6 +572,14 @@
                             <outlet property="delegate" destination="SpA-ml-M2w" id="NHN-Lm-Aaz"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="x1Q-Ta-Guw">
+                        <barButtonItem key="leftBarButtonItem" image="backIcon" id="QpF-I4-WSw">
+                            <color key="tintColor" red="0.27607908844947815" green="0.61510938405990601" blue="0.97258931398391724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="backButtonTapped:" destination="SpA-ml-M2w" id="hBl-hP-QZt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cityLabel" destination="7dH-i4-6il" id="qxF-y7-Wj1"/>
                         <outlet property="collectionView" destination="J7z-vP-HGj" id="yvu-4e-uci"/>
@@ -583,7 +591,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGd-Wb-lcs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4682.3999999999996" y="1665.5172413793105"/>
+            <point key="canvasLocation" x="-4705" y="1726"/>
         </scene>
         <!--Comment Table View Controller-->
         <scene sceneID="HNj-HC-40R">
