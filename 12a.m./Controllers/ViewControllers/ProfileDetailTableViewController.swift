@@ -48,9 +48,11 @@ class ProfileDetailTableViewController: UITableViewController, CLLocationManager
     }
     
     private func setUpAppearance() {
-        self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.height / 2 
+        self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.height / 2
         self.profileImageView.clipsToBounds = true
         self.profileImageView.contentMode = .scaleAspectFill
+        self.profileImageView.layer.borderWidth = 1.8
+        self.profileImageView.layer.borderColor = UIColor.white.cgColor
     }
 }
 
