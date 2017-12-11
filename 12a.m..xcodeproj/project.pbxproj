@@ -28,6 +28,7 @@
 		01367C4C1FB3C27E00F51F89 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367C4B1FB3C27E00F51F89 /* CloudKitSyncable.swift */; };
 		0144722D1FBA5C4400510AB3 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0144722C1FBA5C4400510AB3 /* DateFormatter.swift */; };
 		0146C49F1FC0BDC200DEA332 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146C49E1FC0BDC200DEA332 /* AlertExtension.swift */; };
+		0149161B1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149161A1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift */; };
 		015221D01FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015221CF1FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift */; };
 		0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0156CE101FA2B268002791C1 /* AppDelegate.swift */; };
 		0156CE181FA2B268002791C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0156CE171FA2B268002791C1 /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		01367C4B1FB3C27E00F51F89 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
 		0144722C1FBA5C4400510AB3 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		0146C49E1FC0BDC200DEA332 /* AlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
+		0149161A1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		015221CF1FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailTableViewController.swift; sourceTree = "<group>"; };
 		0156CE0D1FA2B268002791C1 /* 12a.m..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12a.m..app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0156CE101FA2B268002791C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				01367BD61FB10FD100F51F89 /* FeedTableViewCell.swift */,
 				01367BDB1FB114A000F51F89 /* CommentTableViewCell.swift */,
+				0149161A1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				010D07401FA3B63F0013375F /* CloudKitManager.swift in Sources */,
 				010D073D1FA3B1450013375F /* UserController.swift in Sources */,
 				01367BA41FAE8AB400F51F89 /* PostController.swift in Sources */,
+				0149161B1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift in Sources */,
 				015221D01FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift in Sources */,
 				01367B9F1FAE6A8200F51F89 /* LogInViewController.swift in Sources */,
 				011A54C11FBBF3FB00564902 /* CommentDelegate.swift in Sources */,

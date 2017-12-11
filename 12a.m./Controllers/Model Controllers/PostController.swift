@@ -160,6 +160,7 @@ class PostController {
                     guard let postOwner = users.filter({$0.cloudKitRecordID == post.ownerReference.recordID}).first else { break }
                     
                     post.owner = postOwner
+                    post.owner?.posts = posts
                     
                 }
                 completion()
@@ -175,6 +176,7 @@ class PostController {
                         else { break }
                     let user = UserController.shared.users[ownerIndex]
                     comment.owner = user
+                   
                 }
                 self.comments = comments
                 completion()

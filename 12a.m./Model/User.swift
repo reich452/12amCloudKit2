@@ -25,6 +25,7 @@ class User {
     var cloudKitRecordID: CKRecordID?
     var blockUserRefs: [CKReference]? = []
     var blockUsersArray: [User] = []
+    var posts: [Post]? = []
     let appleUserRef: CKReference
     
     var photo: UIImage? {
@@ -32,12 +33,13 @@ class User {
         return UIImage(data: photoData)
     }
     
-    init(username: String, email: String, appleUserRef: CKReference, profileImageData: Data?, blockUserRefs: [CKReference]? = []) {
+    init(username: String, email: String, appleUserRef: CKReference, profileImageData: Data?, blockUserRefs: [CKReference]? = [], posts: [Post] = []) {
         self.username = username
         self.email = email
         self.appleUserRef = appleUserRef
         self.profileImageData = profileImageData
         self.blockUserRefs = blockUserRefs
+        self.posts = posts
     }
     
     init?(cloudKitRecord: CKRecord) {
@@ -54,7 +56,7 @@ class User {
         self.appleUserRef = appleUserRef
         self.profileImageData = profileImageData
         self.cloudKitRecordID = cloudKitRecord.recordID
-    
+        self.posts = []
     }
     
     fileprivate var temporaryPhotoURL: URL {

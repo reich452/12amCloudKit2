@@ -159,7 +159,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
                 guard let indexPath = tableView.indexPath(for: selectedCell) else { return }
                 guard let comment = self.post?.comments[indexPath.row] else { return }
                 destinationVC.comment = comment
-                
+
             }
         }
     }

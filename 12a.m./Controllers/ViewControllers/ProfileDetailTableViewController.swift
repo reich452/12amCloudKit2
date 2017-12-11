@@ -16,10 +16,13 @@ class ProfileDetailTableViewController: UITableViewController, CLLocationManager
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
         self.setUpView()
         self.setUpAppearance()
         self.locationManager.delegate = self
@@ -37,6 +40,7 @@ class ProfileDetailTableViewController: UITableViewController, CLLocationManager
     // MARK: - Properties
     
     var comment: Comment?
+    var post: Post?
     private let locationManager = CLLocationManager()
     
     // MARK: - View
@@ -104,5 +108,40 @@ extension ProfileDetailTableViewController {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while updating location " + error.localizedDescription)
     }
-    
 }
+
+// MARK: - CollectionView
+
+extension ProfileDetailTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let ownerPosts = comment?.owner?.posts?.count
+        return ownerPosts ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? ProfileDetailCollectionViewCell,
+            let post = comment?.owner?.posts?[indexPath.row] else { return UICollectionViewCell() }
+    
+        cell.userPostedImageView.image = post.photo
+       
+        return cell 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        // number of Col.
+        let nbCol = 3
+        
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let totalSpace = flowLayout.sectionInset.left
+            + flowLayout.sectionInset.right
+            + (flowLayout.minimumInteritemSpacing * CGFloat(nbCol - 1))
+        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(nbCol))
+        return CGSize(width: size, height: size)
+    }
+}
+
+
+
+
