@@ -179,7 +179,6 @@ extension CommentTableViewController {
     func setUI() {
         self.profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
         self.profileImageView.clipsToBounds = true
-    
     }
 }
 

@@ -27,6 +27,13 @@ class IconTextField: UITextField {
             updateTextField()
         }
     }
+    
+    @IBInspectable var topPaddfing: CGFloat = 0 {
+        didSet {
+            updateTextField()
+        }
+    }
+    
     @IBInspectable var imageWidth: CGFloat = 0 {
         didSet {
             updateTextField()

@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12a.m./Controllers/Model Controllers/PostController.swift"
-            timestampString = "534798735.57021"
+            timestampString = "534804590.243551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12a.m./Controllers/Model Controllers/PostController.swift"
-            timestampString = "534798735.570279"
+            timestampString = "534804590.243612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -122,7 +122,7 @@
                   moduleName = "12a.m."
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nick/Desktop/Desktop%20-%20MacBook%20Pro/12a.m./12a.m./Controllers/Model%20Controllers/PostController.swift"
-                  timestampString = "534798735.886767"
+                  timestampString = "534811145.318177"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "53"
@@ -137,7 +137,7 @@
                   moduleName = "12a.m."
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nick/Desktop/Desktop%20-%20MacBook%20Pro/12a.m./12a.m./Controllers/Model%20Controllers/PostController.swift"
-                  timestampString = "534798735.888366"
+                  timestampString = "534811145.31947"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "53"
@@ -145,38 +145,6 @@
                   offsetFromSymbolStart = "20">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "12a.m./Controllers/ViewControllers/CommentTableViewController.swift"
-            timestampString = "534798735.570335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "prepare(for:sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "12a.m./Controllers/ViewControllers/CommentTableViewController.swift"
-            timestampString = "534798735.570698"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "prepare(for:sender:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
