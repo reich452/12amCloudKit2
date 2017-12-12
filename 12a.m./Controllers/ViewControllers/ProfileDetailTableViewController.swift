@@ -29,7 +29,7 @@ class ProfileDetailTableViewController: UITableViewController, CLLocationManager
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
-        self.cityLabel.text = "\(TimeZone.current)"
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,10 +47,10 @@ class ProfileDetailTableViewController: UITableViewController, CLLocationManager
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+ 
     // MARK: - View
     
-    private func setUpView() {
+    func setUpView() {
         guard let owner = comment?.owner else { return }
         self.usernameLabel.text = owner.username
         self.profileImageView.image = owner.photo
@@ -99,6 +99,7 @@ extension ProfileDetailTableViewController {
             let country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
             let state = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
             
+            
             let unitedStates = "United States"
             if (country?.contains(unitedStates))! {
                 self.countryLabel.text = "U.S.A"
@@ -106,7 +107,7 @@ extension ProfileDetailTableViewController {
                 self.countryLabel.text = country
             }
             self.cityLabel.text = locality
-            self.cityLabel.text = state
+            self.stateLabel.text = state 
         }
     }
     
@@ -125,10 +126,12 @@ extension ProfileDetailTableViewController: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? ProfileDetailCollectionViewCell,
-            let post = comment?.owner?.posts?[indexPath.row] else { return UICollectionViewCell() }
-    
-        cell.userPostedImageView.image = post.photo
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? ProfileDetailCollectionViewCell else { return UICollectionViewCell() }
+
+        let ownerPosts = comment?.owner?.posts
+        guard let sortedPosts = ownerPosts?.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending }) else { return UICollectionViewCell() }
+        let sortedIndexPath = sortedPosts[indexPath.row]
+        cell.userPostedImageView.image = sortedIndexPath.photo
        
         return cell 
     }

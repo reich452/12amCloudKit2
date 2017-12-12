@@ -20,6 +20,8 @@ class PostController {
     
     // MARK: - Properties
     
+    var comment: Comment?
+    
     var posts = [Post]() {
         didSet {
             DispatchQueue.main.async {
@@ -44,6 +46,11 @@ class PostController {
     var sortedPosts: [Post] {
         
         return self.posts.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending })
+    }
+    
+    var sortedUserPosts: [Post] {
+        guard let ownerPosts = comment?.owner?.posts else { return [] }
+        return ownerPosts.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending })
     }
     
     //MARK: -Synced functions that will help grab records synced in CloudKit. Saves on data and time.

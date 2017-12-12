@@ -107,6 +107,11 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         self.navigationController?.popToRootViewController(animated: true)
     }
     
+    @IBAction func toProfileDetailTVC(_ sender: UIButton) {
+        // TODO - Fix this bitch 
+    }
+    
+    
     @IBAction func postButtonTapped(_ sender: UIButton) {
         
         guard let post = post,
@@ -159,7 +164,6 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
                 guard let indexPath = tableView.indexPath(for: selectedCell) else { return }
                 guard let comment = self.post?.comments[indexPath.row] else { return }
                 destinationVC.comment = comment
-
             }
         }
     }
