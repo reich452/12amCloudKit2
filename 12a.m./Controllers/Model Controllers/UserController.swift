@@ -34,7 +34,7 @@ class UserController {
     
     func fetchCurrentUser(completion: @escaping ((User?) -> Void) = {_ in }) {
         
-        CKContainer.default().fetchUserRecordID { [unowned self] (recordID, error) in
+        CKContainer.default().fetchUserRecordID { (recordID, error) in
             if let error = error { print("Error fetching userID: \(#function) \(error.localizedDescription) & \(error)")
                 completion(nil)
                 return
@@ -44,7 +44,7 @@ class UserController {
             let predicate = NSPredicate(format: "appleUserRef == %@", appleUserRef)
             let query = CKQuery(recordType: "User", predicate: predicate)
             
-            self.cloudKitManager.publicDatabase.perform(query, inZoneWith: nil, completionHandler: { [unowned self] (records, error) in
+            self.cloudKitManager.publicDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
                 if let error = error {
                     print("eerror fethcing user record \(error) & \(error.localizedDescription) \(#function)")
                     completion(nil); return
@@ -52,7 +52,7 @@ class UserController {
                 guard let records = records else { return }
                 let users = records.flatMap { User(cloudKitRecord: $0)}
                 let user = users.first
-                print("Fetched loged in user \(user?.username ?? "" )")
+                print("Fetched loged in user \(user?.username ?? "can't fetch user" )")
                 // Don't forget to set current user 
                 self.currentUser = user
                 completion(user)
@@ -79,21 +79,23 @@ class UserController {
         }
     }
     
+    // TODO
     func createUser(with username: String, email: String, profileImage: UIImage, completion: @escaping (_ success: Bool) -> Void) {
-        CKContainer.default().fetchUserRecordID { [weak self] (appleUsersRecordId, error) in
+        CKContainer.default().fetchUserRecordID { [unowned self] (appleUsersRecordId, error) in
             if let error = error {
                 print("Error fetchingUserRcordID \(#function) \(error) & \(error.localizedDescription))")
                 completion(false); return
             }
             guard let recordID = appleUsersRecordId,
-                let data = UIImageJPEGRepresentation(profileImage, 0.8) else { print("Error creating recordID")
+                let data = UIImageJPEGRepresentation(profileImage, 1.0) else { print("Error creating recordID")
                 completion(false); return
             }
-            guard let blockUserRefs = self?.currentUser?.blockUserRefs else { return }
+            let blockUserRefs = self.currentUser?.blockUserRefs
+           
             let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
             let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data, blockUserRefs: blockUserRefs)
             let userRecord = CKRecord(user: user)
-            self?.cloudKitManager.saveRecord(userRecord, completion: { [weak self] (record, error) in
+            self.cloudKitManager.saveRecord(userRecord, completion: { [unowned self] (record, error) in
                 if let error = error {
                     print("Error saing user record \(#file) \(#function) \(error) \(error.localizedDescription)")
                     completion(false); return
@@ -102,11 +104,11 @@ class UserController {
                     let currentUser = User(cloudKitRecord: record) else {
                         completion(false); return
                 }
-                self?.currentUser = currentUser
+                self.currentUser = currentUser
                 completion(true)
                 // TODO - clean this up 
                 if error == nil {
-                    print("Success creating user")
+                    print("Success creating user \(self.currentUser?.username ??? "")")
                 } else {
                     print("Error saving user Rcord \(error?.localizedDescription ?? String("error saving user record"))")
                 }
