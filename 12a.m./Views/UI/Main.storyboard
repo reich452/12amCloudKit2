@@ -601,7 +601,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGd-Wb-lcs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5422" y="1804"/>
+            <point key="canvasLocation" x="-4846" y="1807"/>
         </scene>
         <!--Comment Table View Controller-->
         <scene sceneID="HNj-HC-40R">
@@ -733,7 +733,6 @@
                                     <connections>
                                         <action selector="toProfileDetailTVC:" destination="Mwj-EV-Jss" eventType="touchUpInside" id="3KB-3n-NSJ"/>
                                         <action selector="toProfileDetailTVC:" destination="y0p-tH-2M1" eventType="touchUpInside" id="Kmg-jH-mXG"/>
-                                        <segue destination="SpA-ml-M2w" kind="show" identifier="toProfileDetail" id="FVi-3h-3RK"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -864,13 +863,14 @@
                         <outlet property="postButton" destination="r95-VE-inm" id="E6y-7r-ozU"/>
                         <outlet property="profileImageView" destination="Imz-ib-HzH" id="snZ-gq-0hl"/>
                         <outlet property="usernameLabel" destination="nyk-us-x69" id="lQI-7Q-pFh"/>
+                        <segue destination="dPF-SJ-kAy" kind="show" identifier="toPostDetail2" id="jpn-VT-RHA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AEm-Dr-3Ba" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Mwj-EV-Jss" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="yUa-PZ-xav"/>
             </objects>
-            <point key="canvasLocation" x="-3991" y="1829"/>
+            <point key="canvasLocation" x="-3972" y="1835"/>
         </scene>
         <!--Profile-->
         <scene sceneID="xqX-Cv-s8O">
@@ -1133,7 +1133,7 @@
         <!--Item-->
         <scene sceneID="me5-Qo-erb">
             <objects>
-                <viewController id="es1-iZ-3sL" customClass="ProfileDetail2TableViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="es1-iZ-3sL" customClass="ProfileViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0cH-UO-zd2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1654,7 +1654,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qgf-Wv-Bic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5034" y="1021"/>
+            <point key="canvasLocation" x="-4847" y="1009"/>
         </scene>
     </scenes>
     <resources>
@@ -1677,6 +1677,6 @@
         <image name="userIconWhite" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FVi-3h-3RK"/>
+        <segue reference="jpn-VT-RHA"/>
     </inferredMetricsTieBreakers>
 </document>

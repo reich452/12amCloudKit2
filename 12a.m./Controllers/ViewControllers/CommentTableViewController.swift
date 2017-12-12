@@ -72,7 +72,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     }
     
     internal func didPressUserInfo(_ sender: CommentTableViewCell) {
-        self.performSegue(withIdentifier: "toProfileDetailVC", sender: sender)
+        self.performSegue(withIdentifier: "toPostDetail2", sender: sender)
     }
     
     internal func commentsWereAddedTo() {
@@ -108,7 +108,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     }
     
     @IBAction func toProfileDetailTVC(_ sender: UIButton) {
-        // TODO - Fix this bitch 
+       self.performSegue(withIdentifier: "toPostDetail2", sender: self)
     }
     
     
@@ -165,6 +165,10 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
                 guard let comment = self.post?.comments[indexPath.row] else { return }
                 destinationVC.comment = comment
             }
+        } else if segue.identifier == "toPostDetail2" {
+            guard let profileDstination = segue.destination as? ProfileDetail2TableViewController else { return }
+            guard let post = post else { return }
+            profileDstination.post = post
         }
     }
 }

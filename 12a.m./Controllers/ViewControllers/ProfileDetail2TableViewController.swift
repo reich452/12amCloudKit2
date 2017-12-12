@@ -70,7 +70,7 @@ extension ProfileDetailTableViewController {
     
     // MARK: - Location
     
-    func locationManager2(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+  fileprivate func locationManager2(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = manager.location else { return }
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
             if (error != nil) {
@@ -88,7 +88,7 @@ extension ProfileDetailTableViewController {
         })
     }
     
-    func displayLocationInfo2(_ placemark: CLPlacemark?) {
+   fileprivate func displayLocationInfo2(_ placemark: CLPlacemark?) {
         if let containsPlacemark = placemark {
             
             print("your location is:-",containsPlacemark)
@@ -109,7 +109,7 @@ extension ProfileDetailTableViewController {
         }
     }
     
-    func locationManager2(_ manager: CLLocationManager, didFailWithError error: Error) {
+   fileprivate func locationManager2(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while updating location " + error.localizedDescription)
     }
 }
@@ -146,5 +146,4 @@ extension ProfileDetail2TableViewController: UICollectionViewDelegate, UICollect
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(nbCol))
         return CGSize(width: size, height: size)
     }
-
 }
