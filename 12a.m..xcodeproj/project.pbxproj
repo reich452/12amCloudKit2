@@ -40,6 +40,8 @@
 		01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */; };
 		01BFDECD1FC39A8200D94B87 /* POCKC___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */; };
 		01BFDED11FC5F81A00D94B87 /* PublicMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFDED01FC5F81A00D94B87 /* PublicMethods.swift */; };
+		01D7B7931FE0548100DCD159 /* ProfileDetail2TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7B7921FE0548100DCD159 /* ProfileDetail2TableViewController.swift */; };
+		01D7B7951FE054F700DCD159 /* ProfileDetail2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7B7941FE054F700DCD159 /* ProfileDetail2CollectionViewCell.swift */; };
 		01FE0D0F1FA2BABC001C55EE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE0D0E1FA2BABC001C55EE /* User.swift */; };
 		01FE0D111FA2BB35001C55EE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE0D101FA2BB35001C55EE /* Post.swift */; };
 		01FE0D131FA2BB4C001C55EE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE0D121FA2BB4C001C55EE /* Comment.swift */; };
@@ -82,6 +84,8 @@
 		01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POCKC___.TTF"; sourceTree = "<group>"; };
 		01BFDED01FC5F81A00D94B87 /* PublicMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMethods.swift; sourceTree = "<group>"; };
+		01D7B7921FE0548100DCD159 /* ProfileDetail2TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetail2TableViewController.swift; sourceTree = "<group>"; };
+		01D7B7941FE054F700DCD159 /* ProfileDetail2CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetail2CollectionViewCell.swift; sourceTree = "<group>"; };
 		01FE0D0E1FA2BABC001C55EE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		01FE0D101FA2BB35001C55EE /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		01FE0D121FA2BB4C001C55EE /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				01367BD61FB10FD100F51F89 /* FeedTableViewCell.swift */,
 				01367BDB1FB114A000F51F89 /* CommentTableViewCell.swift */,
 				0149161A1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift */,
+				01D7B7941FE054F700DCD159 /* ProfileDetail2CollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 				01367B9E1FAE6A8100F51F89 /* LogInViewController.swift */,
 				01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */,
 				015221CF1FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift */,
+				01D7B7921FE0548100DCD159 /* ProfileDetail2TableViewController.swift */,
 				01367BD41FB10F5500F51F89 /* FeedTableViewController.swift */,
 				01367BD91FB1142E00F51F89 /* CommentTableViewController.swift */,
 				01367BDD1FB1180E00F51F89 /* CameraViewController.swift */,
@@ -408,6 +414,7 @@
 				01367BE01FB1181A00F51F89 /* CameraPreviewViewController.swift in Sources */,
 				01367BA21FAE6D7A00F51F89 /* Theme.swift in Sources */,
 				0144722D1FBA5C4400510AB3 /* DateFormatter.swift in Sources */,
+				01D7B7931FE0548100DCD159 /* ProfileDetail2TableViewController.swift in Sources */,
 				012B46361FC647A200D31809 /* Location.swift in Sources */,
 				01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */,
 				01367BD51FB10F5500F51F89 /* FeedTableViewController.swift in Sources */,
@@ -431,6 +438,7 @@
 				0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */,
 				0181AA571FCC814500166E21 /* AboutViewController.swift in Sources */,
 				01FE0D131FA2BB4C001C55EE /* Comment.swift in Sources */,
+				01D7B7951FE054F700DCD159 /* ProfileDetail2CollectionViewCell.swift in Sources */,
 				01BFDED11FC5F81A00D94B87 /* PublicMethods.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

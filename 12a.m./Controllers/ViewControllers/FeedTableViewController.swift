@@ -40,6 +40,9 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         self.reloadData()
     }
     
+    // MARK: - Properties
+    var post: Post?
+    
    private func setUpTimer() {
         Timer.every(1.second) {
             DispatchQueue.main.async { [weak self] in
@@ -54,10 +57,13 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     }
     
     // MARK: - Delegate
-    func didTapCommentButton(_ sender: FeedTableViewCell) {
+   internal func didTapCommentButton(_ sender: FeedTableViewCell) {
         
         self.performSegue(withIdentifier: "feedToPostDetail", sender: sender)
-        
+    }
+    
+   internal func didTapProfileButton(_ sender: FeedTableViewCell) {
+        self.performSegue(withIdentifier: "feedToProfileDetail", sender: sender)
     }
     
     // MARK: - Actions
@@ -92,6 +98,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         let post = PostController.shared.filteredPosts[indexPath.row]
         cell.post = post
         cell.delegate = self
+        cell.selectedProfileDelegate = self
     
         return cell
     }
@@ -106,6 +113,13 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
                 guard let indexPath = tableView.indexPath(for: selectedCell) else { return }
                 let post = PostController.shared.filteredPosts[(indexPath.row)]
                 detailTVC.post = post
+            }
+        } else if segue.identifier == "feedToProfileDetail" {
+            guard let profileDetailTVC = segue.destination as? ProfileDetail2TableViewController else { return }
+            if let selectedCell = sender as? FeedTableViewCell {
+                guard let indexPath = tableView.indexPath(for: selectedCell) else { return }
+                let post = PostController.shared.filteredPosts[(indexPath.row)]
+                profileDetailTVC.post = post
             }
         }
     }

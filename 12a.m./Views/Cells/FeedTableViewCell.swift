@@ -10,6 +10,7 @@ import UIKit
 
 protocol FeedTableViewCellDelegate: class {
     func didTapCommentButton(_ sender: FeedTableViewCell)
+    func didTapProfileButton(_ sender: FeedTableViewCell)
 }
 
 
@@ -24,6 +25,7 @@ class FeedTableViewCell: UITableViewCell {
     
     // MARK: - Propoerties
     weak var delegate: FeedTableViewCellDelegate?
+    weak var selectedProfileDelegate: FeedTableViewCellDelegate?
     
     var post: Post? {
         didSet {
@@ -60,6 +62,11 @@ class FeedTableViewCell: UITableViewCell {
     }
     @IBAction func blockUserButtonTapped(_ sender: Any) {
         self.blockUserActionSheet()
+    }
+    @IBAction func profileButtonTapped(_ sender: Any) {
+        if let selectedProfileDelegate = self.selectedProfileDelegate {
+            selectedProfileDelegate.didTapProfileButton(self)
+        }
     }
     
 }

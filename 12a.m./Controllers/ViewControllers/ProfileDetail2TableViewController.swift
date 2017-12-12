@@ -1,15 +1,15 @@
 //
-//  ProfileDetailTableViewController.swift
+//  ProfileDetail2TableViewController.swift
 //  12a.m.
 //
-//  Created by Nick Reichard on 12/7/17.
+//  Created by Nick Reichard on 12/12/17.
 //  Copyright © 2017 Nick Reichard. All rights reserved.
 //
 
 import UIKit
 import CoreLocation
 
-class ProfileDetailTableViewController: UITableViewController, CLLocationManagerDelegate {
+class ProfileDetail2TableViewController: UITableViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var countryLabel: UILabel!
@@ -22,46 +22,38 @@ class ProfileDetailTableViewController: UITableViewController, CLLocationManager
         super.viewDidLoad()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.setUpView()
         self.setUpViewFromFeed()
         self.setUpAppearance()
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
+        self.locationManager2.delegate = self
+        self.locationManager2.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        self.locationManager2.requestWhenInUseAuthorization()
+        self.locationManager2.startUpdatingLocation()
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.locationManager.stopUpdatingLocation()
+        self.locationManager2.stopUpdatingLocation()
     }
     
     // MARK: - Properties
     
     var comment: Comment?
     var post: Post?
-    private let locationManager = CLLocationManager()
+    fileprivate let locationManager2 = CLLocationManager()
     
     // MARK: - Actions
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
- 
+    
     // MARK: - View
-    
-    func setUpView() {
-        guard let owner = comment?.owner else { return }
-        self.usernameLabel.text = owner.username
-        self.profileImageView.image = owner.photo
-    }
-    
-    func setUpViewFromFeed() {
+
+   private func setUpViewFromFeed() {
         guard let owner = post?.owner else { return }
         self.profileImageView.image = owner.photo
         self.usernameLabel.text = owner.username
     }
-
     
     private func setUpAppearance() {
         self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.height / 2
@@ -72,13 +64,13 @@ class ProfileDetailTableViewController: UITableViewController, CLLocationManager
     }
 }
 
-// MARK: - CLLocationManagerDelegate 
+// MARK: - CLLocationManagerDelegate
 
 extension ProfileDetailTableViewController {
     
     // MARK: - Location
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager2(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = manager.location else { return }
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
             if (error != nil) {
@@ -96,12 +88,11 @@ extension ProfileDetailTableViewController {
         })
     }
     
-    func displayLocationInfo(_ placemark: CLPlacemark?) {
+    func displayLocationInfo2(_ placemark: CLPlacemark?) {
         if let containsPlacemark = placemark {
             
             print("your location is:-",containsPlacemark)
             //stop updating location to save battery life
-            locationManager.stopUpdatingLocation()
             let locality = (containsPlacemark.locality != nil) ? containsPlacemark.locality : ""
             let country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
             let state = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
@@ -114,33 +105,33 @@ extension ProfileDetailTableViewController {
                 self.countryLabel.text = country
             }
             self.cityLabel.text = locality
-            self.stateLabel.text = state 
+            self.stateLabel.text = state
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    func locationManager2(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while updating location " + error.localizedDescription)
     }
 }
 
 // MARK: - CollectionView
 
-extension ProfileDetailTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ProfileDetail2TableViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let ownerPosts = comment?.owner?.posts?.count
+        let ownerPosts = post?.owner?.posts?.count
         return ownerPosts ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as? ProfileDetailCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell2", for: indexPath) as? ProfileDetail2CollectionViewCell else { return UICollectionViewCell() }
         
-        let ownerPosts = comment?.owner?.posts
+        let ownerPosts = post?.owner?.posts
         guard let sortedPosts = ownerPosts?.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending }) else { return UICollectionViewCell() }
         let sortedIndexPath = sortedPosts[indexPath.row]
-        cell.userPostedImageView.image = sortedIndexPath.photo
-       
-        return cell 
+        cell.userPostImageView.image = sortedIndexPath.photo
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -155,8 +146,5 @@ extension ProfileDetailTableViewController: UICollectionViewDelegate, UICollecti
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(nbCol))
         return CGSize(width: size, height: size)
     }
+
 }
-
-
-
-
