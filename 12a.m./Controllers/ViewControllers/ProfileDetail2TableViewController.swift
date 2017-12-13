@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ProfileDetail2TableViewController: UITableViewController, CLLocationManagerDelegate {
+class ProfileDetail2TableViewController: UITableViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var countryLabel: UILabel!
@@ -24,10 +24,8 @@ class ProfileDetail2TableViewController: UITableViewController, CLLocationManage
         self.collectionView.dataSource = self
         self.setUpViewFromFeed()
         self.setUpAppearance()
-        self.locationManager2.delegate = self
-        self.locationManager2.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        self.locationManager2.requestWhenInUseAuthorization()
-        self.locationManager2.startUpdatingLocation()
+       
+       
         
     }
     
@@ -53,6 +51,9 @@ class ProfileDetail2TableViewController: UITableViewController, CLLocationManage
         guard let owner = post?.owner else { return }
         self.profileImageView.image = owner.photo
         self.usernameLabel.text = owner.username
+        self.cityLabel.text = owner.city
+        self.countryLabel.text = owner.country
+        self.stateLabel.text = owner.state
     }
     
     private func setUpAppearance() {
@@ -64,55 +65,6 @@ class ProfileDetail2TableViewController: UITableViewController, CLLocationManage
     }
 }
 
-// MARK: - CLLocationManagerDelegate
-
-extension ProfileDetailTableViewController {
-    
-    // MARK: - Location
-    
-  fileprivate func locationManager2(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = manager.location else { return }
-        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-            if (error != nil) {
-                print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
-                return
-            }
-            if (placemarks?.count)! > 0 {
-                
-                print("placemarks",placemarks ?? 0)
-                let pm = placemarks?[0]
-                self.displayLocationInfo(pm)
-            } else {
-                print("Problem with the data received from geocoder")
-            }
-        })
-    }
-    
-   fileprivate func displayLocationInfo2(_ placemark: CLPlacemark?) {
-        if let containsPlacemark = placemark {
-            
-            print("your location is:-",containsPlacemark)
-            //stop updating location to save battery life
-            let locality = (containsPlacemark.locality != nil) ? containsPlacemark.locality : ""
-            let country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
-            let state = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
-            
-            
-            let unitedStates = "United States"
-            if (country?.contains(unitedStates))! {
-                self.countryLabel.text = "U.S.A"
-            } else {
-                self.countryLabel.text = country
-            }
-            self.cityLabel.text = locality
-            self.stateLabel.text = state
-        }
-    }
-    
-   fileprivate func locationManager2(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error while updating location " + error.localizedDescription)
-    }
-}
 
 // MARK: - CollectionView
 

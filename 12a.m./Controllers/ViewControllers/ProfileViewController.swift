@@ -189,9 +189,7 @@ extension ProfileViewController {
             }
         }
     }
-    
 
-    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while updating location " + error.localizedDescription)
     }

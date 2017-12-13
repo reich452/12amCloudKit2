@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ProfileDetailTableViewController: UITableViewController, CLLocationManagerDelegate {
+class ProfileDetailTableViewController: UITableViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var countryLabel: UILabel!
@@ -25,24 +25,13 @@ class ProfileDetailTableViewController: UITableViewController, CLLocationManager
         self.setUpView()
         self.setUpViewFromFeed()
         self.setUpAppearance()
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        self.locationManager.stopUpdatingLocation()
     }
     
     // MARK: - Properties
     
     var comment: Comment?
     var post: Post?
-    private let locationManager = CLLocationManager()
-    
+  
     // MARK: - Actions
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
@@ -54,12 +43,18 @@ class ProfileDetailTableViewController: UITableViewController, CLLocationManager
         guard let owner = comment?.owner else { return }
         self.usernameLabel.text = owner.username
         self.profileImageView.image = owner.photo
+        self.cityLabel.text = owner.city
+        self.countryLabel.text = owner.country
+        self.stateLabel.text = owner.state
     }
     
     func setUpViewFromFeed() {
         guard let owner = post?.owner else { return }
         self.profileImageView.image = owner.photo
         self.usernameLabel.text = owner.username
+        self.cityLabel.text = owner.city
+        self.stateLabel.text = owner.state
+        self.countryLabel.text = owner.country
     }
 
     private func setUpAppearance() {
@@ -68,57 +63,6 @@ class ProfileDetailTableViewController: UITableViewController, CLLocationManager
         self.profileImageView.contentMode = .scaleAspectFill
         self.profileImageView.layer.borderWidth = 1.8
         self.profileImageView.layer.borderColor = UIColor.white.cgColor
-    }
-}
-
-// MARK: - CLLocationManagerDelegate 
-
-extension ProfileDetailTableViewController {
-    
-    // MARK: - Location
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = manager.location else { return }
-        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-            if (error != nil) {
-                print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
-                return
-            }
-            if (placemarks?.count)! > 0 {
-                
-                print("placemarks",placemarks ?? 0)
-                let pm = placemarks?[0]
-                self.displayLocationInfo(pm)
-            } else {
-                print("Problem with the data received from geocoder")
-            }
-        })
-    }
-    
-    func displayLocationInfo(_ placemark: CLPlacemark?) {
-        if let containsPlacemark = placemark {
-            
-            print("your location is:-",containsPlacemark)
-            //stop updating location to save battery life
-            locationManager.stopUpdatingLocation()
-            let locality = (containsPlacemark.locality != nil) ? containsPlacemark.locality : ""
-            let country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
-            let state = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
-            
-            
-            let unitedStates = "United States"
-            if (country?.contains(unitedStates))! {
-                self.countryLabel.text = "U.S.A"
-            } else {
-                self.countryLabel.text = country
-            }
-            self.cityLabel.text = locality
-            self.stateLabel.text = state 
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error while updating location " + error.localizedDescription)
     }
 }
 
