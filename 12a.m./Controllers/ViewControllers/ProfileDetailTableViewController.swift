@@ -62,7 +62,6 @@ class ProfileDetailTableViewController: UITableViewController, CLLocationManager
         self.usernameLabel.text = owner.username
     }
 
-    
     private func setUpAppearance() {
         self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.height / 2
         self.profileImageView.clipsToBounds = true
