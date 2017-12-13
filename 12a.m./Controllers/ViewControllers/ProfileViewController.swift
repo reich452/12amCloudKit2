@@ -33,6 +33,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     private let imagePicker = UIImagePickerController()
     private let locationManager = CLLocationManager()
     private let locator = Locator.self
+    private let placemark: CLPlacemark? = nil
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -70,11 +71,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     // MARK: - Actions
     
     @IBAction func updateImageButtonTapped(_ sender: Any) {
-        addedProfileImage()
+        self.addedProfileImage()
     }
     
     @IBAction func updateButtonTapped(_ sender: Any) {
-        updateUserInfo()
+        self.updateUserInfo()
     }
     
     // MARK: - Update
@@ -102,30 +103,61 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     }
     
     private func updateUserInfo() {
-        guard let userName = usernameTextField.text, userName != "", let email = emailTextField.text, email != "", let profileImage = profileImageView.image else { return }
+        guard let userName = self.usernameTextField.text, userName != "", let email = self.emailTextField.text, email != "", let profileImage = self.profileImageView.image else { return }
         
-        if UserController.shared.currentUser == nil {
-            
-            UserController.shared.createUser(with: userName, email: email, profileImage: profileImage, completion: { (success) in
+        if UserController.shared.currentUser != nil {
+            UserController.shared.updateCurrentUser(username: userName, email: email, profileImage: profileImage, completion: { (success) in
                 if !success {
-                    if !success {
-                        print("Not successfull creating new user")
-                    } else {
-                        print("Made a new user!")
-                    }
-                }
-            })
-        } else {
-            UserController.shared.updateCurrentUser(username: userName, email: email, completion: { [unowned self] (success) in
-                if !success {
-                    print("Not successfull updating existing user")
+                    print("Error updating current user")
                 } else {
-                    print("Updated user!")
-                    self.updateViews()
+                    print("Updated current user personal info")
                 }
             })
         }
     }
+    
+    private func updateUserLocation(_ placemark: CLPlacemark?) {
+        
+        if let containsPlacemark = placemark {
+            
+            print("your location is:-",containsPlacemark)
+            //stop updating location to save battery life
+            locationManager.stopUpdatingLocation()
+            var locality = (containsPlacemark.locality != nil) ? containsPlacemark.locality : ""
+            var country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
+            var state = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
+            
+            let unitedStates = "United States"
+            if (country?.contains(unitedStates))! {
+                self.currentCountryLabel.text = "U.S.A"
+            } else {
+                self.currentCountryLabel.text = country
+            }
+            self.currentCityLabel.text = locality
+            self.currentStateLabel.text = state
+            
+            locality = self.currentCityLabel.text
+            state = self.currentStateLabel.text
+            country = self.currentCountryLabel.text
+            
+            guard let cityLocality = locality,
+                let currentState = state,
+                let currentCountry = country else { return }
+            
+            if UserController.shared.currentUser != nil {
+                
+                UserController.shared.updateCurrentUserWithLocation(cityLocality, state: currentState, country: currentCountry, compleation: { (success) in
+                    
+                    if !success {
+                        print("Not succesfull updateing currten user")
+                    } else {
+                        print("Updated current user location")
+                    }
+                })
+            }
+        }
+    }
+    
     private func updateDiscription() {
         let posts = PostController.shared.posts.map {$0.ownerReference}
         if posts.count != 0 {
@@ -152,6 +184,7 @@ extension ProfileViewController {
                 print("placemarks",placemarks ?? 0)
                 let pm = placemarks?[0]
                 self.displayLocationInfo(pm)
+                self.updateUserLocation(pm)
             } else {
                 print("Problem with the data received from geocoder")
             }

@@ -8,6 +8,7 @@
 
 import UIKit
 import CloudKit
+import CoreLocation
 
 class User {
     
@@ -18,6 +19,9 @@ class User {
     fileprivate let imageKey = "photoData"
     fileprivate let blockUserRefKey = "blockUserRef"
     fileprivate let accessTokenKey = "acessToken"
+    fileprivate let cityKey = "city"
+    fileprivate let stateKey = "state"
+    fileprivate let countryKey = "country"
     
     var username: String
     var email: String
@@ -26,20 +30,27 @@ class User {
     var blockUserRefs: [CKReference]? = []
     var blockUsersArray: [User] = []
     var posts: [Post]? = []
+    var city: String? = nil
+    var state: String? = nil
+    var country: String? = nil
     let appleUserRef: CKReference
+    
     
     var photo: UIImage? {
         guard let photoData = profileImageData else { return nil }
         return UIImage(data: photoData)
     }
     
-    init(username: String, email: String, appleUserRef: CKReference, profileImageData: Data?, blockUserRefs: [CKReference]? = [], posts: [Post] = []) {
+    init(username: String, email: String, appleUserRef: CKReference, profileImageData: Data?, blockUserRefs: [CKReference]? = [], posts: [Post] = [], city: String = String(), state: String = String(), country: String = String()) {
         self.username = username
         self.email = email
         self.appleUserRef = appleUserRef
         self.profileImageData = profileImageData
         self.blockUserRefs = blockUserRefs
         self.posts = posts
+        self.city = city
+        self.state = state
+        self.country = country
     }
     
     init?(cloudKitRecord: CKRecord) {
@@ -50,6 +61,9 @@ class User {
             let profileImageData = try? Data(contentsOf: photoAsset.fileURL) else { return nil }
         
         self.blockUserRefs = cloudKitRecord[blockUserRefKey] as? [CKReference] ?? []
+        self.city = cloudKitRecord[cityKey] as? String ?? nil
+        self.state = cloudKitRecord[stateKey] as? String ?? nil
+        self.country = cloudKitRecord[countryKey] as? String ?? nil
         
         self.username = username
         self.email = email
@@ -81,6 +95,9 @@ extension CKRecord {
         self.setValue(user.appleUserRef, forKey: user.appleUserRefKey)
         self.setValue(user.blockUserRefs, forKeyPath: user.blockUserRefKey)
         self[user.imageKey] = CKAsset(fileURL: user.temporaryPhotoURL)
+        self.setValue(user.city, forKey: user.cityKey)
+        self.setValue(user.state, forKey: user.stateKey)
+        self.setValue(user.country, forKey: user.countryKey)
     }
 }
 

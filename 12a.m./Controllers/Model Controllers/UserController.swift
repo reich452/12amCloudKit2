@@ -8,6 +8,7 @@
 
 import CloudKit
 import UIKit
+import CoreLocation
 
 class UserController {
     static let shared = UserController()
@@ -18,6 +19,7 @@ class UserController {
     }()
     
     let currnetUserWasSentNotification = Notification.Name("currentUserWasSet")
+   
     var users = [User]()
     var currentUser: User? {
         didSet {
@@ -88,10 +90,10 @@ class UserController {
             }
             guard let recordID = appleUsersRecordId,
                 let data = UIImageJPEGRepresentation(profileImage, 1.0) else { print("Error creating recordID")
-                completion(false); return
+                    completion(false); return
             }
             let blockUserRefs = self.currentUser?.blockUserRefs
-           
+            
             let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
             let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data, blockUserRefs: blockUserRefs)
             let userRecord = CKRecord(user: user)
@@ -106,7 +108,7 @@ class UserController {
                 }
                 self.currentUser = currentUser
                 completion(true)
-                // TODO - clean this up 
+                // TODO - clean this up
                 if error == nil {
                     print("Success creating user \(self.currentUser?.username ??? "")")
                 } else {
@@ -116,14 +118,40 @@ class UserController {
         }
     }
     
+    
     //R
     
     //U
-    func updateCurrentUser(username: String, email: String, completion: @escaping (_ success: Bool) -> Void) {
-        guard let currentUser = currentUser else { return }
+    
+    func updateCurrentUserWithLocation(_ city: String, state: String, country: String, compleation: @escaping (_ success: Bool) -> Void) {
+        guard let currentUser = self.currentUser else { return }
+       
+        currentUser.city = city
+        currentUser.state = state
+        currentUser.country = country
+        let currentUserRecord = CKRecord(user: currentUser)
+        
+        self.cloudKitManager.modifyRecords([currentUserRecord], perRecordCompletion: nil) { (_, error) in
+            if let error = error {
+                print(" error modifying curretn user record \(#function) \(error.localizedDescription)")
+                compleation(false); return
+            } else {
+                print("updated user \(currentUser.username)")
+            }
+            compleation(true)
+            
+        }
+    }
+    
+    func updateCurrentUser(username: String, email: String, profileImage: UIImage?, completion: @escaping (_ success: Bool) -> Void) {
+        guard let currentUser = currentUser, let profileImage = profileImage,
+            let data = UIImageJPEGRepresentation(profileImage, 1.0) else { print("Something broke \(#function)"); return }
+        
         
         currentUser.username = username
         currentUser.email = email
+        currentUser.profileImageData = data
+        
         let currentUserRecord = CKRecord(user: currentUser)
         self.cloudKitManager.modifyRecords([currentUserRecord], perRecordCompletion: nil) { (_, error) in
             

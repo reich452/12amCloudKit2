@@ -91,7 +91,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 }
             })
         } else {
-            UserController.shared.updateCurrentUser(username: userName, email: email, completion: { (success) in
+            UserController.shared.updateCurrentUser(username: userName, email: email, profileImage: profileImage, completion: { (success) in
                 if !success {
                     print("Not successfull updating existing user")
                 } else {
