@@ -34,6 +34,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     private let locationManager = CLLocationManager()
     private let locator = Locator.self
     private let placemark: CLPlacemark? = nil
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -47,6 +48,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         updateViews()
         setUpAppearance()
         updateDiscription()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow2), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide2), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -67,6 +71,15 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    // MARK: - Keyboard
+    
+    @objc func keyboardWillShow2(sender: NSNotification) {
+        self.view.frame.origin.y -= 150
+    }
+    
+    @objc func keyboardWillHide2(sender: NSNotification) {
+        self.view.frame.origin.y += 150
+    }
     
     // MARK: - Actions
     
@@ -78,7 +91,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         self.updateUserInfo()
     }
     
-    // MARK: - Update
+    // MARK: - Update & Appearance
     @objc private func updateViews() {
         guard let user = self.currentUser,
             let userPhoto = self.currentUser?.photo else { return }
@@ -124,6 +137,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
             discriptionLabel.text = "You hanv't posted at 12am yet"
         }
     }
+    
 }
 
 extension ProfileViewController {
@@ -189,7 +203,7 @@ extension ProfileViewController {
             }
         }
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error while updating location " + error.localizedDescription)
     }

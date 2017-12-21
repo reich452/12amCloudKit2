@@ -112,7 +112,6 @@
 				01BFDECF1FC5F80400D94B87 /* Public */,
 				0146C49D1FC0BDA000DEA332 /* AlertExtension */,
 				014472271FB69BC100510AB3 /* Date Helper */,
-				01367C451FB3835C00F51F89 /* Constants */,
 				01367BA01FAE6D6300F51F89 /* Theme */,
 				01367BA61FAFA71100F51F89 /* Constatns.swift */,
 				01367C461FB3836800F51F89 /* Time Tacker */,
@@ -154,13 +153,6 @@
 				01D7B7941FE054F700DCD159 /* ProfileDetail2CollectionViewCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		01367C451FB3835C00F51F89 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Constants;
 			sourceTree = "<group>";
 		};
 		01367C461FB3836800F51F89 /* Time Tacker */ = {

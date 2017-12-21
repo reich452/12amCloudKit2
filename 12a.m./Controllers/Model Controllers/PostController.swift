@@ -174,7 +174,9 @@ class PostController {
                 completion()
             case Comment.recordTypeKey:
                 let comments = records.flatMap { Comment(ckRecord: $0) }
+                let dispatchGroup = DispatchGroup()
                 for comment in comments {
+                    dispatchGroup.enter()
                     let postRef = comment.postReference
                     guard let postIndex = self.posts.index(where: {$0.ckRecordID == postRef.recordID } ) else { completion(); return }
                     let post = self.posts[postIndex]
@@ -184,7 +186,7 @@ class PostController {
                         else { break }
                     let user = UserController.shared.users[ownerIndex]
                     comment.owner = user
-                   
+                    dispatchGroup.leave()
                 }
                 self.comments = comments
                 completion()
