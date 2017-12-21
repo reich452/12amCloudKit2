@@ -241,7 +241,7 @@ class CloudKitManager {
         
         DispatchQueue.main.async(execute: {
             
-            let alertController = UIAlertController(title: "iCloud Synchronization Error", message: errorText, preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Sign into iCloud in your settings", message: errorText, preferredStyle: .alert)
             
             let dismissAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil);
             
@@ -279,7 +279,7 @@ class CloudKitManager {
         if permissionStatus == .granted {
             print("User Discoverability permission granted. User may proceed with full access.")
         } else {
-            var errorText = "Synchronization is disabled\n"
+            var errorText = "Sign in to iCloud in your settings\n"
             if let error = error {
                 print("handleCloudKitUnavailable ERROR: \(error)")
                 print("An error occured: \(error.localizedDescription)")
