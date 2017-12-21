@@ -26,7 +26,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var profileBackgroundImageView: UIImageView!
     
-    
     // MARK: - Properties
     private var currentUser: User? {
         return UserController.shared.currentUser
@@ -35,6 +34,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     private var imagePickerWasDismissed = false
     private let imagePicker = UIImagePickerController()
     private var isTaken: Bool = true
+    fileprivate let appDelegate = UIApplication.shared.delegate! as! AppDelegate
     
     
     // MARK: - Life Cycle 
@@ -45,13 +45,23 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.emailTextField.delegate = self
         setAppearance()
         updateViews()
+        setUpTabBarController()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkUsernameAvailablility()
+        updateViews()
+    }
+    
     
     // MARK: - Actions
     
     @IBAction func logInButtonTapped(_ sender: UIButton) {
         logInButtonClicked()
         saveNewUser()
+        self.performSegue(withIdentifier: "toTabBar", sender: nil)
+        print("Login Ok")
     }
     @IBAction func imagePickerButtonTapped(_ sender: UIButton) {
         addedProfileImage()
@@ -76,7 +86,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    func saveNewUser() {
+    private func saveNewUser() {
         guard let userName = userNameTextField.text, userName != "", let email = emailTextField.text, email != "", let profileImage = profileImageView.image else { return }
         
         if UserController.shared.currentUser == nil {
@@ -102,7 +112,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func checkUsernameAvailablility() {
+    private func checkUsernameAvailablility() {
         guard let username = userNameTextField.text, username != "" else { return }
         
         UserController.shared.checkForExistingUserWith(username: username) { (isTaken) in
@@ -122,7 +132,7 @@ extension LogInViewController: UIImagePickerControllerDelegate, UINavigationCont
             imagePicker.cameraCaptureMode = .photo
             imagePicker.modalPresentationStyle = .popover
             imagePicker.delegate = self
-   
+            
             self.present(imagePicker, animated:  true, completion: nil)
             
         } else {
@@ -198,7 +208,11 @@ extension LogInViewController {
         self.profileBackgroundImageView.contentMode = .scaleAspectFill
         self.profileBackgroundImageView.layer.cornerRadius = profileBackgroundImageView.layer.frame.height / 2
         self.profileBackgroundImageView.layer.masksToBounds = true
-        self.profileImageView.image = UIImage(named: "avatar")
+        if self.currentUser == nil {
+            self.profileImageView.image = UIImage(named: "avatar")
+        } else {
+            self.profileImageView.image = currentUser?.photo
+        }
         self.profileImageView.contentMode = .scaleAspectFill
         self.profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
         self.profileImageView.layer.masksToBounds = true
@@ -223,13 +237,25 @@ extension LogInViewController {
     }
     
     
-    func updateViews() {
-        guard let currentUser = self.currentUser else { return }
-        self.profileImageView.image = currentUser.photo
+    @objc func updateViews() {
+        
+        guard let currentUser = self.currentUser,
+            let currentUserPhoto = currentUser.photo else { return }
+        
+        self.profileImageView.image = currentUserPhoto
+        print(currentUser.username)
         self.loginButton.layer.cornerRadius = loginButton.layer.frame.height / 2
         self.loginButton.layer.borderColor = UIColor.white.cgColor
         self.loginButton.layer.borderWidth = 2
         self.loginButton.layer.masksToBounds = true
+    }
+    
+    func setUpTabBarController() {
+        if UserController.shared.currentUser != nil {
+            let initialViewController = self.storyboard!.instantiateViewController(withIdentifier: "customTabBar")
+            appDelegate.window?.rootViewController = initialViewController
+            appDelegate.window?.makeKeyAndVisible()
+        }
     }
 }
 

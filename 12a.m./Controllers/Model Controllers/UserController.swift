@@ -30,7 +30,6 @@ class UserController {
     }
     
     init() {
-        fetchCurrentUser()
         checkUsersCloudKitAvailablility()
     }
     
@@ -96,6 +95,43 @@ class UserController {
             
             let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
             let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data, blockUserRefs: blockUserRefs)
+            let userRecord = CKRecord(user: user)
+            self.cloudKitManager.saveRecord(userRecord, completion: { [unowned self] (record, error) in
+                if let error = error {
+                    print("Error saing user record \(#file) \(#function) \(error) \(error.localizedDescription)")
+                    completion(false); return
+                }
+                guard let record = record,
+                    let currentUser = User(cloudKitRecord: record) else {
+                        completion(false); return
+                }
+                self.currentUser = currentUser
+                completion(true)
+                // TODO - clean this up
+                if error == nil {
+                    print("Success creating user \(self.currentUser?.username ??? "")")
+                } else {
+                    print("Error saving user Rcord \(error?.localizedDescription ?? String("error saving user record"))")
+                }
+            })
+        }
+    }
+    
+    func createUserLocation(with username: String, email: String, profileImage: UIImage, state: String, city: String, country: String, completion: @escaping (_ success: Bool) -> Void) {
+        CKContainer.default().fetchUserRecordID { [unowned self] (appleUsersRecordId, error) in
+            if let error = error {
+                print("Error fetchingUserRcordID \(#function) \(error) & \(error.localizedDescription))")
+                completion(false); return
+            }
+            guard let recordID = appleUsersRecordId, let posts = self.currentUser?.posts,
+                let data = UIImageJPEGRepresentation(profileImage, 1.0) else { print("Error creating recordID")
+                    completion(false); return
+            }
+            let blockUserRefs = self.currentUser?.blockUserRefs
+            
+            let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
+            let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data, blockUserRefs: blockUserRefs, posts: posts, city: city, state: state, country: country)
+          
             let userRecord = CKRecord(user: user)
             self.cloudKitManager.saveRecord(userRecord, completion: { [unowned self] (record, error) in
                 if let error = error {

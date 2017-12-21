@@ -24,9 +24,6 @@ class ProfileDetail2TableViewController: UITableViewController {
         self.collectionView.dataSource = self
         self.setUpViewFromFeed()
         self.setUpAppearance()
-       
-       
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

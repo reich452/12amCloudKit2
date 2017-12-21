@@ -88,6 +88,7 @@ class PostController {
         let ownerReference = CKReference(recordID: currentUserRecordID, action: .none)
         let post = Post(photoData: data, text: text, owner: currentUser, ownerReference: ownerReference)
         
+        
         // Adds post to first tvccell
         posts.append(post)
         let record = CKRecord(post)

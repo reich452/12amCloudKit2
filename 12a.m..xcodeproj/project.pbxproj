@@ -36,6 +36,7 @@
 		0181AA571FCC814500166E21 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0181AA561FCC814500166E21 /* AboutViewController.swift */; };
 		0181AA591FCC8A9400166E21 /* Terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 0181AA581FCC8A9400166E21 /* Terms.html */; };
 		018D7A6F1FA2B63200A6C81F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018D7A6E1FA2B63200A6C81F /* CloudKit.framework */; };
+		019FBF3A1FE889E300FE7E6F /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019FBF391FE889E300FE7E6F /* CustomViewController.swift */; };
 		01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */; };
 		01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */; };
 		01BFDECD1FC39A8200D94B87 /* POCKC___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */; };
@@ -80,6 +81,7 @@
 		0181AA581FCC8A9400166E21 /* Terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Terms.html; sourceTree = "<group>"; };
 		018D7A6C1FA2B63000A6C81F /* 12a.m..entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 12a.m..entitlements; sourceTree = "<group>"; };
 		018D7A6E1FA2B63200A6C81F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		019FBF391FE889E300FE7E6F /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextField.swift; sourceTree = "<group>"; };
 		01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POCKC___.TTF"; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		0146C49C1FC0BD3D00DEA332 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				019FBF391FE889E300FE7E6F /* CustomViewController.swift */,
 				018D7A711FA2B67400A6C81F /* ViewControllers */,
 				018D7A731FA2B69000A6C81F /* Model Controllers */,
 			);
@@ -426,6 +429,7 @@
 				01367BA71FAFA71100F51F89 /* Constatns.swift in Sources */,
 				010D07401FA3B63F0013375F /* CloudKitManager.swift in Sources */,
 				010D073D1FA3B1450013375F /* UserController.swift in Sources */,
+				019FBF3A1FE889E300FE7E6F /* CustomViewController.swift in Sources */,
 				01367BA41FAE8AB400F51F89 /* PostController.swift in Sources */,
 				0149161B1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift in Sources */,
 				015221D01FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift in Sources */,

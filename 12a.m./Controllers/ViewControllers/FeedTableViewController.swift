@@ -22,7 +22,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         super.viewDidLoad()
         
         setUpTimer()
-        performInitialAppLogic()
+        
         setUpAppearance()
 
         let nc = NotificationCenter.default
@@ -141,17 +141,18 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     
     // to here to test photo posting at whatever time
     
-   private func performInitialAppLogic() {
-        UserController.shared.fetchCurrentUser { user in
-            if let user = user {
-                print("performed InitialAppLogic for \(user.username)")
-                return
-            } else {
-                print("Cannot fetch current user")
-            }
-        }
-    }
-    
+//   private func performInitialAppLogic() {
+//        UserController.shared.fetchCurrentUser { user in
+//            if let _ = user {
+//                return
+//            } else {
+//                DispatchQueue.main.async {
+//                    self.performSegue(withIdentifier: self.presentSignUpSegue, sender: self)
+//                }
+//            }
+//        }
+//    }
+//
     func addPicButtonTapped() {
         
         guard let isMidnight = TimeTracker.shared.isMidnight else { return }
