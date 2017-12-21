@@ -1354,6 +1354,7 @@
                             <constraint firstItem="3gh-zG-8sL" firstAttribute="top" secondItem="U7k-Wf-hB7" secondAttribute="top" id="v3Q-bc-PRK"/>
                             <constraint firstItem="WBf-PM-yxU" firstAttribute="width" secondItem="0cH-UO-zd2" secondAttribute="width" multiplier="2/3" id="wOA-3u-f1o"/>
                             <constraint firstItem="46c-36-hHo" firstAttribute="top" secondItem="utX-U3-HUh" secondAttribute="bottom" constant="11" id="woq-7s-9wm"/>
+                            <constraint firstItem="U7k-Wf-hB7" firstAttribute="bottom" secondItem="QJj-xq-KwV" secondAttribute="bottom" constant="126" id="wuc-KW-ViX"/>
                             <constraint firstAttribute="bottom" secondItem="n8r-t0-whY" secondAttribute="bottom" constant="350" id="xHV-PY-mNy"/>
                             <constraint firstItem="46c-36-hHo" firstAttribute="width" secondItem="0cH-UO-zd2" secondAttribute="width" multiplier="4/5" id="yMp-rR-TeQ"/>
                         </constraints>
@@ -1361,6 +1362,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="R94-hO-Ry3"/>
                     <connections>
+                        <outlet property="bottomConstraint" destination="wuc-KW-ViX" id="kau-2a-CeH"/>
                         <outlet property="cityLabel" destination="wJm-kW-bPI" id="dNy-Q8-Ql2"/>
                         <outlet property="countryLabel" destination="Bkq-Tc-3Cg" id="vAo-J3-rDW"/>
                         <outlet property="currentCityLabel" destination="a4j-27-lrU" id="qb8-KE-Ex3"/>

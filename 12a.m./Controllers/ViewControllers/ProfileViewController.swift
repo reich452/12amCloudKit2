@@ -24,6 +24,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     @IBOutlet weak var usernameTextField: IconTextField!
     @IBOutlet weak var emailTextField: IconTextField!
     @IBOutlet weak var updateProfileButton: UIButton!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
     private var currentUser: User? {
@@ -49,8 +50,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         setUpAppearance()
         updateDiscription()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow2), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide2), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -73,14 +74,24 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     }
     // MARK: - Keyboard
     
-    @objc func keyboardWillShow2(sender: NSNotification) {
-        self.view.frame.origin.y -= 150
+   @objc func keyboardWillShow(notification: NSNotification) {
+        //To retrieve keyboard size, uncomment following line
+        //let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
+        bottomConstraint.constant = 260
+    UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     
-    @objc func keyboardWillHide2(sender: NSNotification) {
-        self.view.frame.origin.y += 150
+   @objc func keyboardWillHide(notification: NSNotification) {
+        //To retrieve keyboard size, uncomment following line
+        //let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
+        bottomConstraint.constant = 175
+    UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
-    
+
     // MARK: - Actions
     
     @IBAction func updateImageButtonTapped(_ sender: Any) {
@@ -113,6 +124,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         self.profileImageView.clipsToBounds = true
         self.usernameTextField.textColor = UIColor.white
         self.emailTextField.textColor = UIColor.white
+        
     }
     
     private func updateUserInfo() {
