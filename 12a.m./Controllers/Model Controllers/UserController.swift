@@ -50,7 +50,11 @@ class UserController {
                     print("eerror fethcing user record \(error) & \(error.localizedDescription) \(#function)")
                     completion(nil); return
                 }
-                guard let records = records else { return }
+                guard let records = records else {
+                    
+                    // Send a different notification that will tell the launchscreen to present/segue to the login/signup screen.
+                    
+                    return }
                 let users = records.flatMap { User(cloudKitRecord: $0)}
                 let user = users.first
                 print("Fetched loged in user \(user?.username ?? "can't fetch user" )")

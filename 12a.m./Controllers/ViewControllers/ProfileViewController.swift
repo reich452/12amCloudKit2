@@ -50,8 +50,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         setUpAppearance()
         updateDiscription()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow2), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide2), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -90,6 +92,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
+    }
+    
+   @objc func keyboardWillShow2(sender: NSNotification) {
+        self.view.frame.origin.y -= 150
+    }
+   @objc func keyboardWillHide2(sender: NSNotification) {
+        self.view.frame.origin.y += 150
     }
 
     // MARK: - Actions
