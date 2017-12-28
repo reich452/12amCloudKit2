@@ -24,9 +24,8 @@ class CustomViewController: UITabBarController, UITabBarControllerDelegate {
         
         let storyboard2 = UIStoryboard(name: "Main", bundle: nil)
         let updateProfileVC = storyboard2.instantiateViewController(withIdentifier: "updateProfileVC")
-        let secondNavigationController = UINavigationController(rootViewController: updateProfileVC)
-        secondNavigationController.title = "Profile"
-        secondNavigationController.tabBarItem.image = #imageLiteral(resourceName: "profileIcon")
+        updateProfileVC.title = "Profile"
+       updateProfileVC.tabBarItem.image = #imageLiteral(resourceName: "profileIcon")
         
 //        let storyboard3 = UIStoryboard(name: "Main", bundle: nil)
 //        let saveSearchTVC = storyboard3.instantiateViewController(withIdentifier: "savedImages")
@@ -34,7 +33,7 @@ class CustomViewController: UITabBarController, UITabBarControllerDelegate {
 //        thridNavigationController.title = "Saved"
 //        thridNavigationController.tabBarItem.image = #imageLiteral(resourceName: "heartIcon")
         
-        viewControllers = [navigationController, secondNavigationController]
+        viewControllers = [navigationController, updateProfileVC]
         tabBar.isTranslucent = true
         
         let topBorder = CALayer()
