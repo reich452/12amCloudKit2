@@ -205,7 +205,7 @@ extension LogInViewController {
         //        headerUIView.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
         
         self.profileBackgroundImageView.image = #imageLiteral(resourceName: "backgroundProfileImage")
-        self.profileBackgroundImageView.contentMode = .scaleAspectFill
+        self.profileBackgroundImageView.contentMode = .scaleAspectFit
         self.profileBackgroundImageView.layer.cornerRadius = profileBackgroundImageView.layer.frame.height / 2
         self.profileBackgroundImageView.layer.masksToBounds = true
         if self.currentUser == nil {
