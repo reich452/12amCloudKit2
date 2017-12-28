@@ -24,7 +24,7 @@
         <scene sceneID="AN2-CF-7kP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BdP-zi-fsx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="DfE-1u-oRX"/>
+                    <tabBarItem key="tabBarItem" selectedImage="HomeIcon" id="DfE-1u-oRX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VD6-c2-igX">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -1112,7 +1112,7 @@
         <!--Profile View Controller-->
         <scene sceneID="me5-Qo-erb">
             <objects>
-                <viewController id="es1-iZ-3sL" customClass="ProfileViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="updateProfileVC" id="es1-iZ-3sL" customClass="ProfileViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0cH-UO-zd2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1362,7 +1362,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U7k-Wf-hB7"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="R94-hO-Ry3"/>
+                    <tabBarItem key="tabBarItem" id="R94-hO-Ry3"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="wuc-KW-ViX" id="kau-2a-CeH"/>
                         <outlet property="cityLabel" destination="wJm-kW-bPI" id="dNy-Q8-Ql2"/>
@@ -1697,6 +1697,7 @@
     </scenes>
     <resources>
         <image name="12AMClock" width="654" height="1170"/>
+        <image name="HomeIcon" width="22" height="26"/>
         <image name="UserProfileBackground" width="562" height="1011"/>
         <image name="avatar" width="768" height="604"/>
         <image name="backIcon" width="23" height="25"/>
