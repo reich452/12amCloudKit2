@@ -25,7 +25,7 @@ class CustomViewController: UITabBarController, UITabBarControllerDelegate {
         let storyboard2 = UIStoryboard(name: "Main", bundle: nil)
         let updateProfileVC = storyboard2.instantiateViewController(withIdentifier: "updateProfileVC")
         updateProfileVC.title = "Profile"
-       updateProfileVC.tabBarItem.image = #imageLiteral(resourceName: "profileIcon")
+        updateProfileVC.tabBarItem.image = #imageLiteral(resourceName: "profileIcon")
         
 //        let storyboard3 = UIStoryboard(name: "Main", bundle: nil)
 //        let saveSearchTVC = storyboard3.instantiateViewController(withIdentifier: "savedImages")
