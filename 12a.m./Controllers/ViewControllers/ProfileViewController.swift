@@ -50,8 +50,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         setUpAppearance()
         updateDiscription()
         
-        //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow2), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide2), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -63,8 +63,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.locationManager.stopUpdatingLocation()
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
     }
     
     // MARK: - Delegates
@@ -78,31 +76,31 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     }
     // MARK: - Keyboard
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+   @objc func keyboardWillShow(notification: NSNotification) {
         //To retrieve keyboard size, uncomment following line
         //let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
         bottomConstraint.constant = 260
-        UIView.animate(withDuration: 0.3) {
+    UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
+   @objc func keyboardWillHide(notification: NSNotification) {
         //To retrieve keyboard size, uncomment following line
         //let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
         bottomConstraint.constant = 175
-        UIView.animate(withDuration: 0.3) {
+    UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
     
-    @objc func keyboardWillShow2(sender: NSNotification) {
-       self.view.frame.origin.y -= 150
+   @objc func keyboardWillShow2(sender: NSNotification) {
+        self.view.frame.origin.y -= 150
     }
-    @objc func keyboardWillHide2(sender: NSNotification) {
+   @objc func keyboardWillHide2(sender: NSNotification) {
         self.view.frame.origin.y += 150
     }
-    
+
     // MARK: - Actions
     
     @IBAction func updateImageButtonTapped(_ sender: Any) {
