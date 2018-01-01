@@ -90,12 +90,12 @@
                   moduleName = "12a.m."
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nick/Desktop/12amCloudKit2/12a.m./Controllers/ViewControllers/CommentTableViewController.swift"
-                  timestampString = "536193701.836594"
+                  timestampString = "536534923.297995"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "41"
                   endingLineNumber = "41"
-                  offsetFromSymbolStart = "208">
+                  offsetFromSymbolStart = "183">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,12 +105,12 @@
                   moduleName = "12a.m."
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nick/Desktop/12amCloudKit2/12a.m./Controllers/ViewControllers/CommentTableViewController.swift"
-                  timestampString = "536193701.839138"
+                  timestampString = "536534923.299908"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "42"
                   endingLineNumber = "42"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "14">
                </Location>
             </Locations>
          </BreakpointContent>
