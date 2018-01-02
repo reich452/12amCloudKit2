@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let loginVC = sb.instantiateViewController(withIdentifier: "signUpVC")
-            loginVC.modalTransitionStyle = .crossDissolve
             self.window?.rootViewController = loginVC
             self.window?.makeKeyAndVisible()
         }
