@@ -111,6 +111,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         self.updateUserInfo()
     }
     
+    @IBAction func infoButtonTapped(_ sender: UIButton) {
+        
+    }
+    
     // MARK: - Update & Appearance
     @objc private func updateViews() {
         guard let user = self.currentUser,

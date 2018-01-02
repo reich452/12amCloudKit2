@@ -1051,7 +1051,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3M-Ne-DEX" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5086" y="-174"/>
+            <point key="canvasLocation" x="-4928" y="152"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="cRJ-TY-N2f">
@@ -1107,7 +1107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ca-uL-2CC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6097" y="103"/>
+            <point key="canvasLocation" x="-1867" y="-1609"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ETO-LV-ytU">
@@ -1632,6 +1632,10 @@
                                     <constraint firstAttribute="width" secondItem="aya-Vm-8Z4" secondAttribute="height" multiplier="1:1" id="5Q3-hy-2BY"/>
                                 </constraints>
                                 <state key="normal" image="infoIcon"/>
+                                <connections>
+                                    <action selector="infoButtonTapped:" destination="REj-Sg-zla" eventType="touchUpInside" id="Ove-mQ-I01"/>
+                                    <segue destination="cXp-aM-Lmg" kind="presentation" identifier="toPrivacyTerms" id="FDI-f7-h1B"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1668,7 +1672,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NQq-Vx-SH6"/>
                     </view>
-                    <tabBarItem key="tabBarItem" id="b7Y-Xh-bQW"/>
+                    <tabBarItem key="tabBarItem" image="profileIcon" id="b7Y-Xh-bQW"/>
                     <connections>
                         <outlet property="cityLabel" destination="tjj-qy-Awn" id="FPN-d2-Kic"/>
                         <outlet property="countryLabel" destination="CAD-7X-qah" id="hfj-vG-YEx"/>
@@ -1705,10 +1709,12 @@
         <image name="infoIcon" width="190" height="190"/>
         <image name="loginScreen" width="1126" height="2436"/>
         <image name="openInSign" width="115" height="67"/>
+        <image name="profileIcon" width="28" height="28"/>
         <image name="userIconColor" width="200" height="200"/>
         <image name="userIconWhite" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Vtx-z2-vej"/>
+        <segue reference="FDI-f7-h1B"/>
     </inferredMetricsTieBreakers>
 </document>
