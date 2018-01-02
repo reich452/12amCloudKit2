@@ -130,14 +130,14 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         
     }
     private func setUpAppearance() {
-        self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.height / 2
+        self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.width / 2
         self.profileImageView.contentMode = .scaleAspectFill
         self.profileImageView.layer.borderColor = UIColor.white.cgColor
         self.profileImageView.layer.borderWidth = 0.7
         self.profileImageView.clipsToBounds = true
         self.usernameTextField.textColor = UIColor.white
         self.emailTextField.textColor = UIColor.white
-        
+    
     }
     
     private func updateUserInfo() {

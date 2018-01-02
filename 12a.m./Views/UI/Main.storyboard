@@ -880,7 +880,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginScreen" translatesAutoresizingMaskIntoConstraints="NO" id="yho-RN-UbM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="785"/>
+                                <rect key="frame" x="0.0" y="0.0" width="412" height="785"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="jx2-0z-3f8">
                                 <rect key="frame" x="130" y="13" width="154.33333333333337" height="154"/>
@@ -888,7 +888,7 @@
                                     <constraint firstAttribute="width" secondItem="jx2-0z-3f8" secondAttribute="height" multiplier="1:1" id="kyV-IO-zF7"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="zKj-0M-ihX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnisexAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="zKj-0M-ihX">
                                 <rect key="frame" x="134.33333333333331" y="18" width="144.33333333333331" height="144"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zKj-0M-ihX" secondAttribute="height" multiplier="1:1" id="Xmr-sZ-eN2"/>
@@ -1023,6 +1023,7 @@
                             <constraint firstItem="q9P-QZ-jJI" firstAttribute="centerX" secondItem="0dJ-XY-i4h" secondAttribute="centerX" id="Wf9-M2-E8a"/>
                             <constraint firstItem="b2E-tB-UGJ" firstAttribute="width" secondItem="eAo-w5-WWE" secondAttribute="width" multiplier="3/6" id="XIz-gx-PPJ"/>
                             <constraint firstItem="b2E-tB-UGJ" firstAttribute="height" secondItem="eAo-w5-WWE" secondAttribute="height" multiplier="1/22" id="Zoc-25-92R"/>
+                            <constraint firstItem="yho-RN-UbM" firstAttribute="trailing" secondItem="gKE-kE-TFT" secondAttribute="trailing" constant="-2" id="arY-O2-rjR"/>
                             <constraint firstItem="zKj-0M-ihX" firstAttribute="centerX" secondItem="eAo-w5-WWE" secondAttribute="centerX" constant="-0.5" id="dvv-at-1PB"/>
                             <constraint firstItem="q9P-QZ-jJI" firstAttribute="top" secondItem="Vw9-hf-Gxh" secondAttribute="bottom" constant="37" id="fKv-Qx-z8y"/>
                             <constraint firstItem="0dJ-XY-i4h" firstAttribute="bottom" secondItem="zKj-0M-ihX" secondAttribute="bottom" id="fZf-a7-guP"/>
@@ -1032,7 +1033,6 @@
                             <constraint firstItem="0dJ-XY-i4h" firstAttribute="top" secondItem="zKj-0M-ihX" secondAttribute="top" id="nuf-JH-ybv"/>
                             <constraint firstItem="gKE-kE-TFT" firstAttribute="bottom" secondItem="q9P-QZ-jJI" secondAttribute="bottom" constant="265" id="q7l-kl-ioS"/>
                             <constraint firstItem="q9P-QZ-jJI" firstAttribute="centerX" secondItem="eAo-w5-WWE" secondAttribute="centerX" id="qle-62-m1s"/>
-                            <constraint firstItem="gKE-kE-TFT" firstAttribute="trailing" secondItem="yho-RN-UbM" secondAttribute="trailing" id="tFe-23-qNj"/>
                             <constraint firstItem="Rgr-wV-GFd" firstAttribute="width" secondItem="eAo-w5-WWE" secondAttribute="width" constant="-340" id="wII-Af-RcZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gKE-kE-TFT"/>
@@ -1051,7 +1051,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3M-Ne-DEX" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4928" y="152"/>
+            <point key="canvasLocation" x="-4928.985507246377" y="151.63043478260872"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="cRJ-TY-N2f">
@@ -1454,7 +1454,7 @@
                                     <action selector="updateImageButtonTapped:" destination="REj-Sg-zla" eventType="touchUpInside" id="Icy-ga-Fsc"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="rcz-w9-nu0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnisexAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="rcz-w9-nu0">
                                 <rect key="frame" x="145.66666666666666" y="30.000000000000007" width="122.66666666666666" height="122.66666666666669"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rcz-w9-nu0" secondAttribute="height" multiplier="1:1" id="Cr2-ar-wLI"/>
@@ -1695,8 +1695,8 @@
     </scenes>
     <resources>
         <image name="12AMClock" width="654" height="1170"/>
+        <image name="UnisexAvatar" width="231" height="231"/>
         <image name="UserProfileBackground" width="562" height="1011"/>
-        <image name="avatar" width="768" height="604"/>
         <image name="backIcon" width="23" height="25"/>
         <image name="backgroundProfileImage" width="232" height="232"/>
         <image name="commentButton" width="85" height="71"/>
@@ -1715,6 +1715,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Vtx-z2-vej"/>
-        <segue reference="FDI-f7-h1B"/>
+        <segue reference="Y3F-Kl-wd9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -209,7 +209,7 @@ extension LogInViewController {
         self.profileBackgroundImageView.layer.cornerRadius = profileBackgroundImageView.layer.frame.height / 2
         self.profileBackgroundImageView.layer.masksToBounds = true
         if self.currentUser == nil {
-            self.profileImageView.image = UIImage(named: "avatar")
+            self.profileImageView.image = #imageLiteral(resourceName: "UnisexAvatar")
         } else {
             self.profileImageView.image = currentUser?.photo
         }
@@ -235,7 +235,6 @@ extension LogInViewController {
         self.loginButton.setTitle("Login", for: .normal)
         // TODO: - controll button state if new or existing user
     }
-    
     
     @objc func updateViews() {
         
