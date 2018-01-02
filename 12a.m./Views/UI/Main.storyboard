@@ -1608,7 +1608,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mBc-cs-06K">
-                                        <rect key="frame" x="18" y="24" width="354.66666666666669" height="1"/>
+                                        <rect key="frame" x="40" y="24" width="332.66666666666669" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Cxu-Dh-8Fq"/>
@@ -1617,7 +1617,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="hg7-Mx-r3V" firstAttribute="width" secondItem="S2h-AG-6T0" secondAttribute="width" id="0Dg-J3-naW"/>
-                                    <constraint firstItem="mBc-cs-06K" firstAttribute="leading" secondItem="S2h-AG-6T0" secondAttribute="leading" constant="18" id="DcD-0L-ifT"/>
+                                    <constraint firstItem="mBc-cs-06K" firstAttribute="leading" secondItem="S2h-AG-6T0" secondAttribute="leading" constant="40" id="DcD-0L-ifT"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aya-Vm-8Z4">
@@ -1710,6 +1710,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jpn-VT-RHA"/>
-        <segue reference="Y3F-Kl-wd9"/>
+        <segue reference="FDI-f7-h1B"/>
     </inferredMetricsTieBreakers>
 </document>
