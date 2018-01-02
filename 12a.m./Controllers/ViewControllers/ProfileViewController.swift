@@ -150,6 +150,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
                 } else {
                     print("Updated current user personal info")
                 }
+                DispatchQueue.main.async {
+                    self.usernameLabel.text = userName
+                }
             })
         }
     }
