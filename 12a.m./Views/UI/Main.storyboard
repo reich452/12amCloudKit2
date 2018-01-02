@@ -874,7 +874,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginScreen" translatesAutoresizingMaskIntoConstraints="NO" id="yho-RN-UbM">
-                                <rect key="frame" x="0.0" y="0.0" width="412" height="785"/>
+                                <rect key="frame" x="0.0" y="0.0" width="416" height="785"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="jx2-0z-3f8">
                                 <rect key="frame" x="130" y="13" width="154.33333333333337" height="154"/>
@@ -1014,10 +1014,10 @@
                             <constraint firstItem="0dJ-XY-i4h" firstAttribute="centerX" secondItem="eAo-w5-WWE" secondAttribute="centerX" id="P1z-JM-gAU"/>
                             <constraint firstItem="Rgr-wV-GFd" firstAttribute="top" secondItem="gKE-kE-TFT" secondAttribute="top" id="Q1Y-SR-8wE"/>
                             <constraint firstItem="Rgr-wV-GFd" firstAttribute="leading" secondItem="yho-RN-UbM" secondAttribute="leading" constant="324" id="RCd-U9-36h"/>
+                            <constraint firstItem="gKE-kE-TFT" firstAttribute="trailing" secondItem="yho-RN-UbM" secondAttribute="trailing" constant="-2" id="VUk-ek-gr7"/>
                             <constraint firstItem="q9P-QZ-jJI" firstAttribute="centerX" secondItem="0dJ-XY-i4h" secondAttribute="centerX" id="Wf9-M2-E8a"/>
                             <constraint firstItem="b2E-tB-UGJ" firstAttribute="width" secondItem="eAo-w5-WWE" secondAttribute="width" multiplier="3/6" id="XIz-gx-PPJ"/>
                             <constraint firstItem="b2E-tB-UGJ" firstAttribute="height" secondItem="eAo-w5-WWE" secondAttribute="height" multiplier="1/22" id="Zoc-25-92R"/>
-                            <constraint firstItem="yho-RN-UbM" firstAttribute="trailing" secondItem="gKE-kE-TFT" secondAttribute="trailing" constant="-2" id="arY-O2-rjR"/>
                             <constraint firstItem="zKj-0M-ihX" firstAttribute="centerX" secondItem="eAo-w5-WWE" secondAttribute="centerX" constant="-0.5" id="dvv-at-1PB"/>
                             <constraint firstItem="q9P-QZ-jJI" firstAttribute="top" secondItem="Vw9-hf-Gxh" secondAttribute="bottom" constant="37" id="fKv-Qx-z8y"/>
                             <constraint firstItem="0dJ-XY-i4h" firstAttribute="bottom" secondItem="zKj-0M-ihX" secondAttribute="bottom" id="fZf-a7-guP"/>
@@ -1045,7 +1045,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3M-Ne-DEX" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5380" y="-188"/>
+            <point key="canvasLocation" x="-5382.608695652174" y="-188.31521739130437"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="cRJ-TY-N2f">
