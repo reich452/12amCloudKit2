@@ -130,7 +130,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         
     }
     private func setUpAppearance() {
-        self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.width / 2
+        self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.width / 2.1
         self.profileImageView.contentMode = .scaleAspectFill
         self.profileImageView.layer.borderColor = UIColor.white.cgColor
         self.profileImageView.layer.borderWidth = 0.7

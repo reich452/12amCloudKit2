@@ -199,12 +199,7 @@ extension LogInViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = UIColor.clear
         
-        //        headerImageView.image = UIImage(named: "whiteBackground")
-        //        headerImageView.contentMode = .scaleAspectFill
-        //        headerImageView.layer.masksToBounds = true
-        //        headerUIView.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
-        
-        self.profileBackgroundImageView.image = #imageLiteral(resourceName: "backgroundProfileImage")
+//        self.profileBackgroundImageView.image = #imageLiteral(resourceName: "backgroundProfileImage")
         self.profileBackgroundImageView.contentMode = .scaleAspectFill
         self.profileBackgroundImageView.layer.cornerRadius = profileBackgroundImageView.layer.frame.height / 2
         self.profileBackgroundImageView.layer.masksToBounds = true
