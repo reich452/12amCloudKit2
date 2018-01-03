@@ -25,7 +25,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     @IBOutlet weak var emailTextField: IconTextField!
     @IBOutlet weak var updateProfileButton: UIButton!
     
-    
     // MARK: - Properties
     private var currentUser: User? {
         return UserController.shared.currentUser

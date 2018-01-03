@@ -76,6 +76,11 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
             }
         }
     }
+ 
+    @IBAction func addButtonTapped(_ sender: Any) {
+        self.addPicButtonTapped()
+        
+    }
     
     func handleRefresh(_ refreshControl: UIRefreshControl) {
         //   PostController.shared.requestFullSync()
@@ -106,6 +111,9 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.contentView.backgroundColor = UIColor(white: 1, alpha: 0.5)
     }
+    
+    // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "feedToPostDetail" {
             guard let detailTVC = segue.destination as? CommentTableViewController else { return }
@@ -124,35 +132,6 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         }
     }
     
-    // MARK: - Navigation
-    
-    @IBAction func settingsButtonPressed(_ sender: Any) {
-        if let _ = UserController.shared.currentUser {
-            performSegue(withIdentifier: showEditProfileSegue, sender: self)
-        } else {
-            performSegue(withIdentifier: presentSignUpSegue, sender: self)
-        }
-    }
-    
-    @IBAction func addButtonTapped(_ sender: Any) {
-        addPicButtonTapped()
-        
-    }
-    
-    // to here to test photo posting at whatever time
-    
-//   private func performInitialAppLogic() {
-//        UserController.shared.fetchCurrentUser { user in
-//            if let _ = user {
-//                return
-//            } else {
-//                DispatchQueue.main.async {
-//                    self.performSegue(withIdentifier: self.presentSignUpSegue, sender: self)
-//                }
-//            }
-//        }
-//    }
-//
     func addPicButtonTapped() {
         
         guard let isMidnight = TimeTracker.shared.isMidnight else { return }
@@ -204,10 +183,6 @@ extension FeedTableViewController {
         } else  {
             self.openImageView.image = #imageLiteral(resourceName: "openInSign")
         }
-    }
-    
-    // TODO: - 
-    func updateOpenText() {
     }
 }
 
