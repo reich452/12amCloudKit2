@@ -1442,12 +1442,6 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9E-5k-jtc">
-                                <rect key="frame" x="141" y="44.000000000000007" width="131" height="93.666666666666686"/>
-                                <connections>
-                                    <action selector="updateImageButtonTapped:" destination="REj-Sg-zla" eventType="touchUpInside" id="Icy-ga-Fsc"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnisexAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="rcz-w9-nu0">
                                 <rect key="frame" x="145.66666666666666" y="30.000000000000007" width="122.66666666666666" height="122.66666666666669"/>
                                 <constraints>
@@ -1631,6 +1625,12 @@
                                     <segue destination="cXp-aM-Lmg" kind="presentation" identifier="toPrivacyTerms" id="FDI-f7-h1B"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9E-5k-jtc">
+                                <rect key="frame" x="142" y="26" width="131" height="131"/>
+                                <connections>
+                                    <action selector="updateImageButtonTapped:" destination="REj-Sg-zla" eventType="touchUpInside" id="Icy-ga-Fsc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1647,9 +1647,9 @@
                             <constraint firstItem="f6V-IU-veY" firstAttribute="width" secondItem="eHT-lL-ccL" secondAttribute="width" multiplier="2/3" id="G1E-AD-UVe"/>
                             <constraint firstItem="aya-Vm-8Z4" firstAttribute="leading" secondItem="CtT-s5-yP4" secondAttribute="trailing" constant="-78" id="GNw-lY-plO"/>
                             <constraint firstItem="G4l-TH-NQO" firstAttribute="width" secondItem="CtT-s5-yP4" secondAttribute="width" constant="-276" id="L43-h3-TtM"/>
-                            <constraint firstItem="m9E-5k-jtc" firstAttribute="top" secondItem="NQq-Vx-SH6" secondAttribute="top" constant="24" id="NjM-Lz-NWJ"/>
+                            <constraint firstItem="m9E-5k-jtc" firstAttribute="top" secondItem="NQq-Vx-SH6" secondAttribute="top" constant="6" id="NjM-Lz-NWJ"/>
                             <constraint firstItem="CtT-s5-yP4" firstAttribute="bottom" secondItem="NQq-Vx-SH6" secondAttribute="bottom" id="PeX-jG-QFe"/>
-                            <constraint firstItem="m9E-5k-jtc" firstAttribute="leading" secondItem="NQq-Vx-SH6" secondAttribute="leading" constant="141" id="RAI-Ue-5l8"/>
+                            <constraint firstItem="m9E-5k-jtc" firstAttribute="leading" secondItem="NQq-Vx-SH6" secondAttribute="leading" constant="142" id="RAI-Ue-5l8"/>
                             <constraint firstItem="rcz-w9-nu0" firstAttribute="height" secondItem="eHT-lL-ccL" secondAttribute="height" multiplier="1/6" id="TAC-ep-s9o"/>
                             <constraint firstItem="fJP-Dw-Zae" firstAttribute="top" secondItem="eHT-lL-ccL" secondAttribute="top" constant="420" id="XDU-LI-Xwo"/>
                             <constraint firstItem="rcz-w9-nu0" firstAttribute="centerX" secondItem="eHT-lL-ccL" secondAttribute="centerX" id="YVz-ZE-Cfk"/>
@@ -1675,7 +1675,7 @@
                         <outlet property="currentStateLabel" destination="2d6-Z3-2yi" id="Utk-ln-flR"/>
                         <outlet property="discriptionLabel" destination="ATO-VL-uPd" id="do6-GN-h59"/>
                         <outlet property="emailTextField" destination="hg7-Mx-r3V" id="hmE-yR-JWu"/>
-                        <outlet property="profileImageView" destination="rcz-w9-nu0" id="Dem-d7-u9M"/>
+                        <outlet property="profileImageView" destination="rcz-w9-nu0" id="2XK-Hz-rYW"/>
                         <outlet property="stateLabel" destination="rGk-iw-9wg" id="A6h-YU-7Kv"/>
                         <outlet property="updateProfileButton" destination="G4l-TH-NQO" id="dgH-Da-DaV"/>
                         <outlet property="usernameLabel" destination="Nj2-Zm-IsP" id="dtA-UZ-pcC"/>

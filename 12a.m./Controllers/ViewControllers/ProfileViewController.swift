@@ -45,12 +45,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         self.locationManager.startUpdatingLocation()
         self.currentCityLabel.text = "\(TimeZone.current)"
         
-        updateViews()
         setUpAppearance()
+        updateViews()
         updateDiscription()
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow2), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide2), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -75,13 +75,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     }
     // MARK: - Keyboard
     
-   @objc func keyboardWillShow2(sender: NSNotification) {
+    @objc func keyboardWillShow2(sender: NSNotification) {
         self.view.frame.origin.y -= 150
     }
-   @objc func keyboardWillHide2(sender: NSNotification) {
+    @objc func keyboardWillHide2(sender: NSNotification) {
         self.view.frame.origin.y += 150
     }
-
+    
     // MARK: - Actions
     
     @IBAction func updateImageButtonTapped(_ sender: Any) {
@@ -99,15 +99,13 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     // MARK: - Update & Appearance
     @objc private func updateViews() {
         guard let user = self.currentUser,
-            let userPhoto = self.currentUser?.photo else { return }
-        DispatchQueue.main.async {
-            
-            self.usernameLabel.text = user.username
-            self.profileImageView.image = userPhoto
-            self.usernameTextField.text = "  \(user.username)"
-            self.emailTextField.text = "  \(user.email)"
-            self.currentCityLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .thin)
-        }
+            let userPhoto = user.photo else { return }
+    
+        self.usernameLabel.text = user.username
+        self.usernameTextField.text = " \(user.username)"
+        self.emailTextField.text = " \(user.email)"
+        self.currentCityLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .thin)
+        
         
     }
     private func setUpAppearance() {
@@ -118,7 +116,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         self.profileImageView.clipsToBounds = true
         self.usernameTextField.textColor = UIColor.white
         self.emailTextField.textColor = UIColor.white
-    
+        if self.currentUser == nil {
+            self.profileImageView.image = #imageLiteral(resourceName: "UnisexAvatar")
+        } else {
+            self.profileImageView.image = currentUser?.photo
+        }
+        
     }
     
     private func updateUserInfo() {
@@ -133,6 +136,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
                 }
                 DispatchQueue.main.async {
                     self.usernameLabel.text = userName
+                    self.emailTextField.text = email
+                    self.profileImageView.image = profileImage
                 }
             })
         }
@@ -247,6 +252,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         if chosenImage != nil {
             profileImageView.contentMode = .scaleAspectFill
             profileImageView.image = chosenImage
+            
         }
         self.imagePickerWasDismissed = true
         dismiss(animated: true, completion: nil)

@@ -235,13 +235,15 @@ extension LogInViewController {
         
         guard let currentUser = self.currentUser,
             let currentUserPhoto = currentUser.photo else { return }
-        
-        self.profileImageView.image = currentUserPhoto
-        print(currentUser.username)
-        self.loginButton.layer.cornerRadius = loginButton.layer.frame.height / 2
-        self.loginButton.layer.borderColor = UIColor.white.cgColor
-        self.loginButton.layer.borderWidth = 2
-        self.loginButton.layer.masksToBounds = true
+        DispatchQueue.main.async {
+            self.profileImageView.image = currentUserPhoto
+            self.profileImageView.setNeedsDisplay()
+            print(currentUser.username)
+            self.loginButton.layer.cornerRadius = self.loginButton.layer.frame.height / 2
+            self.loginButton.layer.borderColor = UIColor.white.cgColor
+            self.loginButton.layer.borderWidth = 2
+            self.loginButton.layer.masksToBounds = true
+        }
     }
     
     func setUpTabBarController() {
