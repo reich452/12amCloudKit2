@@ -58,7 +58,7 @@ class ProfileDetailTableViewController: UITableViewController {
     }
 
     private func setUpAppearance() {
-        self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.height / 2
+        self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.height / 2.1
         self.profileImageView.clipsToBounds = true
         self.profileImageView.contentMode = .scaleAspectFill
         self.profileImageView.layer.borderWidth = 1.8

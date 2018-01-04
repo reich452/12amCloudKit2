@@ -21,6 +21,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     
     // MARK: - Properties
     var post: Post?
+    var comment: Comment?
     
     weak var prefetchDataSourece: UITableViewDataSourcePrefetching?
     
@@ -30,6 +31,8 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         hideKeyboard()
         updateViews()
         setUI()
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(commentsWereAddedTo2), name: PostController.PostCommentsChangedNotification, object: nil)
         self.tableView.estimatedRowHeight = 220
         
     }
@@ -75,7 +78,16 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         self.performSegue(withIdentifier: "toPostDetail2", sender: sender)
     }
     
-    internal func commentsWereAddedTo() {
+    @objc func commentsWereAddedTo2() {
+        let commentsCount = self.post?.comments.count ?? 0
+        DispatchQueue.main.async {
+            self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
+            print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
+            print("\(UserController.shared.currentUser?.username ??? "") added comment")
+        }
+    }
+    
+     internal func commentsWereAddedTo() {
         let commentsCount = self.post?.comments.count ?? 0
         DispatchQueue.main.async {
             self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
@@ -108,7 +120,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     }
     
     @IBAction func toProfileDetailTVC(_ sender: UIButton) {
-       self.performSegue(withIdentifier: "toPostDetail2", sender: self)
+        self.performSegue(withIdentifier: "toPostDetail2", sender: self)
     }
     
     
@@ -117,18 +129,22 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         guard let post = post,
             let commentText = commentTextField.text, commentText != "" else { return }
         
-        PostController.shared.addComment(to: post, commentText: commentText) {
-            
-//           let commentsCount = self.post?.comments.count ?? 0
-//            DispatchQueue.main.async {
-//                self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
-//                print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
-//                print("\(UserController.shared.currentUser?.username ??? "") added \(commentText) to detail VC")
-//            }
+        PostController.shared.addComment(to: post, commentText: commentText) { (comment) in
+            guard let comment = comment else { return }
+            self.comment = comment
+           
         }
+        
+        //           let commentsCount = self.post?.comments.count ?? 0
+        //            DispatchQueue.main.async {
+        //                self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
+        //                print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
+        //                print("\(UserController.shared.currentUser?.username ??? "") added \(commentText) to detail VC")
+        //            }
         commentTextField.text = ""
         self.view.endEditing(true)
     }
+    
     
     // MARK: - TextField Delegate
     

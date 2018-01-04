@@ -98,8 +98,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     
     // MARK: - Update & Appearance
     @objc private func updateViews() {
-        guard let user = self.currentUser,
-            let userPhoto = user.photo else { return }
+        guard let user = self.currentUser else { return }
     
         self.usernameLabel.text = user.username
         self.usernameTextField.text = " \(user.username)"

@@ -107,8 +107,9 @@ class PostController {
         }
     }
     
-    func addComment(to post: Post, commentText: String, completion: @escaping () -> Void)  {
-        guard let cloudKitRef = post.cloudKitReference else { return }
+   func addComment(to post: Post, commentText: String, completion: @escaping (Comment?) -> Void)  {
+    
+        guard let cloudKitRef = post.cloudKitReference else { return  }
         
         guard let currentUser = UserController.shared.currentUser,
         let userRecordID = currentUser.cloudKitRecordID else { return }
@@ -116,15 +117,17 @@ class PostController {
         
         let comment = Comment(text: commentText, post: post, postReference: cloudKitRef, ownerReference: ckReference)
         post.comments.append(comment)
+    
         
-        cloudKitManager.saveRecord(CKRecord(comment)) { [unowned self] (record, error) in
+        cloudKitManager.saveRecord(CKRecord(comment)) { (record, error) in
             if let error = error {
                 print("Error saving new comment in cloudKit: \(#function) \(error) & \(error.localizedDescription)")
-                completion(); return
+                completion(nil); return
             }
             DispatchQueue.main.async {
                 self.delegate?.commentsWereAddedTo()
-                completion()
+                comment.ckRecordID = record?.recordID
+                completion(comment)
             }
         }
     }
@@ -148,7 +151,7 @@ class PostController {
         
         
         guard let predicate2 = predicate else { return }
-        cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { [unowned self] (records, error) in
+        cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { (records, error) in
             
             if let error = error {
                 print("Error fetcing predicte2 \(#function) \(error) \(error.localizedDescription)")
@@ -206,7 +209,7 @@ class PostController {
     func performFullSync(completion: @escaping (() -> Void) = { }) {
         isSyncing = true
         
-        self.fetchNewRecors(ofType: User.recordTypeKey) { [unowned self] in
+        self.fetchNewRecors(ofType: User.recordTypeKey) {
             self.fetchNewRecors(ofType: Post.recordTypeKey) {
                 self.fetchNewRecors(ofType: Comment.recordTypeKey) {
                     self.isSyncing = false
