@@ -107,7 +107,7 @@ class PostController {
         }
     }
     
-   func addComment(to post: Post, commentText: String, completion: @escaping (Comment?) -> Void)  {
+   func addComment(to post: Post, commentText: String, completion: @escaping () -> Void)  {
     
         guard let cloudKitRef = post.cloudKitReference else { return  }
         
@@ -116,18 +116,19 @@ class PostController {
         let ckReference = CKReference(recordID: userRecordID, action: .none)
         
         let comment = Comment(text: commentText, post: post, postReference: cloudKitRef, ownerReference: ckReference)
+        comment.owner = currentUser // Aaron is the man
         post.comments.append(comment)
     
         
         cloudKitManager.saveRecord(CKRecord(comment)) { (record, error) in
             if let error = error {
                 print("Error saving new comment in cloudKit: \(#function) \(error) & \(error.localizedDescription)")
-                completion(nil); return
+                completion(); return
             }
             DispatchQueue.main.async {
                 self.delegate?.commentsWereAddedTo()
                 comment.ckRecordID = record?.recordID
-                completion(comment)
+                completion()
             }
         }
     }

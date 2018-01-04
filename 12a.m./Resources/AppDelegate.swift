@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         UserController.shared.fetchCurrentUser()
         setUpTabBarController()
-        
         return true
     }
     

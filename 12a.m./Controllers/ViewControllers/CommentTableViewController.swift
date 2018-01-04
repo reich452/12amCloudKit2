@@ -31,8 +31,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         hideKeyboard()
         updateViews()
         setUI()
-        let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(commentsWereAddedTo2), name: PostController.PostCommentsChangedNotification, object: nil)
+        
         self.tableView.estimatedRowHeight = 220
         
     }
@@ -87,10 +86,11 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         }
     }
     
-     internal func commentsWereAddedTo() {
+    internal func commentsWereAddedTo() {
         let commentsCount = self.post?.comments.count ?? 0
         DispatchQueue.main.async {
-            self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
+            //            self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
+            self.tableView.reloadData()
             print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
             print("\(UserController.shared.currentUser?.username ??? "") added comment")
         }
@@ -116,7 +116,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     
     // MARK: - Actions
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func toProfileDetailTVC(_ sender: UIButton) {
@@ -129,18 +129,9 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         guard let post = post,
             let commentText = commentTextField.text, commentText != "" else { return }
         
-        PostController.shared.addComment(to: post, commentText: commentText) { (comment) in
-            guard let comment = comment else { return }
-            self.comment = comment
-           
+        PostController.shared.addComment(to: post, commentText: commentText) {
+            
         }
-        
-        //           let commentsCount = self.post?.comments.count ?? 0
-        //            DispatchQueue.main.async {
-        //                self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
-        //                print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
-        //                print("\(UserController.shared.currentUser?.username ??? "") added \(commentText) to detail VC")
-        //            }
         commentTextField.text = ""
         self.view.endEditing(true)
     }

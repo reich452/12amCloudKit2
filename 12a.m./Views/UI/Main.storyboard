@@ -118,7 +118,6 @@
         <!--Camera Preview View Controller-->
         <scene sceneID="LgL-qh-ty5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7uh-0f-Nmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController restorationIdentifier="ImagePreviewViewController" storyboardIdentifier="ImagePreviewViewController" id="Ww9-kj-tMz" customClass="CameraPreviewViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hJo-F4-yAH"/>
@@ -180,6 +179,7 @@
                         <outlet property="imageView" destination="79z-w3-3TN" id="ccA-4O-ugo"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7uh-0f-Nmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2496" y="1740"/>
         </scene>
@@ -602,7 +602,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGd-Wb-lcs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4846" y="1807"/>
+            <point key="canvasLocation" x="-5045" y="1882"/>
         </scene>
         <!--Comment Table View Controller-->
         <scene sceneID="HNj-HC-40R">
@@ -863,7 +863,7 @@
                 <exit id="Mwj-EV-Jss" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="yUa-PZ-xav"/>
             </objects>
-            <point key="canvasLocation" x="-3973.188405797102" y="1834.2391304347827"/>
+            <point key="canvasLocation" x="-3344" y="1829"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="xjy-Xc-X9G">

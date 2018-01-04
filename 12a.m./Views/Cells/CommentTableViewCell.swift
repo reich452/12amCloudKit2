@@ -46,7 +46,8 @@ class CommentTableViewCell: UITableViewCell {
         guard let comment = comment,
             let userName = comment.owner?.username,
             let profileData = comment.owner?.profileImageData,
-            let profileImage = UIImage(data: profileData) else { return }
+            let profileImage = UIImage(data: profileData)
+            else { return }
     
         self.userNameLabel.text = userName
         self.commentTextLabel.text = comment.text
