@@ -12,3 +12,11 @@ infix operator ???: NilCoalescingPrecedence
 public func ???<T>(optional: T?, defaultValue: @autoclosure () -> String) -> String {
     return optional.map { String(describing: $0) } ?? defaultValue()
 }
+
+enum PreferenceExplorerError: Error {
+    case notFound(String)
+}
+
+public enum PreferenceType: String {
+    case castle = "App-Prefs:root=CASTLE"
+}

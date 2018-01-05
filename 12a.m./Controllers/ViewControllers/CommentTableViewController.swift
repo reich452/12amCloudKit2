@@ -147,8 +147,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        let comments = post?.comments.sorted(by: {$0.timestamp > $1.timestamp } )
-        let comments = self.post?.comments
+        let comments = post?.comments.sorted(by: {$0.timestamp > $1.timestamp } )
         print("Aaron's test \(comments?.count ??? "")")
         return comments?.count ?? 0
     }

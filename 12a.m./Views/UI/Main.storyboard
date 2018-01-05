@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z9b-OA-BcM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h0O-w0-vvp">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1686,9 +1686,38 @@
             </objects>
             <point key="canvasLocation" x="-209" y="236"/>
         </scene>
+        <!--Launch View Controller-->
+        <scene sceneID="1og-3h-kf7">
+            <objects>
+                <viewController id="h0O-w0-vvp" customClass="LaunchViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yNz-Lg-SME">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lhR-a5-3mg">
+                                <rect key="frame" x="84.333333333333329" y="245.33333333333331" width="245.33333333333337" height="245.33333333333331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lhR-a5-3mg" secondAttribute="height" multiplier="1:1" id="LZf-Lh-c8U"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lhR-a5-3mg" firstAttribute="height" secondItem="yNz-Lg-SME" secondAttribute="height" multiplier="1/3" id="JEJ-bm-ckg"/>
+                            <constraint firstItem="lhR-a5-3mg" firstAttribute="centerY" secondItem="yNz-Lg-SME" secondAttribute="centerY" id="pMG-Pv-deJ"/>
+                            <constraint firstItem="lhR-a5-3mg" firstAttribute="centerX" secondItem="yNz-Lg-SME" secondAttribute="centerX" id="zEH-fw-MSx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5pq-Cy-Bdy"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sUk-mD-rSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3316" y="-1592"/>
+        </scene>
     </scenes>
     <resources>
         <image name="12AMClock" width="654" height="1170"/>
+        <image name="SplashIcon" width="266" height="258"/>
         <image name="UnisexAvatar" width="231" height="231"/>
         <image name="UserProfileBackground" width="562" height="1011"/>
         <image name="backIcon" width="23" height="25"/>
@@ -1943,6 +1972,6 @@ swC4ALsAvQC/AMEAwwDIAN8A4QDjIikiLiI5IkIiVSJZImQibSJyInoifSKCIpEilSKgIqgitSLCItci
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jpn-VT-RHA"/>
-        <segue reference="FDI-f7-h1B"/>
+        <segue reference="Y3F-Kl-wd9"/>
     </inferredMetricsTieBreakers>
 </document>

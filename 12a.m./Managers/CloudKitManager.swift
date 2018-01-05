@@ -243,8 +243,21 @@ class CloudKitManager {
             
             let alertController = UIAlertController(title: "Sign into iCloud in your settings", message: errorText, preferredStyle: .alert)
             
-            let dismissAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil);
+            let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: PreferenceType.castle.rawValue) else {
+                    return
+                }
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                } else {
+                    print("bad url to settings app")
+                }
+            }
             
+            let dismissAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil);
+            alertController.addAction(settingsAction)
             alertController.addAction(dismissAction)
             
             if let appDelegate = UIApplication.shared.delegate,

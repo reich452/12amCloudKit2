@@ -12,35 +12,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    private let feedId = "feedTVC"
-    private let tabBarVC = "customTabBar"
-    var timer: Timer!
-    
+  
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-       
-        timer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(setUpTabBarController), userInfo: nil, repeats: false)
-       
+    
         UserController.shared.fetchCurrentUser()
-        setUpTabBarController()
+
         return true
     }
-    
-    
-   @objc func setUpTabBarController() {
-    
-        if UserController.shared.currentUser != nil {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let feedTVC = sb.instantiateViewController(withIdentifier: "customTabBar")
-            self.window?.rootViewController = feedTVC
-            self.window?.makeKeyAndVisible()
-        } else {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let loginVC = sb.instantiateViewController(withIdentifier: "signUpVC")
-            self.window?.rootViewController = loginVC
-            self.window?.makeKeyAndVisible()
-        }
-    }
-    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
