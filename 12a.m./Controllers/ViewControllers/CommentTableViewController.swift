@@ -104,7 +104,9 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         blockUserAlertController.addAction(blockUserAction)
         blockUserAlertController.addAction(cancelAction)
-        UIApplication.shared.keyWindow?.rootViewController?.present(blockUserAlertController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+           self.present(blockUserAlertController, animated: true, completion: nil)
+        }
     }
     
     private func blockUser() {
