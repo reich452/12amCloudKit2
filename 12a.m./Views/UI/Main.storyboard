@@ -682,15 +682,15 @@
                                                 <rect key="frame" x="15" y="447" width="338" height="20.333333333333314"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82c-DS-duK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="202" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="232" height="20.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7KE-nH-lhy">
-                                                        <rect key="frame" x="208" y="0.0" width="130" height="20.333333333333332"/>
+                                                        <rect key="frame" x="238" y="0.0" width="100" height="20.333333333333332"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="130" id="RN3-2b-kz2"/>
+                                                            <constraint firstAttribute="width" constant="100" id="RN3-2b-kz2"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <nil key="textColor"/>

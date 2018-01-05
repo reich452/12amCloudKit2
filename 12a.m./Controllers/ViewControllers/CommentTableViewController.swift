@@ -89,7 +89,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     internal func commentsWereAddedTo() {
         let commentsCount = self.post?.comments.count ?? 0
         DispatchQueue.main.async {
-            //            self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
+//            self.tableView.insertRows(at: [IndexPath.init(row: commentsCount - 1, section: 0)], with: .automatic)
             self.tableView.reloadData()
             print("Comments are\(self.post?.comments.count ??? "") and now \(commentsCount)")
             print("\(UserController.shared.currentUser?.username ??? "") added comment")
@@ -156,8 +156,7 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
         
-        //        guard let comment = self.post?.comments.sorted(by: {$0.timestamp > $1.timestamp })[indexPath.row] else { return UITableViewCell() }
-        let comment = self.post?.comments[indexPath.row]
+        guard let comment = self.post?.comments.sorted(by: {$0.timestamp > $1.timestamp })[indexPath.row] else { return UITableViewCell() }
         cell.comment = comment
         cell.delegate = self
         cell.selectedUserDelegate = self 

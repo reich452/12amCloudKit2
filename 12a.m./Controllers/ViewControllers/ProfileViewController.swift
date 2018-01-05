@@ -44,6 +44,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         self.currentCityLabel.text = "\(TimeZone.current)"
+        self.usernameTextField.delegate = self
+        self.emailTextField.delegate = self
         
         setUpAppearance()
         updateViews()
