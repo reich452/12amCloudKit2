@@ -9,7 +9,7 @@
 import UIKit
 
 class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate {
-    
+ 
     fileprivate let presentSignUpSegue =  "presentSignUp"
     fileprivate let showEditProfileSegue = "editProfile"
     
@@ -22,7 +22,6 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         super.viewDidLoad()
         
         setUpTimer()
-        
         setUpAppearance()
 
         let nc = NotificationCenter.default
@@ -65,6 +64,30 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
    internal func didTapProfileButton(_ sender: FeedTableViewCell) {
         self.performSegue(withIdentifier: "feedToProfileDetail", sender: sender)
     }
+   
+    internal func didTapBlockUserButton(_ sender: FeedTableViewCell) {
+        blockUserActionSheet()
+    }
+    
+    func blockUser() {
+        guard let post = post else { return }
+        let ownerReference = post.ownerReference
+        UserController.shared.blockUser(userToBlock: ownerReference) {
+            
+        }
+    }
+    
+    func blockUserActionSheet() {
+        let blockUserAlertController = UIAlertController(title: "Block User", message: "Would you like to block this user? \nYou will no longer be able to \nsee their posts or comments", preferredStyle: .actionSheet)
+        let blockUserAction = UIAlertAction(title: "Block", style: .default) { (_) in
+            self.blockUser()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        blockUserAlertController.addAction(blockUserAction)
+        blockUserAlertController.addAction(cancelAction)
+        self.present(blockUserAlertController, animated: true, completion: nil)
+    }
+    
     
     // MARK: - Actions
     
@@ -78,7 +101,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     }
  
     @IBAction func addButtonTapped(_ sender: Any) {
-        self.addPicButtonTapped()
+//        self.addPicButtonTapped()
         
     }
     
@@ -104,6 +127,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         cell.post = post
         cell.delegate = self
         cell.selectedProfileDelegate = self
+        cell.blockUserDelegate = self
     
         return cell
     }

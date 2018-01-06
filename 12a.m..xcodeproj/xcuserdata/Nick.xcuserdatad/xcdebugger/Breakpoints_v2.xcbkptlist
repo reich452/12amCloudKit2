@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12a.m./Controllers/ViewControllers/ProfileViewController.swift"
-            timestampString = "536884997.6433311"
+            timestampString = "536903214.003309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "255"
@@ -74,12 +74,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12a.m./Controllers/ViewControllers/LaunchViewController.swift"
-            timestampString = "536884997.643436"
+            timestampString = "536903214.0036989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
             endingLineNumber = "22"
             landmarkName = "fetchCurrentUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "12a.m./Controllers/ViewControllers/CameraViewController.swift"
+            timestampString = "536902765.881433"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "displayCapturedPhoto(capturedPhoto:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

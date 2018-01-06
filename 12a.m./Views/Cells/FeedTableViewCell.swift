@@ -11,6 +11,7 @@ import UIKit
 protocol FeedTableViewCellDelegate: class {
     func didTapCommentButton(_ sender: FeedTableViewCell)
     func didTapProfileButton(_ sender: FeedTableViewCell)
+    func didTapBlockUserButton(_ sender: FeedTableViewCell)
 }
 
 
@@ -26,6 +27,7 @@ class FeedTableViewCell: UITableViewCell {
     // MARK: - Propoerties
     weak var delegate: FeedTableViewCellDelegate?
     weak var selectedProfileDelegate: FeedTableViewCellDelegate?
+    weak var blockUserDelegate: FeedTableViewCellDelegate?
     
     var post: Post? {
         didSet {
@@ -61,7 +63,10 @@ class FeedTableViewCell: UITableViewCell {
         }
     }
     @IBAction func blockUserButtonTapped(_ sender: Any) {
-        self.blockUserActionSheet()
+        if let blockUserDelegate = self.blockUserDelegate {
+            blockUserDelegate.didTapBlockUserButton(self)
+        }
+//        self.blockUserActionSheet()
     }
     @IBAction func profileButtonTapped(_ sender: Any) {
         if let selectedProfileDelegate = self.selectedProfileDelegate {
@@ -91,8 +96,20 @@ extension FeedTableViewCell {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         blockUserAlertController.addAction(blockUserAction)
         blockUserAlertController.addAction(cancelAction)
-        UIApplication.shared.keyWindow?.rootViewController?.present(blockUserAlertController, animated: true, completion: nil)
-        
+
+    }
+}
+
+extension UIView {
+    var parentViewController: CommentTableViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if parentResponder is CommentTableViewController {
+                return parentResponder as! CommentTableViewController!
+            }
+        }
+        return nil
     }
 }
 

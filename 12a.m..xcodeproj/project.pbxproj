@@ -37,7 +37,6 @@
 		0181AA571FCC814500166E21 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0181AA561FCC814500166E21 /* AboutViewController.swift */; };
 		0181AA591FCC8A9400166E21 /* Terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 0181AA581FCC8A9400166E21 /* Terms.html */; };
 		018D7A6F1FA2B63200A6C81F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018D7A6E1FA2B63200A6C81F /* CloudKit.framework */; };
-		01A8F0EE1FFC8D6400B60DA6 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A8F0ED1FFC8D6400B60DA6 /* Camera.storyboard */; };
 		01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */; };
 		01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */; };
 		01BFDECD1FC39A8200D94B87 /* POCKC___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */; };
@@ -83,7 +82,6 @@
 		0181AA581FCC8A9400166E21 /* Terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Terms.html; sourceTree = "<group>"; };
 		018D7A6C1FA2B63000A6C81F /* 12a.m..entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 12a.m..entitlements; sourceTree = "<group>"; };
 		018D7A6E1FA2B63200A6C81F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		01A8F0ED1FFC8D6400B60DA6 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextField.swift; sourceTree = "<group>"; };
 		01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POCKC___.TTF"; sourceTree = "<group>"; };
@@ -281,7 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				0156CE231FA2B52C002791C1 /* Main.storyboard */,
-				01A8F0ED1FFC8D6400B60DA6 /* Camera.storyboard */,
 				0156CE191FA2B268002791C1 /* LaunchScreen.storyboard */,
 				0181AA581FCC8A9400166E21 /* Terms.html */,
 			);
@@ -392,7 +389,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0156CE241FA2B52C002791C1 /* Main.storyboard in Resources */,
-				01A8F0EE1FFC8D6400B60DA6 /* Camera.storyboard in Resources */,
 				01BFDECD1FC39A8200D94B87 /* POCKC___.TTF in Resources */,
 				0156CE1B1FA2B268002791C1 /* LaunchScreen.storyboard in Resources */,
 				0156CE181FA2B268002791C1 /* Assets.xcassets in Resources */,
