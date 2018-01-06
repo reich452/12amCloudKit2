@@ -101,8 +101,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     }
  
     @IBAction func addButtonTapped(_ sender: Any) {
-//        self.addPicButtonTapped()
-        
+        self.addPicButtonTapped()
     }
     
     func handleRefresh(_ refreshControl: UIRefreshControl) {
