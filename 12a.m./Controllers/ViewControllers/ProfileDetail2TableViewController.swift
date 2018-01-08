@@ -43,8 +43,8 @@ class ProfileDetail2TableViewController: UITableViewController {
     }
     
     // MARK: - View
-
-   private func setUpViewFromFeed() {
+    
+    private func setUpViewFromFeed() {
         guard let owner = post?.owner else { return }
         self.profileImageView.image = owner.photo
         self.usernameLabel.text = owner.username
@@ -79,7 +79,7 @@ extension ProfileDetail2TableViewController: UICollectionViewDelegate, UICollect
         guard let sortedPosts = ownerPosts?.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending }) else { return UICollectionViewCell() }
         let sortedIndexPath = sortedPosts[indexPath.row]
         cell.userPostImageView.image = sortedIndexPath.photo
-        
+       
         return cell
     }
     
@@ -95,4 +95,23 @@ extension ProfileDetail2TableViewController: UICollectionViewDelegate, UICollect
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(nbCol))
         return CGSize(width: size, height: size)
     }
+    
+    // MARK: - Navigation 
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: Constants.toCommentFromFeedCollection, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.toCommentFromProfile {
+            guard let destinationVC = segue.destination as? ProfileCommentTableViewController else {print("error \(#function)"); return }
+            guard let indexPath = self.collectionView.indexPathsForSelectedItems?.first, let postOwner = self.post?.owner?.posts?[indexPath.row]  else { print("Bad index \(#function)"); return }
+            destinationVC.post = postOwner
+            destinationVC.comment = comment
+            destinationVC.post = self.post
+        }
+    }
 }
+
+
+

@@ -41,6 +41,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     
     // MARK: - Properties
     var post: Post?
+    var isMidnight: Bool = false
     
    private func setUpTimer() {
         Timer.every(1.second) {
@@ -202,6 +203,7 @@ extension FeedTableViewController {
         imageView.clipsToBounds = true
         
         if Date().isInMidnightHour {
+            isMidnight = true
             self.openImageView.image = #imageLiteral(resourceName: "openSign")
         } else  {
             self.openImageView.image = #imageLiteral(resourceName: "openInSign")

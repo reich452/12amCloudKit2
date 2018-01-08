@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ProfileDetail2CollectionViewCell: UICollectionViewCell {
+class ProfileDetail2CollectionViewCell: UICollectionViewCell, UITableViewDelegate {
     @IBOutlet weak var userPostImageView: UIImageView!
     
+    // MARK: - Delegate
+ 
 }

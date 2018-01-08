@@ -13,3 +13,8 @@ struct RecordType {
     static let userTypeKey = "User"
     static let postTypeKey = "Post"
 }
+
+struct Constants {
+    static let toCommentFromProfile = "fromFeedCollectionProfileToPostDetail"
+    static let toCommentFromFeedCollection = "fromFeedCollectionProfileToPostDetail"
+}
