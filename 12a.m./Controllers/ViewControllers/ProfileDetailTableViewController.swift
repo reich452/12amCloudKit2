@@ -31,6 +31,7 @@ class ProfileDetailTableViewController: UITableViewController {
     
     var comment: Comment?
     var post: Post?
+    var user: User?
   
     // MARK: - Actions
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
