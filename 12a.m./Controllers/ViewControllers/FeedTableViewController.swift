@@ -71,12 +71,14 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     }
     
     func blockUser() {
-        //        let ownerReference = PostController.shared.posts[0].ownerReference
-        guard let post = post,
-            let postIndex = PostController.shared.posts.index(where: {$0.ownerReference == post.ownerReference }) else { print("Cant block Post.OwnerRef"); return }
-        let ownerReference = PostController.shared.posts[postIndex].ownerReference
-        UserController.shared.blockUser(userToBlock: ownerReference) {
-            
+        
+        let postRow = PostController.shared.filteredPosts.count
+        let indexPath = IndexPath(row: postRow, section: 0)
+        let postIndex = indexPath.row - 1
+        let postOwnerRef = PostController.shared.filteredPosts[postIndex].ownerReference
+       
+        UserController.shared.blockUser(userToBlock: postOwnerRef) {
+            print("\(UserController.shared.currentUser ??? "no current user") blocked \(postOwnerRef.recordID ??? "no recordId") record ID")
         }
     }
     
