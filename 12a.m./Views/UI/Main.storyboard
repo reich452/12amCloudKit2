@@ -356,7 +356,6 @@
                             <color key="tintColor" red="1" green="0.99517232763985253" blue="0.99447546279048304" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="addButtonTapped:" destination="JyQ-pe-mMA" id="Rpr-hA-z7I"/>
-                                <segue destination="Y7Y-HU-jfd" kind="presentation" identifier="toCamera" id="heb-NB-P4L"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -373,6 +372,7 @@
                         <outlet property="timeLabel" destination="Ma7-g3-LiR" id="BFO-IJ-I5O"/>
                         <segue destination="y0p-tH-2M1" kind="show" identifier="feedToPostDetail" id="m7A-EI-lMK"/>
                         <segue destination="dPF-SJ-kAy" kind="show" identifier="feedToProfileDetail" id="Vtx-z2-vej"/>
+                        <segue destination="Y7Y-HU-jfd" kind="presentation" identifier="toCamera" id="9ZO-1Y-QOZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOb-FG-dTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
