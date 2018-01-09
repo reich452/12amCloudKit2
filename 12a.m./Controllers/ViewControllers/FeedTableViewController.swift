@@ -9,7 +9,7 @@
 import UIKit
 
 class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate {
- 
+    
     fileprivate let presentSignUpSegue =  "presentSignUp"
     fileprivate let showEditProfileSegue = "editProfile"
     
@@ -23,7 +23,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         
         setUpTimer()
         setUpAppearance()
-
+        
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(reloadData), name: PostController.PostChangeNotified, object: nil)
         
@@ -35,7 +35,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         self.reloadData()
     }
     
@@ -43,7 +43,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     var post: Post?
     var isMidnight: Bool = false
     
-   private func setUpTimer() {
+    private func setUpTimer() {
         Timer.every(1.second) {
             DispatchQueue.main.async { [weak self] in
                 self?.timeLabel.text = Date().timeTillString
@@ -57,22 +57,24 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     }
     
     // MARK: - Delegate
-   internal func didTapCommentButton(_ sender: FeedTableViewCell) {
+    internal func didTapCommentButton(_ sender: FeedTableViewCell) {
         
         self.performSegue(withIdentifier: "feedToPostDetail", sender: sender)
     }
     
-   internal func didTapProfileButton(_ sender: FeedTableViewCell) {
+    func didTapProfileButton(_ sender: FeedTableViewCell) {
         self.performSegue(withIdentifier: "feedToProfileDetail", sender: sender)
     }
-   
-    internal func didTapBlockUserButton(_ sender: FeedTableViewCell) {
+    
+    func didTapBlockUserButton(_ sender: FeedTableViewCell) {
         blockUserActionSheet()
     }
     
     func blockUser() {
-        guard let post = post else { return }
-        let ownerReference = post.ownerReference
+        //        let ownerReference = PostController.shared.posts[0].ownerReference
+        guard let post = post,
+            let postIndex = PostController.shared.posts.index(where: {$0.ownerReference == post.ownerReference }) else { print("Cant block Post.OwnerRef"); return }
+        let ownerReference = PostController.shared.posts[postIndex].ownerReference
         UserController.shared.blockUser(userToBlock: ownerReference) {
             
         }
@@ -100,7 +102,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
             }
         }
     }
- 
+    
     @IBAction func addButtonTapped(_ sender: Any) {
         self.addPicButtonTapped()
     }
@@ -128,7 +130,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         cell.delegate = self
         cell.selectedProfileDelegate = self
         cell.blockUserDelegate = self
-    
+        
         return cell
     }
     
@@ -161,24 +163,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         guard let isMidnight = TimeTracker.shared.isMidnight else { return }
         
         if isMidnight {
-            
-            if UserController.shared.currentUser != nil {
-                
-                let cameraOrCancelAlertController = UIAlertController(title: "Add Photo", message: "Take a photo to post", preferredStyle: .alert)
-                let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
-                    self.performSegue(withIdentifier: "toCamera", sender: self) }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                cameraOrCancelAlertController.addAction(cameraAction)
-                cameraOrCancelAlertController.addAction(cancelAction)
-                present(cameraOrCancelAlertController, animated: true, completion: nil)
-                
-            } else {
-                let noUserAlertController = UIAlertController(title: "User needed", message: "In order to post photos, please log in", preferredStyle: .alert)
-                let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
-                noUserAlertController.addAction(dismissAction)
-                present(noUserAlertController, animated: true, completion: nil)
-            }
-            
+            print("Mind Night Cam")
         } else {
             let notMidnightAlertController = UIAlertController(title: "Can't Post photos until midnight", message: "Post photos between 12AM and 1AM", preferredStyle: .alert)
             let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
@@ -206,6 +191,7 @@ extension FeedTableViewController {
             isMidnight = true
             self.openImageView.image = #imageLiteral(resourceName: "openSign")
         } else  {
+            isMidnight = false
             self.openImageView.image = #imageLiteral(resourceName: "openInSign")
         }
     }

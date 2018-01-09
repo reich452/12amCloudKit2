@@ -44,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="-3973" y="236"/>
         </scene>
-        <!--Custom Tab View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="1XN-wh-JkE">
             <objects>
-                <tabBarController storyboardIdentifier="customTabBar" id="bOX-7D-sof" customClass="CustomTabViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="customTabBar" id="bOX-7D-sof" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="m8Z-3K-mEG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

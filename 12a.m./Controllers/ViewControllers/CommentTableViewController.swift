@@ -110,8 +110,14 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
     }
     
     private func blockUser() {
-        guard let ownerReference = self.post?.ownerReference else { return }
-        UserController.shared.blockUser(userToBlock: ownerReference) {
+
+        guard let comments = post?.comments.sorted(by: {$0.timestamp > $1.timestamp } ) else { print("Can't get the commentDetail index"); return }
+        let indexPath = IndexPath(row: comments.count, section: 0)
+        let commentIndex = indexPath.row
+        
+        guard let commentOwnerRef = self.post?.comments[commentIndex - 1].ownerReference else { print("Can't get post.coments index"); return }
+
+        UserController.shared.blockUser(userToBlock: commentOwnerRef) {
             print("Sucessfully blocked user from the Cell")
         }
     }

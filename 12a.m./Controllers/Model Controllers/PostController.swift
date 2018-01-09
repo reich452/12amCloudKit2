@@ -145,7 +145,9 @@ class PostController {
                 let blockUserRefs = user.blockUserRefs, type != "User" else { return }
             predicate = NSPredicate(format: "NOT(ownerRef IN %@)", blockUserRefs)
         } else if type == "Comment" {
-            predicate = NSPredicate(value: true)
+            guard let user = UserController.shared.currentUser,
+                let blockUserRefs = user.blockUserRefs, type != "User" else { return }
+            predicate = NSPredicate(format: "NOT(ownerReference IN %@)", blockUserRefs)
         }
         
         referencesToExClude = self.syncedRecors(ofType: type).flatMap { $0.cloudKitReference }
