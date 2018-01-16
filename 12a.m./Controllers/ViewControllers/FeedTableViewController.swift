@@ -166,6 +166,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         
         if isMidnight {
             print("Mind Night Cam")
+            self.performSegue(withIdentifier: "toCamera", sender: self)
         } else {
             let notMidnightAlertController = UIAlertController(title: "Can't Post photos until midnight", message: "Post photos between 12AM and 1AM", preferredStyle: .alert)
             let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)

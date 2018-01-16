@@ -209,7 +209,7 @@ extension LogInViewController {
             self.profileImageView.image = currentUser?.photo
         }
         self.profileImageView.contentMode = .scaleAspectFill
-        self.profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2.3
+        self.profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
         self.profileImageView.layer.masksToBounds = true
         
         self.userNameTextField.backgroundColor = UIColor.clear
