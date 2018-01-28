@@ -45,7 +45,15 @@
 		01BFDED11FC5F81A00D94B87 /* PublicMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFDED01FC5F81A00D94B87 /* PublicMethods.swift */; };
 		01D7B7931FE0548100DCD159 /* ProfileDetail2TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7B7921FE0548100DCD159 /* ProfileDetail2TableViewController.swift */; };
 		01D7B7951FE054F700DCD159 /* ProfileDetail2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D7B7941FE054F700DCD159 /* ProfileDetail2CollectionViewCell.swift */; };
-		01EDC8C2201C29420085D2BD /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EDC8C1201C29420085D2BD /* OnboardingPageViewController.swift */; };
+		01EDC8D2201CEA2C0085D2BD /* EulaAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EDC8D1201CEA2C0085D2BD /* EulaAgreementViewController.swift */; };
+		01EDC8D4201E56570085D2BD /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EDC8D3201E56570085D2BD /* FirstPageViewController.swift */; };
+		01EDC8D6201E56610085D2BD /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EDC8D5201E56610085D2BD /* SecondPageViewController.swift */; };
+		01EDC8DA201E57130085D2BD /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EDC8D9201E57130085D2BD /* Onboarding.swift */; };
+		01EDC8DD201E57880085D2BD /* OnboardingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EDC8DC201E57880085D2BD /* OnboardingState.swift */; };
+		01EDC8E0201E58DF0085D2BD /* SegueHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EDC8DF201E58DF0085D2BD /* SegueHandling.swift */; };
+		01EDC8E2201E59030085D2BD /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EDC8E1201E59030085D2BD /* StoryboardInitializable.swift */; };
+		01EDC8E8201E5AFA0085D2BD /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EDC8E7201E5AFA0085D2BD /* PermissionViewController.swift */; };
+		01EDC8EA201E64E30085D2BD /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01EDC8E9201E64E30085D2BD /* Onboarding.storyboard */; };
 		01FE0D0F1FA2BABC001C55EE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE0D0E1FA2BABC001C55EE /* User.swift */; };
 		01FE0D111FA2BB35001C55EE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE0D101FA2BB35001C55EE /* Post.swift */; };
 		01FE0D131FA2BB4C001C55EE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE0D121FA2BB4C001C55EE /* Comment.swift */; };
@@ -93,7 +101,15 @@
 		01BFDED01FC5F81A00D94B87 /* PublicMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMethods.swift; sourceTree = "<group>"; };
 		01D7B7921FE0548100DCD159 /* ProfileDetail2TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetail2TableViewController.swift; sourceTree = "<group>"; };
 		01D7B7941FE054F700DCD159 /* ProfileDetail2CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetail2CollectionViewCell.swift; sourceTree = "<group>"; };
-		01EDC8C1201C29420085D2BD /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
+		01EDC8D1201CEA2C0085D2BD /* EulaAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EulaAgreementViewController.swift; sourceTree = "<group>"; };
+		01EDC8D3201E56570085D2BD /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
+		01EDC8D5201E56610085D2BD /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
+		01EDC8D9201E57130085D2BD /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		01EDC8DC201E57880085D2BD /* OnboardingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingState.swift; sourceTree = "<group>"; };
+		01EDC8DF201E58DF0085D2BD /* SegueHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueHandling.swift; sourceTree = "<group>"; };
+		01EDC8E1201E59030085D2BD /* StoryboardInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
+		01EDC8E7201E5AFA0085D2BD /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
+		01EDC8E9201E64E30085D2BD /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		01FE0D0E1FA2BABC001C55EE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		01FE0D101FA2BB35001C55EE /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		01FE0D121FA2BB4C001C55EE /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -114,6 +130,8 @@
 		010D073E1FA3B2B70013375F /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
+				01EDC8DE201E58CA0085D2BD /* Infrastructure */,
+				01EDC8DB201E57770085D2BD /* State */,
 				012B46301FC641B100D31809 /* Location Helper */,
 				01BFDECF1FC5F80400D94B87 /* Public */,
 				0146C49D1FC0BDA000DEA332 /* AlertExtension */,
@@ -288,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				0156CE231FA2B52C002791C1 /* Main.storyboard */,
+				01EDC8E9201E64E30085D2BD /* Onboarding.storyboard */,
 				0156CE191FA2B268002791C1 /* LaunchScreen.storyboard */,
 				0181AA581FCC8A9400166E21 /* Terms.html */,
 			);
@@ -333,9 +352,30 @@
 		01EDC8C0201C29230085D2BD /* PageController */ = {
 			isa = PBXGroup;
 			children = (
-				01EDC8C1201C29420085D2BD /* OnboardingPageViewController.swift */,
+				01EDC8D9201E57130085D2BD /* Onboarding.swift */,
+				01EDC8D3201E56570085D2BD /* FirstPageViewController.swift */,
+				01EDC8D5201E56610085D2BD /* SecondPageViewController.swift */,
+				01EDC8E7201E5AFA0085D2BD /* PermissionViewController.swift */,
+				01EDC8D1201CEA2C0085D2BD /* EulaAgreementViewController.swift */,
 			);
 			path = PageController;
+			sourceTree = "<group>";
+		};
+		01EDC8DB201E57770085D2BD /* State */ = {
+			isa = PBXGroup;
+			children = (
+				01EDC8DC201E57880085D2BD /* OnboardingState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		01EDC8DE201E58CA0085D2BD /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				01EDC8DF201E58DF0085D2BD /* SegueHandling.swift */,
+				01EDC8E1201E59030085D2BD /* StoryboardInitializable.swift */,
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,6 +448,7 @@
 				0156CE241FA2B52C002791C1 /* Main.storyboard in Resources */,
 				01BFDECD1FC39A8200D94B87 /* POCKC___.TTF in Resources */,
 				0156CE1B1FA2B268002791C1 /* LaunchScreen.storyboard in Resources */,
+				01EDC8EA201E64E30085D2BD /* Onboarding.storyboard in Resources */,
 				0156CE181FA2B268002791C1 /* Assets.xcassets in Resources */,
 				0181AA591FCC8A9400166E21 /* Terms.html in Resources */,
 			);
@@ -420,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01EDC8D6201E56610085D2BD /* SecondPageViewController.swift in Sources */,
 				0146C49F1FC0BDC200DEA332 /* AlertExtension.swift in Sources */,
 				01FE0D111FA2BB35001C55EE /* Post.swift in Sources */,
 				01367BD71FB10FD100F51F89 /* FeedTableViewCell.swift in Sources */,
@@ -431,15 +473,20 @@
 				01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */,
 				01367BD51FB10F5500F51F89 /* FeedTableViewController.swift in Sources */,
 				01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */,
+				01EDC8E0201E58DF0085D2BD /* SegueHandling.swift in Sources */,
 				01367C4C1FB3C27E00F51F89 /* CloudKitSyncable.swift in Sources */,
 				01367C4A1FB3869C00F51F89 /* TimerExtension.swift in Sources */,
+				01EDC8D2201CEA2C0085D2BD /* EulaAgreementViewController.swift in Sources */,
+				01EDC8E2201E59030085D2BD /* StoryboardInitializable.swift in Sources */,
 				01367BDA1FB1142E00F51F89 /* CommentTableViewController.swift in Sources */,
 				01FE0D0F1FA2BABC001C55EE /* User.swift in Sources */,
+				01EDC8E8201E5AFA0085D2BD /* PermissionViewController.swift in Sources */,
 				016CAAAC20019EA0008420AC /* ProfileCommentTableViewController.swift in Sources */,
-				01EDC8C2201C29420085D2BD /* OnboardingPageViewController.swift in Sources */,
+				01EDC8D4201E56570085D2BD /* FirstPageViewController.swift in Sources */,
 				01367BA71FAFA71100F51F89 /* Constatns.swift in Sources */,
 				010D07401FA3B63F0013375F /* CloudKitManager.swift in Sources */,
 				010D073D1FA3B1450013375F /* UserController.swift in Sources */,
+				01EDC8DA201E57130085D2BD /* Onboarding.swift in Sources */,
 				01367BA41FAE8AB400F51F89 /* PostController.swift in Sources */,
 				016CAAA62000159C008420AC /* LaunchViewController.swift in Sources */,
 				0149161B1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift in Sources */,
@@ -451,6 +498,7 @@
 				012B46321FC641CA00D31809 /* LocationHelper.swift in Sources */,
 				01367BDE1FB1180E00F51F89 /* CameraViewController.swift in Sources */,
 				01367BDC1FB114A000F51F89 /* CommentTableViewCell.swift in Sources */,
+				01EDC8DD201E57880085D2BD /* OnboardingState.swift in Sources */,
 				0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */,
 				0181AA571FCC814500166E21 /* AboutViewController.swift in Sources */,
 				01FE0D131FA2BB4C001C55EE /* Comment.swift in Sources */,

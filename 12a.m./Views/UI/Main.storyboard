@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Iy9-zD-exS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h0O-w0-vvp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -865,40 +865,6 @@
             </objects>
             <point key="canvasLocation" x="-3344" y="1829"/>
         </scene>
-        <!--Onboarding Page View Controller-->
-        <scene sceneID="K5c-S3-qzL">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Iy9-zD-exS" customClass="OnboardingPageViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n6k-fV-5Ls" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-7850" y="-467"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="gwX-bA-0uG">
-            <objects>
-                <viewController storyboardIdentifier="1pageController" id="8A9-DA-fY2" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8RV-wh-FJ6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1stPageController" translatesAutoresizingMaskIntoConstraints="NO" id="oqw-wD-Cc2">
-                                <rect key="frame" x="-15" y="-7" width="413" height="686"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="oqw-wD-Cc2" firstAttribute="leading" secondItem="3y0-fo-IgP" secondAttribute="leading" constant="-15" id="UUZ-2e-kt8"/>
-                            <constraint firstItem="oqw-wD-Cc2" firstAttribute="top" secondItem="3y0-fo-IgP" secondAttribute="top" constant="-27" id="dYI-Df-c2f"/>
-                            <constraint firstItem="3y0-fo-IgP" firstAttribute="trailing" secondItem="oqw-wD-Cc2" secondAttribute="trailing" constant="-23" id="f6U-pF-bAt"/>
-                            <constraint firstItem="3y0-fo-IgP" firstAttribute="bottom" secondItem="oqw-wD-Cc2" secondAttribute="bottom" constant="-12" id="xue-Ll-M5b"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="3y0-fo-IgP"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z4O-ze-0OE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-8570.3999999999996" y="302.6986506746627"/>
-        </scene>
         <!--Log In View Controller-->
         <scene sceneID="xjy-Xc-X9G">
             <objects>
@@ -1171,7 +1137,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="283"/>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="rUy-k3-u7U">
-                                    <rect key="frame" x="4" y="175.5" width="363" height="71"/>
+                                    <rect key="frame" x="4" y="175" width="363" height="71"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="72J-BV-hvF">
                                             <rect key="frame" x="0.0" y="0.0" width="106.5" height="71"/>
@@ -1269,13 +1235,13 @@
                                     <viewLayoutGuide key="safeArea" id="C3A-n3-bgt"/>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7I-Bj-AHG">
-                                    <rect key="frame" x="75" y="131.5" width="225" height="20.5"/>
+                                    <rect key="frame" x="75" y="131" width="225" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RSi-PO-kT3">
-                                    <rect key="frame" x="130.5" y="12" width="110.5" height="111"/>
+                                    <rect key="frame" x="130.5" y="12" width="110.5" height="110.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="RSi-PO-kT3" secondAttribute="height" multiplier="1:1" id="fPM-5l-wEm"/>
                                     </constraints>
@@ -1661,7 +1627,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9E-5k-jtc">
-                                <rect key="frame" x="128.5" y="26" width="119" height="119"/>
+                                <rect key="frame" x="128.5" y="26" width="119.5" height="119"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="m9E-5k-jtc" secondAttribute="height" multiplier="1:1" id="XXp-5L-NoE"/>
                                 </constraints>
@@ -2011,64 +1977,9 @@
             </objects>
             <point key="canvasLocation" x="-5985" y="1337"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="jiG-Oy-nmn">
-            <objects>
-                <viewController storyboardIdentifier="2pageController" id="1R1-Ut-fnL" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="il5-8a-qZN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2ndPageController" translatesAutoresizingMaskIntoConstraints="NO" id="py4-hT-XfY">
-                                <rect key="frame" x="-18" y="-12" width="415" height="694"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="py4-hT-XfY" firstAttribute="leading" secondItem="5fh-v7-x6L" secondAttribute="leading" constant="-18" id="1Pw-Fr-tD2"/>
-                            <constraint firstItem="py4-hT-XfY" firstAttribute="bottom" secondItem="5fh-v7-x6L" secondAttribute="bottom" constant="15" id="9S3-ot-D4B"/>
-                            <constraint firstItem="py4-hT-XfY" firstAttribute="top" secondItem="5fh-v7-x6L" secondAttribute="top" constant="-32" id="BKb-UF-xDK"/>
-                            <constraint firstItem="5fh-v7-x6L" firstAttribute="trailing" secondItem="py4-hT-XfY" secondAttribute="trailing" constant="-22" id="gIc-gb-ycq"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="5fh-v7-x6L"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iuD-jP-UEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-7850.3999999999996" y="303.59820089955025"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="oWR-Uh-aQl">
-            <objects>
-                <viewController storyboardIdentifier="3pageController" id="d6Y-7H-hsu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OLf-n8-j8N">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3rdPageController" translatesAutoresizingMaskIntoConstraints="NO" id="sm3-ve-B8v">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="sm3-ve-B8v" firstAttribute="leading" secondItem="EFm-lY-Xaz" secondAttribute="leading" id="JGk-sy-zkZ"/>
-                            <constraint firstItem="EFm-lY-Xaz" firstAttribute="bottom" secondItem="sm3-ve-B8v" secondAttribute="bottom" id="U7q-35-jDK"/>
-                            <constraint firstItem="EFm-lY-Xaz" firstAttribute="trailing" secondItem="sm3-ve-B8v" secondAttribute="trailing" id="nJg-uQ-ra1"/>
-                            <constraint firstItem="sm3-ve-B8v" firstAttribute="top" secondItem="EFm-lY-Xaz" secondAttribute="top" constant="-20" id="wCR-N6-4uJ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="EFm-lY-Xaz"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GoL-ea-Srh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-7129" y="303"/>
-        </scene>
     </scenes>
     <resources>
         <image name="12AMClock" width="654" height="1170"/>
-        <image name="1stPageController" width="435" height="780"/>
-        <image name="2ndPageController" width="455" height="800"/>
-        <image name="3rdPageController" width="431" height="776"/>
         <image name="SplashIcon" width="266" height="258"/>
         <image name="UnisexAvatar" width="231" height="231"/>
         <image name="UserProfileBackground" width="562" height="1011"/>

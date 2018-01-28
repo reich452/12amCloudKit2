@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1S8-7t-yXV">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Onboarding-->
+        <scene sceneID="qIl-6L-EUN">
+            <objects>
+                <viewController storyboardIdentifier="Onboarding" id="1S8-7t-yXV" customClass="Onboarding" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IaT-PA-Jiy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uoQ-Ms-kTJ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <connections>
+                                    <segue destination="1Dh-Ur-95C" kind="embed" identifier="embedPageViewController" id="vIv-OS-X1i"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uoQ-Ms-kTJ" firstAttribute="top" secondItem="UV7-YZ-MbN" secondAttribute="top" id="Uhj-nQ-Qrw"/>
+                            <constraint firstItem="uoQ-Ms-kTJ" firstAttribute="leading" secondItem="UV7-YZ-MbN" secondAttribute="leading" id="Wwa-98-Htg"/>
+                            <constraint firstItem="UV7-YZ-MbN" firstAttribute="trailing" secondItem="uoQ-Ms-kTJ" secondAttribute="trailing" id="cHm-Zj-vRt"/>
+                            <constraint firstItem="UV7-YZ-MbN" firstAttribute="bottom" secondItem="uoQ-Ms-kTJ" secondAttribute="bottom" id="dLg-xK-vm1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UV7-YZ-MbN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bJs-Z8-EaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-9055" y="-567"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="OJ9-5Z-A2G">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="1Dh-Ur-95C" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YhF-xK-L3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8118" y="-567"/>
+        </scene>
+        <!--First Page View Controller-->
+        <scene sceneID="sNQ-Jb-feU">
+            <objects>
+                <viewController storyboardIdentifier="FirstPageViewController" id="vVv-Xp-LuB" customClass="FirstPageViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x2A-Bm-zFx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1stPageController" translatesAutoresizingMaskIntoConstraints="NO" id="1jG-YS-tQr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="n4v-dg-47U">
+                                <rect key="frame" x="168" y="577" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1jG-YS-tQr" firstAttribute="centerX" secondItem="x2A-Bm-zFx" secondAttribute="centerX" id="Tsf-iD-W19"/>
+                            <constraint firstItem="1jG-YS-tQr" firstAttribute="height" secondItem="x2A-Bm-zFx" secondAttribute="height" id="Uvi-b1-zIz"/>
+                            <constraint firstItem="1jG-YS-tQr" firstAttribute="centerY" secondItem="x2A-Bm-zFx" secondAttribute="centerY" id="eYw-Hn-Vbi"/>
+                            <constraint firstItem="1jG-YS-tQr" firstAttribute="width" secondItem="x2A-Bm-zFx" secondAttribute="width" id="fm5-bZ-CXE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G3n-4S-iWp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fct-yE-I2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8570.3999999999996" y="302.6986506746627"/>
+        </scene>
+        <!--Second Page View Controller-->
+        <scene sceneID="AzW-zF-Bm6">
+            <objects>
+                <viewController storyboardIdentifier="SecondPageViewController" id="Kg9-kR-5m9" customClass="SecondPageViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U7i-1d-nPJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2ndPageController" translatesAutoresizingMaskIntoConstraints="NO" id="vC4-3X-I61">
+                                <rect key="frame" x="-18" y="-12" width="415" height="694"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMj-5T-mhB">
+                                <rect key="frame" x="75.5" y="540" width="225" height="45"/>
+                                <state key="normal" image="pageControllerButton">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.22492888799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <segue destination="MbH-GZ-65N" kind="presentation" id="G70-EV-HfZ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agreement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNs-54-wX1">
+                                <rect key="frame" x="141.5" y="552" width="93.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="frv-Pq-HVz" firstAttribute="trailing" secondItem="vC4-3X-I61" secondAttribute="trailing" constant="-22" id="AP1-8N-kSA"/>
+                            <constraint firstItem="BMj-5T-mhB" firstAttribute="width" secondItem="U7i-1d-nPJ" secondAttribute="width" multiplier="0.6" id="DWv-WF-hil"/>
+                            <constraint firstItem="frv-Pq-HVz" firstAttribute="bottom" secondItem="VNs-54-wX1" secondAttribute="bottom" constant="94" id="FlD-mX-Woi"/>
+                            <constraint firstItem="frv-Pq-HVz" firstAttribute="bottom" secondItem="BMj-5T-mhB" secondAttribute="bottom" constant="82" id="KyC-47-qrd"/>
+                            <constraint firstItem="vC4-3X-I61" firstAttribute="leading" secondItem="frv-Pq-HVz" secondAttribute="leading" constant="-18" id="UaO-l4-z9b"/>
+                            <constraint firstItem="VNs-54-wX1" firstAttribute="width" secondItem="U7i-1d-nPJ" secondAttribute="width" multiplier="0.25" id="VKH-R1-M2e"/>
+                            <constraint firstItem="vC4-3X-I61" firstAttribute="bottom" secondItem="frv-Pq-HVz" secondAttribute="bottom" constant="15" id="f3p-US-cXZ"/>
+                            <constraint firstItem="VNs-54-wX1" firstAttribute="centerX" secondItem="U7i-1d-nPJ" secondAttribute="centerX" id="nNB-9N-sBJ"/>
+                            <constraint firstItem="vC4-3X-I61" firstAttribute="top" secondItem="frv-Pq-HVz" secondAttribute="top" constant="-32" id="qbL-LF-fdB"/>
+                            <constraint firstItem="BMj-5T-mhB" firstAttribute="centerX" secondItem="U7i-1d-nPJ" secondAttribute="centerX" id="reb-Cz-8aw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="frv-Pq-HVz"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cWi-8X-EKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7850.3999999999996" y="303.59820089955025"/>
+        </scene>
+        <!--Eula Agreement View Controller-->
+        <scene sceneID="9WX-Gk-uuk">
+            <objects>
+                <viewController id="MbH-GZ-65N" customClass="EulaAgreementViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8k8-UM-PsY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginScreen" translatesAutoresizingMaskIntoConstraints="NO" id="2gQ-PP-6nr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3J-U0-iCy">
+                                <rect key="frame" x="131" y="573" width="112.5" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" red="1" green="0.96592087360000001" blue="0.99422455239999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearButtonTapped:" destination="MbH-GZ-65N" eventType="touchUpInside" id="q8L-p1-4fx"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mhT-DP-TTg">
+                                <rect key="frame" x="37" y="34" width="300" height="423"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">By clicking I Agree, you have read and accepted this agreement.
+
+This End-User License Agreement ("EULA") is a legal agreement between you and 12 am
+
+This EULA agreement governs your acquisition and use of our 12 am software ("Software") directly from 12 am or indirectly through a 12 am authorized reseller or distributor (a "Reseller").
+
+Please read this EULA agreement carefully before completing the installation process and using the 12 am Application. It provides a license to use the 12 am software and contains warranty information and liability disclaimers.
+
+You shall not upload to, or distribute or otherwise publish on to the Services any libelous, defamatory, obscene, pornographic, abusive, or otherwise illegal material.
+
+Be courteous. You agree that you will not threaten or verbally abuse other members, use defamatory language, or deliberately disrupt discussions with repetitive messages, meaningless messages or "spam."
+
+Use respectful language. Like any community, the online conversation flourishes only when our Members feel welcome and safe. You agree not to use language that abuses or discriminates on the basis of race, religion, nationality, gender, sexual preference, age, region, disability, etc. Hate speech of any kind is grounds for immediate and permanent suspension of access to all or part of the Services.
+
+Debate, but don't attack. In a community full of opinions and preferences, people always disagree. 12 am encourages active discussions and welcomes heated debate on the Services, but personal attacks are a direct violation of these Terms of Service and are grounds for immediate and permanent suspension of access to all or part of the Service.
+
+ The Services shall be used only in a noncommercial manner. You shall not, without the express approval of 12 am, distribute or otherwise publish any material containing any solicitation of funds, advertising or solicitation for goods or services.
+
+You acknowledge that any submissions you make to the Services (i.e., user-generated content including but not limited to: comments, forum messages, reviews, text, video, audio and photographs, as well as computer code and applications) (each, a "Submission") may be edited, removed, modified, published, transmitted, and displayed by 12am and you waive any rights you may have in having the material altered or changed in a manner not agreeable to you. 
+
+You grant 12 am, a perpetual, nonexclusive, world-wide, royalty free, sub-licensable license to the Submissions, which includes without limitation the right for 12 am, or any third party it designates, to use, copy, transmit, excerpt, publish, distribute, publicly display, publicly perform, create derivative works of, host, index, cache, tag, encode, modify and adapt (including without limitation the right to adapt to streaming, downloading, broadcast, mobile, digital, thumbnail, scanning or other technologies) in any form or media now known or hereinafter developed, any Submission posted by you on or to the Services or any other website owned by 12 am, including any Submission posted on or to the Services through a third party.
+
+You are solely responsible for the content of your Submissions. However, while 12 am does not and cannot review every Submission and is not responsible for the content of these messages, 12 am reserves the right to delete, move, or edit Submissions that it, in its sole discretion, deems abusive, defamatory, obscene, in violation of copyright or trademark laws, or otherwise unacceptable.
+
+By making a Submission, you are consenting to its display and publication on the app and in the Services and for related online and offline promotional uses.
+
+Any person involved in or affiliated with the production of a work reviewed on 12 am or elsewhere in the Services may not submit a Readers' Review for that work or competing works.
+
+If you sign up for a free trial of the 12 am app, this EULA agreement will also govern that trial. By clicking "accept" or installing and/or using the 12 am software, you are confirming your acceptance of the Software and agreeing to become bound by the terms of this EULA agreement.
+
+If you are entering into this EULA agreement on behalf of a company or other legal entity, you represent that you have the authority to bind such entity and its affiliates to these terms and conditions. If you do not have such authority or if you do not agree with the terms and conditions of this EULA agreement, do not install or use the Software, and you must not accept this EULA agreement.
+
+This EULA agreement shall apply only to the Software supplied by 12 am herewith regardless of whether other software is referred to or described herein. The terms also apply to any 12 am updates, supplements, Internet-based services, and support services for the Software, unless other terms accompany those items on delivery. If so, those terms apply.
+
+License Grant
+
+12 am hereby grants you a personal, non-transferable, non-exclusive licence to use the 12 am software on your devices in accordance with the terms of this EULA agreement.
+
+You are permitted to load the 12 am software (for example a PC, laptop, mobile or tablet) under your control. You are responsible for ensuring your device meets the minimum requirements of the 12 am software.
+
+You are not permitted to:
+
+
+- Edit, alter, modify, adapt, translate or otherwise change the whole or any part of the Software nor permit the whole or any part of the Software to be combined with or become incorporated in any other software, nor decompile, disassemble or reverse engineer the Software or attempt to do any such things
+- Reproduce, copy, distribute, resell or otherwise use the Software for any commercial purpose
+- Allow any third party to use the Software on behalf of or for the benefit of any third party
+- Use the Software in any way which breaches any applicable local, national or international law
+- use the Software for any purpose that 12 am considers is a breach of this EULA agreement
+
+
+Intellectual Property and Ownership
+
+12 am shall at all times retain ownership of the Software as originally downloaded by you and all subsequent downloads of the Software by you. The Software (and the copyright, and other intellectual property rights of whatever nature in the Software, including any modifications made thereto) are and shall remain the property of 12 am.
+
+12 am reserves the right to grant licences to use the Software to third parties.
+
+Termination
+
+This EULA agreement is effective from the date you first use the Software and shall continue until terminated. You may terminate it at any time upon written notice to 12 am.
+
+This EULA was created by eulatemplate.com for 12 am
+
+It will also terminate immediately if you fail to comply with any term of this EULA agreement. Upon such termination, the licenses granted by this EULA agreement will immediately terminate and you agree to stop all access and use of the Software. The provisions that by their nature continue and survive will survive any termination of this EULA agreement.
+
+Governing Law
+
+This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of [COUNTRY].</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IuZ-8b-InS">
+                                <rect key="frame" x="94" y="495" width="187.5" height="45"/>
+                                <state key="normal" title="I Agree" image="pageControllerButton">
+                                    <color key="titleColor" red="1" green="0.96592087360000001" blue="0.99422455239999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="iagreeButtonTapped:" destination="MbH-GZ-65N" eventType="touchUpInside" id="4J7-tb-7uI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I Agree" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5P-Xq-lHx">
+                                <rect key="frame" x="93.5" y="495" width="187.5" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="j5P-Xq-lHx" firstAttribute="bottom" secondItem="IuZ-8b-InS" secondAttribute="bottom" id="8nW-UY-gSU"/>
+                            <constraint firstItem="2gQ-PP-6nr" firstAttribute="top" secondItem="spt-gU-nxW" secondAttribute="top" constant="-20" id="CGe-JF-oGs"/>
+                            <constraint firstItem="spt-gU-nxW" firstAttribute="trailing" secondItem="2gQ-PP-6nr" secondAttribute="trailing" id="DXe-RY-A8t"/>
+                            <constraint firstItem="S3J-U0-iCy" firstAttribute="top" secondItem="IuZ-8b-InS" secondAttribute="bottom" constant="33" id="G06-bn-Jbb"/>
+                            <constraint firstItem="IuZ-8b-InS" firstAttribute="width" secondItem="8k8-UM-PsY" secondAttribute="width" multiplier="0.5" id="GLV-yM-Qex"/>
+                            <constraint firstItem="spt-gU-nxW" firstAttribute="bottom" secondItem="2gQ-PP-6nr" secondAttribute="bottom" id="OzE-ZN-6o3"/>
+                            <constraint firstItem="2gQ-PP-6nr" firstAttribute="leading" secondItem="spt-gU-nxW" secondAttribute="leading" id="Pn8-7L-7rP"/>
+                            <constraint firstItem="S3J-U0-iCy" firstAttribute="width" secondItem="8k8-UM-PsY" secondAttribute="width" multiplier="0.3" id="Tzf-lp-GrF"/>
+                            <constraint firstItem="mhT-DP-TTg" firstAttribute="width" secondItem="8k8-UM-PsY" secondAttribute="width" multiplier="0.8" id="Uis-pc-C9y"/>
+                            <constraint firstItem="mhT-DP-TTg" firstAttribute="centerX" secondItem="8k8-UM-PsY" secondAttribute="centerX" id="YDG-mg-i97"/>
+                            <constraint firstItem="S3J-U0-iCy" firstAttribute="centerX" secondItem="8k8-UM-PsY" secondAttribute="centerX" id="cgF-WK-tTL"/>
+                            <constraint firstItem="j5P-Xq-lHx" firstAttribute="height" secondItem="IuZ-8b-InS" secondAttribute="height" id="iUM-iX-zh4"/>
+                            <constraint firstItem="spt-gU-nxW" firstAttribute="bottom" secondItem="S3J-U0-iCy" secondAttribute="bottom" constant="58" id="ldF-Cc-ksl"/>
+                            <constraint firstItem="j5P-Xq-lHx" firstAttribute="width" secondItem="IuZ-8b-InS" secondAttribute="width" id="q8J-Cg-cck"/>
+                            <constraint firstItem="j5P-Xq-lHx" firstAttribute="centerX" secondItem="8k8-UM-PsY" secondAttribute="centerX" id="rES-tJ-hTz"/>
+                            <constraint firstItem="IuZ-8b-InS" firstAttribute="centerX" secondItem="8k8-UM-PsY" secondAttribute="centerX" id="uGp-Mw-lfg"/>
+                            <constraint firstItem="mhT-DP-TTg" firstAttribute="centerY" secondItem="8k8-UM-PsY" secondAttribute="centerY" constant="-88" id="vcD-yl-mbF"/>
+                            <constraint firstItem="mhT-DP-TTg" firstAttribute="height" secondItem="8k8-UM-PsY" secondAttribute="height" multiplier="0.9" constant="-177.30000000000007" id="vq7-jh-9l0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="spt-gU-nxW"/>
+                    </view>
+                    <connections>
+                        <segue destination="mOr-PE-Thg" kind="show" identifier="toBeRespectfulVC" id="rV4-3o-N7p">
+                            <nil key="action"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mDH-QC-5Q5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7850.3999999999996" y="1066.4167916041979"/>
+        </scene>
+        <!--Permission View Controller-->
+        <scene sceneID="G43-MS-s6W">
+            <objects>
+                <viewController storyboardIdentifier="PermissionViewController" id="mOr-PE-Thg" customClass="PermissionViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DKa-pF-Zjv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3rdPageController" translatesAutoresizingMaskIntoConstraints="NO" id="ykd-rY-RB9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VAJ-9f-46o" firstAttribute="bottom" secondItem="ykd-rY-RB9" secondAttribute="bottom" id="CVK-GL-eWT"/>
+                            <constraint firstItem="ykd-rY-RB9" firstAttribute="leading" secondItem="VAJ-9f-46o" secondAttribute="leading" id="QPw-zM-6kj"/>
+                            <constraint firstItem="VAJ-9f-46o" firstAttribute="trailing" secondItem="ykd-rY-RB9" secondAttribute="trailing" id="XOI-73-bnt"/>
+                            <constraint firstItem="ykd-rY-RB9" firstAttribute="top" secondItem="VAJ-9f-46o" secondAttribute="top" constant="-20" id="yTU-Ml-7bu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VAJ-9f-46o"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2b-ZN-dfg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7129" y="303"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="1stPageController" width="435" height="780"/>
+        <image name="2ndPageController" width="455" height="800"/>
+        <image name="3rdPageController" width="431" height="776"/>
+        <image name="loginScreen" width="1126" height="2436"/>
+        <image name="pageControllerButton" width="245" height="45"/>
+    </resources>
+</document>
