@@ -12,11 +12,12 @@ class SecondPageViewController: UIViewController, OnboardingScreen {
     @IBOutlet weak var pageControl: UIPageControl!
     
     var page: OnboardingState.Page = .genre1
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-       pageControl.currentPage = page.rawValue
+        pageControl.currentPage = page.rawValue
+        UIApplication.shared.statusBarStyle = .default
     }
 }
 
@@ -28,7 +29,7 @@ private extension SecondPageViewController {
         case .genre1: genre = "genre1"
         default: break
         }
-         
+        
         print("Selection Page: \(genre)")
     }
     

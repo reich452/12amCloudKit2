@@ -20,6 +20,7 @@ class PermissionViewController: UIViewController, OnboardingScreen {
     
     func setUPUI() {
         pageControl.currentPage = page.rawValue
+        UIApplication.shared.statusBarStyle = .default
     }
 
 }

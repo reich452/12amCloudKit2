@@ -19,19 +19,19 @@ class OnboardingState {
     }
     
     enum Page: Int {
-        case title
+        case welcome
         case genre1
         case permissions
         
         var type: PageType {
             switch self {
-            case .title: return .welcome
+            case .welcome: return .welcome
             case .genre1: return .selection
             case .permissions: return .permissions
             }
         }
         
-        static var all: [Page] = [.title, .genre1, .permissions]
+        static var all: [Page] = [.welcome, .genre1, .permissions]
     }
     
     // MARK: - Internal Properties
@@ -48,8 +48,8 @@ class OnboardingState {
     
     func previousPage() -> Page {
         switch page {
-        case .title: page = .title
-        case .genre1: page = .title
+        case .welcome: page = .welcome
+        case .genre1: page = .welcome
         case .permissions: page = .genre1
         }
         return page
@@ -57,7 +57,7 @@ class OnboardingState {
     
     func nextPage() -> Page {
         switch page {
-        case .title: page = .genre1
+        case .welcome: page = .genre1
         case .genre1: page = .permissions
         case .permissions: page = .permissions
         }

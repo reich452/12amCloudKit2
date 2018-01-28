@@ -19,13 +19,19 @@ class Onboarding: UIViewController {
     // MARK: - Properties
     
     var pageViewController: UIPageViewController!
-    var currentPage = OnboardingState(currentPage: .title)
+    var currentPage = OnboardingState(currentPage: .welcome)
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.statusBarView?.backgroundColor = .black 
         pageViewController.setViewControllers([FirstPageViewController.initializeFromStoryboard()], direction: .forward, animated: true, completion: nil)
+        setUPUI()
+    }
+    func setUPUI() {
+        UIApplication.shared.statusBarView?.backgroundColor = .black
+        view.backgroundColor = .black
     }
     
 }
@@ -51,7 +57,7 @@ extension Onboarding: UIPageViewControllerDataSource {
     
     func createVCFrom(page: OnboardingState.Page) -> OnboardingScreen {
         switch page {
-        case .title:
+        case .welcome:
             let titlePage = FirstPageViewController.initializeFromStoryboard()
             return titlePage
         case .genre1:

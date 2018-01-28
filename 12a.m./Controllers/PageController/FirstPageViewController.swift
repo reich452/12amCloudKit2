@@ -12,7 +12,7 @@ class FirstPageViewController: UIViewController, OnboardingScreen {
     
     @IBOutlet weak var pageControl: UIPageControl!
     
-    var page: OnboardingState.Page = .title
+    var page: OnboardingState.Page = .welcome
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,7 @@ class FirstPageViewController: UIViewController, OnboardingScreen {
     
     func setUPUI() {
         pageControl.currentPage = page.rawValue
+        UIApplication.shared.statusBarStyle = .default
     }
 
 }

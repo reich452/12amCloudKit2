@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = Onboarding.initializeFromStoryboard()
         window?.makeKeyAndVisible()
+        
         UserController.shared.fetchCurrentUser()
 
         return true
