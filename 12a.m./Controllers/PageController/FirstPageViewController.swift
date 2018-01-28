@@ -10,11 +10,17 @@ import UIKit
 
 class FirstPageViewController: UIViewController, OnboardingScreen {
     
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     var page: OnboardingState.Page = .title
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setUPUI()
+    }
+    
+    func setUPUI() {
+        pageControl.currentPage = page.rawValue
     }
 
 }

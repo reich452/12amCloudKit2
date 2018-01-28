@@ -9,12 +9,14 @@
 import UIKit
 
 class SecondPageViewController: UIViewController, OnboardingScreen {
+    @IBOutlet weak var pageControl: UIPageControl!
     
     var page: OnboardingState.Page = .genre1
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+       pageControl.currentPage = page.rawValue
     }
 }
 

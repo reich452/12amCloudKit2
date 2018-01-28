@@ -9,12 +9,17 @@
 import UIKit
 
 class PermissionViewController: UIViewController, OnboardingScreen {
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     var page: OnboardingState.Page = .permissions
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-  
+        setUPUI()
+    }
+    
+    func setUPUI() {
+        pageControl.currentPage = page.rawValue
     }
 
 }

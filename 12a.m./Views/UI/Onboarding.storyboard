@@ -58,20 +58,25 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1stPageController" translatesAutoresizingMaskIntoConstraints="NO" id="1jG-YS-tQr">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="n4v-dg-47U">
-                                <rect key="frame" x="168" y="577" width="39" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="n4v-dg-47U">
+                                <rect key="frame" x="131.5" y="586" width="112.5" height="37"/>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="n4v-dg-47U" firstAttribute="width" secondItem="x2A-Bm-zFx" secondAttribute="width" multiplier="0.3" id="4x1-5e-OwB"/>
                             <constraint firstItem="1jG-YS-tQr" firstAttribute="centerX" secondItem="x2A-Bm-zFx" secondAttribute="centerX" id="Tsf-iD-W19"/>
                             <constraint firstItem="1jG-YS-tQr" firstAttribute="height" secondItem="x2A-Bm-zFx" secondAttribute="height" id="Uvi-b1-zIz"/>
+                            <constraint firstItem="n4v-dg-47U" firstAttribute="centerX" secondItem="x2A-Bm-zFx" secondAttribute="centerX" id="eLG-aL-as3"/>
                             <constraint firstItem="1jG-YS-tQr" firstAttribute="centerY" secondItem="x2A-Bm-zFx" secondAttribute="centerY" id="eYw-Hn-Vbi"/>
                             <constraint firstItem="1jG-YS-tQr" firstAttribute="width" secondItem="x2A-Bm-zFx" secondAttribute="width" id="fm5-bZ-CXE"/>
+                            <constraint firstItem="G3n-4S-iWp" firstAttribute="bottom" secondItem="n4v-dg-47U" secondAttribute="bottom" constant="44" id="vma-rz-BCm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G3n-4S-iWp"/>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="n4v-dg-47U" id="XXV-8Q-gOM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fct-yE-I2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -103,6 +108,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="fsd-ho-Oji">
+                                <rect key="frame" x="131.5" y="603" width="112.5" height="37"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -111,14 +119,20 @@
                             <constraint firstItem="frv-Pq-HVz" firstAttribute="bottom" secondItem="VNs-54-wX1" secondAttribute="bottom" constant="94" id="FlD-mX-Woi"/>
                             <constraint firstItem="frv-Pq-HVz" firstAttribute="bottom" secondItem="BMj-5T-mhB" secondAttribute="bottom" constant="82" id="KyC-47-qrd"/>
                             <constraint firstItem="vC4-3X-I61" firstAttribute="leading" secondItem="frv-Pq-HVz" secondAttribute="leading" constant="-18" id="UaO-l4-z9b"/>
+                            <constraint firstItem="fsd-ho-Oji" firstAttribute="centerX" secondItem="U7i-1d-nPJ" secondAttribute="centerX" id="V3a-sk-TNo"/>
                             <constraint firstItem="VNs-54-wX1" firstAttribute="width" secondItem="U7i-1d-nPJ" secondAttribute="width" multiplier="0.25" id="VKH-R1-M2e"/>
                             <constraint firstItem="vC4-3X-I61" firstAttribute="bottom" secondItem="frv-Pq-HVz" secondAttribute="bottom" constant="15" id="f3p-US-cXZ"/>
+                            <constraint firstItem="fsd-ho-Oji" firstAttribute="width" secondItem="U7i-1d-nPJ" secondAttribute="width" multiplier="0.3" id="jDO-1m-R1Y"/>
                             <constraint firstItem="VNs-54-wX1" firstAttribute="centerX" secondItem="U7i-1d-nPJ" secondAttribute="centerX" id="nNB-9N-sBJ"/>
                             <constraint firstItem="vC4-3X-I61" firstAttribute="top" secondItem="frv-Pq-HVz" secondAttribute="top" constant="-32" id="qbL-LF-fdB"/>
                             <constraint firstItem="BMj-5T-mhB" firstAttribute="centerX" secondItem="U7i-1d-nPJ" secondAttribute="centerX" id="reb-Cz-8aw"/>
+                            <constraint firstItem="frv-Pq-HVz" firstAttribute="bottom" secondItem="fsd-ho-Oji" secondAttribute="bottom" constant="27" id="x3l-UD-XQE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="frv-Pq-HVz"/>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="fsd-ho-Oji" id="E6x-Ir-2k0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWi-8X-EKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -278,16 +292,25 @@ This EULA agreement, and any dispute arising out of or in connection with this E
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3rdPageController" translatesAutoresizingMaskIntoConstraints="NO" id="ykd-rY-RB9">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7up-yt-YYf">
+                                <rect key="frame" x="131.5" y="598" width="112.5" height="37"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7up-yt-YYf" firstAttribute="width" secondItem="DKa-pF-Zjv" secondAttribute="width" multiplier="0.3" id="6KD-Xa-soG"/>
                             <constraint firstItem="VAJ-9f-46o" firstAttribute="bottom" secondItem="ykd-rY-RB9" secondAttribute="bottom" id="CVK-GL-eWT"/>
                             <constraint firstItem="ykd-rY-RB9" firstAttribute="leading" secondItem="VAJ-9f-46o" secondAttribute="leading" id="QPw-zM-6kj"/>
+                            <constraint firstItem="7up-yt-YYf" firstAttribute="centerX" secondItem="DKa-pF-Zjv" secondAttribute="centerX" id="RyU-Ba-BIQ"/>
                             <constraint firstItem="VAJ-9f-46o" firstAttribute="trailing" secondItem="ykd-rY-RB9" secondAttribute="trailing" id="XOI-73-bnt"/>
                             <constraint firstItem="ykd-rY-RB9" firstAttribute="top" secondItem="VAJ-9f-46o" secondAttribute="top" constant="-20" id="yTU-Ml-7bu"/>
+                            <constraint firstItem="VAJ-9f-46o" firstAttribute="bottom" secondItem="7up-yt-YYf" secondAttribute="bottom" constant="32" id="zn6-42-0e4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VAJ-9f-46o"/>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="7up-yt-YYf" id="Gid-Mj-45J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2b-ZN-dfg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
