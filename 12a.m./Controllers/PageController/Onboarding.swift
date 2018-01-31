@@ -60,9 +60,12 @@ extension Onboarding: UIPageViewControllerDataSource {
         case .welcome:
             let titlePage = FirstPageViewController.initializeFromStoryboard()
             return titlePage
-        case .genre1:
-            let genre1 = SecondPageViewController.initializeFromStoryboard()
-            return genre1
+        case .uxInfo:
+            let uxInfoPage = SecondPageViewController.initializeFromStoryboard()
+            return uxInfoPage
+        case .selection:
+            let selection = ThridPageViewController.initializeFromStoryboard()
+            return selection
         case .permissions:
             let permissions = PermissionViewController.initializeFromStoryboard()
             return permissions

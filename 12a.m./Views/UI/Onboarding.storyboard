@@ -80,17 +80,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fct-yE-I2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8570.3999999999996" y="302.6986506746627"/>
+            <point key="canvasLocation" x="-9055" y="304"/>
         </scene>
         <!--Second Page View Controller-->
+        <scene sceneID="b8E-BU-jh7">
+            <objects>
+                <viewController storyboardIdentifier="SecondPageViewController" id="naE-nJ-zgA" customClass="SecondPageViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ry8-e1-in9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2ndPageController" translatesAutoresizingMaskIntoConstraints="NO" id="o4G-F9-F8U">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="bIj-Hs-k3m">
+                                <rect key="frame" x="131.5" y="579" width="112.5" height="37"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bIj-Hs-k3m" firstAttribute="width" secondItem="ry8-e1-in9" secondAttribute="width" multiplier="0.3" id="0Ha-lb-f6O"/>
+                            <constraint firstItem="o4G-F9-F8U" firstAttribute="leading" secondItem="Am0-40-EJQ" secondAttribute="leading" id="2JI-AG-evi"/>
+                            <constraint firstItem="Am0-40-EJQ" firstAttribute="bottom" secondItem="bIj-Hs-k3m" secondAttribute="bottom" constant="51" id="7ir-iP-0DQ"/>
+                            <constraint firstItem="Am0-40-EJQ" firstAttribute="trailing" secondItem="o4G-F9-F8U" secondAttribute="trailing" id="FJj-cC-Pf7"/>
+                            <constraint firstItem="o4G-F9-F8U" firstAttribute="top" secondItem="Am0-40-EJQ" secondAttribute="top" constant="-20" id="I0L-hh-ssa"/>
+                            <constraint firstItem="Am0-40-EJQ" firstAttribute="bottom" secondItem="o4G-F9-F8U" secondAttribute="bottom" id="b5m-NQ-bFc"/>
+                            <constraint firstItem="bIj-Hs-k3m" firstAttribute="centerX" secondItem="ry8-e1-in9" secondAttribute="centerX" id="k0K-aa-xb2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Am0-40-EJQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="bIj-Hs-k3m" id="5pW-85-mcT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gN0-W9-2lw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8314" y="304"/>
+        </scene>
+        <!--Thrid Page View Controller-->
         <scene sceneID="AzW-zF-Bm6">
             <objects>
-                <viewController storyboardIdentifier="SecondPageViewController" id="Kg9-kR-5m9" customClass="SecondPageViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThridPageViewController" id="Kg9-kR-5m9" customClass="ThridPageViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U7i-1d-nPJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2ndPageController" translatesAutoresizingMaskIntoConstraints="NO" id="vC4-3X-I61">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3rdPageController" translatesAutoresizingMaskIntoConstraints="NO" id="vC4-3X-I61">
                                 <rect key="frame" x="-18" y="-12" width="415" height="694"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMj-5T-mhB">
@@ -131,12 +166,12 @@
                         <viewLayoutGuide key="safeArea" id="frv-Pq-HVz"/>
                     </view>
                     <connections>
-                        <outlet property="pageControl" destination="fsd-ho-Oji" id="E6x-Ir-2k0"/>
+                        <outlet property="pageControl" destination="fsd-ho-Oji" id="45O-Fp-bFf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWi-8X-EKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7850.3999999999996" y="303.59820089955025"/>
+            <point key="canvasLocation" x="-7583" y="304"/>
         </scene>
         <!--Eula Agreement View Controller-->
         <scene sceneID="9WX-Gk-uuk">
@@ -162,7 +197,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mhT-DP-TTg">
                                 <rect key="frame" x="37" y="34" width="300" height="423"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">By clicking I Agree, you have read and accepted this agreement.
+                                <string key="text">By clicking I Agree, you have read and accepted this agreement.
 
 This End-User License Agreement ("EULA") is a legal agreement between you and 12 am
 
@@ -228,7 +263,7 @@ It will also terminate immediately if you fail to comply with any term of this E
 
 Governing Law
 
-This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of [COUNTRY].</mutableString>
+This EULA agreement, and any dispute arising out of or in connection with this EULA agreement, shall be governed by and construed in accordance with the laws of [COUNTRY].</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -289,7 +324,7 @@ This EULA agreement, and any dispute arising out of or in connection with this E
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3rdPageController" translatesAutoresizingMaskIntoConstraints="NO" id="ykd-rY-RB9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4thPageController" translatesAutoresizingMaskIntoConstraints="NO" id="ykd-rY-RB9">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7up-yt-YYf">
@@ -314,13 +349,14 @@ This EULA agreement, and any dispute arising out of or in connection with this E
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2b-ZN-dfg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7129" y="303"/>
+            <point key="canvasLocation" x="-6900" y="304"/>
         </scene>
     </scenes>
     <resources>
         <image name="1stPageController" width="431" height="776"/>
-        <image name="2ndPageController" width="455" height="800"/>
-        <image name="3rdPageController" width="431" height="776"/>
+        <image name="2ndPageController" width="542" height="975"/>
+        <image name="3rdPageController" width="455" height="800"/>
+        <image name="4thPageController" width="431" height="776"/>
         <image name="loginScreen" width="1126" height="2436"/>
         <image name="pageControllerButton" width="245" height="45"/>
     </resources>

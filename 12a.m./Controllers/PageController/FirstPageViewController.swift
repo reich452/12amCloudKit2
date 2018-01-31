@@ -22,6 +22,8 @@ class FirstPageViewController: UIViewController, OnboardingScreen {
     func setUPUI() {
         pageControl.currentPage = page.rawValue
         UIApplication.shared.statusBarStyle = .default
+        print(pageControl.numberOfPages)
+        print(pageControl.currentPage)
     }
 
 }
