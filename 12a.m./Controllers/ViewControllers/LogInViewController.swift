@@ -34,6 +34,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     private var imagePickerWasDismissed = false
     private let imagePicker = UIImagePickerController()
     private var isTaken: Bool = true
+    private var permissionVC: PermissionViewController?
     fileprivate let appDelegate = UIApplication.shared.delegate! as! AppDelegate
     
     
@@ -234,7 +235,9 @@ extension LogInViewController {
     @objc func updateViews() {
         
         guard let currentUser = self.currentUser,
-            let currentUserPhoto = currentUser.photo else { return }
+            let currentUserPhoto = currentUser.photo,
+            let permissionVC = permissionVC else { return }
+        permissionVC.dismiss(animated: false, completion: nil)
         DispatchQueue.main.async {
             self.profileImageView.image = currentUserPhoto
             self.profileImageView.setNeedsDisplay()

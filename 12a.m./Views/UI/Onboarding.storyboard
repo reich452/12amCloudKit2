@@ -129,7 +129,7 @@
                                 <rect key="frame" x="-18" y="-12" width="415" height="694"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMj-5T-mhB">
-                                <rect key="frame" x="75.5" y="540" width="225" height="45"/>
+                                <rect key="frame" x="75" y="540" width="225" height="45"/>
                                 <state key="normal" image="pageControllerButton">
                                     <color key="titleColor" red="1" green="0.0" blue="0.22492888799999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
@@ -138,7 +138,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agreement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNs-54-wX1">
-                                <rect key="frame" x="141.5" y="552" width="93.5" height="21"/>
+                                <rect key="frame" x="140.5" y="552" width="94" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -155,7 +155,7 @@
                             <constraint firstItem="frv-Pq-HVz" firstAttribute="bottom" secondItem="BMj-5T-mhB" secondAttribute="bottom" constant="82" id="KyC-47-qrd"/>
                             <constraint firstItem="vC4-3X-I61" firstAttribute="leading" secondItem="frv-Pq-HVz" secondAttribute="leading" constant="-18" id="UaO-l4-z9b"/>
                             <constraint firstItem="fsd-ho-Oji" firstAttribute="centerX" secondItem="U7i-1d-nPJ" secondAttribute="centerX" id="V3a-sk-TNo"/>
-                            <constraint firstItem="VNs-54-wX1" firstAttribute="width" secondItem="U7i-1d-nPJ" secondAttribute="width" multiplier="0.25" id="VKH-R1-M2e"/>
+                            <constraint firstItem="VNs-54-wX1" firstAttribute="width" relation="greaterThanOrEqual" secondItem="U7i-1d-nPJ" secondAttribute="width" multiplier="0.25" id="VKH-R1-M2e"/>
                             <constraint firstItem="vC4-3X-I61" firstAttribute="bottom" secondItem="frv-Pq-HVz" secondAttribute="bottom" constant="15" id="f3p-US-cXZ"/>
                             <constraint firstItem="fsd-ho-Oji" firstAttribute="width" secondItem="U7i-1d-nPJ" secondAttribute="width" multiplier="0.3" id="jDO-1m-R1Y"/>
                             <constraint firstItem="VNs-54-wX1" firstAttribute="centerX" secondItem="U7i-1d-nPJ" secondAttribute="centerX" id="nNB-9N-sBJ"/>
@@ -185,7 +185,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3J-U0-iCy">
-                                <rect key="frame" x="131" y="573" width="112.5" height="36"/>
+                                <rect key="frame" x="131.5" y="573" width="112.5" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Close">
                                     <color key="titleColor" red="1" green="0.96592087360000001" blue="0.99422455239999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -195,7 +195,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mhT-DP-TTg">
-                                <rect key="frame" x="37" y="34" width="300" height="423"/>
+                                <rect key="frame" x="37.5" y="34" width="300" height="423"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">By clicking I Agree, you have read and accepted this agreement.
 
@@ -277,7 +277,7 @@ This EULA agreement, and any dispute arising out of or in connection with this E
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I Agree" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5P-Xq-lHx">
-                                <rect key="frame" x="93.5" y="495" width="187.5" height="45"/>
+                                <rect key="frame" x="94" y="495" width="187.5" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -331,14 +331,33 @@ This EULA agreement, and any dispute arising out of or in connection with this E
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7up-yt-YYf">
                                 <rect key="frame" x="131.5" y="598" width="112.5" height="37"/>
                             </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hm-ev-yR7">
+                                <rect key="frame" x="75" y="545" width="225" height="45"/>
+                                <state key="normal" image="pageControllerButton"/>
+                                <connections>
+                                    <action selector="signUpButtonTapped:" destination="mOr-PE-Thg" eventType="touchUpInside" id="STj-zo-U7s"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31q-3l-QOu">
+                                <rect key="frame" x="155" y="557" width="65" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7up-yt-YYf" firstAttribute="width" secondItem="DKa-pF-Zjv" secondAttribute="width" multiplier="0.3" id="6KD-Xa-soG"/>
+                            <constraint firstItem="0Hm-ev-yR7" firstAttribute="centerX" secondItem="DKa-pF-Zjv" secondAttribute="centerX" id="8V5-UE-H9t"/>
                             <constraint firstItem="VAJ-9f-46o" firstAttribute="bottom" secondItem="ykd-rY-RB9" secondAttribute="bottom" id="CVK-GL-eWT"/>
+                            <constraint firstItem="0Hm-ev-yR7" firstAttribute="width" secondItem="DKa-pF-Zjv" secondAttribute="width" multiplier="0.6" id="Ieh-HL-9jK"/>
+                            <constraint firstItem="VAJ-9f-46o" firstAttribute="bottom" secondItem="0Hm-ev-yR7" secondAttribute="bottom" constant="77" id="Lvs-4b-jNh"/>
+                            <constraint firstItem="31q-3l-QOu" firstAttribute="width" relation="greaterThanOrEqual" secondItem="0Hm-ev-yR7" secondAttribute="width" multiplier="0.29" id="MUs-Oo-0ag"/>
                             <constraint firstItem="ykd-rY-RB9" firstAttribute="leading" secondItem="VAJ-9f-46o" secondAttribute="leading" id="QPw-zM-6kj"/>
                             <constraint firstItem="7up-yt-YYf" firstAttribute="centerX" secondItem="DKa-pF-Zjv" secondAttribute="centerX" id="RyU-Ba-BIQ"/>
                             <constraint firstItem="VAJ-9f-46o" firstAttribute="trailing" secondItem="ykd-rY-RB9" secondAttribute="trailing" id="XOI-73-bnt"/>
+                            <constraint firstItem="31q-3l-QOu" firstAttribute="centerX" secondItem="DKa-pF-Zjv" secondAttribute="centerX" id="bNe-22-vJ0"/>
+                            <constraint firstItem="31q-3l-QOu" firstAttribute="bottom" secondItem="0Hm-ev-yR7" secondAttribute="bottom" constant="-12" id="cOx-Jh-uec"/>
                             <constraint firstItem="ykd-rY-RB9" firstAttribute="top" secondItem="VAJ-9f-46o" secondAttribute="top" constant="-20" id="yTU-Ml-7bu"/>
                             <constraint firstItem="VAJ-9f-46o" firstAttribute="bottom" secondItem="7up-yt-YYf" secondAttribute="bottom" constant="32" id="zn6-42-0e4"/>
                         </constraints>
@@ -346,11 +365,20 @@ This EULA agreement, and any dispute arising out of or in connection with this E
                     </view>
                     <connections>
                         <outlet property="pageControl" destination="7up-yt-YYf" id="Gid-Mj-45J"/>
+                        <segue destination="hbW-PI-Jmp" kind="show" identifier="toLogInVC" id="af8-SP-U0L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2b-ZN-dfg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6900" y="304"/>
+            <point key="canvasLocation" x="-6900" y="303.59820089955025"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="YOJ-OS-5E9">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="signUpVC" storyboardName="Main" id="hbW-PI-Jmp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hh4-uA-aRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6031" y="303"/>
         </scene>
     </scenes>
     <resources>

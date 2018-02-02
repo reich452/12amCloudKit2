@@ -17,16 +17,18 @@ class LaunchViewController: UIViewController {
     }
     
     @objc func fetchCurrentUser() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if UserController.shared.currentUser == nil {
-            let singUpVC = storyboard.instantiateViewController(withIdentifier: "signUpVC")
-            self.navigationController?.show(singUpVC, sender: nil)
-            self.present(singUpVC, animated: true, completion: nil)
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let onboardingSb = UIStoryboard(name: "Onboarding", bundle: nil)
+        if UserController.shared.currentUser == nil && (UserDefaults.standard.value(forKey: "login") as? String) == nil {
+            let onboardingPG = onboardingSb.instantiateViewController(withIdentifier: "Onboarding")
+            self.navigationController?.show(onboardingPG, sender: nil)
+            self.present(onboardingPG, animated: true, completion: nil)
            
         } else {
-            let feedVC = storyboard.instantiateViewController(withIdentifier: "customTabBar")
+            let feedVC = mainStoryboard.instantiateViewController(withIdentifier: "customTabBar")
             self.navigationController?.show(feedVC, sender: nil)
             self.present(feedVC, animated: true, completion: nil)
         }
     }
+    
 }

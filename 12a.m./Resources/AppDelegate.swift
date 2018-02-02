@@ -15,23 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = Onboarding.initializeFromStoryboard()
-        window?.makeKeyAndVisible()
-        
-        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
-        var vc: UIViewController
-        
-        if (UserDefaults.standard.value(forKey: "login") as? String) == nil {
-            vc = storyboard.instantiateViewController(withIdentifier: "Onboarding")
-        } else {
-            vc = storyboard.instantiateInitialViewController() ?? storyboard.instantiateViewController(withIdentifier: "feedTVC")
-        }
-        
-        self.window?.rootViewController = vc
-     
-        
         UserController.shared.fetchCurrentUser()
+ 
         
         return true
     }

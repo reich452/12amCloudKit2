@@ -18,12 +18,20 @@ class PermissionViewController: UIViewController, OnboardingScreen {
         setUPUI()
         print(pageControl.currentPage)
     }
+    // MARK: - Actions
+    @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = sb.instantiateViewController(withIdentifier: "signUpVC")
+        navigationController?.show(loginVC, sender: nil)
+        present(loginVC, animated: false, completion: nil)
+    }
+    
     
     func setUPUI() {
         pageControl.currentPage = page.rawValue
         UIApplication.shared.statusBarStyle = .default
     }
-
+    
 }
 
 extension PermissionViewController: StoryboardInitializable {
