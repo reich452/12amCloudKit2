@@ -9,24 +9,39 @@
 import UIKit
 
 class EulaAgreementViewController: UIViewController {
+    @IBOutlet weak var agreementButton: UIButton!
+    
+    // MARK: - Properties
+    var didAgree: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+    
+    // MARK: - Actions
 
-    @IBAction func clearButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func clearButtonTapped(_ sender: UIButton) {
+       allert()
     }
     
     @IBAction func iagreeButtonTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "toBeRespectfulVC", sender: self)
-      
+        updateAgreement()
     }
     
+    // MARK: - Main
     
-    // MARK: - Navigation
-
-
+    func updateAgreement() {
+        if didAgree  {
+            UserDefaults.standard.set(didAgree, forKey: "login")
+            performSegue(withIdentifier: "toBeRespectfulVC", sender: self)
+        } else {
+            didAgree = false
+            allert()
+        }
+    }
+    
+    func allert() {
+        showAlertMessage(titleStr: "You Must Agree To Continue",
+                         messageStr: "Read the terms and agree before using this app. Everyone's gotta do it!")
+    }
 }
