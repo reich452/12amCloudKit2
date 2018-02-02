@@ -55,7 +55,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1stPageController" translatesAutoresizingMaskIntoConstraints="NO" id="1jG-YS-tQr">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1pageController" translatesAutoresizingMaskIntoConstraints="NO" id="1jG-YS-tQr">
                                 <rect key="frame" x="0.0" y="0.0" width="379" height="667"/>
                             </imageView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="n4v-dg-47U">
@@ -354,7 +354,7 @@ This EULA agreement, and any dispute arising out of or in connection with this E
         </scene>
     </scenes>
     <resources>
-        <image name="1stPageController" width="431" height="776"/>
+        <image name="1pageController" width="871" height="1560"/>
         <image name="2ndPageController" width="542" height="975"/>
         <image name="3rdPageController" width="455" height="800"/>
         <image name="4thPageController" width="431" height="776"/>
