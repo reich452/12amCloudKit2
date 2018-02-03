@@ -21,11 +21,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow usage?</string>
+	<string>12a.m would like t oaccess your camera so you can take a profile picture and future pictures for posting images.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>App needs Location</string>
+	<string>12a.m only would like to access your location to update this screen only. This will not be displayed publicly.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>App needs Location</string>
+	<string>12a.m only would like to access your location to update this screen only. This will not be displayed publicly.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>POCKC___.TTF</string>
