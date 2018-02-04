@@ -83,13 +83,17 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     }
     
     func blockUserActionSheet() {
-        let blockUserAlertController = UIAlertController(title: "Block User", message: "Would you like to block this user? \nYou will no longer be able to \nsee their posts or comments", preferredStyle: .actionSheet)
+        let blockUserAlertController = UIAlertController(title: "Block User or Report", message: "Would you like to block this user? \nYou will no longer be able to \nsee their posts or comments", preferredStyle: .actionSheet)
         let blockUserAction = UIAlertAction(title: "Block", style: .default) { (_) in
             self.blockUser()
+        }
+        let reportUserAction = UIAlertAction(title: "Report", style: .default) { (_) in
+            
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         blockUserAlertController.addAction(blockUserAction)
         blockUserAlertController.addAction(cancelAction)
+        blockUserAlertController.addAction(reportUserAction)
         self.present(blockUserAlertController, animated: true, completion: nil)
     }
     

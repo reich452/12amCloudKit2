@@ -51,7 +51,7 @@ class OnboardingState {
     
     func previousPage() -> Page {
         switch page {
-        case .welcome: page = .welcome
+        case .welcome: page = .permissions
         case .uxInfo: page = .welcome
         case .selection: page = .uxInfo
         case .permissions: page = .selection

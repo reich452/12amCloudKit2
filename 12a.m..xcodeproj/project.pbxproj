@@ -41,6 +41,9 @@
 		0181AA571FCC814500166E21 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0181AA561FCC814500166E21 /* AboutViewController.swift */; };
 		0181AA591FCC8A9400166E21 /* Terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 0181AA581FCC8A9400166E21 /* Terms.html */; };
 		018D7A6F1FA2B63200A6C81F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018D7A6E1FA2B63200A6C81F /* CloudKit.framework */; };
+		019B2E7920258A5B00C2BDB0 /* ImageTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019B2E7820258A5B00C2BDB0 /* ImageTheme.swift */; };
+		019B2E7B20268EAE00C2BDB0 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019B2E7A20268EAE00C2BDB0 /* Report.swift */; };
+		019B2E7D20268F4A00C2BDB0 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019B2E7C20268F4A00C2BDB0 /* ReportController.swift */; };
 		01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */; };
 		01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */; };
 		01BFDECD1FC39A8200D94B87 /* POCKC___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */; };
@@ -98,6 +101,9 @@
 		0181AA581FCC8A9400166E21 /* Terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Terms.html; sourceTree = "<group>"; };
 		018D7A6C1FA2B63000A6C81F /* 12a.m..entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 12a.m..entitlements; sourceTree = "<group>"; };
 		018D7A6E1FA2B63200A6C81F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		019B2E7820258A5B00C2BDB0 /* ImageTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTheme.swift; sourceTree = "<group>"; };
+		019B2E7A20268EAE00C2BDB0 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		019B2E7C20268F4A00C2BDB0 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
 		01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextField.swift; sourceTree = "<group>"; };
 		01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POCKC___.TTF"; sourceTree = "<group>"; };
@@ -158,6 +164,7 @@
 			children = (
 				01367BA11FAE6D7A00F51F89 /* Theme.swift */,
 				01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */,
+				019B2E7820258A5B00C2BDB0 /* ImageTheme.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -320,6 +327,7 @@
 			children = (
 				010D073C1FA3B1450013375F /* UserController.swift */,
 				01367BA31FAE8AB400F51F89 /* PostController.swift */,
+				019B2E7C20268F4A00C2BDB0 /* ReportController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -331,6 +339,7 @@
 				01FE0D101FA2BB35001C55EE /* Post.swift */,
 				01FE0D121FA2BB4C001C55EE /* Comment.swift */,
 				012B46351FC647A200D31809 /* Location.swift */,
+				019B2E7A20268EAE00C2BDB0 /* Report.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -473,6 +482,7 @@
 				0144722D1FBA5C4400510AB3 /* DateFormatter.swift in Sources */,
 				01D7B7931FE0548100DCD159 /* ProfileDetail2TableViewController.swift in Sources */,
 				012B46361FC647A200D31809 /* Location.swift in Sources */,
+				019B2E7B20268EAE00C2BDB0 /* Report.swift in Sources */,
 				01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */,
 				01367BD51FB10F5500F51F89 /* FeedTableViewController.swift in Sources */,
 				01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */,
@@ -497,11 +507,13 @@
 				015221D01FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift in Sources */,
 				01367B9F1FAE6A8200F51F89 /* LogInViewController.swift in Sources */,
 				011A54C11FBBF3FB00564902 /* CommentDelegate.swift in Sources */,
+				019B2E7D20268F4A00C2BDB0 /* ReportController.swift in Sources */,
 				01367C481FB3839100F51F89 /* TimeTracker.swift in Sources */,
 				016CAAAE20019F1F008420AC /* ProfileCommentTableViewCell.swift in Sources */,
 				012B46321FC641CA00D31809 /* LocationHelper.swift in Sources */,
 				01367BDE1FB1180E00F51F89 /* CameraViewController.swift in Sources */,
 				01367BDC1FB114A000F51F89 /* CommentTableViewCell.swift in Sources */,
+				019B2E7920258A5B00C2BDB0 /* ImageTheme.swift in Sources */,
 				01EDC8DD201E57880085D2BD /* OnboardingState.swift in Sources */,
 				0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */,
 				0181AA571FCC814500166E21 /* AboutViewController.swift in Sources */,
