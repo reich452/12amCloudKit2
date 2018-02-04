@@ -69,6 +69,9 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     func didTapBlockUserButton(_ sender: FeedTableViewCell) {
         blockUserActionSheet()
     }
+    func didTapReportUserButton(_ sender: FeedTableViewCell) {
+        blockUserActionSheet()
+    }
     
     func blockUser() {
         
@@ -88,6 +91,8 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
             self.blockUser()
         }
         let reportUserAction = UIAlertAction(title: "Report", style: .default) { (_) in
+            
+            self.performSegue(withIdentifier: "toReportTVC", sender: nil)
             
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -136,6 +141,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         cell.delegate = self
         cell.selectedProfileDelegate = self
         cell.blockUserDelegate = self
+        cell.reportUserDelegate = self
         
         return cell
     }

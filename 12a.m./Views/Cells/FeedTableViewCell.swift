@@ -12,6 +12,7 @@ protocol FeedTableViewCellDelegate: class {
     func didTapCommentButton(_ sender: FeedTableViewCell)
     func didTapProfileButton(_ sender: FeedTableViewCell)
     func didTapBlockUserButton(_ sender: FeedTableViewCell)
+    func didTapReportUserButton(_ sender: FeedTableViewCell)
 }
 
 
@@ -28,6 +29,7 @@ class FeedTableViewCell: UITableViewCell {
     weak var delegate: FeedTableViewCellDelegate?
     weak var selectedProfileDelegate: FeedTableViewCellDelegate?
     weak var blockUserDelegate: FeedTableViewCellDelegate?
+    weak var reportUserDelegate: FeedTableViewCellDelegate?
     
     var post: Post? {
         didSet {
@@ -66,7 +68,10 @@ class FeedTableViewCell: UITableViewCell {
         if let blockUserDelegate = self.blockUserDelegate {
             blockUserDelegate.didTapBlockUserButton(self)
         }
-//        self.blockUserActionSheet()
+        if let reportUserDelegate = self.reportUserDelegate {
+            reportUserDelegate.didTapReportUserButton(self)
+        }
+
     }
     @IBAction func profileButtonTapped(_ sender: Any) {
         if let selectedProfileDelegate = self.selectedProfileDelegate {
