@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+class Report {
+    
+    let title: String
+    var description: String?
+    
+    init(title: String, description: String? = String()) {
+        self.title = title
+        self.description = description
+    }
+}

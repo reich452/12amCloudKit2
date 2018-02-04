@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+class ReportController {
+    static let shared = ReportController()
+    
+    
+}
