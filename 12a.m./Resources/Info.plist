@@ -21,7 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>12a.m would like t oaccess your camera so you can take a profile picture and future pictures for posting images.</string>
+	<string>12a.m would like to access your camera so you can take a profile picture and future pictures for posting images.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>12a.m only would like to access your location to update this screen only. This will not be displayed publicly.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
