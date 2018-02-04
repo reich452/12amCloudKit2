@@ -13,6 +13,9 @@ class ReportTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     
     // MARK: - Table view data source
     
@@ -35,7 +38,11 @@ class ReportTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "toReportDetail" {
+            guard let destinationVC = segue.destination as? ReportDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            let report = ReportController.shared.mockReports[indexPath.row]
+            destinationVC.report = report
+        }
     }
-
 }

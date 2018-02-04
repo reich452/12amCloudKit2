@@ -1714,7 +1714,99 @@
             </objects>
             <point key="canvasLocation" x="-3316" y="-1592"/>
         </scene>
-        <!--Report Table View Controller-->
+        <!--Title-->
+        <scene sceneID="axF-1R-0Dw">
+            <objects>
+                <viewController id="j6M-mR-HBM" customClass="ReportDetailViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RMR-BJ-rG4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We remove" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEc-2y-a9e">
+                                <rect key="frame" x="16" y="154" width="95.5" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enX-5c-OZe">
+                                <rect key="frame" x="112.5" y="552" width="150" height="30"/>
+                                <state key="normal" title="Next"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BYu-T8-fnb">
+                                <rect key="frame" x="16" y="192" width="337.5" height="333.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚠️ Posts that contain credible threats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAc-IS-29O">
+                                        <rect key="frame" x="0.0" y="0.0" width="337.5" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚠️ Content that targets people to degrade or shame them" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6J3-BU-KhW">
+                                        <rect key="frame" x="0.0" y="58" width="337.5" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⚠️ Posts or threats to posts nude photos of you" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNG-hQ-hZ4">
+                                        <rect key="frame" x="0.0" y="116" width="337.5" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We have zero tolerance polocy around threats to post images of others" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcb-To-hiQ">
+                                        <rect key="frame" x="0.0" y="174" width="337.5" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you report someone's post, 12 am doesn't tell them who reported it" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmK-9w-7WW">
+                                        <rect key="frame" x="0.0" y="232" width="337.5" height="101.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmD-sh-K5a">
+                                <rect key="frame" x="16" y="91" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BYu-T8-fnb" firstAttribute="top" secondItem="lEc-2y-a9e" secondAttribute="bottom" constant="15" id="0aM-GX-v5f"/>
+                            <constraint firstItem="BYu-T8-fnb" firstAttribute="centerY" secondItem="RMR-BJ-rG4" secondAttribute="centerY" constant="25.25" id="Dew-1Q-J3v"/>
+                            <constraint firstItem="BYu-T8-fnb" firstAttribute="height" secondItem="RMR-BJ-rG4" secondAttribute="height" multiplier="0.5" id="Exb-ip-QsT"/>
+                            <constraint firstItem="BYu-T8-fnb" firstAttribute="width" secondItem="RMR-BJ-rG4" secondAttribute="width" multiplier="0.9" id="FmZ-Wa-AOW"/>
+                            <constraint firstItem="QmD-sh-K5a" firstAttribute="top" secondItem="0DT-ya-v3j" secondAttribute="top" constant="27" id="Fyb-MW-TYD"/>
+                            <constraint firstItem="lEc-2y-a9e" firstAttribute="leading" secondItem="0DT-ya-v3j" secondAttribute="leading" constant="16" id="Ig8-h1-K37"/>
+                            <constraint firstItem="enX-5c-OZe" firstAttribute="centerX" secondItem="RMR-BJ-rG4" secondAttribute="centerX" id="JLj-66-B10"/>
+                            <constraint firstItem="0DT-ya-v3j" firstAttribute="bottom" secondItem="enX-5c-OZe" secondAttribute="bottom" constant="36" id="QL8-wn-WnO"/>
+                            <constraint firstItem="enX-5c-OZe" firstAttribute="width" secondItem="RMR-BJ-rG4" secondAttribute="width" multiplier="0.4" id="SLY-o1-LQN"/>
+                            <constraint firstItem="0DT-ya-v3j" firstAttribute="trailing" secondItem="QmD-sh-K5a" secondAttribute="trailing" constant="16" id="cUZ-d2-KpU"/>
+                            <constraint firstItem="QmD-sh-K5a" firstAttribute="leading" secondItem="0DT-ya-v3j" secondAttribute="leading" constant="16" id="qZe-c3-FQK"/>
+                            <constraint firstItem="BYu-T8-fnb" firstAttribute="centerX" secondItem="RMR-BJ-rG4" secondAttribute="centerX" constant="-2.75" id="vQS-lT-Qcf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0DT-ya-v3j"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="fJE-QF-9zB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="tdc-48-kDu">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="j6M-mR-HBM" id="hMb-kw-aL4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="reportTitle" destination="QmD-sh-K5a" id="cvV-O1-gia"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d0p-Ch-rv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7556" y="851.42428785607206"/>
+        </scene>
+        <!--Report-->
         <scene sceneID="LVU-aO-OOp">
             <objects>
                 <tableViewController storyboardIdentifier="ReportTableViewController" id="tZo-Vr-Qz1" customClass="ReportTableViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
@@ -1746,6 +1838,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="j6M-mR-HBM" kind="show" identifier="toReportDetail" id="GB7-dU-8M4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1753,7 +1848,13 @@
                             <outlet property="delegate" destination="tZo-Vr-Qz1" id="0AE-HF-Bgv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="EZK-mo-M6r"/>
+                    <navigationItem key="navigationItem" title="Report" id="9zQ-jN-Naz">
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="Ce5-x4-mju">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="tZo-Vr-Qz1" id="88T-Q7-EwQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzt-Ku-QfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
