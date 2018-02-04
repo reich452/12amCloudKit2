@@ -44,6 +44,7 @@
 		019B2E7920258A5B00C2BDB0 /* ImageTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019B2E7820258A5B00C2BDB0 /* ImageTheme.swift */; };
 		019B2E7B20268EAE00C2BDB0 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019B2E7A20268EAE00C2BDB0 /* Report.swift */; };
 		019B2E7D20268F4A00C2BDB0 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019B2E7C20268F4A00C2BDB0 /* ReportController.swift */; };
+		019B2E7F2026926500C2BDB0 /* ReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019B2E7E2026926500C2BDB0 /* ReportTableViewController.swift */; };
 		01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */; };
 		01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */; };
 		01BFDECD1FC39A8200D94B87 /* POCKC___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */; };
@@ -104,6 +105,7 @@
 		019B2E7820258A5B00C2BDB0 /* ImageTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTheme.swift; sourceTree = "<group>"; };
 		019B2E7A20268EAE00C2BDB0 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		019B2E7C20268F4A00C2BDB0 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
+		019B2E7E2026926500C2BDB0 /* ReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewController.swift; sourceTree = "<group>"; };
 		01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextField.swift; sourceTree = "<group>"; };
 		01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POCKC___.TTF"; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				01367BDD1FB1180E00F51F89 /* CameraViewController.swift */,
 				01367BDF1FB1181A00F51F89 /* CameraPreviewViewController.swift */,
 				0181AA561FCC814500166E21 /* AboutViewController.swift */,
+				019B2E7E2026926500C2BDB0 /* ReportTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */,
 				01367BD51FB10F5500F51F89 /* FeedTableViewController.swift in Sources */,
 				01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */,
+				019B2E7F2026926500C2BDB0 /* ReportTableViewController.swift in Sources */,
 				01EDC8E0201E58DF0085D2BD /* SegueHandling.swift in Sources */,
 				01367C4C1FB3C27E00F51F89 /* CloudKitSyncable.swift in Sources */,
 				01367C4A1FB3869C00F51F89 /* TimerExtension.swift in Sources */,
