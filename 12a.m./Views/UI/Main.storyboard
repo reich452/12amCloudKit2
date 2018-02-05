@@ -1849,7 +1849,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Report" id="9zQ-jN-Naz">
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="Ce5-x4-mju">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Ce5-x4-mju">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="tZo-Vr-Qz1" id="88T-Q7-EwQ"/>
                             </connections>
