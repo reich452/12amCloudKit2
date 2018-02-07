@@ -12,11 +12,15 @@ class ReportDetailViewController: UIViewController {
 
     @IBOutlet weak var reportTitle: UILabel!
     
+    // MARK: - Properties 
+    
     var report: Report?
+    var post: Post?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        print(post?.cloudKitReference)
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -26,6 +30,12 @@ class ReportDetailViewController: UIViewController {
         guard let report = report else { return }
         reportTitle.text = report.title
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSubmitReport" {
+            guard let destinationVC = segue.destination as? SubmitReportViewController else { return }
+           
+        }
+    }
 
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0107A31B202948B0004CD5A0 /* SubmitReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0107A31A202948B0004CD5A0 /* SubmitReportViewController.swift */; };
 		010D073D1FA3B1450013375F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D073C1FA3B1450013375F /* UserController.swift */; };
 		010D07401FA3B63F0013375F /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010D073F1FA3B63F0013375F /* CloudKitManager.swift */; };
 		011A54C11FBBF3FB00564902 /* CommentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A54C01FBBF3FB00564902 /* CommentDelegate.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0107A31A202948B0004CD5A0 /* SubmitReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitReportViewController.swift; sourceTree = "<group>"; };
 		010D073C1FA3B1450013375F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		010D073F1FA3B63F0013375F /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		011A54C01FBBF3FB00564902 /* CommentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDelegate.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				0181AA561FCC814500166E21 /* AboutViewController.swift */,
 				019B2E7E2026926500C2BDB0 /* ReportTableViewController.swift */,
 				019B2E802026A66500C2BDB0 /* ReportDetailViewController.swift */,
+				0107A31A202948B0004CD5A0 /* SubmitReportViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				012B46321FC641CA00D31809 /* LocationHelper.swift in Sources */,
 				01367BDE1FB1180E00F51F89 /* CameraViewController.swift in Sources */,
 				01367BDC1FB114A000F51F89 /* CommentTableViewCell.swift in Sources */,
+				0107A31B202948B0004CD5A0 /* SubmitReportViewController.swift in Sources */,
 				019B2E7920258A5B00C2BDB0 /* ImageTheme.swift in Sources */,
 				01EDC8DD201E57880085D2BD /* OnboardingState.swift in Sources */,
 				0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */,

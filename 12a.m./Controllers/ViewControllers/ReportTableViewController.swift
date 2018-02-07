@@ -12,6 +12,7 @@ class ReportTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+   
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -21,12 +22,12 @@ class ReportTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return ReportController.shared.mockReports.count
+        return ReportController.shared.reports.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reportCell", for: indexPath)
-        let report = ReportController.shared.mockReports[indexPath.row]
+        let report = ReportController.shared.reports[indexPath.row]
         
         cell.textLabel?.text = report.title
         cell.detailTextLabel?.text = report.description
@@ -41,8 +42,10 @@ class ReportTableViewController: UITableViewController {
         if segue.identifier == "toReportDetail" {
             guard let destinationVC = segue.destination as? ReportDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
-            let report = ReportController.shared.mockReports[indexPath.row]
+            let report = ReportController.shared.reports[indexPath.row]
+            let postReference = PostController.shared.posts[indexPath.row]
             destinationVC.report = report
+            destinationVC.post = postReference
         }
     }
 }

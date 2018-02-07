@@ -12,62 +12,56 @@ import CloudKit
 class Report {
     
     // MARK: - Keys
-    static let recordTypeKey = "Report"
+    
+    static let reportRecordKey = "Report"
     fileprivate let titleKey = "title"
     fileprivate let descriptionKey = "description"
-    fileprivate let ownerReferenceKey = "ownerReference"
-    fileprivate let reportReferenceKey = "reportReference"
     fileprivate let postReferenceKey = "postReference"
+    fileprivate let reportReferenceKey = "reportReference"
+    fileprivate let userReferenceKey = "userReference"
     
     // MARK: - Properties
     
     let title: String
-    let ownerReference: CKReference
     var description: String?
-    var owner: User?
+    let postReference: CKReference
+    let reportReference: CKReference
+    let userReference: CKReference
+    var user: User?
+    var post: Post?
     var ckRecordID: CKRecordID?
-    var postReference: CKReference
-  
     
-    init(title: String, description: String? = String(), ownerReference: CKReference, owner: User?, postReference: CKReference) {
+    init(title: String, description: String? = String(), postReference: CKReference, reportReference: CKReference, userReference: CKReference) {
         self.title = title
         self.description = description
-        self.ownerReference = ownerReference
-        self.owner = owner
         self.postReference = postReference
-       
+        self.reportReference = reportReference
+        self.userReference = userReference
     }
     
-    init?(ckRecord: CKRecord) {
-        guard let title = ckRecord[titleKey] as? String,
-            let ownerReference = ckRecord[ownerReferenceKey] as? CKReference,
-            let description = ckRecord[descriptionKey] as? String,
-            let postReference = ckRecord[postReferenceKey] as? CKReference else { return nil }
+    init?(cloudKitRecord: CKRecord) {
+        guard let title = cloudKitRecord[titleKey] as? String,
+            let description = cloudKitRecord[descriptionKey] as? String,
+            let postReference = cloudKitRecord[postReferenceKey] as? CKReference,
+            let reportReference = cloudKitRecord[reportReferenceKey] as? CKReference,
+            let userReference = cloudKitRecord[userReferenceKey] as? CKReference else { return nil }
         
         self.title = title
-        self.ownerReference = ownerReference
         self.description = description
         self.postReference = postReference
-        self.ckRecordID = ckRecord.recordID
-
+        self.reportReference = reportReference
+        self.userReference = userReference
+        self.ckRecordID = cloudKitRecord.recordID
     }
 }
 
 extension CKRecord {
-    
     convenience init(report: Report) {
-         let recordID = report.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
-        guard let user = report.owner else {
-            fatalError("report doesn't have a owner")
-        }
+        let recordID = report.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
         
-        self.init(recordType: Report.recordTypeKey, recordID: recordID)
-        self.setValue(report.title, forKeyPath: report.titleKey)
-        self.setValue(report.description, forKeyPath: report.descriptionKey)
-        self.setValue(user.appleUserRef, forKey: report.ownerReferenceKey)
-        self.setValue(report.ownerReference, forKey: report.reportReferenceKey)
-        self.setValue(report.postReference, forKey: report.postReferenceKey)
-    
+        self.init(recordType: Report.reportRecordKey, recordID: recordID)
+        // TODO set up backRefrence relationship
+   
     }
 }
 

@@ -21,6 +21,7 @@ class PostController {
     // MARK: - Properties
     
     var comment: Comment?
+    var post: Post?
     
     var posts = [Post]() {
         didSet {
@@ -51,6 +52,10 @@ class PostController {
     var sortedUserPosts: [Post] {
         guard let ownerPosts = comment?.owner?.posts else { return [] }
         return ownerPosts.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending })
+    }
+    
+    func postIndex(indexPath: IndexPath) -> Post {
+        return posts[indexPath.row]
     }
     
     //MARK: -Synced functions that will help grab records synced in CloudKit. Saves on data and time.
@@ -87,7 +92,6 @@ class PostController {
         
         let ownerReference = CKReference(recordID: currentUserRecordID, action: .none)
         let post = Post(photoData: data, text: text, owner: currentUser, ownerReference: ownerReference)
-        
         
         // Adds post to first tvccell
         posts.append(post)

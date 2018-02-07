@@ -1680,6 +1680,7 @@
                         <outlet property="stateLabel" destination="rGk-iw-9wg" id="A6h-YU-7Kv"/>
                         <outlet property="updateProfileButton" destination="G4l-TH-NQO" id="dgH-Da-DaV"/>
                         <outlet property="usernameLabel" destination="Nj2-Zm-IsP" id="dtA-UZ-pcC"/>
+                        <outlet property="usernameTextField" destination="bxq-lD-yAe" id="iON-VC-WXA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dze-7G-dMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1713,6 +1714,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUk-mD-rSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3316" y="-1592"/>
+        </scene>
+        <!--Submit Report View Controller-->
+        <scene sceneID="F1t-Ph-DsW">
+            <objects>
+                <viewController id="KRb-S6-kfk" customClass="SubmitReportViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VCE-pS-uZX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMJ-Sp-8Sv">
+                                <rect key="frame" x="37.5" y="117" width="300" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add a message about abusive or offencive content" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ziU-Lx-plc">
+                                <rect key="frame" x="37.5" y="200" width="300" height="267"/>
+                                <color key="backgroundColor" red="0.94366671954314718" green="0.94366671954314718" blue="0.94366671954314718" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uUQ-by-AOZ">
+                                <rect key="frame" x="94" y="533" width="187.5" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WyM-dM-04S">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
+                                        <state key="normal" title="Submit"/>
+                                        <connections>
+                                            <action selector="submitButtonTapped:" destination="KRb-S6-kfk" eventType="touchUpInside" id="BEI-I9-X3Y"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ziU-Lx-plc" firstAttribute="width" secondItem="VCE-pS-uZX" secondAttribute="width" multiplier="0.8" id="A4O-5q-EoT"/>
+                            <constraint firstItem="oMJ-Sp-8Sv" firstAttribute="centerX" secondItem="VCE-pS-uZX" secondAttribute="centerX" id="HDr-u9-PH3"/>
+                            <constraint firstItem="WyM-dM-04S" firstAttribute="width" secondItem="VCE-pS-uZX" secondAttribute="width" multiplier="0.5" id="Kp7-Cg-xlA"/>
+                            <constraint firstItem="ziU-Lx-plc" firstAttribute="centerX" secondItem="VCE-pS-uZX" secondAttribute="centerX" id="Lnh-05-J3c"/>
+                            <constraint firstItem="uUQ-by-AOZ" firstAttribute="centerX" secondItem="VCE-pS-uZX" secondAttribute="centerX" id="Nq1-lo-Da2"/>
+                            <constraint firstItem="oMJ-Sp-8Sv" firstAttribute="width" secondItem="VCE-pS-uZX" secondAttribute="width" multiplier="0.8" id="QsT-RK-h6y"/>
+                            <constraint firstItem="7yM-y8-3YM" firstAttribute="bottom" secondItem="WyM-dM-04S" secondAttribute="bottom" constant="55" id="s4a-M1-gnY"/>
+                            <constraint firstItem="ziU-Lx-plc" firstAttribute="centerY" secondItem="VCE-pS-uZX" secondAttribute="centerY" id="sZR-yO-PJa"/>
+                            <constraint firstItem="ziU-Lx-plc" firstAttribute="height" secondItem="VCE-pS-uZX" secondAttribute="height" multiplier="0.4" id="w5F-Q9-Ija"/>
+                            <constraint firstItem="oMJ-Sp-8Sv" firstAttribute="top" secondItem="7yM-y8-3YM" secondAttribute="top" constant="53" id="zVD-ve-wf5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7yM-y8-3YM"/>
+                    </view>
+                    <connections>
+                        <outlet property="deatilTextView" destination="ziU-Lx-plc" id="FFA-k4-5ju"/>
+                        <outlet property="reportTitleLabel" destination="oMJ-Sp-8Sv" id="Jlg-yo-jEB"/>
+                        <outlet property="submitButton" destination="WyM-dM-04S" id="M0v-3l-dv4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wvM-fn-Z1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8388" y="887"/>
         </scene>
         <!--Title-->
         <scene sceneID="axF-1R-0Dw">
@@ -1800,6 +1859,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="reportTitle" destination="QmD-sh-K5a" id="cvV-O1-gia"/>
+                        <segue destination="KRb-S6-kfk" kind="show" identifier="toSubmitReport" id="Gtu-EF-VWd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0p-Ch-rv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2146,6 +2206,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="8aY-d8-1V2"/>
         <segue reference="jpn-VT-RHA"/>
-        <segue reference="Y3F-Kl-wd9"/>
+        <segue reference="FDI-f7-h1B"/>
     </inferredMetricsTieBreakers>
 </document>
