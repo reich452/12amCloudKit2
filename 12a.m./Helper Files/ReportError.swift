@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+enum ReportError: Error {
+    case cannotConvertRecord
+    case cannotSaveRecordToPublicDB
+}
