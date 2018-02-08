@@ -58,10 +58,17 @@ class Report {
 extension CKRecord {
     convenience init(report: Report) {
         let recordID = report.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
-        
+        guard let user = report.post?.owner,
+            let postReference = report.post else {
+            fatalError("No user to post relationship")
+        }
         self.init(recordType: Report.reportRecordKey, recordID: recordID)
-        // TODO set up backRefrence relationship
-   
+        
+        self.setValue(report.title, forKey: report.titleKey)
+        self.setValue(report.description, forKey: report.descriptionKey)
+        self.setValue(report.reportReference, forKey: report.reportReferenceKey)
+        self.setValue(postReference.cloudKitReference, forKey: report.postReferenceKey)
+        self.setValue(user.appleUserRef, forKey: report.userReferenceKey)
     }
 }
 
