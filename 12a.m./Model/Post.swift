@@ -64,9 +64,7 @@ class Post {
         self.comments = []
     }
     
-    
-    
-    fileprivate var temporaryPhotoURL: URL {
+     var temporaryPhotoURL: URL {
         let temporaryDirectory = NSTemporaryDirectory()
         let temporaryDirecoryURL = URL(fileURLWithPath: temporaryDirectory)
         let fileURL = temporaryDirecoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("jpg")

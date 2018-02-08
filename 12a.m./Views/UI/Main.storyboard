@@ -372,7 +372,7 @@
                         <segue destination="y0p-tH-2M1" kind="show" identifier="feedToPostDetail" id="m7A-EI-lMK"/>
                         <segue destination="dPF-SJ-kAy" kind="show" identifier="feedToProfileDetail" id="Vtx-z2-vej"/>
                         <segue destination="Y7Y-HU-jfd" kind="presentation" identifier="toCamera" id="9ZO-1Y-QOZ"/>
-                        <segue destination="tZo-Vr-Qz1" kind="show" identifier="toReportTVC" id="iXo-dA-4Uf"/>
+                        <segue destination="KRb-S6-kfk" kind="show" identifier="toSubmittReportVC" id="57d-Tn-RZ0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOb-FG-dTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1143,7 +1143,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="283"/>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="rUy-k3-u7U">
-                                    <rect key="frame" x="4" y="176" width="363" height="71"/>
+                                    <rect key="frame" x="4" y="175.5" width="363" height="71"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="72J-BV-hvF">
                                             <rect key="frame" x="0.0" y="0.0" width="106.5" height="71"/>
@@ -1241,13 +1241,13 @@
                                     <viewLayoutGuide key="safeArea" id="C3A-n3-bgt"/>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7I-Bj-AHG">
-                                    <rect key="frame" x="75" y="132" width="225" height="20.5"/>
+                                    <rect key="frame" x="75" y="131.5" width="225" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RSi-PO-kT3">
-                                    <rect key="frame" x="130.5" y="12" width="110.5" height="111"/>
+                                    <rect key="frame" x="130.5" y="12" width="110.5" height="110.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="RSi-PO-kT3" secondAttribute="height" multiplier="1:1" id="fPM-5l-wEm"/>
                                     </constraints>
@@ -1771,7 +1771,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvM-fn-Z1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8388" y="887"/>
+            <point key="canvasLocation" x="-5922" y="587"/>
         </scene>
         <!--Title-->
         <scene sceneID="axF-1R-0Dw">
@@ -1788,7 +1788,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enX-5c-OZe">
-                                <rect key="frame" x="112.5" y="552" width="150" height="30"/>
+                                <rect key="frame" x="112.5" y="601" width="150" height="30"/>
                                 <state key="normal" title="Next"/>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BYu-T8-fnb">
@@ -1827,7 +1827,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmD-sh-K5a">
-                                <rect key="frame" x="16" y="91" width="343" height="30"/>
+                                <rect key="frame" x="16" y="47" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1859,7 +1859,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="reportTitle" destination="QmD-sh-K5a" id="cvV-O1-gia"/>
-                        <segue destination="KRb-S6-kfk" kind="show" identifier="toSubmitReport" id="Gtu-EF-VWd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0p-Ch-rv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1918,7 +1917,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzt-Ku-QfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6788" y="852.3238380809596"/>
+            <point key="canvasLocation" x="-6772" y="361"/>
         </scene>
         <!--Profile Comment Table View Controller-->
         <scene sceneID="STZ-c2-abO">
@@ -2205,7 +2204,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8aY-d8-1V2"/>
-        <segue reference="jpn-VT-RHA"/>
+        <segue reference="Vtx-z2-vej"/>
         <segue reference="FDI-f7-h1B"/>
     </inferredMetricsTieBreakers>
 </document>
