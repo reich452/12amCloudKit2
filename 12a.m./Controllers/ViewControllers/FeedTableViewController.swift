@@ -23,6 +23,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         
         setUpTimer()
         setUpAppearance()
+        tableView.prefetchDataSource = self
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(reloadData), name: PostController.PostChangeNotified, object: nil)
@@ -91,8 +92,8 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
             self.blockUser()
         }
         let reportUserAction = UIAlertAction(title: "Report", style: .default) { (_) in
-            
-            self.performSegue(withIdentifier: "toReportTVC", sender: nil)
+            // TODO: - Change back to toReportTVC
+            self.performSegue(withIdentifier: "toSubmittReportVC", sender: nil)
             
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -182,6 +183,17 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
             let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
             notMidnightAlertController.addAction(dismissAction)
             present(notMidnightAlertController, animated: true, completion: nil) ; return
+        }
+    }
+}
+
+extension FeedTableViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            let post = PostController.shared.posts[indexPath.row]
+            let url = post.temporaryPhotoURL
+            print(post.text)
+            URLSession.shared.dataTask(with: url)
         }
     }
 }
