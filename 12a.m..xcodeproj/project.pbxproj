@@ -28,6 +28,7 @@
 		01367C4C1FB3C27E00F51F89 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01367C4B1FB3C27E00F51F89 /* CloudKitSyncable.swift */; };
 		013E31FF2021762B004B725E /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E31FE2021762B004B725E /* SecondPageViewController.swift */; };
 		013E32012021764F004B725E /* ThridPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013E32002021764F004B725E /* ThridPageViewController.swift */; };
+		01422942202C007B005DAF5C /* ReportError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01422941202C007B005DAF5C /* ReportError.swift */; };
 		0144722D1FBA5C4400510AB3 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0144722C1FBA5C4400510AB3 /* DateFormatter.swift */; };
 		0146C49F1FC0BDC200DEA332 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146C49E1FC0BDC200DEA332 /* AlertExtension.swift */; };
 		0149161B1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149161A1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift */; };
@@ -88,6 +89,7 @@
 		01367C4B1FB3C27E00F51F89 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
 		013E31FE2021762B004B725E /* SecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPageViewController.swift; sourceTree = "<group>"; };
 		013E32002021764F004B725E /* ThridPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThridPageViewController.swift; sourceTree = "<group>"; };
+		01422941202C007B005DAF5C /* ReportError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportError.swift; sourceTree = "<group>"; };
 		0144722C1FBA5C4400510AB3 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		0146C49E1FC0BDC200DEA332 /* AlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
 		0149161A1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		010D073E1FA3B2B70013375F /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
+				01422940202C0060005DAF5C /* Errors */,
 				01EDC8DE201E58CA0085D2BD /* Infrastructure */,
 				01EDC8DB201E57770085D2BD /* State */,
 				012B46301FC641B100D31809 /* Location Helper */,
@@ -211,6 +214,14 @@
 				011A54C01FBBF3FB00564902 /* CommentDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		01422940202C0060005DAF5C /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				01422941202C007B005DAF5C /* ReportError.swift */,
+			);
+			name = Errors;
 			sourceTree = "<group>";
 		};
 		014472271FB69BC100510AB3 /* Date Helper */ = {
@@ -511,6 +522,7 @@
 				010D07401FA3B63F0013375F /* CloudKitManager.swift in Sources */,
 				010D073D1FA3B1450013375F /* UserController.swift in Sources */,
 				01EDC8DA201E57130085D2BD /* Onboarding.swift in Sources */,
+				01422942202C007B005DAF5C /* ReportError.swift in Sources */,
 				01367BA41FAE8AB400F51F89 /* PostController.swift in Sources */,
 				016CAAA62000159C008420AC /* LaunchViewController.swift in Sources */,
 				0149161B1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift in Sources */,

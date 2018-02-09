@@ -85,6 +85,7 @@ extension ProfileDetail2TableViewController: UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        
         // number of Col.
         let nbCol = 3
         
