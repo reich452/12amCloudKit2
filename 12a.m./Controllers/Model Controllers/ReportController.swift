@@ -20,12 +20,12 @@ class ReportController {
     typealias ReportCompletionHandeler = (Report?, ReportError?) -> Void
     typealias ReportsCompletionHandeler = ([Report]?, ReportError?) -> Void
     
-    func submitReport(with title: String, and description: String?, completion: @escaping ReportCompletionHandeler) {
+    func submitReport(with title: String, and description: String?, timestamp: String = Date().description(with: .current), completion: @escaping ReportCompletionHandeler) {
         guard let userRecordID = UserController.shared.currentUser?.cloudKitRecordID else { return }
         
         let reference = CKReference(recordID: userRecordID, action: .none)
         
-        let report = Report(title: title, description: description, reportReference: reference)
+        let report = Report(title: title, description: description, reportReference: reference, timestamp: timestamp)
         
         reports.append(report)
         let reportRecord = CKRecord(report: report)

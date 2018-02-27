@@ -31,8 +31,9 @@ class ReportDetailViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toSubmitReport" {
-//            guard let destinationVC = segue.destination as? SubmitReportViewController else { return }
+        if segue.identifier == "toSubmittReportVC" {
+            guard let destinationVC = segue.destination as? SubmitReportViewController else { return }
+            destinationVC.report = report
            
         }
     }

@@ -1706,7 +1706,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add a message about abusive or offencive content" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ziU-Lx-plc">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ziU-Lx-plc">
                                 <rect key="frame" x="37.5" y="200" width="300" height="267"/>
                                 <color key="backgroundColor" red="0.94366671954314718" green="0.94366671954314718" blue="0.94366671954314718" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1768,7 +1768,7 @@
                                 <rect key="frame" x="112.5" y="552" width="150" height="30"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <segue destination="KRb-S6-kfk" kind="show" id="k8N-TD-d22"/>
+                                    <segue destination="KRb-S6-kfk" kind="show" identifier="toSubmittReportVC" id="O4M-qT-jEB"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BYu-T8-fnb">

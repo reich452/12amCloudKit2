@@ -8,14 +8,15 @@
 
 import UIKit
 
-class SubmitReportViewController: UIViewController {
+class SubmitReportViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Properties
     var report: Report?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateViews()
+        deatilTextView.delegate = self 
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
@@ -33,7 +34,28 @@ class SubmitReportViewController: UIViewController {
         }
     }
     
+    func updateViews() {
+        guard let report = report else { return }
+        reportTitleLabel.text = report.title
+        deatilTextView.layer.cornerRadius = 10
+        
+        deatilTextView.delegate = self
+        placeholderLabel = UILabel()
+        placeholderLabel.text = "Enter some text..."
+        placeholderLabel.font = UIFont.italicSystemFont(ofSize: (deatilTextView.font?.pointSize)!)
+        placeholderLabel.sizeToFit()
+        deatilTextView.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: (deatilTextView.font?.pointSize)! / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = !deatilTextView.text.isEmpty
+    }
     
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !textView.text.isEmpty
+    }
+    
+    
+    var placeholderLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var deatilTextView: UITextView!
     @IBOutlet weak var reportTitleLabel: UILabel!
