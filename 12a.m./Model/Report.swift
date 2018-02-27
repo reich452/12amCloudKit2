@@ -27,9 +27,9 @@ class Report {
     var description: String?
     let reportReference: CKReference
     var ckRecordID: CKRecordID?
-    var timestamp: String
+    var timestamp: String = Date().description(with: Locale.current)
     
-    init(title: String, description: String? = String(), reportReference: CKReference, timestamp: String = Date().description(with: Locale.current)) {
+    init(title: String, description: String? = String(), reportReference: CKReference, timestamp: String) {
         self.title = title
         self.description = description
         self.reportReference = reportReference
@@ -60,7 +60,6 @@ extension CKRecord {
         self.setValue(report.description, forKey: report.descriptionKey)
         self.setValue(report.reportReference, forKey: report.reportReferenceKey)
         self.setValue(report.timestamp, forKey: report.timestampKey)
-    
     }
 }
 
