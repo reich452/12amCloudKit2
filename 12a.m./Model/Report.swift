@@ -19,56 +19,48 @@ class Report {
     fileprivate let postReferenceKey = "postReference"
     fileprivate let reportReferenceKey = "reportReference"
     fileprivate let userReferenceKey = "userReference"
+    fileprivate let timestampKey = "timestamp"
     
     // MARK: - Properties
     
     let title: String
     var description: String?
-    let postReference: CKReference
     let reportReference: CKReference
-    let userReference: CKReference
-    var user: User?
-    var post: Post?
     var ckRecordID: CKRecordID?
+    var timestamp: String
     
-    init(title: String, description: String? = String(), postReference: CKReference, reportReference: CKReference, userReference: CKReference) {
+    init(title: String, description: String? = String(), reportReference: CKReference, timestamp: String = Date().description(with: Locale.current)) {
         self.title = title
         self.description = description
-        self.postReference = postReference
         self.reportReference = reportReference
-        self.userReference = userReference
+        self.timestamp = timestamp
     }
     
     init?(cloudKitRecord: CKRecord) {
         guard let title = cloudKitRecord[titleKey] as? String,
-            let description = cloudKitRecord[descriptionKey] as? String,
-            let postReference = cloudKitRecord[postReferenceKey] as? CKReference,
+            let description = cloudKitRecord[descriptionKey] as? String?,
             let reportReference = cloudKitRecord[reportReferenceKey] as? CKReference,
-            let userReference = cloudKitRecord[userReferenceKey] as? CKReference else { return nil }
+            let timestamp = cloudKitRecord.creationDate?.description(with: .current) else { return nil }
         
         self.title = title
         self.description = description
-        self.postReference = postReference
         self.reportReference = reportReference
-        self.userReference = userReference
         self.ckRecordID = cloudKitRecord.recordID
+        self.timestamp = timestamp
     }
 }
 
 extension CKRecord {
     convenience init(report: Report) {
         let recordID = report.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
-        guard let user = report.post?.owner,
-            let postReference = report.post else {
-            fatalError("No user to post relationship")
-        }
+    
         self.init(recordType: Report.reportRecordKey, recordID: recordID)
         
         self.setValue(report.title, forKey: report.titleKey)
         self.setValue(report.description, forKey: report.descriptionKey)
         self.setValue(report.reportReference, forKey: report.reportReferenceKey)
-        self.setValue(postReference.cloudKitReference, forKey: report.postReferenceKey)
-        self.setValue(user.appleUserRef, forKey: report.userReferenceKey)
+        self.setValue(report.timestamp, forKey: report.timestampKey)
+    
     }
 }
 

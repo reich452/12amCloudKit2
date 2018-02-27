@@ -96,13 +96,13 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
             let postRow = PostController.shared.filteredPosts.count
             let indexPath = IndexPath(row: postRow, section: 0)
             // TODO: - Get the correct indexPath 
-            let post = PostController.shared.filteredPosts[indexPath.row]
-            let destinationVC = SubmitReportViewController()
+            let post = PostController.shared.filteredPosts[indexPath.row - 1]
+            let submitReportVC = ReportTableViewController()
+            let segueDestination = UIStoryboardSegue(identifier: Constants.toReportTVC, source: self, destination: submitReportVC)
+            guard let destinationVC = segueDestination.destination as? ReportTableViewController else { return }
             destinationVC.post = post
-            let segueDestination = UIStoryboardSegue(identifier: "toSubmittReportVC", source: self, destination: destinationVC)
-            
            
-//            self.performSegue(withIdentifier: "toSubmittReportVC", sender: nil)
+            self.performSegue(withIdentifier: Constants.toReportTVC, sender: nil)
             
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

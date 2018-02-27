@@ -11,7 +11,7 @@ import UIKit
 class SubmitReportViewController: UIViewController {
     
     // MARK: - Properties
-    var post: Post?
+    var report: Report?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,8 @@ class SubmitReportViewController: UIViewController {
             let reportDetail = deatilTextView.text else { return }
         ReportController.shared.submitReport(with: reportTitle, and: reportDetail) { (report, error) in
             DispatchQueue.main.async { [weak self] in
-                self?.deatilTextView.text = ""
-                self?.reportTitleLabel.text = "Thank You for reporting"
+                self?.deatilTextView.text = "You messesage was sent. We will process this information within 24 hours."
+                self?.reportTitleLabel.text = "Thank You For Reporting"
             }
         }
     }

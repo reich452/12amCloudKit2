@@ -17,4 +17,6 @@ struct RecordType {
 struct Constants {
     static let toCommentFromProfile = "fromFeedCollectionProfileToPostDetail"
     static let toCommentFromFeedCollection = "fromFeedCollectionProfileToPostDetail"
+    static let toSubmittReportVC = "toSubmittReportVC"
+    static let toReportTVC = "toReportTVC"
 }

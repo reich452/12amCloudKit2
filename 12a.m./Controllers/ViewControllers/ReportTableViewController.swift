@@ -9,9 +9,18 @@
 import UIKit
 
 class ReportTableViewController: UITableViewController {
+    
+    var report: Report?
+    var post: Post? 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ReportController.shared.fetchReport { (reports, error) in
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
    
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -22,7 +31,9 @@ class ReportTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return ReportController.shared.reports.count
+        let reports = ReportController.shared.reports.prefix(9)
+        
+        return reports.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,9 +54,7 @@ class ReportTableViewController: UITableViewController {
             guard let destinationVC = segue.destination as? ReportDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             let report = ReportController.shared.reports[indexPath.row]
-            let postReference = PostController.shared.posts[indexPath.row]
             destinationVC.report = report
-            destinationVC.post = postReference
         }
     }
 }

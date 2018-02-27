@@ -15,16 +15,18 @@ class ReportController {
     let cloudKitManager = CloudKitManager()
     
     var reports: [Report] = []
+    var report: Report?
     
     typealias ReportCompletionHandeler = (Report?, ReportError?) -> Void
+    typealias ReportsCompletionHandeler = ([Report]?, ReportError?) -> Void
     
     func submitReport(with title: String, and description: String?, completion: @escaping ReportCompletionHandeler) {
-       
-        guard let postReference = PostController.shared.post?.cloudKitReference,
-            let userReference = UserController.shared.currentUser?.appleUserRef else { return }
-        let reportReference = CKReference(recordID: postReference.recordID, action: .none)
+        guard let userRecordID = UserController.shared.currentUser?.cloudKitRecordID else { return }
         
-        let report = Report(title: title, description: description, postReference: postReference, reportReference: reportReference, userReference: userReference)
+        let reference = CKReference(recordID: userRecordID, action: .none)
+        
+        let report = Report(title: title, description: description, reportReference: reference)
+        
         reports.append(report)
         let reportRecord = CKRecord(report: report)
         
@@ -40,6 +42,33 @@ class ReportController {
             completion(report, nil)
         }
     }
- 
+    
+    func fetchReport(completion: @escaping ReportsCompletionHandeler) {
+        
+        CKContainer.default().fetchUserRecordID { (recordID, error) in
+            if let error = error { print("Error fetching userID: \(#function) \(error.localizedDescription) & \(error)")
+                completion(nil, .cannotFetchID)
+                return
+            }
+            let predicate = NSPredicate(value: true)
+            let query = CKQuery(recordType: "Report", predicate: predicate)
+            query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+                
+                self.cloudKitManager.publicDatabase.perform(query, inZoneWith: nil, completionHandler: { (ckRecords, error) in
+                    
+                    if let error = error {
+                        print("Error fetching reprot \(#function) \(error) \(error.localizedDescription)")
+                        completion(nil, .cannotFetchCKRecord)
+                    }
+                    guard let ckRecords = ckRecords else {completion(nil, .cannotFetchCKRecord); return }
+                    
+                    let reports = ckRecords.flatMap{Report(cloudKitRecord: $0)}
+                    
+                    self.reports = reports
+                    completion(reports, nil)
+                    
+                })
+        }
+    }
     
 }

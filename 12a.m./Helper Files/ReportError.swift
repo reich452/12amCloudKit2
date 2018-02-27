@@ -11,4 +11,6 @@ import Foundation
 enum ReportError: Error {
     case cannotConvertRecord
     case cannotSaveRecordToPublicDB
+    case cannotFetchID
+    case cannotFetchCKRecord
 }

@@ -372,7 +372,7 @@
                         <segue destination="y0p-tH-2M1" kind="show" identifier="feedToPostDetail" id="m7A-EI-lMK"/>
                         <segue destination="dPF-SJ-kAy" kind="show" identifier="feedToProfileDetail" id="Vtx-z2-vej"/>
                         <segue destination="Y7Y-HU-jfd" kind="presentation" identifier="toCamera" id="9ZO-1Y-QOZ"/>
-                        <segue destination="KRb-S6-kfk" kind="show" identifier="toSubmittReportVC" id="57d-Tn-RZ0"/>
+                        <segue destination="tZo-Vr-Qz1" kind="show" identifier="toReportTVC" id="8pW-aJ-nUt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOb-FG-dTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1748,7 +1748,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvM-fn-Z1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5922" y="587"/>
+            <point key="canvasLocation" x="-8289" y="555"/>
         </scene>
         <!--Title-->
         <scene sceneID="axF-1R-0Dw">
@@ -1765,8 +1765,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enX-5c-OZe">
-                                <rect key="frame" x="112.5" y="601" width="150" height="30"/>
+                                <rect key="frame" x="112.5" y="552" width="150" height="30"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <segue destination="KRb-S6-kfk" kind="show" id="k8N-TD-d22"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BYu-T8-fnb">
                                 <rect key="frame" x="16" y="192" width="337.5" height="333.5"/>
@@ -1804,7 +1807,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmD-sh-K5a">
-                                <rect key="frame" x="16" y="47" width="343" height="30"/>
+                                <rect key="frame" x="16" y="91" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1840,7 +1843,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0p-Ch-rv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7556" y="851.42428785607206"/>
+            <point key="canvasLocation" x="-7441" y="518"/>
         </scene>
         <!--Report-->
         <scene sceneID="LVU-aO-OOp">
@@ -1894,7 +1897,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzt-Ku-QfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6772" y="361"/>
+            <point key="canvasLocation" x="-6138" y="518"/>
         </scene>
         <!--Profile Comment Table View Controller-->
         <scene sceneID="STZ-c2-abO">
