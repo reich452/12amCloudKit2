@@ -157,7 +157,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.contentView.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        cell.contentView.backgroundColor = UIColor(white: 1, alpha: 0.1)
     }
     
     // MARK: - Navigation

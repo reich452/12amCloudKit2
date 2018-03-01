@@ -48,6 +48,8 @@
 		019B2E7D20268F4A00C2BDB0 /* ReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019B2E7C20268F4A00C2BDB0 /* ReportController.swift */; };
 		019B2E7F2026926500C2BDB0 /* ReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019B2E7E2026926500C2BDB0 /* ReportTableViewController.swift */; };
 		019B2E812026A66500C2BDB0 /* ReportDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019B2E802026A66500C2BDB0 /* ReportDetailViewController.swift */; };
+		01B1ACD6204774DE00F4AE8E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B1ACD5204774DE00F4AE8E /* KeyboardViewController.swift */; };
+		01B1ACD8204858F000F4AE8E /* ImageCrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B1ACD7204858F000F4AE8E /* ImageCrop.swift */; };
 		01BC3E001FBE1058001FFFDB /* IconTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */; };
 		01BFDEC91FC372D600D94B87 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */; };
 		01BFDECD1FC39A8200D94B87 /* POCKC___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */; };
@@ -112,6 +114,8 @@
 		019B2E7C20268F4A00C2BDB0 /* ReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportController.swift; sourceTree = "<group>"; };
 		019B2E7E2026926500C2BDB0 /* ReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewController.swift; sourceTree = "<group>"; };
 		019B2E802026A66500C2BDB0 /* ReportDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDetailViewController.swift; sourceTree = "<group>"; };
+		01B1ACD5204774DE00F4AE8E /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		01B1ACD7204858F000F4AE8E /* ImageCrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCrop.swift; sourceTree = "<group>"; };
 		01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTextField.swift; sourceTree = "<group>"; };
 		01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		01BFDECB1FC39A8000D94B87 /* POCKC___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "POCKC___.TTF"; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 		010D073E1FA3B2B70013375F /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
+				01B1ACD4204774C900F4AE8E /* Keyboard */,
 				01422940202C0060005DAF5C /* Errors */,
 				01EDC8DE201E58CA0085D2BD /* Infrastructure */,
 				01EDC8DB201E57770085D2BD /* State */,
@@ -174,6 +179,7 @@
 				01367BA11FAE6D7A00F51F89 /* Theme.swift */,
 				01BC3DFF1FBE1058001FFFDB /* IconTextField.swift */,
 				019B2E7820258A5B00C2BDB0 /* ImageTheme.swift */,
+				01B1ACD7204858F000F4AE8E /* ImageCrop.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -364,6 +370,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		01B1ACD4204774C900F4AE8E /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				01B1ACD5204774DE00F4AE8E /* KeyboardViewController.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
 		01BFDECA1FC39A8000D94B87 /* Pocket_Calculator */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,6 +541,7 @@
 				016CAAA62000159C008420AC /* LaunchViewController.swift in Sources */,
 				0149161B1FDEFEBF00580689 /* ProfileDetailCollectionViewCell.swift in Sources */,
 				015221D01FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift in Sources */,
+				01B1ACD8204858F000F4AE8E /* ImageCrop.swift in Sources */,
 				01367B9F1FAE6A8200F51F89 /* LogInViewController.swift in Sources */,
 				011A54C11FBBF3FB00564902 /* CommentDelegate.swift in Sources */,
 				019B2E7D20268F4A00C2BDB0 /* ReportController.swift in Sources */,
@@ -540,6 +555,7 @@
 				019B2E7920258A5B00C2BDB0 /* ImageTheme.swift in Sources */,
 				01EDC8DD201E57880085D2BD /* OnboardingState.swift in Sources */,
 				0156CE111FA2B268002791C1 /* AppDelegate.swift in Sources */,
+				01B1ACD6204774DE00F4AE8E /* KeyboardViewController.swift in Sources */,
 				0181AA571FCC814500166E21 /* AboutViewController.swift in Sources */,
 				01FE0D131FA2BB4C001C55EE /* Comment.swift in Sources */,
 				01D7B7951FE054F700DCD159 /* ProfileDetail2CollectionViewCell.swift in Sources */,

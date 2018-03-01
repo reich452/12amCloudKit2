@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+class ProfileViewController: ShiftableViewController, CLLocationManagerDelegate {
     
     // MARK: - IBOutlets 
     @IBOutlet weak var profileImageView: UIImageView!
@@ -51,10 +51,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
         updateViews()
         updateDiscription()
         
-        //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow2), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide2), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,24 +60,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, CLLocationMa
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.locationManager.stopUpdatingLocation()
-    }
-    
-    // MARK: - Delegates
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    // MARK: - Keyboard
-    
-    @objc func keyboardWillShow2(sender: NSNotification) {
-        self.view.frame.origin.y -= 150
-    }
-    @objc func keyboardWillHide2(sender: NSNotification) {
-        self.view.frame.origin.y += 150
     }
     
     // MARK: - Actions
