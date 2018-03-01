@@ -10,18 +10,20 @@ import UIKit
 
 class EulaAgreementViewController: UIViewController {
     @IBOutlet weak var agreementButton: UIButton!
+    @IBOutlet weak var eulaTextView: UITextView!
     
     // MARK: - Properties
     var didAgree: Bool = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
     }
     
     // MARK: - Actions
-
+    
     @IBAction func clearButtonTapped(_ sender: UIButton) {
-       allert()
+        allert()
     }
     
     @IBAction func iagreeButtonTapped(_ sender: Any) {
@@ -43,5 +45,10 @@ class EulaAgreementViewController: UIViewController {
     func allert() {
         showAlertMessage(titleStr: "You Must Agree To Continue",
                          messageStr: "Read the terms and agree before using this app. Everyone's gotta do it!")
+    }
+    
+    func updateViews() {
+        eulaTextView.layer.cornerRadius = 10
+        eulaTextView.clipsToBounds = true
     }
 }

@@ -308,6 +308,7 @@ This EULA agreement, and any dispute arising out of or in connection with this E
                     </view>
                     <connections>
                         <outlet property="agreementButton" destination="IuZ-8b-InS" id="C3q-K3-GXp"/>
+                        <outlet property="eulaTextView" destination="mhT-DP-TTg" id="rKc-sO-RCL"/>
                         <segue destination="mOr-PE-Thg" kind="show" identifier="toBeRespectfulVC" id="rV4-3o-N7p">
                             <nil key="action"/>
                         </segue>
