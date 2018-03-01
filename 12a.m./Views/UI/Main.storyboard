@@ -2189,7 +2189,7 @@
         <image name="SplashIcon" width="266" height="258"/>
         <image name="UnisexAvatar" width="231" height="231"/>
         <image name="UserProfileBackground" width="562" height="1011"/>
-        <image name="backIcon" width="23" height="25"/>
+        <image name="backIcon" width="25" height="25"/>
         <image name="backgroundProfileImage" width="232" height="232"/>
         <image name="commentButton" width="85" height="71"/>
         <image name="editProfileBackground" width="1125" height="2436"/>
