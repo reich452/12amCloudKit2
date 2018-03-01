@@ -78,7 +78,11 @@ extension ProfileDetail2TableViewController: UICollectionViewDelegate, UICollect
         let ownerPosts = post?.owner?.posts
         guard let sortedPosts = ownerPosts?.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending }) else { return UICollectionViewCell() }
         let sortedIndexPath = sortedPosts[indexPath.row]
-       // cell.userPostImageView.image?.crop(to: 100.0)
+        let ratio = CGFloat(100)
+        let imageView = cell.userPostImageView.image
+        let croppedImage = imageView?.cropedToRatio(ratio: ratio)
+
+        cell.userPostImageView.image = croppedImage
         cell.userPostImageView.image = sortedIndexPath.photo
        
         return cell
