@@ -21,6 +21,9 @@ class ReportDetailViewController: UIViewController {
         updateViews()
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    @IBAction func backButtonTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
     

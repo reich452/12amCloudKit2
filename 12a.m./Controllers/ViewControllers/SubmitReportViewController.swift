@@ -19,6 +19,13 @@ class SubmitReportViewController: UIViewController, UITextViewDelegate {
         deatilTextView.delegate = self 
     }
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
     @IBAction func submitButtonTapped(_ sender: Any) {
         subMitReport()
     }

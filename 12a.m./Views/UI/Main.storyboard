@@ -1694,7 +1694,7 @@
             </objects>
             <point key="canvasLocation" x="-3316" y="-1592"/>
         </scene>
-        <!--Submit Report View Controller-->
+        <!--Report Submission-->
         <scene sceneID="F1t-Ph-DsW">
             <objects>
                 <viewController id="KRb-S6-kfk" customClass="SubmitReportViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
@@ -1742,6 +1742,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7yM-y8-3YM"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Report Submission" id="VpI-EH-CZf">
+                        <barButtonItem key="leftBarButtonItem" image="backIcon" id="Lhn-KZ-qYQ">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="backButtonTapped:" destination="KRb-S6-kfk" id="YWM-n1-eof"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Us3-Dl-He7">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="KRb-S6-kfk" id="Vsv-kh-C2m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="deatilTextView" destination="ziU-Lx-plc" id="FFA-k4-5ju"/>
                         <outlet property="reportTitleLabel" destination="oMJ-Sp-8Sv" id="Jlg-yo-jEB"/>
@@ -1752,7 +1766,7 @@
             </objects>
             <point key="canvasLocation" x="-8289" y="555"/>
         </scene>
-        <!--Title-->
+        <!--Report Detail View Controller-->
         <scene sceneID="axF-1R-0Dw">
             <objects>
                 <viewController id="j6M-mR-HBM" customClass="ReportDetailViewController" customModule="_2a_m_" customModuleProvider="target" sceneMemberID="viewController">
@@ -1832,8 +1846,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0DT-ya-v3j"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="fJE-QF-9zB">
+                    <navigationItem key="navigationItem" id="fJE-QF-9zB">
+                        <barButtonItem key="leftBarButtonItem" image="backIcon" id="EC8-pG-mV3">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="backButtonTapped:" destination="j6M-mR-HBM" id="4L9-mR-q0D"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="tdc-48-kDu">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="j6M-mR-HBM" id="hMb-kw-aL4"/>
                             </connections>
@@ -1891,6 +1912,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Report" id="9zQ-jN-Naz">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Ce5-x4-mju">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="tZo-Vr-Qz1" id="88T-Q7-EwQ"/>
                             </connections>
