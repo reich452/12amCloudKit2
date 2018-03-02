@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         URLCache.shared = urlCache
         UserController.shared.fetchCurrentUser()
  
-        
         return true
     }
     

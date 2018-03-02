@@ -24,6 +24,7 @@ class ProfileViewController: ShiftableViewController, CLLocationManagerDelegate 
     @IBOutlet weak var usernameTextField: IconTextField!
     @IBOutlet weak var emailTextField: IconTextField!
     @IBOutlet weak var updateProfileButton: UIButton!
+    @IBOutlet weak var profileImageButton: UIButton!
     
     // MARK: - Properties
     private var currentUser: User? {
@@ -88,13 +89,19 @@ class ProfileViewController: ShiftableViewController, CLLocationManagerDelegate 
         
     }
     private func setUpAppearance() {
-        self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.width / 2.1
-        self.profileImageView.contentMode = .scaleAspectFill
-        self.profileImageView.layer.borderColor = UIColor.white.cgColor
-        self.profileImageView.layer.borderWidth = 0.7
-        self.profileImageView.clipsToBounds = true
-        self.usernameTextField.textColor = UIColor.white
-        self.emailTextField.textColor = UIColor.white
+        profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.width / 2
+        profileImageView.contentMode = .scaleAspectFill
+        profileImageView.layer.borderColor = UIColor.white.cgColor
+        profileImageView.layer.borderWidth = 0.7
+        profileImageView.clipsToBounds = true
+        usernameTextField.textColor = UIColor.white
+        emailTextField.textColor = UIColor.white
+        updateProfileButton.layer.borderColor = UIColor.white.cgColor
+        updateProfileButton.layer.cornerRadius = 15
+        updateProfileButton.backgroundColor = .white
+        updateProfileButton.titleLabel?.textColor = .clear
+        updateProfileButton.clipsToBounds = true
+        
         if self.currentUser == nil {
             self.profileImageView.image = #imageLiteral(resourceName: "UnisexAvatar")
         } else {
@@ -123,6 +130,8 @@ class ProfileViewController: ShiftableViewController, CLLocationManagerDelegate 
     }
     
     private func updateDiscription() {
+        // does it look better with or without this ??
+        discriptionLabel.isHidden = true
         let posts = PostController.shared.posts.map {$0.ownerReference}
         if posts.count != 0 {
             discriptionLabel.text = "Posted \(posts.count) times at 12am - 1am"
