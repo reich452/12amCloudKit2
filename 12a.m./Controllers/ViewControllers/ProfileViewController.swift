@@ -131,7 +131,7 @@ class ProfileViewController: ShiftableViewController, CLLocationManagerDelegate 
     
     private func updateDiscription() {
         // does it look better with or without this ??
-        discriptionLabel.isHidden = true
+//        discriptionLabel.isHidden = true
         let posts = PostController.shared.posts.map {$0.ownerReference}
         if posts.count != 0 {
             discriptionLabel.text = "Posted \(posts.count) times at 12am - 1am"
