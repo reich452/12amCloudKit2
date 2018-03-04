@@ -17,15 +17,11 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.4</string>
+	<string>1.1.5</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>12a.m would like to access your camera so you can take a profile picture and future pictures for posting images.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>12a.m only would like to access your location to update this screen only. This will not be displayed publicly.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>12a.m only would like to access your location to update this screen only. This will not be displayed publicly.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>POCKC___.TTF</string>

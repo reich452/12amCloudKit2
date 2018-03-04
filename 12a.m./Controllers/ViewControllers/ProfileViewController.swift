@@ -9,18 +9,12 @@
 import UIKit
 import CoreLocation
 
-class ProfileViewController: ShiftableViewController, CLLocationManagerDelegate {
+class ProfileViewController: ShiftableViewController {
     
     // MARK: - IBOutlets 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var discriptionLabel: UILabel!
-    @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet weak var currentCountryLabel: UILabel!
-    @IBOutlet weak var stateLabel: UILabel!
-    @IBOutlet weak var currentStateLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var currentCityLabel: UILabel!
     @IBOutlet weak var usernameTextField: IconTextField!
     @IBOutlet weak var emailTextField: IconTextField!
     @IBOutlet weak var updateProfileButton: UIButton!
@@ -40,11 +34,6 @@ class ProfileViewController: ShiftableViewController, CLLocationManagerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
-        self.currentCityLabel.text = "\(TimeZone.current)"
         self.usernameTextField.delegate = self
         self.emailTextField.delegate = self
         
@@ -84,8 +73,6 @@ class ProfileViewController: ShiftableViewController, CLLocationManagerDelegate 
         self.usernameLabel.text = user.username
         self.usernameTextField.text = " \(user.username)"
         self.emailTextField.text = " \(user.email)"
-        self.currentCityLabel.font = UIFont.systemFont(ofSize: 20.0, weight: .thin)
-        
         
     }
     private func setUpAppearance() {
@@ -142,74 +129,6 @@ class ProfileViewController: ShiftableViewController, CLLocationManagerDelegate 
     
 }
 
-extension ProfileViewController {
-    
-    // MARK: - Location
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = manager.location else { return }
-        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-            if (error != nil) {
-                print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
-                return
-            }
-            if (placemarks?.count)! > 0 {
-                
-                print("placemarks",placemarks ?? 0)
-                let pm = placemarks?[0]
-                self.updateUserLocation(pm)
-            } else {
-                print("Problem with the data received from geocoder")
-            }
-        })
-    }
-    
-    func updateUserLocation(_ placemark: CLPlacemark?) {
-        
-        if let containsPlacemark = placemark {
-            
-            print("your location is:-",containsPlacemark)
-            //stop updating location to save battery life
-            locationManager.stopUpdatingLocation()
-            var locality = (containsPlacemark.locality != nil) ? containsPlacemark.locality : ""
-            var country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
-            var state = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
-            
-            let unitedStates = "United States"
-            if (country?.contains(unitedStates))! {
-                self.currentCountryLabel.text = "U.S.A"
-            } else {
-                self.currentCountryLabel.text = country
-            }
-            self.currentCityLabel.text = locality
-            self.currentStateLabel.text = state
-            
-            locality = self.currentCityLabel.text
-            state = self.currentStateLabel.text
-            country = self.currentCountryLabel.text
-            
-            guard let cityLocality = locality,
-                let currentState = state,
-                let currentCountry = country else { return }
-            
-            if UserController.shared.currentUser != nil {
-                
-                UserController.shared.updateCurrentUserWithLocation(cityLocality, state: currentState, country: currentCountry, compleation: { (success) in
-                    
-                    if !success {
-                        print("Not succesfull updateing currten user")
-                    } else {
-                        print("Updated current user location")
-                    }
-                })
-            }
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error while updating location " + error.localizedDescription)
-    }
-}
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
