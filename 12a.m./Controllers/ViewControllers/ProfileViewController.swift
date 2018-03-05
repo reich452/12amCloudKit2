@@ -19,6 +19,7 @@ class ProfileViewController: ShiftableViewController {
     @IBOutlet weak var emailTextField: IconTextField!
     @IBOutlet weak var updateProfileButton: UIButton!
     @IBOutlet weak var profileImageButton: UIButton!
+    @IBOutlet weak var plussButton: UIButton!
     
     // MARK: - Properties
     private var currentUser: User? {
@@ -34,8 +35,8 @@ class ProfileViewController: ShiftableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.usernameTextField.delegate = self
-        self.emailTextField.delegate = self
+        usernameTextField.delegate = self
+        emailTextField.delegate = self
         
         setUpAppearance()
         updateViews()
@@ -47,19 +48,18 @@ class ProfileViewController: ShiftableViewController {
         updateViews()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.locationManager.stopUpdatingLocation()
-    }
     
     // MARK: - Actions
     
     @IBAction func updateImageButtonTapped(_ sender: Any) {
-        self.addedProfileImage()
+        addedProfileImage()
+    }
+    @IBAction func plussButtonUpdateImageTapped(_ sender: Any) {
+        addedProfileImage()
     }
     
     @IBAction func updateButtonTapped(_ sender: Any) {
-        self.updateUserInfo()
+        updateUserInfo()
     }
     
     @IBAction func infoButtonTapped(_ sender: UIButton) {
@@ -70,13 +70,14 @@ class ProfileViewController: ShiftableViewController {
     @objc private func updateViews() {
         guard let user = self.currentUser else { return }
     
-        self.usernameLabel.text = user.username
-        self.usernameTextField.text = " \(user.username)"
-        self.emailTextField.text = " \(user.email)"
+        usernameLabel.text = user.username
+        usernameTextField.text = " \(user.username)"
+        emailTextField.text = " \(user.email)"
         
     }
     private func setUpAppearance() {
-        profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.width / 2
+        profileImageView.layer.cornerRadius = profileImageView.layer.frame.width / 2
+        profileImageView.backgroundColor = .red
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.layer.borderColor = UIColor.white.cgColor
         profileImageView.layer.borderWidth = 0.7
@@ -88,7 +89,8 @@ class ProfileViewController: ShiftableViewController {
         updateProfileButton.backgroundColor = .white
         updateProfileButton.titleLabel?.textColor = .clear
         updateProfileButton.clipsToBounds = true
-        
+        plussButton.layer.cornerRadius = plussButton.layer.frame.width / 2
+     
         if self.currentUser == nil {
             self.profileImageView.image = #imageLiteral(resourceName: "UnisexAvatar")
         } else {
@@ -161,12 +163,12 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             profileImageView.image = chosenImage
             
         }
-        self.imagePickerWasDismissed = true
+        imagePickerWasDismissed = true
         dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.imagePickerWasDismissed = true
+        imagePickerWasDismissed = true
         dismiss(animated: true, completion: nil)
     }
 }
