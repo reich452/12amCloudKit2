@@ -48,9 +48,10 @@ class ProfileDetail2TableViewController: UITableViewController {
         guard let owner = post?.owner else { return }
         self.profileImageView.image = owner.photo
         self.usernameLabel.text = owner.username
-        self.cityLabel.text = owner.city
-        self.countryLabel.text = owner.country
-        self.stateLabel.text = owner.state
+//        self.cityLabel.text = owner.city
+//        self.countryLabel.text = owner.country
+//        self.stateLabel.text = owner.state
+//    }
     }
     
     private func setUpAppearance() {
