@@ -183,12 +183,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="5J8-bF-eyD">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="5J8-bF-eyD">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ma7-g3-LiR">
-                                    <rect key="frame" x="55" y="63" width="284" height="40"/>
+                                    <rect key="frame" x="55" y="19" width="284" height="40"/>
                                     <fontDescription key="fontDescription" name="PocketCalculator" family="Pocket Calculator" pointSize="40"/>
                                     <color key="textColor" red="0.39211481809616089" green="0.84444326162338257" blue="0.74901276826858521" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
@@ -263,11 +263,20 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFg-le-CgL">
-                                                    <rect key="frame" x="55" y="30" width="194" height="20"/>
+                                                    <rect key="frame" x="55" y="30" width="89" height="20"/>
                                                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiO-Fc-gV8">
+                                                    <rect key="frame" x="149" y="20" width="100" height="30"/>
+                                                    <state key="normal" title="~ Follow">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="followButtonTapped:" destination="8oS-kW-5pc" eventType="touchUpInside" id="4zc-nl-QFh"/>
+                                                    </connections>
+                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGl-Tz-hCN">
                                                     <rect key="frame" x="254" y="0.0" width="50" height="50"/>
                                                     <constraints>
@@ -327,6 +336,7 @@
                                     <outlet property="blockUserButton" destination="XGl-Tz-hCN" id="oTo-wo-B7S"/>
                                     <outlet property="captionTextLabel" destination="KgB-Tt-gA6" id="Rp4-7h-0jB"/>
                                     <outlet property="commentButton" destination="eR0-k6-dbO" id="Sgx-ss-Jd1"/>
+                                    <outlet property="followButton" destination="uiO-Fc-gV8" id="E77-ht-BVQ"/>
                                     <outlet property="postImageButton" destination="yrj-pz-fe4" id="DBU-8x-CaE"/>
                                     <outlet property="profileImageView" destination="Hfc-qA-2Su" id="arq-N0-5xf"/>
                                     <outlet property="timestampLabel" destination="xD0-Yj-4b3" id="kYF-PW-eOf"/>
@@ -369,7 +379,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOb-FG-dTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3632.8000000000002" y="1008.8455772113944"/>
+            <point key="canvasLocation" x="-3633.75" y="1008.8028169014085"/>
         </scene>
         <!--Profile Detail Table View Controller-->
         <scene sceneID="fZt-9B-HlW">
@@ -379,7 +389,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="ngH-cd-Dso">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="ngH-cd-Dso">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="283"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -873,7 +883,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="jx2-0z-3f8" customClass="ProfileImage" customModule="_2a_m_" customModuleProvider="target">
-                                <rect key="frame" x="124.5" y="12" width="78" height="78"/>
+                                <rect key="frame" x="124.5" y="12" width="78.5" height="78"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="2"/>
@@ -1118,7 +1128,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="jIm-e7-abJ">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="jIm-e7-abJ">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="283"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>

@@ -285,12 +285,17 @@ class PostController {
                            completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
         
         guard let recordID = user.cloudKitRecordID else { fatalError("Unable to create CloudKit reference for subscription.") }
-        
-        let predicate = NSPredicate(format: "user == %@", argumentArray: [recordID])
+      
+        let predicate = NSPredicate(format: "username ==%@", user.username)
         
         user.isFollowing = true // Set this back to false later if subscribing fails
         
-        cloudKitManager.subscribe(User.recordTypeKey, predicate: predicate, subscriptionID: recordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: ["username", "owner"], options: .firesOnRecordCreation) { (subscription, error) in
+        cloudKitManager.subscribe(User.recordTypeKey, predicate: predicate, subscriptionID: recordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: ["username"], options: .firesOnRecordCreation) { (subscription, error) in
+            
+            if let error = error {
+                print("Error adding sbuscription: \(#function) \(error.localizedDescription) \(error)")
+                completion(false, error); return 
+            }
             
             let success = subscription != nil
             user.isFollowing = success

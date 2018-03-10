@@ -28,7 +28,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(reloadData), name: PostController.PostChangeNotified, object: nil)
         
-        PostController.shared.requestFullSync { 
+        PostController.shared.requestFullSync {
             DispatchQueue.main.async {
                 self.reloadData()
             }
@@ -72,6 +72,38 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     }
     func didTapReportUserButton(_ sender: FeedTableViewCell) {
         blockUserActionSheet()
+    }
+    
+    func didTapFollowUserButton(_ sender: FeedTableViewCell) {
+        
+       guard let (_, indexPath) = post(forTableSubview: sender) else { return }
+        guard let user = PostController.shared.filteredPosts[indexPath.row].owner else { return }
+        
+        let controller = PostController.shared
+        controller.checkSubscriptionTo(postsForUser: user) { (subscribed) in
+            let reloadRow = {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+            if subscribed {
+                reloadRow()
+                controller.removeSubscriptionTo(postsForUser: user) { (_, _) in
+                    reloadRow()
+                }
+            } else {
+                reloadRow()
+                controller.addSubscriptionTo(postsForUser: user, alertBody: "Someone commented on your post! 👍")
+                reloadRow()
+            }
+        }
+    }
+    
+    
+    private func post(forTableSubview view: UIView) -> (post: Post, indexPath: IndexPath)? {
+        let point = view.convert(CGPoint.zero, to: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: point) else { return nil }
+        return (PostController.shared.filteredPosts[indexPath.row], indexPath)
     }
     
     func blockUser() {
@@ -147,11 +179,20 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? FeedTableViewCell else { return UITableViewCell() }
         
         let post = PostController.shared.filteredPosts[indexPath.row]
+        guard let user = post.owner else { return UITableViewCell() }
+        
+        if !user.hasCheckedFollowStatus { // Update isFavorited property
+            let controller = PostController.shared
+            controller.checkSubscriptionTo(postsForUser: user) { (_) in
+                DispatchQueue.main.async { self.tableView.reloadData() }
+            }
+        }
         cell.post = post
         cell.delegate = self
         cell.selectedProfileDelegate = self
         cell.blockUserDelegate = self
         cell.reportUserDelegate = self
+        cell.followUserDelegate = self
         
         return cell
     }

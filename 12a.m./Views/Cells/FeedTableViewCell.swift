@@ -13,8 +13,8 @@ protocol FeedTableViewCellDelegate: class {
     func didTapProfileButton(_ sender: FeedTableViewCell)
     func didTapBlockUserButton(_ sender: FeedTableViewCell)
     func didTapReportUserButton(_ sender: FeedTableViewCell)
+    func didTapFollowUserButton(_ sender: FeedTableViewCell)
 }
-
 
 class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
@@ -24,12 +24,14 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var blockUserButton: UIButton!
     @IBOutlet weak var captionTextLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
+    @IBOutlet weak var followButton: UIButton!
     
     // MARK: - Propoerties
     weak var delegate: FeedTableViewCellDelegate?
     weak var selectedProfileDelegate: FeedTableViewCellDelegate?
     weak var blockUserDelegate: FeedTableViewCellDelegate?
     weak var reportUserDelegate: FeedTableViewCellDelegate?
+    weak var followUserDelegate: FeedTableViewCellDelegate?
     
     var post: Post? {
         didSet {
@@ -47,6 +49,12 @@ class FeedTableViewCell: UITableViewCell {
         } else {
             profileImageView.image = owner.photo
         }
+        if owner.isFollowing {
+            followButton.setTitle("Following", for: .normal)
+        } else {
+            followButton.setTitle("Follow", for: .normal)
+        }
+        
         self.profileImageView.contentMode = .scaleAspectFill
         self.profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
         self.profileImageView.layer.masksToBounds = true
@@ -60,22 +68,27 @@ class FeedTableViewCell: UITableViewCell {
     
     // MARK: - Actions
     @IBAction func commentButtonTapped(_ sender: Any) {
-        if let delegate = self.delegate {
+        if let delegate = delegate {
             delegate.didTapCommentButton(self)
         }
     }
     @IBAction func blockUserButtonTapped(_ sender: Any) {
-        if let blockUserDelegate = self.blockUserDelegate {
+        if let blockUserDelegate = blockUserDelegate {
             blockUserDelegate.didTapBlockUserButton(self)
         }
-        if let reportUserDelegate = self.reportUserDelegate {
+        if let reportUserDelegate = reportUserDelegate {
             reportUserDelegate.didTapReportUserButton(self)
         }
 
     }
     @IBAction func profileButtonTapped(_ sender: Any) {
-        if let selectedProfileDelegate = self.selectedProfileDelegate {
+        if let selectedProfileDelegate = selectedProfileDelegate {
             selectedProfileDelegate.didTapProfileButton(self)
+        }
+    }
+    @IBAction func followButtonTapped(_ sender: Any) {
+        if let followUserDelegate = followUserDelegate {
+            followUserDelegate.didTapFollowUserButton(self)
         }
     }
     
