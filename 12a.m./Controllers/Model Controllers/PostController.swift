@@ -236,6 +236,107 @@ class PostController {
             })
         }
     }
+    
+    // MARK: - Subscriptions
+    
+    func subscribeToNewUsers(completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        
+        let preidcate = NSPredicate(value: true)
+        
+        cloudKitManager.subscribe(User.recordTypeKey, predicate: preidcate, subscriptionID: "subscribeToUser", contentAvailable: true, options: .firesOnRecordCreation) { (subscription, error) in
+            
+            if let error = error {
+                print("Error subscribing to User: \(#function) \(error.localizedDescription) \(error)")
+                completion(false, error)
+            }
+            let success = subscription != nil
+            completion(success, error)
+        }
+    }
+    
+    
+    func checkSubscriptionTo(postsForUser user: User, completion: @escaping ((_ subscribed: Bool) -> Void) = { _ in }) {
+        
+        guard !user.hasCheckedFollowStatus else { completion(user.isFollowing); return }
+        
+        guard let subscriptionID = user.cloudKitRecordID?.recordName else {
+            user.isFollowing = false
+            completion(false)
+            return
+        }
+        
+        cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
+            if let error = error,
+                let ckError = error as? CKError,
+                ckError.code != .unknownItem {
+                print("Error checking comment subscription for \(user): \(error)")
+                return
+            }
+            
+            user.hasCheckedFollowStatus = true
+            let subscribed = subscription != nil
+            user.isFollowing = subscribed
+            completion(subscribed)
+        }
+    }
+    
+    func addSubscriptionTo(postsForUser user: User,
+                           alertBody: String?,
+                           completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
+        
+        guard let recordID = user.cloudKitRecordID else { fatalError("Unable to create CloudKit reference for subscription.") }
+        
+        let predicate = NSPredicate(format: "user == %@", argumentArray: [recordID])
+        
+        user.isFollowing = true // Set this back to false later if subscribing fails
+        
+        cloudKitManager.subscribe(User.recordTypeKey, predicate: predicate, subscriptionID: recordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: ["username", "owner"], options: .firesOnRecordCreation) { (subscription, error) in
+            
+            let success = subscription != nil
+            user.isFollowing = success
+            completion(success, error)
+        }
+    }
+    
+    func removeSubscriptionTo(postsForUser user: User,
+                              completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
+        
+        guard let subscriptionID = user.cloudKitRecordID?.recordName else {
+            completion(true, nil)
+            return
+        }
+        
+        user.isFollowing = false // Set this back to true later if subscribing fails
+        
+        cloudKitManager.unsubscribe(subscriptionID) { (subscriptionID, error) in
+            let success = subscriptionID != nil && error == nil
+            user.isFollowing = !success
+            completion(success, error)
+        }
+    }
+    
+    func toggleSubscriptionTo(postsForUser user: User,
+                              completion: @escaping ((_ success: Bool, _ isSubscribed: Bool, _ error: Error?) -> Void) = { _,_,_ in }) {
+        
+        guard let subscriptionID = user.cloudKitRecordID?.recordName else {
+            completion(false, false, nil)
+            return
+        }
+        
+        cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
+            
+            if subscription != nil {
+                self.removeSubscriptionTo(postsForUser: user) { (success, error) in
+                    completion(success, false, error)
+                }
+            } else {
+                self.addSubscriptionTo(postsForUser: user, alertBody: "Someone commented on a post you follow! 👍") { (success, error) in
+                    completion(success, true, error)
+                }
+            }
+        }
+    }
+    
 }
 
 

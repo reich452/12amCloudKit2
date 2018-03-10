@@ -35,6 +35,9 @@ class User {
     var country: String? = nil
     let appleUserRef: CKReference
     
+    @objc dynamic var isFollowing = false
+    var hasCheckedFollowStatus = false
+    
     
     var photo: UIImage? {
         guard let photoData = profileImageData else { return nil }

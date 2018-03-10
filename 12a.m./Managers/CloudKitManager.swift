@@ -329,6 +329,57 @@ class CloudKitManager {
             }
         })
     }
+    
+    // MARK: - Subscriptions
+    
+    func subscribe(_ type: String,
+                   predicate: NSPredicate,
+                   subscriptionID: String,
+                   contentAvailable: Bool,
+                   alertBody: String? = nil,
+                   desiredKeys: [String]? = nil,
+                   options: CKQuerySubscriptionOptions,
+                   completion: ((_ subscription: CKSubscription?, _ error: Error?) -> Void)?) {
+        
+        let subscription = CKQuerySubscription(recordType: type, predicate: predicate, subscriptionID: subscriptionID, options: options)
+        
+        let notificationInfo = CKNotificationInfo()
+        notificationInfo.alertBody = alertBody
+        notificationInfo.shouldSendContentAvailable = contentAvailable
+        notificationInfo.desiredKeys = desiredKeys
+        
+        subscription.notificationInfo = notificationInfo
+        
+        publicDatabase.save(subscription, completionHandler: { (subscription, error) in
+            
+            completion?(subscription, error)
+        })
+    }
+    
+    func unsubscribe(_ subscriptionID: String, completion: ((_ subscriptionID: String?, _ error: Error?) -> Void)?) {
+        
+        publicDatabase.delete(withSubscriptionID: subscriptionID) { (subscriptionID, error) in
+            
+            completion?(subscriptionID, error)
+        }
+    }
+    
+    func fetchSubscriptions(_ completion: ((_ subscriptions: [CKSubscription]?, _ error: Error?) -> Void)?) {
+        
+        publicDatabase.fetchAllSubscriptions { (subscriptions, error) in
+            
+            completion?(subscriptions, error)
+        }
+    }
+    
+    func fetchSubscription(_ subscriptionID: String, completion: ((_ subscription: CKSubscription?, _ error: Error?) -> Void)?) {
+        
+        
+        publicDatabase.fetch(withSubscriptionID: subscriptionID) { (subscription, error) in
+            
+            completion?(subscription, error)
+        }
+    }
 }
 
 
