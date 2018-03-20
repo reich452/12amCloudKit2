@@ -33,11 +33,11 @@ class UserController {
         checkUsersCloudKitAvailablility()
     }
     
-    func fetchCurrentUser(completion: @escaping ((User?) -> Void) = {_ in }) {
+    func fetchCurrentUser(completion: @escaping ((User?, _ success: Bool) -> Void) = {_,_  in }) {
         
         CKContainer.default().fetchUserRecordID { (recordID, error) in
             if let error = error { print("Error fetching userID: \(#function) \(error.localizedDescription) & \(error)")
-                completion(nil)
+                completion(nil, false)
                 return
             }
             guard let recordID = recordID else { return }
@@ -47,8 +47,10 @@ class UserController {
             
             self.cloudKitManager.publicDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
                 if let error = error {
-                    print("eerror fethcing user record \(error) & \(error.localizedDescription) \(#function)")
-                    completion(nil); return
+                    print("error fethcing user record \(error) & \(error.localizedDescription) \(#function)")
+                    let ckAccountStatus = CKAccountStatus.couldNotDetermine
+                    self.cloudKitManager.handleCloudKitUnavailable(ckAccountStatus, error: error)
+                    completion(nil, false); return
                 }
                 guard let records = records else {
                     
@@ -59,8 +61,9 @@ class UserController {
                 let user = users.first
                 print("Fetched loged in user \(user?.username ?? "can't fetch user" )")
                 // Don't forget to set current user 
+          
                 self.currentUser = user
-                completion(user)
+                completion(user, true)
             })
         }
     }
