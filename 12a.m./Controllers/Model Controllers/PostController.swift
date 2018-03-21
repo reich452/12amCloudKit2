@@ -8,6 +8,7 @@
 
 import UIKit
 import CloudKit
+import UserNotifications
 
 extension PostController {
     static let PostChangeNotified = Notification.Name("PostChangeNotified")
@@ -249,6 +250,7 @@ class PostController {
                 print("Error subscribing to User: \(#function) \(error.localizedDescription) \(error)")
                 completion(false, error)
             }
+            
             let success = subscription != nil
             completion(success, error)
         }
@@ -295,11 +297,21 @@ class PostController {
             if let error = error {
                 print("Error adding sbuscription: \(#function) \(error.localizedDescription) \(error)")
                 completion(false, error); return 
+            } else {
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (success, error) in
+                    if let error = error {
+                        NSLog("Error requesting authorization for notifications: \(error)")
+                        return
+                    }
+                }
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
             }
             
             let success = subscription != nil
             user.isFollowing = success
-            completion(success, error)
+            completion(success, nil)
         }
     }
     
