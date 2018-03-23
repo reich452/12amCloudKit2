@@ -94,6 +94,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
             } else {
                 reloadRow()
                 controller.addSubscriptionTo(postsForUser: user, alertBody: "Someone commented on your post! 👍")
+
                 reloadRow()
             }
         }

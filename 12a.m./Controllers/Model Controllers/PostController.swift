@@ -29,7 +29,7 @@ class PostController {
             DispatchQueue.main.async {
                 let nc = NotificationCenter.default
                 nc.post(name: PostController.PostChangeNotified, object: self)
-//                nc.post(name: PostController.PostCommentsChangedNotification, object: self)
+                //                nc.post(name: PostController.PostCommentsChangedNotification, object: self)
             }
         }
     }
@@ -112,18 +112,18 @@ class PostController {
         }
     }
     
-   func addComment(to post: Post, commentText: String, completion: @escaping () -> Void)  {
-    
+    func addComment(to post: Post, commentText: String, completion: @escaping () -> Void)  {
+        
         guard let cloudKitRef = post.cloudKitReference else { return  }
         
         guard let currentUser = UserController.shared.currentUser,
-        let userRecordID = currentUser.cloudKitRecordID else { return }
+            let userRecordID = currentUser.cloudKitRecordID else { return }
         let ckReference = CKReference(recordID: userRecordID, action: .none)
         
         let comment = Comment(text: commentText, post: post, postReference: cloudKitRef, ownerReference: ckReference)
         comment.owner = currentUser // Aaron is the man
         post.comments.append(comment)
-    
+        
         
         cloudKitManager.saveRecord(CKRecord(comment)) { (record, error) in
             if let error = error {
@@ -140,6 +140,7 @@ class PostController {
     
     func fetchNewRecors(ofType type: String, completion: @escaping (() -> Void) = { }) {
         
+       
         var referencesToExClude = [CKReference]()
         
         var predicate: NSPredicate?
@@ -207,7 +208,7 @@ class PostController {
             }
         }
     }
-
+    
     func fetchAllPosts(completion: @escaping (() -> Void)) {
         self.fetchNewRecors(ofType: Post.recordTypeKey) {
             completion()
@@ -287,26 +288,18 @@ class PostController {
                            completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
         
         guard let recordID = user.cloudKitRecordID else { fatalError("Unable to create CloudKit reference for subscription.") }
-      
-        let predicate = NSPredicate(format: "username ==%@", user.username)
+        
+//        let predicate = NSPredicate(format: "username == %@", user.username)
+        
+        let predicate = NSPredicate(format: "ownerRef == %@", argumentArray: [recordID])
         
         user.isFollowing = true // Set this back to false later if subscribing fails
         
-        cloudKitManager.subscribe(User.recordTypeKey, predicate: predicate, subscriptionID: recordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: ["username"], options: .firesOnRecordCreation) { (subscription, error) in
+        cloudKitManager.subscribe(Post.recordTypeKey, predicate: predicate, subscriptionID: recordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: ["ownerRef"], options: .firesOnRecordCreation) { (subscription, error) in
             
             if let error = error {
                 print("Error adding sbuscription: \(#function) \(error.localizedDescription) \(error)")
                 completion(false, error); return 
-            } else {
-                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (success, error) in
-                    if let error = error {
-                        NSLog("Error requesting authorization for notifications: \(error)")
-                        return
-                    }
-                }
-                DispatchQueue.main.async {
-                    UIApplication.shared.registerForRemoteNotifications()
-                }
             }
             
             let success = subscription != nil
