@@ -323,6 +323,7 @@ class PostController {
             user.isFollowing = !success
             completion(success, error)
         }
+        
     }
     
     func toggleSubscriptionTo(postsForUser user: User,
