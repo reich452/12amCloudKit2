@@ -15,8 +15,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     
     @IBOutlet weak var openLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var amLabel: UILabel!
-    @IBOutlet weak var openImageView: UIImageView!
+    @IBOutlet weak var topSpacingView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +47,6 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         Timer.every(1.second) {
             DispatchQueue.main.async { [weak self] in
                 self?.timeLabel.text = Date().timeTillString
-                self?.timeLabel.textColor = UIColor.digitalBlue
             }
         }
     }
@@ -93,7 +91,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
                 }
             } else {
                 reloadRow()
-                controller.addSubscriptionTo(postsForUser: user, alertBody: "Someone commented on your post! 👍")
+                controller.addSubscriptionTo(postsForUser: user, alertBody: "Someone commented on your post!")
 
                 reloadRow()
             }
@@ -252,23 +250,13 @@ extension FeedTableViewController: UITableViewDataSourcePrefetching {
 extension FeedTableViewController {
     
     func setUpAppearance() {
-        
-        let backgorundImage =  #imageLiteral(resourceName: "12AMClock")
-        let imageView = UIImageView(image: backgorundImage)
-        imageView.contentMode = .scaleAspectFill
-        self.tableView.backgroundView = imageView
-        let blurEffect = UIBlurEffect(style: .light)
-        let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.frame = imageView.bounds
-        imageView.addSubview(blurView)
-        imageView.clipsToBounds = true
-        
+     
         if Date().isInMidnightHour {
             isMidnight = true
-            self.openImageView.image = #imageLiteral(resourceName: "openSign")
+            self.openLabel.text = "Now Open"
         } else  {
             isMidnight = false
-            self.openImageView.image = #imageLiteral(resourceName: "openInSign")
+            self.openLabel.text = "Open In"
         }
     }
 }
