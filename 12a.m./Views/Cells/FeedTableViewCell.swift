@@ -124,7 +124,7 @@ extension UIView {
         while parentResponder != nil {
             parentResponder = parentResponder!.next
             if parentResponder is CommentTableViewController {
-                return parentResponder as! CommentTableViewController!
+                return parentResponder as! CommentTableViewController?
             }
         }
         return nil
