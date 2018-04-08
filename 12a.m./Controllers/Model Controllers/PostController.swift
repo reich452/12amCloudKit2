@@ -45,11 +45,8 @@ class PostController {
         return self.posts.sorted(by: {$0.timestamp > $1.timestamp } )
     }
     
-    var sortedPosts: [Post] {
-        
-        return self.posts.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending })
-    }
     
+
     var sortedUserPosts: [Post] {
         guard let ownerPosts = comment?.owner?.posts else { return [] }
         return ownerPosts.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending })
@@ -65,9 +62,9 @@ class PostController {
     private func recordsOf(type: String) -> [CloudKitSyncable] {
         switch type {
         case "Post":
-            return posts.flatMap { $0 as? CloudKitSyncable }
+            return posts.compactMap { $0 as? CloudKitSyncable }
         case "Comment":
-            return comments.flatMap { ($0 as? CloudKitSyncable) }
+            return comments.compactMap { ($0 as? CloudKitSyncable) }
         default:
             return []
         }
@@ -156,7 +153,7 @@ class PostController {
             predicate = NSPredicate(format: "NOT(ownerReference IN %@)", blockUserRefs)
         }
         
-        referencesToExClude = self.syncedRecors(ofType: type).flatMap { $0.cloudKitReference }
+        referencesToExClude = self.syncedRecors(ofType: type).compactMap { $0.cloudKitReference }
         
         
         guard let predicate2 = predicate else { return }
@@ -168,11 +165,11 @@ class PostController {
             guard let records = records else { completion(); return }
             switch type {
             case User.recordTypeKey:
-                let users = records.flatMap { User(cloudKitRecord: $0) }
+                let users = records.compactMap { User(cloudKitRecord: $0) }
                 UserController.shared.users = users
                 completion()
             case Post.recordTypeKey:
-                let posts = records.flatMap { Post(ckRecord: $0) }
+                let posts = records.compactMap { Post(ckRecord: $0) }
                 self.posts = posts
                 // Helps make the user have a stronger relationship with post
                 for post in (self.posts) {
@@ -185,7 +182,7 @@ class PostController {
                 }
                 completion()
             case Comment.recordTypeKey:
-                let comments = records.flatMap { Comment(ckRecord: $0) }
+                let comments = records.compactMap { Comment(ckRecord: $0) }
                 let dispatchGroup = DispatchGroup()
                 for comment in comments {
                     dispatchGroup.enter()
