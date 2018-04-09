@@ -87,6 +87,22 @@ class User {
         return fileURL
     }
 }
+extension User: Equatable {
+    static func ==(lhs: User, rhs: User) -> Bool {
+        if lhs.username != rhs.username { return false }
+        if lhs.email != rhs.email { return false }
+        if lhs.profileImageData != rhs.profileImageData { return false }
+        if lhs.cloudKitRecordID != rhs.cloudKitRecordID { return false }
+        if lhs.blockUserRefs != rhs.blockUserRefs { return false }
+        if lhs.blockUsersArray != rhs.blockUsersArray { return false }
+        if lhs.posts != rhs.posts { return false }
+        if lhs.city !=  rhs.city { return false }
+        if lhs.state != rhs.state { return false }
+        if lhs.country != rhs.country { return false }
+        if lhs.appleUserRef != rhs.appleUserRef { return false }
+        return true
+    }
+}
 
 extension CKRecord {
     convenience init(user: User) {
@@ -103,6 +119,7 @@ extension CKRecord {
         self.setValue(user.country, forKey: user.countryKey)
     }
 }
+
 
 
 

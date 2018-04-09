@@ -10,7 +10,7 @@ import Foundation
 import CloudKit
 
 class Comment {
-    
+
     static let recordTypeKey = "Comment"
     fileprivate let textKey = "text"
     fileprivate let timestampKey = "timestamp"
@@ -47,6 +47,20 @@ class Comment {
         self.post = nil
         self.ckRecordID = ckRecord.recordID
     }
+}
+
+extension Comment: Equatable {
+    static func == (lhs: Comment, rhs: Comment) -> Bool {
+        if lhs.text != rhs.text { return false }
+        if lhs.timestamp != rhs.timestamp { return false }
+        if lhs.post != rhs.post { return false }
+        if lhs.postReference != rhs.postReference { return false }
+        if lhs.owner != rhs.owner { return false }
+        if lhs.ownerReference != rhs.ownerReference { return false }
+        if lhs.ckRecordID != rhs.ownerReference { return false }
+        return true
+    }
+    
 }
 
 extension CKRecord {

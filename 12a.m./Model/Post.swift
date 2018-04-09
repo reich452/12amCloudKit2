@@ -10,6 +10,8 @@ import CloudKit
 import UIKit
 
 class Post {
+
+    
     
     static let recordTypeKey = "Post"
     fileprivate let photoDataKey = "photoData"
@@ -74,6 +76,19 @@ class Post {
             print("Error with post photo data ")
         }
         return fileURL
+    }
+}
+
+extension Post: Equatable {
+    static func ==(lhs: Post, rhs: Post) -> Bool {
+        if lhs.photoData != rhs.photoData { return false }
+        if lhs.timestamp != rhs.timestamp { return false }
+        if lhs.text != rhs.text { return false }
+        if lhs.comments != rhs.comments { return false }
+        if lhs.owner != rhs.owner { return false }
+        if lhs.ownerReference != rhs.ownerReference { return false }
+        if lhs.ckRecordID != rhs.ckRecordID { return false }
+        return true
     }
 }
 
