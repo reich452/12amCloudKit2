@@ -19,4 +19,5 @@ struct Constants {
     static let toCommentFromFeedCollection = "fromFeedCollectionProfileToPostDetail"
     static let toSubmittReportVC = "toSubmittReportVC"
     static let toReportTVC = "toReportTVC"
+    static let postOwnerCell = "ownersPostCell"
 }

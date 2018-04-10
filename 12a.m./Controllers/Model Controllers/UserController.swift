@@ -57,10 +57,10 @@ class UserController {
                     // Send a different notification that will tell the launchscreen to present/segue to the login/signup screen.
                     
                     return }
-                let users = records.flatMap { User(cloudKitRecord: $0)}
+                let users = records.compactMap { User(cloudKitRecord: $0)}
                 let user = users.first
                 print("Fetched loged in user \(user?.username ?? "can't fetch user" )")
-                // Don't forget to set current user 
+                // Don't forget to set current user
           
                 self.currentUser = user
                 completion(user, true)

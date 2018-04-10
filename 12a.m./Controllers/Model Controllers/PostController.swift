@@ -23,6 +23,8 @@ class PostController {
     
     var comment: Comment?
     var post: Post?
+    var comments = [Comment]()
+    var isSyncing: Bool = false
     
     var posts = [Post]() {
         didSet {
@@ -33,9 +35,6 @@ class PostController {
             }
         }
     }
-    var comments = [Comment]()
-    
-    var isSyncing: Bool = false
     
     // MARK: - Delegates
     weak var delegate: CommentUpdatedToDelegate?
@@ -45,17 +44,42 @@ class PostController {
         return self.posts.sorted(by: {$0.timestamp > $1.timestamp } )
     }
     
-    
-
     var sortedUserPosts: [Post] {
         guard let ownerPosts = comment?.owner?.posts else { return [] }
         return ownerPosts.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending })
     }
     
-    func postIndex(indexPath: IndexPath) -> Post {
-        return posts[indexPath.row]
+
+    /// Returns the count as a String
+    func ownerPostCount() -> String {
+        guard let currentUser = UserController.shared.currentUser else { return "No Posts" }
+        let postOwnerRef = posts.compactMap{$0.owner?.appleUserRef}
+        var postCount = 0
+
+        for currentUserRef in postOwnerRef {
+            if currentUserRef == currentUser.appleUserRef {
+                postCount += 1
+            }
+        }
+        return "\(postCount)"
     }
     
+    /// Retruns the count as Int
+    func ownerPostCounter() -> Int {
+        guard let currentUser = UserController.shared.currentUser else { return 0 }
+        let postOwnerRef = posts.compactMap{$0.owner?.appleUserRef}
+        var postCount = 0
+        
+        for currentUserRef in postOwnerRef {
+            if currentUserRef == currentUser.appleUserRef {
+                postCount += 1
+            }
+        }
+        return postCount
+    }
+
+    
+  
     //MARK: -Synced functions that will help grab records synced in CloudKit. Saves on data and time.
     
     // Check for specified post and comments
