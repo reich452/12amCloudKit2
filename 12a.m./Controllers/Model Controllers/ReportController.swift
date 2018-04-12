@@ -23,7 +23,7 @@ class ReportController {
     func submitReport(with title: String, and description: String?, timestamp: String = Date().description(with: .current), completion: @escaping ReportCompletionHandeler) {
         guard let userRecordID = UserController.shared.currentUser?.cloudKitRecordID else { return }
         
-        let reference = CKReference(recordID: userRecordID, action: .none)
+        let reference = CKReference(recordID: userRecordID, action: .deleteSelf)
         
         let report = Report(title: title, description: description, reportReference: reference, timestamp: timestamp)
         
@@ -62,7 +62,7 @@ class ReportController {
                     }
                     guard let ckRecords = ckRecords else {completion(nil, .cannotFetchCKRecord); return }
                     
-                    let reports = ckRecords.flatMap{Report(cloudKitRecord: $0)}
+                    let reports = ckRecords.compactMap{Report(cloudKitRecord: $0)}
                     
                     self.reports = reports
                     completion(reports, nil)

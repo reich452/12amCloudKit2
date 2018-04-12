@@ -34,7 +34,7 @@ class Post {
     
     var cloudKitReference: CKReference? {
         guard let cloudKitRecordID = self.ckRecordID else { return nil }
-        return CKReference(recordID: cloudKitRecordID, action: .none)
+        return CKReference(recordID: cloudKitRecordID, action: .deleteSelf)
     }
     
     var photo: UIImage? {

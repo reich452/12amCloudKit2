@@ -9,8 +9,8 @@
 import UIKit
 
 
-class ProfileDetailCollectionViewCell: UICollectionViewCell, UITableViewDelegate {
+class ProfileDetailCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var userPostedImageView: UIImageView!
+    @IBOutlet weak var userPostImageView: UIImageView!
     
 }

@@ -20,6 +20,7 @@ class ProfileDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.setUpView()
@@ -82,7 +83,7 @@ extension ProfileDetailTableViewController: UICollectionViewDelegate, UICollecti
         let ownerPosts = comment?.owner?.posts
         guard let sortedPosts = ownerPosts?.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending }) else { return UICollectionViewCell() }
         let sortedIndexPath = sortedPosts[indexPath.row]
-        cell.userPostedImageView.image = sortedIndexPath.photo
+        cell.userPostImageView.image = sortedIndexPath.photo
        
         return cell 
     }

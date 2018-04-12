@@ -1051,7 +1051,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3M-Ne-DEX" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5383.1999999999998" y="-189.3553223388306"/>
+            <point key="canvasLocation" x="-5340" y="-198"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="cRJ-TY-N2f">
@@ -1246,7 +1246,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ownersPostCell" id="iaV-ze-7yT" customClass="ProfileDetail2CollectionViewCell" customModule="_2a_m_" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ownersPostCell" id="iaV-ze-7yT" customClass="ProfileDetailCollectionViewCell" customModule="_2a_m_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1265,7 +1265,7 @@
                                             <constraint firstItem="Izx-k0-vuz" firstAttribute="top" secondItem="iaV-ze-7yT" secondAttribute="top" id="eGc-wX-NTf"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="userPostImageView" destination="Izx-k0-vuz" id="JMn-7U-cB0"/>
+                                            <outlet property="userPostImageView" destination="Izx-k0-vuz" id="AdA-jC-9ew"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -2115,6 +2115,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="QVB-tP-9BL"/>
         <segue reference="1AY-qs-bfa"/>
-        <segue reference="FDI-f7-h1B"/>
+        <segue reference="Y3F-Kl-wd9"/>
     </inferredMetricsTieBreakers>
 </document>

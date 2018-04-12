@@ -211,11 +211,13 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
                 detailTVC.post = post
             }
         } else if segue.identifier == "feedToProfileDetail" {
-            guard let profileDetailTVC = segue.destination as? ProfileDetail2TableViewController else { return }
+            guard let profileDetailTVC = segue.destination as? ProfileDetailViewController else { return }
             if let selectedCell = sender as? FeedTableViewCell {
                 guard let indexPath = tableView.indexPath(for: selectedCell) else { return }
                 let post = PostController.shared.filteredPosts[(indexPath.row)]
                 profileDetailTVC.post = post
+                let curretnUser = UserController.shared.currentUser
+                profileDetailTVC.user = curretnUser
             }
         }
     }

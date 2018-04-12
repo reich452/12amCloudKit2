@@ -25,6 +25,7 @@ class ProfileViewController: ShiftableViewController {
     private var currentUser: User? {
         return UserController.shared.currentUser
     }
+    private var postOwner: Post?
     private var imagePickerWasDismissed = false
     private let imagePicker = UIImagePickerController()
     private let locationManager = CLLocationManager()
@@ -41,7 +42,6 @@ class ProfileViewController: ShiftableViewController {
         setUpAppearance()
         updateViews()
         updateDiscription()
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -49,37 +49,8 @@ class PostController {
         return ownerPosts.sorted(by: { $0.timestamp.compare($1.timestamp) == .orderedDescending })
     }
     
-
-    /// Returns the count as a String
-    func ownerPostCount() -> String {
-        guard let currentUser = UserController.shared.currentUser else { return "No Posts" }
-        let postOwnerRef = posts.compactMap{$0.owner?.appleUserRef}
-        var postCount = 0
-
-        for currentUserRef in postOwnerRef {
-            if currentUserRef == currentUser.appleUserRef {
-                postCount += 1
-            }
-        }
-        return "\(postCount)"
-    }
     
-    /// Retruns the count as Int
-    func ownerPostCounter() -> Int {
-        guard let currentUser = UserController.shared.currentUser else { return 0 }
-        let postOwnerRef = posts.compactMap{$0.owner?.appleUserRef}
-        var postCount = 0
-        
-        for currentUserRef in postOwnerRef {
-            if currentUserRef == currentUser.appleUserRef {
-                postCount += 1
-            }
-        }
-        return postCount
-    }
-
     
-  
     //MARK: -Synced functions that will help grab records synced in CloudKit. Saves on data and time.
     
     // Check for specified post and comments
@@ -112,7 +83,7 @@ class PostController {
             let currentUserRecordID = currentUser.cloudKitRecordID else { print("No current user \(username ?? "nope")"); return }
         
         
-        let ownerReference = CKReference(recordID: currentUserRecordID, action: .none)
+        let ownerReference = CKReference(recordID: currentUserRecordID, action: .deleteSelf)
         let post = Post(photoData: data, text: text, owner: currentUser, ownerReference: ownerReference)
         
         // Adds post to first tvccell
@@ -139,7 +110,7 @@ class PostController {
         
         guard let currentUser = UserController.shared.currentUser,
             let userRecordID = currentUser.cloudKitRecordID else { return }
-        let ckReference = CKReference(recordID: userRecordID, action: .none)
+        let ckReference = CKReference(recordID: userRecordID, action: .deleteSelf)
         
         let comment = Comment(text: commentText, post: post, postReference: cloudKitRef, ownerReference: ckReference)
         comment.owner = currentUser // Aaron is the man
@@ -161,7 +132,7 @@ class PostController {
     
     func fetchNewRecors(ofType type: String, completion: @escaping (() -> Void) = { }) {
         
-       
+        
         var referencesToExClude = [CKReference]()
         
         var predicate: NSPredicate?
@@ -199,9 +170,10 @@ class PostController {
                 for post in (self.posts) {
                     let users = UserController.shared.users
                     guard let postOwner = users.filter({$0.cloudKitRecordID == post.ownerReference.recordID}).first else { break }
-                    
                     post.owner = postOwner
                     post.owner?.posts = posts
+                    let ownerPosts = postOwner.posts?.filter{$0.ownerReference == post.ownerReference}
+                    post.owner?.posts = ownerPosts
                     
                 }
                 completion()
@@ -260,6 +232,68 @@ class PostController {
         }
     }
     
+    // MARK: - Owners Posts
+    
+    /// Returns the count as a String
+    func ownerPostCount() -> String {
+        guard let currentUser = UserController.shared.currentUser else { return "No Posts" }
+        let postOwnerRef = posts.compactMap{$0.owner?.appleUserRef}
+        var postCount = 0
+        
+        for currentUserRef in postOwnerRef {
+            if currentUserRef == currentUser.appleUserRef {
+                postCount += 1
+            }
+        }
+        return "\(postCount)"
+    }
+    
+    /// Retruns the count as Int
+    func ownerPostCounter() -> Int {
+        guard let currentUser = UserController.shared.currentUser else { return 0 }
+        let postOwnerRef = posts.compactMap{$0.owner?.appleUserRef}
+        var postCount = 0
+        
+        for currentUserRef in postOwnerRef {
+            if currentUserRef == currentUser.appleUserRef {
+                postCount += 1
+            }
+        }
+        return postCount
+    }
+    
+    func currentUsersPosts() -> [Post]? {
+        let allPosts = self.posts
+        var userPostsArray: [Post] = []
+        for post in allPosts {
+            
+            guard let ownersPosts = post.owner?.posts else { continue }
+               if let currentUser = UserController.shared.currentUser {
+                guard let currentUserID = currentUser.cloudKitRecordID else { continue }
+//                let ref = CKReference(recordID: currentUserID, action: .deleteSelf)
+                let postOwnerArray = ownersPosts.filter{$0.ownerReference.recordID == currentUserID}
+                userPostsArray = postOwnerArray
+                self.post?.owner?.posts = postOwnerArray
+                
+            }
+        }
+        return userPostsArray
+    }
+    
+    func selectedUsersPosts() {
+        let allPosts = self.posts
+        var selectedUserPosts: [Post] = []
+        
+        for post in allPosts {
+            guard let ownersPosts = post.owner?.posts else { continue }
+            
+
+        }
+
+    }
+        
+    
+
     // MARK: - Subscriptions
     
     func subscribeToNewUsers(completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
@@ -310,7 +344,7 @@ class PostController {
         
         guard let recordID = user.cloudKitRecordID else { fatalError("Unable to create CloudKit reference for subscription.") }
         
-//        let predicate = NSPredicate(format: "username == %@", user.username)
+        //        let predicate = NSPredicate(format: "username == %@", user.username)
         
         let predicate = NSPredicate(format: "ownerRef == %@", argumentArray: [recordID])
         

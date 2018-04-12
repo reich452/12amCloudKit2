@@ -41,7 +41,7 @@ class UserController {
                 return
             }
             guard let recordID = recordID else { return }
-            let appleUserRef = CKReference(recordID: recordID, action: .none)
+            let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
             let predicate = NSPredicate(format: "appleUserRef == %@", appleUserRef)
             let query = CKQuery(recordType: "User", predicate: predicate)
             

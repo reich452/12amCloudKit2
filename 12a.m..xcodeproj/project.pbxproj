@@ -40,6 +40,7 @@
 		016CAAA62000159C008420AC /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016CAAA52000159B008420AC /* LaunchViewController.swift */; };
 		016CAAAC20019EA0008420AC /* ProfileCommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016CAAAB20019EA0008420AC /* ProfileCommentTableViewController.swift */; };
 		016CAAAE20019F1F008420AC /* ProfileCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016CAAAD20019F1F008420AC /* ProfileCommentTableViewCell.swift */; };
+		017D98652079936A0064E599 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017D98642079936A0064E599 /* ProfileDetailViewController.swift */; };
 		0181AA571FCC814500166E21 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0181AA561FCC814500166E21 /* AboutViewController.swift */; };
 		0181AA591FCC8A9400166E21 /* Terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 0181AA581FCC8A9400166E21 /* Terms.html */; };
 		018D7A6F1FA2B63200A6C81F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018D7A6E1FA2B63200A6C81F /* CloudKit.framework */; };
@@ -105,6 +106,7 @@
 		016CAAA52000159B008420AC /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		016CAAAB20019EA0008420AC /* ProfileCommentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCommentTableViewController.swift; sourceTree = "<group>"; };
 		016CAAAD20019F1F008420AC /* ProfileCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCommentTableViewCell.swift; sourceTree = "<group>"; };
+		017D98642079936A0064E599 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		0181AA561FCC814500166E21 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		0181AA581FCC8A9400166E21 /* Terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Terms.html; sourceTree = "<group>"; };
 		018D7A6C1FA2B63000A6C81F /* 12a.m..entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 12a.m..entitlements; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				01367B9E1FAE6A8100F51F89 /* LogInViewController.swift */,
 				01BFDEC81FC372D600D94B87 /* ProfileViewController.swift */,
 				015221CF1FD9F81B00E9C5DB /* ProfileDetailTableViewController.swift */,
+				017D98642079936A0064E599 /* ProfileDetailViewController.swift */,
 				01D7B7921FE0548100DCD159 /* ProfileDetail2TableViewController.swift */,
 				01367BD41FB10F5500F51F89 /* FeedTableViewController.swift */,
 				01367BD91FB1142E00F51F89 /* CommentTableViewController.swift */,
@@ -526,6 +529,7 @@
 				01367C4A1FB3869C00F51F89 /* TimerExtension.swift in Sources */,
 				013E32012021764F004B725E /* ThridPageViewController.swift in Sources */,
 				01EDC8D2201CEA2C0085D2BD /* EulaAgreementViewController.swift in Sources */,
+				017D98652079936A0064E599 /* ProfileDetailViewController.swift in Sources */,
 				01EDC8E2201E59030085D2BD /* StoryboardInitializable.swift in Sources */,
 				01367BDA1FB1142E00F51F89 /* CommentTableViewController.swift in Sources */,
 				01FE0D0F1FA2BABC001C55EE /* User.swift in Sources */,
