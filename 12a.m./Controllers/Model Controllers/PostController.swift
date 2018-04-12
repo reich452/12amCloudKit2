@@ -248,51 +248,6 @@ class PostController {
         return "\(postCount)"
     }
     
-    /// Retruns the count as Int
-    func ownerPostCounter() -> Int {
-        guard let currentUser = UserController.shared.currentUser else { return 0 }
-        let postOwnerRef = posts.compactMap{$0.owner?.appleUserRef}
-        var postCount = 0
-        
-        for currentUserRef in postOwnerRef {
-            if currentUserRef == currentUser.appleUserRef {
-                postCount += 1
-            }
-        }
-        return postCount
-    }
-    
-    func currentUsersPosts() -> [Post]? {
-        let allPosts = self.posts
-        var userPostsArray: [Post] = []
-        for post in allPosts {
-            
-            guard let ownersPosts = post.owner?.posts else { continue }
-               if let currentUser = UserController.shared.currentUser {
-                guard let currentUserID = currentUser.cloudKitRecordID else { continue }
-//                let ref = CKReference(recordID: currentUserID, action: .deleteSelf)
-                let postOwnerArray = ownersPosts.filter{$0.ownerReference.recordID == currentUserID}
-                userPostsArray = postOwnerArray
-                self.post?.owner?.posts = postOwnerArray
-                
-            }
-        }
-        return userPostsArray
-    }
-    
-    func selectedUsersPosts() {
-        let allPosts = self.posts
-        var selectedUserPosts: [Post] = []
-        
-        for post in allPosts {
-            guard let ownersPosts = post.owner?.posts else { continue }
-            
-
-        }
-
-    }
-        
-    
 
     // MARK: - Subscriptions
     

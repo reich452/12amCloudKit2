@@ -24,7 +24,6 @@ class ProfileDetailViewController: UIViewController {
         profileCollectionView.dataSource = self
   
         setUpView()
-        setUpViewFromFeed()
         setUpAppearance()
        
     }
@@ -59,10 +58,6 @@ class ProfileDetailViewController: UIViewController {
         }
     }
     
-    func setUpViewFromFeed() {
-  
-        _ = PostController.shared.ownerPostCount()
-    }
     
     private func setUpAppearance() {
         self.profileImageView.layer.cornerRadius = self.profileImageView.layer.frame.height / 2
