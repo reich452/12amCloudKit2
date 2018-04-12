@@ -119,13 +119,7 @@ class ProfileViewController: ShiftableViewController {
     }
     
     private func updateDiscription() {
-        // does it look better with or without this ??
-//        discripmitionLabel.isHidden = true
-//        let posts = PostController.shared.posts.map {$0.ownerReference }
-//        let usersPosts = UserController.shared.currentUser?.posts?.count
-//
-//        guard let currentUser = UserController.shared.currentUser else { return }
-//
+
         guard let postOwner = currentUser else { return }
         let ownersPostCount = PostController.shared.posts.filter{$0.owner?.username == postOwner.username}
         
