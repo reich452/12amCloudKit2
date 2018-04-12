@@ -37,6 +37,8 @@ class User {
     
     @objc dynamic var isFollowing = false
     var hasCheckedFollowStatus = false
+    @objc dynamic var isFavorite = false
+    var hasCheckedFavoriteStatus = false
     
     
     var photo: UIImage? {

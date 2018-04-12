@@ -178,10 +178,6 @@ class CommentTableViewController: UITableViewController, UITextFieldDelegate, Co
                 guard let comment = self.post?.comments[indexPath.row] else { return }
                 destinationVC.comment = comment
             }
-        } else if segue.identifier == "toPostDetail2" {
-            guard let profileDstination = segue.destination as? ProfileDetail2TableViewController else { return }
-            guard let post = post else { return }
-            profileDstination.post = post
         }
     }
 }
