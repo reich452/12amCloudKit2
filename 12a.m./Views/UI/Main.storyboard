@@ -1284,6 +1284,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OeH-p0-Wlp"/>
                     </view>
+                    <navigationItem key="navigationItem" id="plr-VI-p5T">
+                        <barButtonItem key="leftBarButtonItem" image="backIcon" id="eB0-lN-3dr">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="backButtonTapped:" destination="iGW-YC-REX" id="m0m-4z-AC9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="followCountLabel" destination="AKq-Jf-uCu" id="xea-qO-dmY"/>
                         <outlet property="likeCountLabel" destination="kQ4-JF-gN9" id="Wq4-p8-9oT"/>

@@ -50,6 +50,7 @@ class ProfileDetailViewController: UIViewController {
             
         profileImageView.image =  ownerProfileImage
         usernameLabel.text = postOwner.username
+       
         likeCountLabel.text = "\(0)"
         if postOwner.posts?.count == 0 {
             shotsCountLabel.text = "No Posts Yet!"

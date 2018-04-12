@@ -149,7 +149,7 @@ class PostController {
         }
         
         referencesToExClude = self.syncedRecors(ofType: type).compactMap { $0.cloudKitReference }
-        
+        let _ = referencesToExClude.count
         
         guard let predicate2 = predicate else { return }
         cloudKitManager.fetchRecordsWithType(type, predicate: predicate2, recordFetchedBlock: nil) { (records, error) in
