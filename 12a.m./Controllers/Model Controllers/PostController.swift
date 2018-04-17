@@ -266,7 +266,7 @@ class PostController {
     }
     
     func checkLikedSubscriptionTo(postForUser user: User, completion: @escaping (_ success: Bool) -> Void) {
-        guard !user.hasCheckedFavoriteStatus else { completion(user.isFavorite); return }
+        guard !user.hasCheckedFavoriteStatus else { completion(user.isFavorite ?? false); return }
         
         guard let subscriptionID = user.cloudKitRecordID?.recordName else {
             user.isFavorite = false

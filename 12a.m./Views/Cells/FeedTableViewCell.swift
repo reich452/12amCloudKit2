@@ -45,6 +45,7 @@ class FeedTableViewCell: UITableViewCell {
     private func updateViews() {
         guard let post = post,
             let owner = post.owner,
+            let isFavorite = post.owner?.isFavorite,
             let username = post.owner?.username else { return }
         
         if profileImageView.image == nil {
@@ -58,7 +59,7 @@ class FeedTableViewCell: UITableViewCell {
             followButton.setTitle("Follow", for: .normal)
         }
         
-        if owner.isFavorite {
+        if isFavorite {
             likeButton.setImage(#imageLiteral(resourceName: "emptyHeart"), for: .normal)
         } else {
             likeButton.setImage(#imageLiteral(resourceName: "filledHeart"), for: .normal)

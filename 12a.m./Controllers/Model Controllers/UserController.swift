@@ -101,7 +101,8 @@ class UserController {
             let blockUserRefs = self.currentUser?.blockUserRefs
             
             let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
-            let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data, blockUserRefs: blockUserRefs)
+            let isFavorite: Bool = false
+            let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data, blockUserRefs: blockUserRefs, isFavorite: isFavorite)
             let userRecord = CKRecord(user: user)
             self.cloudKitManager.saveRecord(userRecord, completion: { [unowned self] (record, error) in
                 if let error = error {

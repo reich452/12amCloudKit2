@@ -22,6 +22,7 @@ class User {
     fileprivate let cityKey = "city"
     fileprivate let stateKey = "state"
     fileprivate let countryKey = "country"
+    fileprivate let isFavoriteKey = "isLiked"
     
     var username: String
     var email: String
@@ -37,7 +38,7 @@ class User {
     
     @objc dynamic var isFollowing = false
     var hasCheckedFollowStatus = false
-    @objc dynamic var isFavorite = false
+    var isFavorite: Bool? = false
     var hasCheckedFavoriteStatus = false
     
     
@@ -46,7 +47,7 @@ class User {
         return UIImage(data: photoData)
     }
     
-    init(username: String, email: String, appleUserRef: CKReference, profileImageData: Data?, blockUserRefs: [CKReference]? = [], posts: [Post] = [], city: String = String(), state: String = String(), country: String = String()) {
+    init(username: String, email: String, appleUserRef: CKReference, profileImageData: Data?, blockUserRefs: [CKReference]? = [], posts: [Post] = [], city: String = String(), state: String = String(), country: String = String(), isFavorite: Bool? = false) {
         self.username = username
         self.email = email
         self.appleUserRef = appleUserRef
@@ -56,6 +57,7 @@ class User {
         self.city = city
         self.state = state
         self.country = country
+        self.isFavorite = isFavorite
     }
     
     init?(cloudKitRecord: CKRecord) {
@@ -69,6 +71,7 @@ class User {
         self.city = cloudKitRecord[cityKey] as? String ?? nil
         self.state = cloudKitRecord[stateKey] as? String ?? nil
         self.country = cloudKitRecord[countryKey] as? String ?? nil
+        self.isFavorite = cloudKitRecord[isFavoriteKey] as? Bool ?? nil
         
         self.username = username
         self.email = email
@@ -102,6 +105,7 @@ extension User: Equatable {
         if lhs.state != rhs.state { return false }
         if lhs.country != rhs.country { return false }
         if lhs.appleUserRef != rhs.appleUserRef { return false }
+        if lhs.isFavorite != rhs.isFavorite { return false }
         return true
     }
 }
@@ -119,6 +123,7 @@ extension CKRecord {
         self.setValue(user.city, forKey: user.cityKey)
         self.setValue(user.state, forKey: user.stateKey)
         self.setValue(user.country, forKey: user.countryKey)
+        self.setValue(user.isFavorite, forKey: user.isFavoriteKey)
     }
 }
 
