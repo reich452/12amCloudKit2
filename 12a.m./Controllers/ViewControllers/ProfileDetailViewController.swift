@@ -81,8 +81,6 @@ extension ProfileDetailViewController: UICollectionViewDelegate, UICollectionVie
         return postCount ?? 0
     }
     
-
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.postOwnerCell, for: indexPath) as? ProfileDetailCollectionViewCell else { return UICollectionViewCell() }

@@ -14,6 +14,7 @@ protocol FeedTableViewCellDelegate: class {
     func didTapBlockUserButton(_ sender: FeedTableViewCell)
     func didTapReportUserButton(_ sender: FeedTableViewCell)
     func didTapFollowUserButton(_ sender: FeedTableViewCell)
+    func didTapLikeUsersPostButton(_ sender: FeedTableViewCell)
 }
 
 class FeedTableViewCell: UITableViewCell {
@@ -25,6 +26,7 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var captionTextLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
     
     // MARK: - Propoerties
     weak var delegate: FeedTableViewCellDelegate?
@@ -32,6 +34,7 @@ class FeedTableViewCell: UITableViewCell {
     weak var blockUserDelegate: FeedTableViewCellDelegate?
     weak var reportUserDelegate: FeedTableViewCellDelegate?
     weak var followUserDelegate: FeedTableViewCellDelegate?
+    weak var likeUsersPostDelegate: FeedTableViewCellDelegate?
     
     var post: Post? {
         didSet {
@@ -53,6 +56,12 @@ class FeedTableViewCell: UITableViewCell {
             followButton.setTitle("Following", for: .normal)
         } else {
             followButton.setTitle("Follow", for: .normal)
+        }
+        
+        if owner.isFavorite {
+            likeButton.setImage(#imageLiteral(resourceName: "emptyHeart"), for: .normal)
+        } else {
+            likeButton.setImage(#imageLiteral(resourceName: "filledHeart"), for: .normal)
         }
         
         self.profileImageView.contentMode = .scaleAspectFill
@@ -89,6 +98,11 @@ class FeedTableViewCell: UITableViewCell {
     @IBAction func followButtonTapped(_ sender: Any) {
         if let followUserDelegate = followUserDelegate {
             followUserDelegate.didTapFollowUserButton(self)
+        }
+    }
+    @IBAction func likeButtonTapped(_ sender: Any) {
+        if let didLikeUsersPostDelegate = likeUsersPostDelegate {
+            didLikeUsersPostDelegate.didTapLikeUsersPostButton(self)
         }
     }
     

@@ -283,6 +283,9 @@
                                                         <constraint firstAttribute="width" secondItem="ZTY-on-rTh" secondAttribute="height" multiplier="1:1" id="wZb-p5-Tqm"/>
                                                     </constraints>
                                                     <state key="normal" image="emptyHeart"/>
+                                                    <connections>
+                                                        <action selector="likeButtonTapped:" destination="8oS-kW-5pc" eventType="touchUpInside" id="XZn-as-vi9"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -345,6 +348,7 @@
                                     <outlet property="captionTextLabel" destination="KgB-Tt-gA6" id="Rp4-7h-0jB"/>
                                     <outlet property="commentButton" destination="eR0-k6-dbO" id="Sgx-ss-Jd1"/>
                                     <outlet property="followButton" destination="uiO-Fc-gV8" id="E77-ht-BVQ"/>
+                                    <outlet property="likeButton" destination="ZTY-on-rTh" id="jow-jY-eAf"/>
                                     <outlet property="postImageButton" destination="yrj-pz-fe4" id="DBU-8x-CaE"/>
                                     <outlet property="profileImageView" destination="Hfc-qA-2Su" id="arq-N0-5xf"/>
                                     <outlet property="timestampLabel" destination="xD0-Yj-4b3" id="kYF-PW-eOf"/>
