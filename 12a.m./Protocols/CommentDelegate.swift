@@ -12,3 +12,6 @@ protocol CommentUpdatedToDelegate: class {
     func commentsWereAddedTo()
 }
 
+protocol LikedPostUpdatedToDelegate: class {
+    func likedPostWereAddedTo()
+}

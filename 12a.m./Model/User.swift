@@ -23,6 +23,7 @@ class User {
     fileprivate let stateKey = "state"
     fileprivate let countryKey = "country"
     fileprivate let isFavoriteKey = "isLiked"
+    fileprivate let likedPostRefsKey = "likedPostRefs"
     
     var username: String
     var email: String
@@ -31,6 +32,7 @@ class User {
     var blockUserRefs: [CKReference]? = []
     var blockUsersArray: [User] = []
     var posts: [Post]? = []
+    var likedPostRefs: [CKReference] = []
     var city: String? = nil
     var state: String? = nil
     var country: String? = nil
@@ -39,21 +41,22 @@ class User {
     @objc dynamic var isFollowing = false
     var hasCheckedFollowStatus = false
     var isFavorite: Bool? = false
+    // TODO - Take out 
     var hasCheckedFavoriteStatus = false
-    
     
     var photo: UIImage? {
         guard let photoData = profileImageData else { return nil }
         return UIImage(data: photoData)
     }
     
-    init(username: String, email: String, appleUserRef: CKReference, profileImageData: Data?, blockUserRefs: [CKReference]? = [], posts: [Post] = [], city: String = String(), state: String = String(), country: String = String(), isFavorite: Bool? = false) {
+    init(username: String, email: String, appleUserRef: CKReference, profileImageData: Data?, blockUserRefs: [CKReference]? = [], posts: [Post] = [], likedPostRefs: [CKReference] = [], city: String = String(), state: String = String(), country: String = String(), isFavorite: Bool? = false) {
         self.username = username
         self.email = email
         self.appleUserRef = appleUserRef
         self.profileImageData = profileImageData
         self.blockUserRefs = blockUserRefs
         self.posts = posts
+        self.likedPostRefs = likedPostRefs
         self.city = city
         self.state = state
         self.country = country
@@ -72,6 +75,7 @@ class User {
         self.state = cloudKitRecord[stateKey] as? String ?? nil
         self.country = cloudKitRecord[countryKey] as? String ?? nil
         self.isFavorite = cloudKitRecord[isFavoriteKey] as? Bool ?? nil
+        self.likedPostRefs = cloudKitRecord[likedPostRefsKey] as? [CKReference] ?? []
         
         self.username = username
         self.email = email
@@ -101,6 +105,7 @@ extension User: Equatable {
         if lhs.blockUserRefs != rhs.blockUserRefs { return false }
         if lhs.blockUsersArray != rhs.blockUsersArray { return false }
         if lhs.posts != rhs.posts { return false }
+        if lhs.likedPostRefs != rhs.likedPostRefs { return false }
         if lhs.city !=  rhs.city { return false }
         if lhs.state != rhs.state { return false }
         if lhs.country != rhs.country { return false }
@@ -119,6 +124,7 @@ extension CKRecord {
         self.setValue(user.email, forKey: user.emailKey)
         self.setValue(user.appleUserRef, forKey: user.appleUserRefKey)
         self.setValue(user.blockUserRefs, forKeyPath: user.blockUserRefKey)
+        self.setValue(user.likedPostRefs, forKeyPath: user.likedPostRefsKey)
         self[user.imageKey] = CKAsset(fileURL: user.temporaryPhotoURL)
         self.setValue(user.city, forKey: user.cityKey)
         self.setValue(user.state, forKey: user.stateKey)

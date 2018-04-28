@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate {
+class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate, LikedPostUpdatedToDelegate {
     
     
     fileprivate let presentSignUpSegue =  "presentSignUp"
@@ -75,21 +75,21 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     
     func didTapFollowUserButton(_ sender: FeedTableViewCell) {
         
-       guard let (_, indexPath) = post(forTableSubview: sender) else { return }
+        guard let (_, indexPath) = post(forTableSubview: sender) else { return }
         guard let user = PostController.shared.filteredPosts[indexPath.row].owner else { return }
         
         let postController = PostController.shared
         postController.checkSubscriptionTo(postsForUser: user) { (subscribed) in
-    
+            
             let reloadRow = {
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
                 }
             }
             if subscribed {
                 reloadRow()
                 postController.removeSubscriptionTo(postsForUser: user) { (_, _) in
-                    reloadRow()
+                reloadRow()
                 }
             } else {
                 reloadRow()
@@ -101,29 +101,35 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
     }
     
     func didTapLikeUsersPostButton(_ sender: FeedTableViewCell) {
-        guard let (_, indexPath) = post(forTableSubview: sender), let user = PostController.shared.filteredPosts[indexPath.row].owner else { return }
-        
-        let postConteroller = PostController.shared
-        postConteroller.checkLikedSubscriptionTo(postForUser: user) { (liked) in
-            
+        guard let indexPath = tableView.indexPath(for: sender) else { return }
+            let post = PostController.shared.filteredPosts[indexPath.row]
+
+        let postController = PostController.shared
+        postController.checkSubscriptionFor(likedPosts: post) { (isLiked) in
             let reloadRow = {
                 DispatchQueue.main.async {
-                    
-                    self.tableView.reloadData()
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
                 }
             }
-            
-            if liked {
+            if isLiked {
+              
+                postController.removeSubscriptionTo(usersForLiked: post)
                 reloadRow()
-                postConteroller.removeSubscriptionForLiked(postsForUser: user, completion: { (_, _) in
-                    reloadRow()
-                })
+               
             } else {
-                postConteroller.addSubscriptionForLiked(postsForUser: user, alertBody: "Someone liked your post!")
+                postController.addSubscriptionToLikedPost(forPost: post, alertBody: "Someone liked your post!")
                 reloadRow()
             }
+            reloadRow()
+        }
+  
+    }
+    func likedPostWereAddedTo() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
+    
     
     private func post(forTableSubview view: UIView) -> (post: Post, indexPath: IndexPath)? {
         let point = view.convert(CGPoint.zero, to: tableView)
@@ -137,7 +143,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         let indexPath = IndexPath(row: postRow, section: 0)
         let postIndex = indexPath.row - 1
         let postOwnerRef = PostController.shared.filteredPosts[postIndex].ownerReference
-       
+        
         UserController.shared.blockUser(userToBlock: postOwnerRef) {
             print("\(UserController.shared.currentUser ??? "no current user") blocked \(postOwnerRef.recordID ??? "no recordId") record ID")
         }
@@ -158,7 +164,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
             let segueDestination = UIStoryboardSegue(identifier: Constants.toReportTVC, source: self, destination: submitReportVC)
             guard let destinationVC = segueDestination.destination as? ReportTableViewController else { return }
             destinationVC.post = post
-           
+            
             self.performSegue(withIdentifier: Constants.toReportTVC, sender: nil)
             
         }
@@ -212,11 +218,10 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
                 DispatchQueue.main.async { self.tableView.reloadData() }
             }
         }
-        
-        if !user.hasCheckedFavoriteStatus {
+        if !user.hasCheckedFavoriteStatus { // Update isFavorited property
             let controller = PostController.shared
-            controller.checkLikedSubscriptionTo(postForUser: user) { _ in
-                 DispatchQueue.main.async { self.tableView.reloadData() }
+            controller.checkSubscriptionFor(likedPosts: post) {_ in
+                DispatchQueue.main.async { self.tableView.reloadData() }
             }
         }
         
@@ -229,10 +234,6 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate 
         cell.likeUsersPostDelegate = self
         
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.contentView.backgroundColor = UIColor(white: 1, alpha: 0.1)
     }
     
     // MARK: - Navigation
@@ -287,7 +288,7 @@ extension FeedTableViewController: UITableViewDataSourcePrefetching {
 extension FeedTableViewController {
     
     func setUpAppearance() {
-     
+        
         if Date().isInMidnightHour {
             isMidnight = true
             self.openLabel.text = "Now Open"

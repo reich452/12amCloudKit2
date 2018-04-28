@@ -61,8 +61,9 @@ class UserController {
                 let user = users.first
                 print("Fetched loged in user \(user?.username ?? "can't fetch user" )")
                 // Don't forget to set current user
-          
                 self.currentUser = user
+                let likedPosts = user?.likedPostRefs
+                self.currentUser?.likedPostRefs = likedPosts ?? []
                 completion(user, true)
             })
         }
@@ -99,10 +100,12 @@ class UserController {
                     completion(false); return
             }
             let blockUserRefs = self.currentUser?.blockUserRefs
+            let likedPostRefs = self.currentUser?.likedPostRefs ?? []
             
             let appleUserRef = CKReference(recordID: recordID, action: .deleteSelf)
             let isFavorite: Bool = false
-            let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data, blockUserRefs: blockUserRefs, isFavorite: isFavorite)
+            
+            let user = User(username: username, email: email, appleUserRef: appleUserRef, profileImageData: data, blockUserRefs: blockUserRefs, likedPostRefs: likedPostRefs, isFavorite: isFavorite)
             let userRecord = CKRecord(user: user)
             self.cloudKitManager.saveRecord(userRecord, completion: { [unowned self] (record, error) in
                 if let error = error {

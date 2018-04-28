@@ -347,6 +347,7 @@ class CloudKitManager {
         notificationInfo.alertBody = alertBody
         notificationInfo.shouldSendContentAvailable = contentAvailable
         notificationInfo.desiredKeys = desiredKeys
+        notificationInfo.soundName = "default"
         
         subscription.notificationInfo = notificationInfo
         

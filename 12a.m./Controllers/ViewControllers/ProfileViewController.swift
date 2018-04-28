@@ -38,7 +38,6 @@ class ProfileViewController: ShiftableViewController {
         super.viewDidLoad()
         usernameTextField.delegate = self
         emailTextField.delegate = self
-        
         setUpAppearance()
         updateViews()
         updateDiscription()

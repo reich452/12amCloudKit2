@@ -38,6 +38,7 @@ class PostController {
     
     // MARK: - Delegates
     weak var delegate: CommentUpdatedToDelegate?
+    weak var likedPostDelegate: LikedPostUpdatedToDelegate?
     
     var filteredPosts: [Post] {
         
@@ -232,22 +233,9 @@ class PostController {
         }
     }
     
-  
-    // MARK: - Subscriptions
     
-    func likeUsersPost(completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
-        let predicate = NSPredicate(value: true)
-        
-        cloudKitManager.subscribe(User.recordTypeKey, predicate: predicate, subscriptionID: "likedUsersPost", contentAvailable: true, options: .firesOnRecordCreation) { (subscription, error) in
-            if let error = error {
-                print("Error subscribing to User: \(#function) \(error.localizedDescription) \(error)")
-                completion(false, error)
-            }
-            
-            let success = subscription != nil
-            completion(success, error)
-        }
-    }
+    // MARK: - Subscriptions
+    // Follow Users
     
     func subscribeToNewUsers(completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         
@@ -265,53 +253,24 @@ class PostController {
         }
     }
     
-    func checkLikedSubscriptionTo(postForUser user: User, completion: @escaping (_ success: Bool) -> Void) {
-        guard !user.hasCheckedFavoriteStatus else { completion(user.isFavorite ?? false); return }
-        
-        guard let subscriptionID = user.cloudKitRecordID?.recordName else {
-            user.isFavorite = false
-            completion(false)
-            return
-        }
-        cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
+    
+    func checkSubscriptionFor(likedPosts post: Post, completion: @escaping (_ subscribed: Bool) -> Void) {
+        guard let postOwner = post.owner,
+            let postRecordName = postOwner.cloudKitRecordID?.recordName else { return }
+        guard !postOwner.hasCheckedFavoriteStatus else { completion(postOwner.hasCheckedFavoriteStatus); return }
+        cloudKitManager.fetchSubscription(postRecordName) { (subscription, error) in
             if let error = error,
                 let ckError = error as? CKError,
                 ckError.code != .unknownItem {
-                print("Error checking comment subscription for \(user): \(error)")
-                return
+                print("Error checking liked subscription for \(#function): \(error) \(error.localizedDescription)")
+                completion(false);  return
             }
-            
-            user.hasCheckedFavoriteStatus = true
             let subscribed = subscription != nil
-            user.isFavorite = subscribed
+            post.owner?.isFavorite = subscribed
             completion(subscribed)
         }
     }
     
-    
-    func checkSubscriptionTo(postsForUser user: User, completion: @escaping (_ subscribed: Bool) -> Void) {
-        
-        guard !user.hasCheckedFollowStatus else { completion(user.isFollowing); return }
-        guard let subscriptionID = user.cloudKitRecordID?.recordName else {
-            user.isFollowing = false
-            completion(false)
-            return
-        }
-        
-        cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
-            if let error = error,
-                let ckError = error as? CKError,
-                ckError.code != .unknownItem {
-                print("Error checking comment subscription for \(user): \(error)")
-                return
-            }
-            
-            user.hasCheckedFollowStatus = true
-            let subscribed = subscription != nil
-            user.isFollowing = subscribed
-            completion(subscribed)
-        }
-    }
     
     func addSubscriptionTo(postsForUser user: User,
                            alertBody: String?,
@@ -329,7 +288,7 @@ class PostController {
             
             if let error = error {
                 print("Error adding sbuscription: \(#function) \(error.localizedDescription) \(error)")
-                completion(false, error); return 
+                completion(false, error); return
             }
             
             let success = subscription != nil
@@ -338,48 +297,6 @@ class PostController {
         }
     }
     
-    func addSubscriptionForLiked(postsForUser user: User,
-                           alertBody: String?,
-                           completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
-        
-        guard let recordID = user.cloudKitRecordID else { fatalError("Unable to create CloudKit reference for subscription.") }
-        
-        //        let predicate = NSPredicate(format: "username == %@", user.username)
-        
-        let predicate = NSPredicate(format: "ownerRef == %@", argumentArray: [recordID])
-        
-        user.isFavorite = true // Set this back to false later if subscribing fails
-        
-        cloudKitManager.subscribe(Post.recordTypeKey, predicate: predicate, subscriptionID: recordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: ["ownerRef"], options: .firesOnRecordCreation) { (subscription, error) in
-            
-            if let error = error {
-                print("Error adding sbuscription: \(#function) \(error.localizedDescription) \(error)")
-                completion(false, error); return
-            }
-            
-            let success = subscription != nil
-            user.isFavorite = success
-            completion(success, nil)
-        }
-    }
-    
-    func removeSubscriptionForLiked(postsForUser user: User,
-                              completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
-        
-        guard let subscriptionID = user.cloudKitRecordID?.recordName else {
-            completion(true, nil)
-            return
-        }
-        
-        user.isFavorite = false // Set this back to true later if subscribing fails
-        
-        cloudKitManager.unsubscribe(subscriptionID) { (subscriptionID, error) in
-            let success = subscriptionID != nil && error == nil
-            user.isFavorite = !success
-            completion(success, error)
-        }
-        
-    }
     
     func removeSubscriptionTo(postsForUser user: User,
                               completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
@@ -396,31 +313,95 @@ class PostController {
             user.isFollowing = !success
             completion(success, error)
         }
-        
     }
     
-    func toggleSubscriptionTo(postsForUser user: User,
-                              completion: @escaping ((_ success: Bool, _ isSubscribed: Bool, _ error: Error?) -> Void) = { _,_,_ in }) {
+    // MARK: - Subscriptions for liking
+    
+    func checkSubscriptionTo(postsForUser user: User, completion: @escaping (_ subscribed: Bool) -> Void) {
         
+        guard !user.hasCheckedFollowStatus else { completion(user.isFollowing); return }
         guard let subscriptionID = user.cloudKitRecordID?.recordName else {
-            completion(false, false, nil)
+            user.isFollowing = false
+            completion(false)
             return
         }
         
         cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
-            
-            if subscription != nil {
-                self.removeSubscriptionTo(postsForUser: user) { (success, error) in
-                    completion(success, false, error)
-                }
-            } else {
-                self.addSubscriptionTo(postsForUser: user, alertBody: "Someone commented on a post you follow!") { (success, error) in
-                    completion(success, true, error)
-                }
+            if let error = error,
+                let ckError = error as? CKError,
+                ckError.code != .unknownItem {
+                print("Error checking follow status subscription for \(user): \(error)")
+                return
             }
+            
+            user.hasCheckedFollowStatus = true
+            let subscribed = subscription != nil
+            user.isFollowing = subscribed
+            completion(subscribed)
+        }
+    }
+    
+    func addSubscriptionToLikedPost(forPost post: Post, alertBody: String?, completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = {_,_ in }) {
+        guard let postRecordID = post.ckRecordID else {
+           fatalError("Unable to create CloudKit reference for liking subscription.")
+        }
+    
+        
+        let predicate = NSPredicate(format: "ownerRef == %@", argumentArray: [postRecordID])
+    
+        cloudKitManager.subscribe(Post.recordTypeKey, predicate: predicate, subscriptionID: postRecordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: nil, options: [.firesOnRecordCreation, .firesOnRecordUpdate]) { (subscription, error) in
+            
+            let success = subscription != nil
+            post.owner?.isFavorite = success
+            completion(success, error)
+            guard let likedPostRefs = post.owner?.likedPostRefs else { return }
+            self.updateRecord(post: post, likedPosts: likedPostRefs, completion: { (success) in
+                if !success {
+                    print("Error Updating users liked post")
+                }
+            })
         }
     }
 
+    func removeSubscriptionTo(usersForLiked post: Post,
+                              completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
+
+        guard let subscriptionID = post.ckRecordID?.recordName else {
+            completion(true, nil)
+            return
+        }
+        post.owner?.isFavorite = false // Set this back to true later if subscribing fails
+        guard let index = post.owner?.likedPostRefs.index(of: post.ownerReference) else { completion(false, nil); return }
+        post.owner?.likedPostRefs.remove(at: index)
+        guard let likedPostArray = post.owner?.likedPostRefs else { completion(false, nil); return }
+
+        cloudKitManager.unsubscribe(subscriptionID) { (subscriptionID, error) in
+            let success = subscriptionID != nil && error == nil
+            post.owner?.isFavorite = !success
+            post.owner?.likedPostRefs = likedPostArray
+            completion(success, error)
+        }
+    }
+    
+    func updateRecord(post: Post, likedPosts: [CKReference], completion: @escaping (_ success: Bool) -> Void) {
+        guard let user = UserController.shared.currentUser else { completion(false); return }
+        
+        let likedRef = post.ownerReference
+        var likedPostRefs = likedPosts
+        likedPostRefs.append(likedRef)
+        
+        let currentUserRecord = CKRecord(user: user)
+        
+        cloudKitManager.modifyRecords([currentUserRecord], perRecordCompletion: nil) { (_, error) in
+            
+            if let error = error {
+                print("Error modifyingRecords: \(#function) \(error.localizedDescription) \(error)")
+                completion(false); return
+            }
+            post.owner?.likedPostRefs = likedPostRefs
+            completion(true)
+        }
+    }
     
 }
 
