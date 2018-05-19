@@ -62,6 +62,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate,
         self.performSegue(withIdentifier: "feedToPostDetail", sender: sender)
     }
     
+
     func didTapProfileButton(_ sender: FeedTableViewCell) {
         self.performSegue(withIdentifier: "feedToProfileDetail", sender: sender)
     }
@@ -93,10 +94,9 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate,
                 }
             } else {
                 reloadRow()
-                postController.addSubscriptionTo(postsForUser: user, alertBody: "Someone commented on your post!")
+                postController.addSubscriptionTo(follow: user, alertBody: "Someone commented on your post!")
                 reloadRow()
             }
-            
         }
     }
     
@@ -108,7 +108,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate,
         postController.checkSubscriptionFor(likedPosts: post) { (isLiked) in
             let reloadRow = {
                 DispatchQueue.main.async {
-                    self.tableView.reloadRows(at: [indexPath], with: .none)
+                    self.tableView.reloadData()
                 }
             }
             if isLiked {
@@ -120,7 +120,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate,
                 postController.addSubscriptionToLikedPost(forPost: post, alertBody: "Someone liked your post!")
                 reloadRow()
             }
-            reloadRow()
+            
         }
   
     }
@@ -221,7 +221,6 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate,
         if !user.hasCheckedFavoriteStatus { // Update isFavorited property
             let controller = PostController.shared
             controller.checkSubscriptionFor(likedPosts: post) {_ in
-                DispatchQueue.main.async { self.tableView.reloadData() }
             }
         }
         

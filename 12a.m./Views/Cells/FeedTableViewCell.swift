@@ -59,11 +59,7 @@ class FeedTableViewCell: UITableViewCell {
             followButton.setTitle("Follow", for: .normal)
         }
         
-        if isFavorite {
-            likeButton.setImage(#imageLiteral(resourceName: "emptyHeart"), for: .normal)
-        } else {
-            likeButton.setImage(#imageLiteral(resourceName: "filledHeart"), for: .normal)
-        }
+        isFavorite ? likeButton.setImage(#imageLiteral(resourceName: "emptyHeart"), for: .normal) : likeButton.setImage(#imageLiteral(resourceName: "filledHeart"), for: .normal)
         
         self.profileImageView.contentMode = .scaleAspectFill
         self.profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2

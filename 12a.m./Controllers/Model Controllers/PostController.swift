@@ -184,7 +184,7 @@ class PostController {
                 for comment in comments {
                     dispatchGroup.enter()
                     let postRef = comment.postReference
-                    guard let postIndex = self.posts.index(where: {$0.ckRecordID == postRef.recordID } ) else { completion(); return }
+                    guard let postIndex = self.posts.index(where: {$0.ckRecordID == postRef.recordID } ) else { completion(); break }
                     let post = self.posts[postIndex]
                     post.comments.append(comment)
                     comment.post = post
@@ -254,25 +254,32 @@ class PostController {
     }
     
     
-    func checkSubscriptionFor(likedPosts post: Post, completion: @escaping (_ subscribed: Bool) -> Void) {
-        guard let postOwner = post.owner,
-            let postRecordName = postOwner.cloudKitRecordID?.recordName else { return }
-        guard !postOwner.hasCheckedFavoriteStatus else { completion(postOwner.hasCheckedFavoriteStatus); return }
-        cloudKitManager.fetchSubscription(postRecordName) { (subscription, error) in
+    
+    func checkSubscriptionTo(postsForUser user: User, completion: @escaping (_ subscribed: Bool) -> Void) {
+        
+        guard !user.hasCheckedFollowStatus else { completion(user.isFollowing); return }
+        guard let subscriptionID = user.cloudKitRecordID?.recordName else {
+            user.isFollowing = false
+            completion(false)
+            return
+        }
+        
+        cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
             if let error = error,
                 let ckError = error as? CKError,
                 ckError.code != .unknownItem {
-                print("Error checking liked subscription for \(#function): \(error) \(error.localizedDescription)")
-                completion(false);  return
+                print("Error checking follow status subscription for \(user): \(error)")
+                return
             }
+            
+            user.hasCheckedFollowStatus = true
             let subscribed = subscription != nil
-            post.owner?.isFavorite = subscribed
+            user.isFollowing = subscribed
             completion(subscribed)
         }
     }
     
-    
-    func addSubscriptionTo(postsForUser user: User,
+    func addSubscriptionTo(follow user: User,
                            alertBody: String?,
                            completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
         
@@ -317,26 +324,19 @@ class PostController {
     
     // MARK: - Subscriptions for liking
     
-    func checkSubscriptionTo(postsForUser user: User, completion: @escaping (_ subscribed: Bool) -> Void) {
-        
-        guard !user.hasCheckedFollowStatus else { completion(user.isFollowing); return }
-        guard let subscriptionID = user.cloudKitRecordID?.recordName else {
-            user.isFollowing = false
-            completion(false)
-            return
-        }
-        
-        cloudKitManager.fetchSubscription(subscriptionID) { (subscription, error) in
+    func checkSubscriptionFor(likedPosts post: Post, completion: @escaping (_ subscribed: Bool) -> Void) {
+        guard let postOwner = post.owner,
+            let postRecordName = postOwner.cloudKitRecordID?.recordName else { return }
+        guard !postOwner.hasCheckedFavoriteStatus else { completion(postOwner.hasCheckedFavoriteStatus); return }
+        cloudKitManager.fetchSubscription(postRecordName) { (subscription, error) in
             if let error = error,
                 let ckError = error as? CKError,
                 ckError.code != .unknownItem {
-                print("Error checking follow status subscription for \(user): \(error)")
-                return
+                print("Error checking liked subscription for \(#function): \(error) \(error.localizedDescription)")
+                completion(false);  return
             }
-            
-            user.hasCheckedFollowStatus = true
             let subscribed = subscription != nil
-            user.isFollowing = subscribed
+            post.owner?.isFavorite = subscribed
             completion(subscribed)
         }
     }
