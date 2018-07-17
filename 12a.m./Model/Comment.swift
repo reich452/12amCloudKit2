@@ -20,9 +20,9 @@ class Comment {
     
     var text: String
     var timestamp: String
-    var post: Post?
+    weak var post: Post?
     var postReference: CKReference
-    var owner: User?
+    weak var owner: User?
     var ownerReference: CKReference
     var ckRecordID: CKRecordID?
     

@@ -209,7 +209,7 @@ class PostController {
         }
     }
     
-    func performFullSync(completion: @escaping (() -> Void) = { }) {
+    func performFullSync(completion: @escaping (() -> Void) = { }) { 
         isSyncing = true
         
         self.fetchNewRecors(ofType: User.recordTypeKey) {
