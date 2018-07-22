@@ -9,7 +9,7 @@
 import UIKit
 
 class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate, LikedPostUpdatedToDelegate {
-    
+
     
     fileprivate let presentSignUpSegue =  "presentSignUp"
     fileprivate let showEditProfileSegue = "editProfile"
@@ -100,6 +100,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate,
         }
     }
     
+    // TODO: - CKSubscription
     func didTapLikeUsersPostButton(_ sender: FeedTableViewCell) {
         guard let indexPath = tableView.indexPath(for: sender) else { return }
             let post = PostController.shared.filteredPosts[indexPath.row]
@@ -124,6 +125,30 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate,
         }
   
     }
+    
+    /// This method is being updated for the one above
+    func didTapLikePostButton(_ sender: FeedTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: sender) else { return }
+        let post = PostController.shared.filteredPosts[indexPath.row]
+        guard let postOwner = post.owner,
+            let postCKRef = post.cloudKitReference else { return }
+
+        if postOwner.likedPostRefs.contains(postCKRef) {
+            PostController.shared.removeLiked(post: post) {  [weak self] (isLiked) in
+                self?.likedPostWereAddedTo()
+            }
+            
+        } else {
+            PostController.shared.addLiked(post: post){ [weak self] (isLiked) in
+                if isLiked {
+                    self?.likedPostWereAddedTo()
+                }
+            }
+        }
+        
+    }
+    
+    
     func likedPostWereAddedTo() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -230,7 +255,7 @@ class FeedTableViewController: UITableViewController, FeedTableViewCellDelegate,
         cell.blockUserDelegate = self
         cell.reportUserDelegate = self
         cell.followUserDelegate = self
-        cell.likeUsersPostDelegate = self
+        cell.likePostDelegate = self
         
         return cell
     }

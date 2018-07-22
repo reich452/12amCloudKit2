@@ -15,6 +15,7 @@ protocol FeedTableViewCellDelegate: class {
     func didTapReportUserButton(_ sender: FeedTableViewCell)
     func didTapFollowUserButton(_ sender: FeedTableViewCell)
     func didTapLikeUsersPostButton(_ sender: FeedTableViewCell)
+    func didTapLikePostButton(_ sender: FeedTableViewCell)
 }
 
 class FeedTableViewCell: UITableViewCell {
@@ -35,6 +36,7 @@ class FeedTableViewCell: UITableViewCell {
     weak var reportUserDelegate: FeedTableViewCellDelegate?
     weak var followUserDelegate: FeedTableViewCellDelegate?
     weak var likeUsersPostDelegate: FeedTableViewCellDelegate?
+    weak var likePostDelegate: FeedTableViewCellDelegate?
     
     var post: Post? {
         didSet {
@@ -45,8 +47,9 @@ class FeedTableViewCell: UITableViewCell {
     private func updateViews() {
         guard let post = post,
             let owner = post.owner,
-            let isFavorite = post.owner?.isFavorite,
+            let postCkref = post.cloudKitReference,
             let username = post.owner?.username else { return }
+        
         
         if profileImageView.image == nil {
             profileImageView.image = #imageLiteral(resourceName: "avatar")
@@ -58,9 +61,9 @@ class FeedTableViewCell: UITableViewCell {
         } else {
             followButton.setTitle("Follow", for: .normal)
         }
-        
-        isFavorite ? likeButton.setImage(#imageLiteral(resourceName: "emptyHeart"), for: .normal) : likeButton.setImage(#imageLiteral(resourceName: "filledHeart"), for: .normal)
-        
+    
+        owner.likedPostRefs.contains(postCkref) ? likeButton.setImage(#imageLiteral(resourceName: "filledHeart"), for: .normal) : likeButton.setImage(#imageLiteral(resourceName: "emptyHeart"), for: .normal)
+            
         self.profileImageView.contentMode = .scaleAspectFill
         self.profileImageView.layer.cornerRadius = profileImageView.layer.frame.height / 2
         self.profileImageView.layer.masksToBounds = true
@@ -98,8 +101,8 @@ class FeedTableViewCell: UITableViewCell {
         }
     }
     @IBAction func likeButtonTapped(_ sender: Any) {
-        if let didLikeUsersPostDelegate = likeUsersPostDelegate {
-            didLikeUsersPostDelegate.didTapLikeUsersPostButton(self)
+        if let didLikePostDelegate = likePostDelegate {
+            didLikePostDelegate.didTapLikePostButton(self)
         }
     }
     

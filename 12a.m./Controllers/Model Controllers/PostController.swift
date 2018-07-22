@@ -25,6 +25,7 @@ class PostController {
     var post: Post?
     var comments = [Comment]()
     var isSyncing: Bool = false
+    var isFavorite = false
     
     var posts = [Post]() {
         didSet {
@@ -105,6 +106,63 @@ class PostController {
         }
     }
     
+    func addLiked(post: Post, completion: @escaping (_ success: Bool) -> Void) {
+        
+        guard let postOwner = post.owner,
+            let postRef = post.cloudKitReference else { completion(false); return }
+        guard var currentUser = UserController.shared.currentUser else { completion(false); return }
+        
+        currentUser = postOwner
+        postOwner.likedPostRefs.append(postRef)
+        let record = CKRecord(user: postOwner)
+        var records: [CKRecord] = []
+        records.append(record)
+        
+        cloudKitManager.modifyRecords(records, perRecordCompletion: nil) { (records, error) in
+            
+            if let error = error {
+                print("Cannot modify post record \(error.localizedDescription)")
+                completion(false); return
+            }
+            
+            guard let records = records,
+                let record = records.first else { completion(false); return }
+           
+            postOwner.cloudKitRecordID = record.recordID
+            
+            completion(true)
+        }
+    }
+    
+    func removeLiked(post: Post, completion: @escaping (Bool) -> Void) {
+        guard let postOwner = post.owner,
+            let postRef = post.cloudKitReference,
+            var currentUser = UserController.shared.currentUser else { completion(false); return }
+        
+        guard let index = postOwner.likedPostRefs.index(of: postRef) else { completion(false); return }
+        currentUser = postOwner
+        postOwner.likedPostRefs.remove(at: index)
+        let record = CKRecord(user: postOwner)
+        var records: [CKRecord] = []
+        records.append(record)
+        
+        cloudKitManager.modifyRecords(records, perRecordCompletion: nil) { (records, error) in
+            if let error = error {
+                print("Cannot modify post record \(error.localizedDescription)")
+                completion(false); return
+            }
+            
+            guard let records = records,
+                let record = records.first else { completion(false); return }
+            
+            postOwner.cloudKitRecordID = record.recordID
+           
+            
+            completion(true)
+        }
+    }
+    
+    
     func addComment(to post: Post, commentText: String, completion: @escaping () -> Void)  {
         
         guard let cloudKitRef = post.cloudKitReference else { return  }
@@ -175,6 +233,7 @@ class PostController {
                     post.owner?.posts = posts
                     let ownerPosts = postOwner.posts?.filter{$0.ownerReference == post.ownerReference}
                     post.owner?.posts = ownerPosts
+                    self.post = post
                     
                 }
                 completion()
@@ -343,12 +402,12 @@ class PostController {
     
     func addSubscriptionToLikedPost(forPost post: Post, alertBody: String?, completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = {_,_ in }) {
         guard let postRecordID = post.ckRecordID else {
-           fatalError("Unable to create CloudKit reference for liking subscription.")
+            fatalError("Unable to create CloudKit reference for liking subscription.")
         }
-    
+        
         
         let predicate = NSPredicate(format: "ownerRef == %@", argumentArray: [postRecordID])
-    
+        
         cloudKitManager.subscribe(Post.recordTypeKey, predicate: predicate, subscriptionID: postRecordID.recordName, contentAvailable: true, alertBody: alertBody, desiredKeys: nil, options: [.firesOnRecordCreation, .firesOnRecordUpdate]) { (subscription, error) in
             
             let success = subscription != nil
@@ -362,10 +421,10 @@ class PostController {
             })
         }
     }
-
+    
     func removeSubscriptionTo(usersForLiked post: Post,
                               completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
-
+        
         guard let subscriptionID = post.ckRecordID?.recordName else {
             completion(true, nil)
             return
@@ -374,7 +433,7 @@ class PostController {
         guard let index = post.owner?.likedPostRefs.index(of: post.ownerReference) else { completion(false, nil); return }
         post.owner?.likedPostRefs.remove(at: index)
         guard let likedPostArray = post.owner?.likedPostRefs else { completion(false, nil); return }
-
+        
         cloudKitManager.unsubscribe(subscriptionID) { (subscriptionID, error) in
             let success = subscriptionID != nil && error == nil
             post.owner?.isFavorite = !success
