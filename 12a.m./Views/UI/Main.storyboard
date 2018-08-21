@@ -1243,33 +1243,81 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wjK-5o-hJe">
                                 <rect key="frame" x="0.0" y="308" width="375" height="311"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z3q-np-rih">
-                                    <size key="itemSize" width="160" height="160"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="z3q-np-rih">
+                                    <size key="itemSize" width="140" height="140"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ownersPostCell" id="iaV-ze-7yT" customClass="ProfileDetailCollectionViewCell" customModule="_2a_m_" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                        <rect key="frame" x="10" y="0.0" width="140" height="140"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Izx-k0-vuz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
-                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VT1-MR-Vcq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                                    <subviews>
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9EQ-OM-egt">
+                                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OGS-jL-U6T">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="OGS-jL-U6T" secondAttribute="bottom" id="HtS-55-OIe"/>
+                                                                <constraint firstItem="OGS-jL-U6T" firstAttribute="leading" secondItem="9EQ-OM-egt" secondAttribute="leading" id="VuM-Dv-S6U"/>
+                                                                <constraint firstItem="OGS-jL-U6T" firstAttribute="top" secondItem="9EQ-OM-egt" secondAttribute="top" id="Z4c-gl-bpL"/>
+                                                                <constraint firstAttribute="trailing" secondItem="OGS-jL-U6T" secondAttribute="trailing" id="fcN-vv-IZK"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="14"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="9EQ-OM-egt" firstAttribute="leading" secondItem="VT1-MR-Vcq" secondAttribute="leading" id="4wS-iu-Jvj"/>
+                                                        <constraint firstItem="9EQ-OM-egt" firstAttribute="top" secondItem="VT1-MR-Vcq" secondAttribute="top" id="JeM-MW-fbm"/>
+                                                        <constraint firstAttribute="trailing" secondItem="9EQ-OM-egt" secondAttribute="trailing" id="UCe-qk-tGD"/>
+                                                        <constraint firstAttribute="bottom" secondItem="9EQ-OM-egt" secondAttribute="bottom" id="inm-6m-deM"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="14"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                            <real key="value" value="0.25"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                            <size key="value" width="0.0" height="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                            <integer key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="Izx-k0-vuz" secondAttribute="bottom" id="DTO-gI-G90"/>
-                                            <constraint firstAttribute="trailing" secondItem="Izx-k0-vuz" secondAttribute="trailing" id="Pbg-VF-tba"/>
-                                            <constraint firstItem="Izx-k0-vuz" firstAttribute="leading" secondItem="iaV-ze-7yT" secondAttribute="leading" id="b6n-sA-d5Q"/>
-                                            <constraint firstItem="Izx-k0-vuz" firstAttribute="top" secondItem="iaV-ze-7yT" secondAttribute="top" id="eGc-wX-NTf"/>
+                                            <constraint firstItem="VT1-MR-Vcq" firstAttribute="leading" secondItem="iaV-ze-7yT" secondAttribute="leading" id="SQA-mf-GuH"/>
+                                            <constraint firstItem="VT1-MR-Vcq" firstAttribute="top" secondItem="iaV-ze-7yT" secondAttribute="top" id="b9e-eW-fLb"/>
+                                            <constraint firstAttribute="bottom" secondItem="VT1-MR-Vcq" secondAttribute="bottom" id="nQc-7r-vpK"/>
+                                            <constraint firstAttribute="trailing" secondItem="VT1-MR-Vcq" secondAttribute="trailing" id="r3F-vh-Xbi"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outlet property="userPostImageView" destination="Izx-k0-vuz" id="AdA-jC-9ew"/>
+                                            <outlet property="userPostImageView" destination="OGS-jL-U6T" id="0IY-zs-Z7f"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -2126,7 +2174,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QVB-tP-9BL"/>
-        <segue reference="1AY-qs-bfa"/>
-        <segue reference="Y3F-Kl-wd9"/>
+        <segue reference="enZ-Hv-Qrg"/>
+        <segue reference="FDI-f7-h1B"/>
     </inferredMetricsTieBreakers>
 </document>

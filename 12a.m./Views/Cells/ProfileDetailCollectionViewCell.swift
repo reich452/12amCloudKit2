@@ -13,4 +13,17 @@ class ProfileDetailCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var userPostImageView: UIImageView!
     
+    var postImage: UIImage? {
+        didSet {
+            updateViews()
+        }
+    }
+    // MARK: - TODO cornerRadius
+    func updateViews() {
+        guard let userPostImageView = userPostImageView else { return }
+        userPostImageView.clipsToBounds = true
+        userPostImageView.layer.cornerRadius = 10
+        userPostImageView.image = postImage
+    }
+    
 }
