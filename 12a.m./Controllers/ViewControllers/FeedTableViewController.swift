@@ -304,7 +304,7 @@ extension FeedTableViewController: UITableViewDataSourcePrefetching {
             let post = PostController.shared.posts[indexPath.row]
             let url = post.temporaryPhotoURL
             print(post.text)
-            URLSession.shared.dataTask(with: url)
+            URLSession.shared.dataTask(with: url).resume()
         }
     }
 }
