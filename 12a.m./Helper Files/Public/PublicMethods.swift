@@ -17,6 +17,3 @@ enum PreferenceExplorerError: Error {
     case notFound(String)
 }
 
-public enum PreferenceType: String {
-    case castle = "App-Prefs:root=CASTLE"
-}

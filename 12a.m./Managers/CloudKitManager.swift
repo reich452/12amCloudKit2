@@ -244,7 +244,7 @@ class CloudKitManager {
             let alertController = UIAlertController(title: "Sign into iCloud in your settings", message: errorText, preferredStyle: .alert)
             
             let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-                guard let settingsUrl = URL(string: PreferenceType.castle.rawValue) else {
+                guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
                     return
                 }
                 if UIApplication.shared.canOpenURL(settingsUrl) {
